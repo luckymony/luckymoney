@@ -1,0 +1,27 @@
+.page-body {
+  display: flex;
+	flex:1;
+	flex-direction:column;
+}
+.list-item {
+  display: flex;
+  flex-direction:column;
+	margin: 60rpx 60rpx;
+  height: 260rpx;
+	border-radius: 10rpx;
+  background-color: #F44848;
+  box-shadow: 5px 5px 5px gainsboro;
+}
+.item-icon {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  margin-left: 18rpx;
+  margin-top: 65rpx;
+}
+.item-name {
+ font-size: 26rpx; 
+ color:white;
+ margin-left: 18rpx;
+ margin-top: -20rpx;
+}

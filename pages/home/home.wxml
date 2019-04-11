@@ -1,4 +1,11 @@
-<view class="home-list">
-
-<view class=''></view>
+<scroll-view class="page-body" scroll-y="true">
+<navigator url="" wx:for="{{items}}" hover-class="none">
+<view class="list-item">
+<image class="item-icon" src="{{item.icon}}">
+</image>
+<text class="item-name">
+{{item.name}}
+</text>
 </view>
+</navigator>
+</scroll-view>
