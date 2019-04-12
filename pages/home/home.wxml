@@ -1,11 +1,13 @@
 <scroll-view class="page-body" scroll-y="true">
 <navigator url="" wx:for="{{items}}" hover-class="none">
 <view class="list-item">
+<view class="list-item-left">
 <image class="item-icon" src="{{item.icon}}">
 </image>
 <text class="item-name">
 {{item.name}}
 </text>
+</view>
 </view>
 </navigator>
 </scroll-view>
