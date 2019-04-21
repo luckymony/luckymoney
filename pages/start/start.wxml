@@ -1,4 +1,7 @@
 <!--index.wxml-->
-<view class="container">
-
+<view class="start-main">
+<view class="first-view" >
+<view class="item-view"></view>
+</view>
+<view class="second-view"></view>
 </view>

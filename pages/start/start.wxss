@@ -1,0 +1,33 @@
+.start-main {
+  margin-top: 32rpx;
+  margin-left: 4.5vw;
+  margin-right: 4.5vw; 
+  height: 85vh;
+  width: 91vw;
+  border-radius: 10rpx;
+  background-color: #F44848;
+  box-shadow: 5px 5px 5px gainsboro;
+  display: flex;
+  flex-direction:column;
+}
+.line-dotted {
+  margin-top: 100rpx;
+  margin-left: 50rpx;
+  margin-right: 50rpx;
+  border-top:4rpx #cccccc dotted;
+}
+.first-view {
+  background: orange;
+  height: 60%;
+  margin-left: 4.5vw;
+  margin-right: 4.5vw;
+}
+.second-view {
+  flex: 1;
+  background: blue;
+  margin-left: 4.5vw;
+  margin-right: 4.5vw;
+}
+.item-view {
+ background-color: olivedrab;
+}

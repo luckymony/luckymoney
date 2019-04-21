@@ -50,19 +50,28 @@
    color:white;
 }
 .right-bottom {
-  background-color: blue;
+  /* background-color: blue; */
   display: flex;
   flex-direction:row;
-  text-align: center;
+  /* text-align: center; */
+}
+
+.right-bottom-text text {
+  background-color: orange;
 }
 .right-bottom-icon {
-  flex: 
-  width: 35rpx;
-  height: 35rpx;
-
+   flex: 1;
+   margin-left: 10rpx;
+   /* 
+   background-color: blue;
+   display: flex;
+   align-items: center;
+   justify-content: center;  
+   width: 100%;
+   height: 100%; */
 }
 .right-bottom-icon image {
-   width: 35rpx;
-   height: 35rpx;
-   border-radius: 20rpx;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
 }

@@ -9,7 +9,7 @@
 <view><text>{{'红包个数 : '+item.count+'个'}}</text></view>
 <view><text>{{'红包模式 : '+item.play}}</text></view>
 <view class="right-bottom">
-<view><text>{{'当前玩家 : '}}</text></view>
+<text>{{'当前玩家 : '}}</text>
 <view class="right-bottom-icon" wx:for="{{item.players}}" wx:for-item="data">
 <image src="{{data}}"></image>
 </view>
