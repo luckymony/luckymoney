@@ -1,7 +1,13 @@
 <!--index.wxml-->
 <view class="start-main">
-<view class="first-view" >
-<view class="item-view"></view>
+<view class="first-view">
+<view class="one-line">
+<text>{{items[0].value}}</text>
+<view class="line-dotted"></view>
+</view>
+<view class="two-line">{{items[1].value}}</view>
+<view class="three-line">{{items[2].value}}</view>
+<view class="four-line">{{items[3].value}}</view>
 </view>
 <view class="second-view"></view>
 </view>

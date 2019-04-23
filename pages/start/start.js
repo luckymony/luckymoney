@@ -1,10 +1,10 @@
 Page({
   data: {
     items: [
-      {sentiment : "恭喜发财,大吉大利"},
-      {amount : "50"},
-      {count: 4 },
-      {mode: "开门大吉" }
+      {value : "恭喜发财,大吉大利"},
+      {value : "50"},
+      {value: 4 },
+      {value: "开门大吉" }
     ]
   },
   onLoad: function (options) {

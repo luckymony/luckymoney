@@ -10,24 +10,46 @@
   display: flex;
   flex-direction:column;
 }
-.line-dotted {
-  margin-top: 100rpx;
-  margin-left: 50rpx;
-  margin-right: 50rpx;
-  border-top:4rpx #cccccc dotted;
-}
+
 .first-view {
-  background: orange;
+  display: flex;
+  flex-direction:column;
   height: 60%;
   margin-left: 4.5vw;
   margin-right: 4.5vw;
+}
+.one-line {
+  flex: 1;
+  display: flex; 
+  width: 100%;
+  background-color: green;
+  margin-top: 10rpx;
+  align-items: center;
+}
+.line-dotted {
+  border-top:4rpx #cccccc dotted;
+}
+.two-line {
+  flex: 1;
+  width: 100%;
+  background-color: blueviolet;
+  margin-top: 10rpx;
+}
+.three-line {
+  flex: 1;
+  width: 100%;
+  background-color: yellowgreen;
+  margin-top: 10rpx;
+}
+.four-line {
+  flex: 1;
+  width: 100%;
+  background-color: brown;
+  margin-top: 10rpx;
 }
 .second-view {
   flex: 1;
   background: blue;
   margin-left: 4.5vw;
   margin-right: 4.5vw;
-}
-.item-view {
- background-color: olivedrab;
 }
