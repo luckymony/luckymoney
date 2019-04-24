@@ -2,7 +2,10 @@
 <view class="start-main">
 <view class="first-view">
 <view class="one-line">
-<text>{{items[0].value}}</text>
+<view class="one-input">
+<input value="{{items[0].value}}" placeholder="恭喜发财,大吉大利" />
+<i-icon type="brush_fill" size="28" color="#80848f" />
+</view>
 <view class="line-dotted"></view>
 </view>
 <view class="two-line">{{items[1].value}}</view>

@@ -5,7 +5,7 @@
   height: 85vh;
   width: 91vw;
   border-radius: 10rpx;
-  background-color: #F44848;
+  background-color: #eee;
   box-shadow: 5px 5px 5px gainsboro;
   display: flex;
   flex-direction:column;
@@ -21,13 +21,30 @@
 .one-line {
   flex: 1;
   display: flex; 
+  flex-direction:column;
   width: 100%;
-  background-color: green;
   margin-top: 10rpx;
-  align-items: center;
 }
+.one-input {
+  flex: 1;
+  display:flex;
+  align-items:center;
+  justify-content: space-evenly;
+  /* background-color: orange; */
+}
+.one-input input {
+  width: 80%;
+  height: 80%;
+  /* background-color: red; */
+}
+.one-input i-icon {
+   /* background-color: blue; */
+}
+
 .line-dotted {
-  border-top:4rpx #cccccc dotted;
+  width: 100%;
+  height: 4rpx;
+  border-top:4rpx gray dotted;
 }
 .two-line {
   flex: 1;

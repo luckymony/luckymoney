@@ -9,7 +9,7 @@
 	margin: 60rpx 60rpx;
   height: 260rpx;
 	border-radius: 10rpx;
-  background-color: #F44848;
+  background-color: #eee;
   box-shadow: 5px 5px 5px gainsboro;
 }
 .list-item-left {
@@ -32,7 +32,7 @@
 }
 .left-item-text text {
    font-size: 26rpx; 
-   color:white;
+   color:gray;
 }
 .list-item-right {
   display: flex;
@@ -47,7 +47,7 @@
 }
 .list-item-right text {
   font-size: 26rpx; 
-   color:white;
+   color:gray;
 }
 .right-bottom {
   /* background-color: blue; */
