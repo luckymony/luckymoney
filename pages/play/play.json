@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "playui":"../../component/playui/playui"
+  }
+}

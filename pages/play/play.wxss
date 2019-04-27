@@ -1,0 +1,22 @@
+.play-view {
+  display: flex;
+	flex:1;
+	flex-direction:column;
+}
+.item-view {
+  margin: 60rpx 60rpx;
+  height: 260rpx;
+  line-height: 260rpx;
+  text-align: center;
+	border-radius: 10rpx;
+  background-color: #eee;
+  box-shadow: 5px 5px 5px gainsboro;
+  color: gray;
+  font-size: 36px;
+  font-family: SourceHanSansSC-regular;
+}
+.play-param {
+  width: 100rpx;
+  height: 100rpx;
+  background-color: rebeccapurple;
+}

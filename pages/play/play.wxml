@@ -1,0 +1,5 @@
+<view class="play-main" wx:for="{{items}}">
+<view class="item-view">
+{{item}}
+</view>
+</view>

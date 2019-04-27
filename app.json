@@ -2,7 +2,8 @@
   "pages":[
     "pages/home/home",
     "pages/start/start",
-    "pages/me/me"
+    "pages/me/me",
+    "pages/play/play"
   ],
   "window":{
     "backgroundTextStyle":"dark",
