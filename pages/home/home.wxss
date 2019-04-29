@@ -9,7 +9,7 @@
 	margin: 60rpx 60rpx;
   height: 260rpx;
 	border-radius: 10rpx;
-  background-color: #eee;
+  background-color: #fff;
   box-shadow: 5px 5px 5px gainsboro;
 }
 .list-item-left {

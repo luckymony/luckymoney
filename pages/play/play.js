@@ -5,7 +5,18 @@ Page({
        "开门大吉",
        "八方来财",
        "敬请期待"
-    ]
+    ],
+    isShow:false
+  },
+  click:function (e) {
+    this.setData({
+        isShow:true
+    })
+  },
+  hidden:function (e) {
+    this.setData({
+      isShow: false
+    })
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '红包玩法' });

@@ -5,7 +5,7 @@
   height: 85vh;
   width: 91vw;
   border-radius: 10rpx;
-  background-color: #eee;
+  background-color: #fff;
   box-shadow: 5px 5px 5px gainsboro;
   display: flex;
   flex-direction:column;

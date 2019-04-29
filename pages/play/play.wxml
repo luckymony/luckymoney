@@ -1,5 +1,8 @@
 <view class="play-main" wx:for="{{items}}">
-<view class="item-view">
+<view class="item-view" data-index="{{index}}" bindtap="click">
 {{item}}
 </view>
+</view>
+<view class="background" wx:if="{{isShow}}" bindtap="hidden">
+<view class="test"></view>
 </view>
