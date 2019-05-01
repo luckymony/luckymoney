@@ -1,3 +1,23 @@
 <view class="play-ui">
+<view class="first-view">
+<view class="one-view">
+<view class="up-view"></view>
+<view class="line-dotted"></view>
+</view>
+<view class="two-view">
+<view class="up-view"></view>
+<view class="line-dotted"></view>
+</view>
+<view class="three-view">
+<view class="up-view"></view>
+<view class="line-dotted"></view>
+</view>
+<view class="four-view">
+<view class="up-view"></view>
+<view class="line-dotted"></view>
+</view>
+</view>
+<view class="second-view">
 
+</view>
 </view>

@@ -4,5 +4,6 @@
 </view>
 </view>
 <view class="background" wx:if="{{isShow}}" bindtap="hidden">
-<view class="test"></view>
 </view>
+<playui class="playui" wx:if="{{isShow}}">
+</playui>
