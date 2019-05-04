@@ -25,10 +25,13 @@
   align-items:center;
   justify-content: space-between;
 }
+.unit {
+  margin-left: 20rpx;
+}
 .top-view input {
   flex: 1;
   text-align:right; 
-  color: black;
+  color: gray;
 }
 .top-view i-icon {
   /* background-color: orange; */
@@ -70,6 +73,11 @@
   width: 100%;
   /* background-color: blueviolet; */
   margin-top: 10rpx;
+}
+
+.four-view button {
+  font-size: 30rpx;
+
 }
 .second-view button {
   width: 50%;
