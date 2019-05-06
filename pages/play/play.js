@@ -6,6 +6,12 @@ Page({
        "八方来财",
        "敬请期待"
     ],
+    currentDic:{
+      activityTime:"15分钟",
+      emptyMoneyCount:"10",
+      chanceCount:"3",
+      difficulty:"2"
+    },
     isShow:false
   },
   click:function (e) {
@@ -17,6 +23,13 @@ Page({
     this.setData({
       isShow: false
     })
+  },
+
+  selectDifficulty:function (e) {
+    console.log(e.detail);
+  },
+  activityTimeChange:function (e) {
+    console.log(e.detail);
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '红包玩法' });

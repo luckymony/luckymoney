@@ -5,5 +5,10 @@
 </view>
 <view class="background" wx:if="{{isShow}}" bindtap="hidden">
 </view>
-<playui class="playui" wx:if="{{isShow}}">
+<playui class="playui" wx:if="{{isShow}}" 
+activityTime="15分钟"
+emptyMoneyCount="10"
+chanceCount="2"
+bind:selectDifficulty="selectDifficulty" 
+bind:activityTimeChange="activityTimeChange">
 </playui>
