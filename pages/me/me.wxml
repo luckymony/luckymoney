@@ -1,6 +1,25 @@
 <view class="container">
   <view class="userinfo">
     <image class="userinfo-avatar" src="../../images/me/user_icon_default.png" background-size="cover"></image>
+    <text>张三丰</text>
+  </view>
+
+  <view class='userinfo-money'>
+
+    <view>
+      <image></image>
+      <text>红包</text>
+    </view>
+
+    <view>
+    |
+    </view>
+
+    <view>
+      <text>余额(元)</text>
+      <text>88.88</text>
+    </view>
+
   </view>
 
 

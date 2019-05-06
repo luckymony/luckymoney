@@ -17,6 +17,10 @@
 	margin: 20rpx;
 	border-radius: 50%;
 }
+.userinfo-money {
+  width: 100%;
+  height: 60rpx;
+}
 
 .userinfo-nickname {
   margin-top: 20rpx;
