@@ -3,9 +3,23 @@ Page({
     items: [
       {value : "恭喜发财 大吉大利"},
       {value : "50"},
-      {value: 4 },
-      {value: "开门大吉" }
+      {value : 4 },
+      {value : { 
+                 type  : 0,
+                 time  : "24小时", 
+                 count : 0, 
+                 chance: 1,
+                 difficulty: 1
+               }
+       }
     ],
+    
+    types : [
+      "开门大吉",
+      "八方来财",
+      "敬请期待"
+    ],
+
     visible: false,
     actions: [
       {
@@ -62,7 +76,7 @@ Page({
   
   toPlay:function() {
     wx.navigateTo({
-      url: '../play/play',
+      url: '../play/play?types=' + JSON.stringify(this.data.types),
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},

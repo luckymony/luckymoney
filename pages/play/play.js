@@ -2,9 +2,9 @@ Page({
   data: {
     // text:"这是一个页面"
     items:[
-       "开门大吉",
-       "八方来财",
-       "敬请期待"
+      //  "开门大吉",
+      //  "八方来财",
+      //  "敬请期待"
     ],
     currentDic:{
       activityTime:"15分钟",
@@ -32,6 +32,9 @@ Page({
     console.log(e.detail);
   },
   onLoad: function (options) {
+    this.setData({
+      items: JSON.parse(options.types)
+    });
     wx.setNavigationBarTitle({ title: '红包玩法' });
   },
   onReady: function () {
