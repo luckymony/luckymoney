@@ -3,6 +3,7 @@
 	flex:1;
 	flex-direction:column;
 }
+
 .item-view {
   margin: 60rpx 60rpx;
   height: 260rpx;
@@ -15,6 +16,20 @@
   font-size: 36px;
   font-family: SourceHanSansSC-regular;
 }
+
+.item-select-view {
+  margin: 60rpx 60rpx;
+  height: 260rpx;
+  line-height: 260rpx;
+  text-align: center;
+	border-radius: 10rpx;
+  background-color: #F44848;
+  box-shadow: 5px 5px 5px gainsboro;
+  color: white;
+  font-size: 36px;
+  font-family: SourceHanSansSC-regular;
+}
+
 .background {
   position: absolute;
   width: 100%;

@@ -27,7 +27,7 @@
 <view class="four-line">
 <view class="four-input">
 <text>红包玩法</text>
-<input value="{{types[items[3].value.type]}}" placeholder="选择模式" disabled="disabled"/>
+<input value="{{items[3].value.types[items[3].value.index]}}" placeholder="选择模式" disabled="disabled"/>
 <i-icon type="enter" size="20" color="#80848f" bindtap="toPlay"/>
 </view>
 <view class="line-dotted"></view>

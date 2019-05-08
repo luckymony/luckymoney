@@ -1,0 +1,12 @@
+<!--pages/rob/rob.wxml-->
+<view class="main-vew">
+<view class="top-view">
+<image class="icon-image"></image>
+<text class="name-text">{{'张三丰'}}</text>
+<text class="bless-text">{{'恭喜发财,大吉大利'}}</text>
+</view>
+<view class="mid-view">
+<button class="start-button">{{'开始游戏'}}</button>
+</view>
+<view class="buttom-view"></view>
+</view>

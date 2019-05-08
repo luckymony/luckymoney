@@ -5,7 +5,12 @@ Page({
       {value : "50"},
       {value : 4 },
       {value : { 
-                 type  : 0,
+                 index  : 0,
+                 types: [
+                          "开门大吉",
+                          "八方来财",
+                          "敬请期待"
+                        ],
                  time  : "24小时", 
                  count : 0, 
                  chance: 1,
@@ -13,14 +18,9 @@ Page({
                }
        }
     ],
-    
-    types : [
-      "开门大吉",
-      "八方来财",
-      "敬请期待"
-    ],
 
     visible: false,
+
     actions: [
       {
         name: '恭喜发财 大吉大利',
@@ -76,7 +76,7 @@ Page({
   
   toPlay:function() {
     wx.navigateTo({
-      url: '../play/play?types=' + JSON.stringify(this.data.types),
+      url: '../play/play?value=' + JSON.stringify(this.data.items[3].value),
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},
@@ -86,6 +86,7 @@ Page({
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '发红包' }); 
   },
+
   onReady: function () {
     // 页面渲染完成
   },

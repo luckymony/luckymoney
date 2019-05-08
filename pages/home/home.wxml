@@ -1,5 +1,5 @@
 <scroll-view class="page-body" scroll-y="true">
-<navigator url="" wx:for="{{items}}" hover-class="none">
+<navigator url="../rob/rob" wx:for="{{items}}" hover-class="none">
 <view class="list-item">
 <view class="list-item-left"><image src="{{item.icon}}"></image>
 <view class="left-item-text"><text>{{item.name}}</text></view>
