@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    items: ["1", "1", "1", "1","1"]
   },
 
   /**
@@ -62,5 +62,6 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
 })

@@ -23,7 +23,9 @@
 .buttom-view {
   height: 40vh;
   width: 100vw;
-  /* background-color: blue; */
+  background-color: blue;
+  display: flex;
+	flex-direction:column;
 }
 .icon-image {
   margin-top: 40rpx;
@@ -46,5 +48,33 @@
   background-color: green;
   color: white;
   width: 50vw;
-  height: 80rpx;
+  height: 89rpx;
+}
+
+.my-money {
+  display: flex; 
+  flex-direction:row;
+  justify-content: center;
+  align-items:center;
+  margin-top: 20rpx;
+}
+
+.mid-view text {
+  /* margin-top: 20rpx; */
+  color:#efb336;
+  /* background-color: red; */
+  text-align: center;
+  font-size: 28rpx;
+}
+.item-view{
+  background-color: red;
+  margin-bottom: 10rpx;
+  width: 100vw;
+  height: 30%;
+}
+.foot-view{
+  background-color: orange;
+  margin-bottom: 10rpx;
+  width: 100vw;
+  height: 40rpx;
 }
