@@ -1,6 +1,6 @@
 /* pages/rob/rob.wxss */
 .main-view {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
 }
 .top-view {
@@ -21,7 +21,7 @@
   justify-content: center;
 }
 .buttom-view {
-  height: 40vh;
+  flex: 1;
   width: 100vw;
   background-color: blue;
   display: flex;
@@ -70,11 +70,17 @@
   background-color: red;
   margin-bottom: 10rpx;
   width: 100vw;
-  height: 30%;
+  height: 160rpx;
 }
 .foot-view{
   background-color: orange;
   margin-bottom: 10rpx;
   width: 100vw;
   height: 40rpx;
+  font-size: 24rpx;
+  text-align: center;
+  color: white;
+}
+.foot-view text {
+
 }

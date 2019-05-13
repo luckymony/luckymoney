@@ -1,5 +1,5 @@
 <!--pages/rob/rob.wxml-->
-<view class="main-vew">
+<scroll-view class="main-vew" scroll-y="true" style='height:{{boxHeight}}px;'>
 <view class="top-view">
 <image class="icon-image"></image>
 <text class="name-text">{{'张三丰'}}</text>
@@ -12,8 +12,8 @@
 <text>我的红包</text>
 </view>
 </view>
-<scroll-view class="buttom-view" scroll-y="true">
+<view class="buttom-view">
 <view class="item-view" wx:for="{{items}}" wx:for-item="data">{{data}}</view>
 <view class="foot-view">更多排行</view>
-</scroll-view>
 </view>
+</scroll-view>

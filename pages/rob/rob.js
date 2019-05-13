@@ -5,13 +5,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    items: ["1", "1", "1", "1","1"]
+    items: ["1", "1", "1", "1","1","1","1"],
+    boxHeight: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let res = wx.getSystemInfoSync();
+    let boxHeight = res.windowHeight;
+    this.setData({
+      'boxHeight': boxHeight
+    });
     wx.setNavigationBarTitle({ title: '开始抢红包' }); 
   },
 
