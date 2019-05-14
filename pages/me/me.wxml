@@ -8,8 +8,8 @@
     <view class='userinfo-money'>
 
       <view class='userinfo-money1-item'>
-        <image class="redp-avatar" src="../../images/icon.png" background-size="cover"></image>
-        <text style='padding-top:20rpx'>红包</text>
+        <image class="redp-avatar" src="../../images/icon.png" bindtap='goto_next_page'></image>
+        <text style='padding-top:20rpx' bindtap='goto_next_page'>红包</text>
       </view>
 
       <view class='userinfo-money2-item'>

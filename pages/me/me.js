@@ -16,5 +16,12 @@ Page({
   },
   onUnload: function () {
     // 页面关闭
+  },
+
+  goto_next_page:function(){
+    console.log('ttt');
+    wx.navigateTo({
+      url: 'money/money-detail',
+    })
   }
 })

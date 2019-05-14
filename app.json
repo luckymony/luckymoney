@@ -4,7 +4,8 @@
     "pages/start/start",
     "pages/me/me",
     "pages/play/play",
-    "pages/rob/rob"
+    "pages/rob/rob",
+    "pages/me/money/money-detail"
   ],
   "window": {
     "backgroundTextStyle": "dark",
