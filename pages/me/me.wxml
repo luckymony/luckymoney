@@ -4,31 +4,49 @@
     <text>张三丰</text>
   </view>
 
-  <view class='userinfo-money'>
+  <view class='page-section'>
+    <view class='userinfo-money'>
 
-    <view>
-      <image></image>
-      <text>红包</text>
+      <view class='userinfo-money1-item'>
+        <image class="redp-avatar" src="../../images/icon.png" background-size="cover"></image>
+        <text style='padding-top:20rpx'>红包</text>
+      </view>
+
+      <view class='userinfo-money2-item'>
+        <view>|</view>
+        <view>|</view>
+      </view>
+
+      <view class='userinfo-money1-item'>
+        <text>余额(元)</text>
+        <text style='padding-top:20rpx'>88.88</text>
+      </view>
+
+
     </view>
 
-    <view>
-    |
-    </view>
 
-    <view>
-      <text>余额(元)</text>
-      <text>88.88</text>
+    <view class='extend-space'>
+      <navigator class='navigator'>
+        <view class="navigator-text">推荐给朋友</view>
+        <view class="navigator-arrow"></view>
+      </navigator>
+      <navigator class='navigator'>
+        <view class="navigator-text">常见问题</view>
+        <view class="navigator-arrow"></view>
+      </navigator>
     </view>
 
   </view>
 
 
-  <view class="my-item">
+
+  <!-- <view class="my-item">
     <navigator url="/pages/my/order_list" hover-class="navigator-hover">推荐给朋友</navigator>
   </view>
-  
+
   <view class="my-item">
     <navigator url="/pages/my/addressList" hover-class="navigator-hover">常见问题</navigator>
-  </view>
+  </view> -->
 
 </view>
