@@ -1,0 +1,19 @@
+<!--pages/rob/rob.wxml-->
+<scroll-view class="main-vew" scroll-y="true" style='height:{{boxHeight}}px;'>
+<view class="top-view">
+<image class="icon-image"></image>
+<text class="name-text">{{'张三丰'}}</text>
+<text class="bless-text">{{'恭喜发财,大吉大利'}}</text>
+</view>
+<view class="mid-view">
+<button class="start-button">开始游戏</button>
+<view class="my-money">
+<i-icon type="redpacket_fill" size="20" color="#efb336"/>
+<text>我的红包</text>
+</view>
+</view>
+<view class="buttom-view">
+<view class="item-view" wx:for="{{items}}" wx:for-item="data">{{data}}</view>
+<view class="foot-view">更多排行</view>
+</view>
+</scroll-view>

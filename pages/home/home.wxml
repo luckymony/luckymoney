@@ -1,12 +1,19 @@
 <scroll-view class="page-body" scroll-y="true">
-<navigator url="" wx:for="{{items}}" hover-class="none">
+<navigator url="../rob/rob" wx:for="{{items}}" hover-class="none">
 <view class="list-item">
-<view class="list-item-left">
-<image class="item-icon" src="{{item.icon}}">
-</image>
-<text class="item-name">
-{{item.name}}
-</text>
+<view class="list-item-left"><image src="{{item.icon}}"></image>
+<view class="left-item-text"><text>{{item.name}}</text></view>
+</view>
+<view class="list-item-right">
+<view><text>{{'发起时间 : '+item.start_time}}</text></view>
+<view><text>{{'红包个数 : '+item.count+'个'}}</text></view>
+<view><text>{{'红包模式 : '+item.play}}</text></view>
+<view class="right-bottom">
+<text>{{'当前玩家 : '}}</text>
+<view class="right-bottom-icon" wx:for="{{item.players}}" wx:for-item="data">
+<image src="{{data}}"></image>
+</view>
+</view>
 </view>
 </view>
 </navigator>

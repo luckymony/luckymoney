@@ -1,7 +1,7 @@
 /**app.wxss**/
 page {
   font-family: "Microsoft YaHei";
-  background-color: #fff;
+  background-color: #eee;
   display: flex;
   flex-direction: column;
 }

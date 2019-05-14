@@ -1,4 +1,42 @@
 <!--index.wxml-->
-<view class="container">
-
+<view class="start-main">
+<view class="first-view">
+<view class="one-line">
+<view class="one-input">
+<input value="{{items[0].value}}" placeholder="恭喜发财 大吉大利" />
+<i-icon type="brush_fill" size="20" color="#80848f" bindtap="sentiment"/>
 </view>
+<view class="line-dotted"></view>
+</view>
+<view class="two-line">
+<view class="two-input">
+<text>总金额</text>
+<input value="{{items[1].value}}" placeholder="0.00" type="number"/>
+<text>元</text>
+</view>
+<view class="line-dotted"></view>
+</view>
+<view class="three-line">
+<view class="three-input">
+<text>红包个数</text>
+<input value="{{items[2].value}}" placeholder="0" type="number"/>
+<text>个</text>
+</view>
+<view class="line-dotted"></view>
+</view>
+<view class="four-line">
+<view class="four-input">
+<text>红包玩法</text>
+<input value="{{items[3].value.types[items[3].value.index]}}" placeholder="选择模式" disabled="disabled"/>
+<i-icon type="enter" size="20" color="#80848f" bindtap="toPlay"/>
+</view>
+<view class="line-dotted"></view>
+</view>
+</view>
+<view class="second-view">
+<text class="money-text">{{"￥" + "0.00"}}</text>
+<button>塞钱进红包</button>
+<text class="bottom-text">{{"对方可领取的红包金额为0.01~200元"}}</text>
+</view>
+</view>
+<i-action-sheet visible="{{visible}}" actions="{{actions}}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem"/>

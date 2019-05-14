@@ -9,32 +9,69 @@
 	margin: 60rpx 60rpx;
   height: 260rpx;
 	border-radius: 10rpx;
-  background-color: #F44848;
+  background-color: #fff;
   box-shadow: 5px 5px 5px gainsboro;
 }
 .list-item-left {
   display: flex;
   flex-direction:column;
   justify-content: center;
-  text-align:center;
-  align-items:center;
+  /* background-color: blue; */
 }
-.item-icon {
+.list-item-left image{
   width: 100rpx;
   height: 100rpx;
   border-radius: 50rpx;
   margin-left: 18rpx;
+  margin-right: 18rpx;
 }
-.item-name {
- font-size: 26rpx; 
- color:white;
- margin-left: 18rpx;
+.left-item-text{
+ /* background-color: black; */
+ margin-top: 10rpx;
+ text-align:center;
+}
+.left-item-text text {
+   font-size: 26rpx; 
+   color:gray;
 }
 .list-item-right {
   display: flex;
+  flex: 1;
   flex-direction:column;
   justify-content: center;
-  text-align:center;
-  align-items:center;
-  background-color: white;
+  padding-left:20rpx; 
+  /* background-color: blue; */
+}
+.list-item-right view {
+  flex: 1;
+}
+.list-item-right text {
+  font-size: 26rpx; 
+   color:gray;
+}
+.right-bottom {
+  /* background-color: blue; */
+  display: flex;
+  flex-direction:row;
+  /* text-align: center; */
+}
+
+.right-bottom-text text {
+  background-color: orange;
+}
+.right-bottom-icon {
+   flex: 1;
+   margin-left: 10rpx;
+   /* 
+   background-color: blue;
+   display: flex;
+   align-items: center;
+   justify-content: center;  
+   width: 100%;
+   height: 100%; */
+}
+.right-bottom-icon image {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
 }
