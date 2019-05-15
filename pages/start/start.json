@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "i-icon": "../../dist/icon/index",
-    "i-action-sheet": "../../dist/action-sheet/index"
-  },
-  "disableScroll": true
-}

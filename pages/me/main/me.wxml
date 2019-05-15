@@ -1,6 +1,6 @@
 <view class="container">
   <view class="userinfo">
-    <image class="userinfo-avatar" src="../../images/me/user_icon_default.png" background-size="cover"></image>
+    <image class="userinfo-avatar" src="../../../images/me/user_icon_default.png" background-size="cover"></image>
     <text>张三丰</text>
   </view>
 
@@ -8,7 +8,7 @@
     <view class='userinfo-money'>
 
       <view class='userinfo-money1-item' bindtap='goto_money_detail_page'>
-        <image class="redp-avatar" src="../../images/icon.png" ></image>
+        <image class="redp-avatar" src="../../../images/me/red_packet.png" ></image>
         <text style='padding-top:20rpx' >红包</text>
       </view>
 

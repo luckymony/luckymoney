@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/home/home",
-    "pages/start/start",
-    "pages/me/me",
-    "pages/play/play",
-    "pages/rob/rob",
+    "pages/home/main/home",
+    "pages/home/rob/rob",
+    "pages/start/main/start",
+    "pages/start/play/play",
+    "pages/me/main/me",
     "pages/me/test/test",
     "pages/me/money/money-detail",
     "pages/me/withdraw/withdraw"
@@ -22,23 +22,24 @@
     "backgroundColor": "#F44848",
     "list": [
       {
-        "selectedIconPath": "images/search_list_selected.png",
-        "iconPath": "images/search_list_default.png",
-        "pagePath": "pages/home/home",
+        "selectedIconPath": "images/tabbar/search_list_selected.png",
+        "iconPath": "images/tabbar/search_list_default.png",
+        "pagePath": "pages/home/main/home",
         "text": "抢红包"
       },
       {
-        "selectedIconPath": "images/lucky_money_selected.png",
-        "iconPath": "images/lucky_money_default.png",
-        "pagePath": "pages/start/start",
+        "selectedIconPath": "images/tabbar/lucky_money_selected.png",
+        "iconPath": "images/tabbar/lucky_money_default.png",
+        "pagePath": "pages/start/main/start",
         "text": "发红包"
       },
       {
-        "selectedIconPath": "images/me_selected.png",
-        "iconPath": "images/me_default.png",
-        "pagePath": "pages/me/me",
+        "selectedIconPath": "images/tabbar/me_selected.png",
+        "iconPath": "images/tabbar/me_default.png",
+        "pagePath": "pages/me/main/me",
         "text": "我的"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
