@@ -39,14 +39,4 @@
 
   </view>
 
-
-
-  <!-- <view class="my-item">
-    <navigator url="/pages/my/order_list" hover-class="navigator-hover">推荐给朋友</navigator>
-  </view>
-
-  <view class="my-item">
-    <navigator url="/pages/my/addressList" hover-class="navigator-hover">常见问题</navigator>
-  </view> -->
-
 </view>

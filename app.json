@@ -1,10 +1,12 @@
 {
   "pages": [
+
     "pages/home/home",
     "pages/start/start",
     "pages/me/me",
     "pages/play/play",
     "pages/rob/rob",
+    "pages/me/test/test",
     "pages/me/money/money-detail"
   ],
   "window": {
