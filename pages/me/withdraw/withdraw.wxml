@@ -1,0 +1,23 @@
+<view class='container'>
+
+  <view class='content'>
+    <view class='yu_e'>
+      <view class='yu_e_name'>账户余额</view>
+      <view class='yu_e_money'>888.88</view>
+    </view>
+
+    <view class='ti_xian_jin_e'>提现金额</view>
+    <view class='shu_ru_ti_xian_jin_e'>
+      <view style='font-size:50rpx'>¥</view>
+      <input></input>
+    </view>
+    <view class='background-line'></view>
+    
+    
+    <view class='quan_bu_ti_xian'>提现到微信钱包，全部提现</view>
+    <button type="primary" style='margin: 2.17647059em 15px 0.3em;'>提 现</button>
+    <view class='tixian_tip'>
+    <view>1~5个工作日到账</view>
+    </view>
+  </view>
+</view>

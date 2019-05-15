@@ -7,17 +7,14 @@
   <view class='page-section'>
     <view class='userinfo-money'>
 
-      <view class='userinfo-money1-item'>
-        <image class="redp-avatar" src="../../images/icon.png" bindtap='goto_next_page'></image>
-        <text style='padding-top:20rpx' bindtap='goto_next_page'>红包</text>
+      <view class='userinfo-money1-item' bindtap='goto_money_detail_page'>
+        <image class="redp-avatar" src="../../images/icon.png" ></image>
+        <text style='padding-top:20rpx' >红包</text>
       </view>
 
-      <view class='userinfo-money2-item'>
-        <view>|</view>
-        <view>|</view>
-      </view>
+      <view class='background-line'></view>
 
-      <view class='userinfo-money1-item'>
+      <view class='userinfo-money1-item' bindtap='goto_withdraw_page'>
         <text>余额(元)</text>
         <text style='padding-top:20rpx'>88.88</text>
       </view>

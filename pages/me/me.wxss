@@ -15,7 +15,7 @@
 .userinfo-avatar {
 	width: 160rpx;
 	height: 160rpx;
-	margin: 20rpx;
+	margin: 40rpx;
 	border-radius: 50%;
 }
 .redp-avatar {
@@ -25,16 +25,13 @@
 
 .userinfo-money {
   display: flex;
-  justify-content: space-around
+  justify-content: space-around;
+  align-items: center;
 }
 
 .userinfo-money1-item {
   display: flex;
   flex-direction: column;
-}
-.userinfo-money2-item {
-   display: flex;
-   flex-direction: column
 }
 
 .userinfo-nickname {
@@ -43,6 +40,11 @@
 }
 
 
+.background-line{
+  background-color: gray;
+  width: 1px;
+  height: 80rpx;
+}
 
 .extend-space{
   display: flex;

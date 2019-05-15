@@ -18,10 +18,14 @@ Page({
     // 页面关闭
   },
 
-  goto_next_page:function(){
-    console.log('ttt');
+  goto_money_detail_page:function(){
     wx.navigateTo({
       url: 'money/money-detail',
+    })
+  },
+  goto_withdraw_page:function(){
+    wx.navigateTo({
+      url: 'withdraw/withdraw',
     })
   }
 })

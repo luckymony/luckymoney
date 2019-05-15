@@ -1,0 +1,68 @@
+.container {
+  background-color: lightgray;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  flex-direction:column;
+  align-items:center;/*垂直居中*/
+  /*justify-content: center;水平居中*/
+}
+
+.content{
+  margin-top: 120rpx;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 700rpx;
+  background-color: white;
+}
+
+.yu_e{
+  margin: 120rpx 120rpx 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.yu_e_name{
+  font-size: 35rpx;
+}
+.yu_e_money{
+  margin-left: 100rpx;
+  font-size: 50rpx;
+}
+
+.ti_xian_jin_e{
+  margin-left: 120rpx;
+  font-size: 35rpx;
+}
+
+.shu_ru_ti_xian_jin_e{
+  margin-top: 50rpx;
+  margin-left: 120rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.background-line{
+  background-color: lightgray;
+  height: 1px;
+  margin-left: 120rpx;
+  margin-right: 120rpx;
+}
+.quan_bu_ti_xian{
+  margin-top: 20rpx;
+  margin-left: 120rpx;
+  font-size: 25rpx;
+  color: gray;
+
+}
+
+.tixian_tip{
+  display: flex;
+  width: 100%;
+
+  justify-content: center;
+  font-size: 25rpx;
+  color: gray;
+}
