@@ -152,3 +152,11 @@
   font-size: 14px;
   font-family: PingFangSC-regular;
 }
+.foot-view {
+  display: flex;
+  flex-direction:row;
+  justify-content: center;  
+  font-size: 28rpx;
+  margin-top: 40rpx;
+  color: gray;
+}

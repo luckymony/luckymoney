@@ -39,4 +39,9 @@
 <text class="bottom-text">{{"对方可领取的红包金额为0.01~200元"}}</text>
 </view>
 </view>
+<view class="foot-view">
+<text>玩法介绍</text>
+<text decode="{{true}}">&nbsp;&nbsp;|&nbsp;&nbsp;</text>
+<text> 联系客服 </text>
+</view>
 <i-action-sheet visible="{{visible}}" actions="{{actions}}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem"/>

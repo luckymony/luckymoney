@@ -23,7 +23,7 @@
 .buttom-view {
   flex: 1;
   width: 100vw;
-  background-color: blue;
+  /* background-color: blue; */
   display: flex;
 	flex-direction:column;
 }
@@ -67,20 +67,57 @@
   font-size: 28rpx;
 }
 .item-view{
-  background-color: red;
+  display: flex;
+  flex-direction:row;
+  /* justify-content: space-between;    */
+  align-items: center;
+  background-color: #fff;
   margin-bottom: 10rpx;
-  width: 100vw;
-  height: 160rpx;
+  /* width: 98vw; */
+  height: 120rpx;
+  margin-left : 20rpx;
+  margin-right : 20rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  border-radius: 4rpx;
+}
+.item-icon {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  margin-right: 18rpx;
+}
+.item-view-name {
+  flex: 1;
+  /* background-color: orange; */
+  display: flex;
+  flex-direction:column;  
+  color: black;
+  font-size: 28rpx;
+}
+.item-view-money {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  /* background-color: orange; */
+}
+.show-image {
+  /* background-color: red; */
+  width: 50rpx;
+  height: 50rpx;
+  opacity:1.0;
+}
+.hidden-image {
+   width: 50rpx;
+  height: 50rpx;
+  opacity:0.0;
 }
 .foot-view{
-  background-color: orange;
+  /* background-color: orange; */
   margin-bottom: 10rpx;
   width: 100vw;
   height: 40rpx;
   font-size: 24rpx;
   text-align: center;
-  color: white;
-}
-.foot-view text {
-
+  color: black;
 }

@@ -7,13 +7,23 @@
 </view>
 <view class="mid-view">
 <button class="start-button">开始游戏</button>
-<view class="my-money">
+<view class="my-money" bindtap="toMyMoney">
 <i-icon type="redpacket_fill" size="20" color="#efb336"/>
 <text>我的红包</text>
 </view>
 </view>
 <view class="buttom-view">
-<view class="item-view" wx:for="{{items}}" wx:for-item="data">{{data}}</view>
-<view class="foot-view">更多排行</view>
+<view class="item-view" wx:for="{{currentItems}}" wx:for-item="data" wx:for-index="index">
+<image src="{{data.icon}}" class="item-icon"></image>
+<view class="item-view-name">
+<text>{{data.name}}</text>
+<text>{{data.time}}</text>
+</view>
+<view class="item-view-money">
+<text>{{data.money}}</text>
+<image src="../../../images/rob/{{'paihang' + (index%3+1) + '.png'}}" class="{{index <= 2 ?'show-image':'hidden-image'}}"></image>
+</view>
+</view>
+<view class="foot-view" bindtap="showAllTap" wx:if="{{showFoot}}">更多排行</view>
 </view>
 </scroll-view>
