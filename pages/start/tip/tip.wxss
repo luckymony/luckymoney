@@ -1,0 +1,12 @@
+/* pages/start/tip/tip.wxss */
+.main-view {
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+.main-view text {
+  font-size: 30rpx;
+  color: gray;
+
+}

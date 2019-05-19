@@ -37,6 +37,10 @@ Page({
     ],
   },
 
+  toTip:function(e) {
+     
+  },
+
   sentiment: function (e) {
     this.setData({
       visible: true
@@ -72,6 +76,15 @@ Page({
         'items[0].value':"七星高照 八方来财"
       });
     }
+  },
+
+  toTip:function() {
+    wx.navigateTo({
+      url: '../tip/tip',
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
   },
   
   toPlay:function() {
