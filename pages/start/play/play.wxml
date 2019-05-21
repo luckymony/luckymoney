@@ -14,9 +14,18 @@ bind:activityTimeChange="activityTimeChange">
 </playui> -->
 
 <swiper class="main-view" bindchange="handleChange" previous-margin="50rpx" next-margin="50rpx" circular autoplay>
-  <block wx:for="{{3}}" wx:key="{{index}}">
+  <block wx:for="{{items}}" wx:key="{{index}}">
     <swiper-item class="item-swiper">
-      <view class="item-view {{currentIndex == index ? 'active': ''}}">{{index}}</view>
+      <view class="item-view {{currentIndex == index ? 'active': ''}}">
+      <text class="first-view">{{item}}</text>
+      <playui class="second-view"
+        activityTime="15分钟"
+        emptyMoneyCount="10"
+        chanceCount="2"
+        bind:selectDifficulty="selectDifficulty" 
+        bind:activityTimeChange="activityTimeChange">
+      </playui>
+      </view>
     </swiper-item>
   </block>
 </swiper>

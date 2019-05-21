@@ -64,7 +64,10 @@
   z-index: 5;
   opacity: 0.7;
   top: 7.5%;
-  background-color: orange;
+  background-color: #F44848;
+  display: flex;
+	flex-direction:column;
+  justify-content: center;
 }
 .active{
   opacity: 1;
@@ -72,4 +75,17 @@
   height: 95%;
   top: 2.5%;
   transition:all .2s ease-in 0s;
+}
+.first-view {
+  color: white;
+  font-size: 100rpx;
+  text-align: center;
+  font-family: SourceHanSansSC-regular;
+  /* background-color: orange; */
+  width: 100%;
+}
+.second-view {
+   flex: 1;
+   width: 100%;
+   background-color: olivedrab;
 }

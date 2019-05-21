@@ -4,7 +4,7 @@
 <view class="top-view" bindtap="activityTimeTap" id="{{activityTime}}">
 <text>活动限时</text>
 <input value="{{activityTime}}" placeholder="24小时" disabled="disabled"/>
-<i-icon type="enter" size="20" color="#80848f"/>
+<i-icon type="enter" size="20" color="#ffffff"/>
 </view>
 <view class="line-dotted"></view>
 </view>
@@ -13,7 +13,6 @@
 <text>空红包个数</text>
 <input value="{{emptyMoneyCount}}" placeholder="0" type="number"/>
 <text class="unit">个</text>
-<!-- <i-icon type="enter" size="20" color="#80848f"/> -->
 </view>
 <view class="line-dotted"></view>
 </view>
@@ -22,7 +21,6 @@
 <text>每人拥有的机会</text>
 <input value="{{chanceCount}}" placeholder="1" type="number"/>
 <text class="unit">次</text>
-<!-- <i-icon type="enter" size="20" color="#80848f"/> -->
 </view>
 <view class="line-dotted"></view>
 </view>
