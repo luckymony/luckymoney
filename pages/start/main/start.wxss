@@ -115,6 +115,10 @@
   color: gray;
   /* background-color: red; */
 }
+.mid-view {
+  height: 400rpx;
+  background-color: orange;
+}
 .second-view {
   flex: 1;
   display: flex; 

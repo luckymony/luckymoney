@@ -33,6 +33,9 @@
 <view class="line-dotted"></view>
 </view>
 </view>
+<view class="mid-view">
+
+</view>
 <view class="second-view">
 <text class="money-text">{{"￥" + "0.00"}}</text>
 <button>塞钱进红包</button>
