@@ -20,6 +20,18 @@ Page({
     ],
 
     visible: false,
+    
+    isShow: false,
+
+    boxHeight:0,
+
+    mainViewHeight: 0,
+
+    firstViewHeight:0,
+
+    secondViewHeight:0,
+
+    midViewHeight:0,
 
     actions: [
       {
@@ -96,8 +108,31 @@ Page({
     })
   },
 
+  showParam:function() {
+    if (!this.data.isShow) {
+      this.setData({
+        isShow: true,
+        midViewHeight: 200,
+        mainViewHeight: wx.getSystemInfoSync().windowHeight * 0.85 + 200,
+      });
+    }else {
+      this.setData({
+        isShow: false,
+        midViewHeight: 0,
+        mainViewHeight: wx.getSystemInfoSync().windowHeight * 0.85,
+      });
+    }
+  },
+
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '发红包' }); 
+    this.setData({
+      mainViewHeight: wx.getSystemInfoSync().windowHeight * 0.85,
+      boxHeight: wx.getSystemInfoSync().windowHeight,
+      firstViewHeight: wx.getSystemInfoSync().windowHeight * 0.85 * 0.6,
+      secondViewHeight: wx.getSystemInfoSync().windowHeight * 0.85 * 0.4,
+      midViewHeight:0
+    });
   },
 
   onReady: function () {

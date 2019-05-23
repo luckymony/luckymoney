@@ -1,6 +1,7 @@
 <!--index.wxml-->
-<view class="start-main">
-<view class="first-view">
+<scroll-view class="scroll-class" scroll-y="true" style="height:{{boxHeight}}px">
+<view class="start-main" style="height:{{mainViewHeight}}px">
+<view class="first-view" style="height:{{firstViewHeight}}px">
 <view class="one-line">
 <view class="one-input">
 <input value="{{items[0].value}}" placeholder="恭喜发财 大吉大利" />
@@ -25,18 +26,18 @@
 <view class="line-dotted"></view>
 </view>
 <view class="four-line">
-<view class="four-input">
-<text>红包玩法</text>
-<input value="{{items[3].value.types[items[3].value.index]}}" placeholder="选择模式" disabled="disabled"/>
-<i-icon type="enter" size="20" color="#80848f" bindtap="toPlay"/>
+<view class="four-input" bindtap="showParam">
+<text>玩法选择</text>
+<input value="{{items[3].value.types[items[3].value.index]}}" disabled="disabled"/>
+<i-icon type="enter" size="20" color="#80848f"/>
 </view>
 <view class="line-dotted"></view>
 </view>
 </view>
-<view class="mid-view">
+<view class="mid-view" wx:if="{{isShow}}" style="height:{{midViewHeight}}px">
 
 </view>
-<view class="second-view">
+<view class="second-view" style="height:{{secondViewHeight}}px">
 <text class="money-text">{{"￥" + "0.00"}}</text>
 <button>塞钱进红包</button>
 <text class="bottom-text">{{"对方可领取的红包金额为0.01~200元"}}</text>
@@ -47,4 +48,5 @@
 <text decode="{{true}}">&nbsp;&nbsp;|&nbsp;&nbsp;</text>
 <text>联系客服</text>
 </view>
+</scroll-view>
 <i-action-sheet visible="{{visible}}" actions="{{actions}}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem"/>
