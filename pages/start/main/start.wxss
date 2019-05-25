@@ -12,8 +12,8 @@
   box-shadow: 5px 5px 5px gainsboro;
   display: flex;
   flex-direction:column;
+  /* font-size: 36rpx; */
 }
-
 .first-view {
   display: flex;
   flex-direction:column;
@@ -72,6 +72,7 @@
   color: gray;
   /* background-color: greenyellow; */
 }
+
 .three-line {
   flex: 1;
   display: flex; 
@@ -96,6 +97,7 @@
   color: gray;
   /* background-color: red; */
 }
+
 .four-line {
   flex: 1;
   display: flex; 
@@ -117,6 +119,10 @@
   color: gray;
   /* background-color: red; */
 }
+.four-input i-icon {
+   /* background-color: blue; */
+}
+
 .mid-view {
   margin-left: 4.5vw;
   margin-right: 4.5vw;

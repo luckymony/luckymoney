@@ -3,6 +3,11 @@ Component({
     multipleSlots: true
   },
   properties:{
+    //红包模式
+    modeName: {
+      type: String,
+      value: "大吉大利"
+    },
     //活动限时
     activityTime: {
       type: String,
@@ -47,6 +52,9 @@ Component({
     activityTimeTap: function (e) {
       // console.log(e.currentTarget.id);
       this.triggerEvent("activityTimeChange", e.currentTarget.id);
+    },
+    modeTap:function (e) {
+
     },
   },
 });
