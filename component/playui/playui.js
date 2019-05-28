@@ -6,7 +6,7 @@ Component({
     //红包模式
     modeName: {
       type: String,
-      value: "大吉大利"
+      value: "开门大吉"
     },
     //活动限时
     activityTime: {
@@ -50,11 +50,10 @@ Component({
       this.triggerEvent("selectDifficulty",index);
     },
     activityTimeTap: function (e) {
-      // console.log(e.currentTarget.id);
       this.triggerEvent("activityTimeChange", e.currentTarget.id);
     },
     modeTap:function (e) {
-
+      this.triggerEvent("modeTap", e.currentTarget.id);
     },
   },
 });

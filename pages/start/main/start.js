@@ -31,8 +31,6 @@ Page({
 
     secondViewHeight:0,
 
-    midViewHeight:0,
-
     iconType: 'enter',
 
     actions: [
@@ -109,34 +107,9 @@ Page({
       complete: function(res) {},
     })
   },
-  
-  showParam:function() {
-    if (!this.data.isShow) {
-      this.setData({
-        iconType: 'unfold',
-        isShow: true,
-        midViewHeight: wx.getSystemInfoSync().windowHeight*0.85*0.6/4*5,
-        mainViewHeight: wx.getSystemInfoSync().windowHeight * 0.85 + wx.getSystemInfoSync().windowHeight * 0.85 * 0.6 / 4 * 5,
-      });
-    }else {
-      this.setData({
-        iconType: 'enter',
-        isShow: false,
-        midViewHeight: 0,
-        mainViewHeight: wx.getSystemInfoSync().windowHeight * 0.85,
-      });
-    }
-  },
 
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '发红包' }); 
-    this.setData({
-      mainViewHeight: wx.getSystemInfoSync().windowHeight * 0.85,
-      boxHeight: wx.getSystemInfoSync().windowHeight,
-      firstViewHeight: wx.getSystemInfoSync().windowHeight * 0.85 * 0.6,
-      secondViewHeight: wx.getSystemInfoSync().windowHeight * 0.85 * 0.4,
-      midViewHeight:0
-    });
   },
 
   onReady: function () {

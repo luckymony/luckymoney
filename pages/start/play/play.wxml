@@ -16,9 +16,19 @@ bind:activityTimeChange="activityTimeChange">
 <swiper class="main-view" bindchange="handleChange" previous-margin="50rpx" next-margin="50rpx" circular>
   <block wx:for="{{items}}" wx:key="{{index}}">
     <swiper-item class="item-swiper">
-      <view class="item-view {{currentIndex == index ? 'active': ''}}">
+      <view class="item-view {{currentIndex == index ? 'active': ''}}" bindtap="touchAction">
       <text class="first-view">{{item}}</text>
       </view>
     </swiper-item>
   </block>
 </swiper>
+<view wx:if="{{ishow}}" class="cloud_layer"></view>
+
+<playui class="playui" wx:if="{{isShow}}" 
+activityTime="15分钟"
+emptyMoneyCount="10"
+chanceCount="2"
+modeName=""
+bind:selectDifficulty="selectDifficulty" 
+bind:activityTimeChange="activityTimeChange">
+</playui>

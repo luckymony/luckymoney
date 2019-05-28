@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "playui":"../../../component/playui/playui"
+    "playui": "../../../component/playui/playui"
   },
   "disableScroll": true
 }

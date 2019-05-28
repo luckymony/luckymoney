@@ -1,8 +1,8 @@
 <view class="first-view">
 <view class="zero-view">
-<view class="top-view" bindtap="modeTap" id="{{modeTap}}">
-<text>红包模式</text>
-<input value="{{modeName}}" placeholder="选择模式" disabled="disabled"/>
+<view class="top-view" bindtap="modeTap" id="{{modeName}}">
+<text>玩法名字</text>
+<input value="{{modeName}}" placeholder="选择名字" disabled="disabled"/>
 <i-icon type="enter" size="20" color="#80848f"/>
 </view>
 <view class="line-dotted"></view>
@@ -11,13 +11,13 @@
 <view class="top-view" bindtap="activityTimeTap" id="{{activityTime}}">
 <text>活动限时</text>
 <input value="{{activityTime}}" placeholder="24小时" disabled="disabled"/>
-<i-icon type="enter" size="20" color="#80848f"/>
+<i-icon type="clock_fill" size="20" color="#80848f"/>
 </view>
 <view class="line-dotted"></view>
 </view>
 <view class="two-view">
 <view class="top-view">
-<text>空红包</text>
+<text>空的红包</text>
 <input value="{{emptyMoneyCount}}" placeholder="0" type="number"/>
 <text>个</text>
 </view>
