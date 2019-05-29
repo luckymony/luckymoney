@@ -3,7 +3,7 @@ Page({
   data: {
     items: [],
     currentIndex: 0,
-    ishow:true
+    isShow:false
   },
 
   onLoad: function (options) {
@@ -22,9 +22,13 @@ Page({
     })
   },
   touchAction: function (e) {
-    // console.log(e);
     this.setData({
-      ishow: true
+      isShow: true
+    })
+  },
+  hiddenTap:function (e) {
+    this.setData({
+      isShow: false
     })
   },
 })
