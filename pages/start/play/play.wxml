@@ -23,7 +23,7 @@ bind:activityTimeChange="activityTimeChange">
   </block>
 </swiper>
 <view wx:if="{{isShow}}" class="cloud_layer" bindtap="hiddenTap"></view>
-<playui class="{{isShow ? 'show_playui':'hidden_playui'}}" 
+<playui class="playui {{isShow ? 'show_playui':'hidden_playui'}}" 
 activityTime="15分钟"
 emptyMoneyCount="10"
 chanceCount="2"

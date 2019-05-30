@@ -1,12 +1,5 @@
+<view class="play-ui">
 <view class="first-view">
-<view class="zero-view">
-<view class="top-view" bindtap="modeTap" id="{{modeName}}">
-<text>玩法名字</text>
-<input value="{{modeName}}" placeholder="选择名字" disabled="disabled"/>
-<i-icon type="enter" size="20" color="#80848f"/>
-</view>
-<view class="line-dotted"></view>
-</view>
 <view class="one-view">
 <view class="top-view" bindtap="activityTimeTap" id="{{activityTime}}">
 <text>活动限时</text>
@@ -41,4 +34,7 @@
 <view class="line-dotted"></view>
 </view>
 </view>
-
+<view class="second-view">
+<button>完成编辑</button>
+</view>
+</view>
