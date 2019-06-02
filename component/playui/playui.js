@@ -1,17 +1,26 @@
+
 Component({
   options: {
     multipleSlots: true
   },
   properties:{
-    //红包模式
-    modeName: {
-      type: String,
-      value: "开门大吉"
-    },
+    
     //活动限时
     activityTime: {
       type: String,
       value: "24小时"
+    },
+    
+    //显示时间
+    isShowTime: {
+      type: Boolean,
+      value: false
+    },
+
+    //隐藏空红包
+    isEmptyMoney: {
+      type: Boolean,
+      value: true
     },
 
     // 空红包个数
@@ -39,6 +48,21 @@ Component({
               { name: "正常", level: 1}, 
               { name: "困难", level: 2}]
     },
+
+    timeItems: {
+      type: Array,
+      value: []
+    },
+
+    timeIndex: {
+      type: Number,
+      value: 0
+    },
+   
+    longTime: {
+       type: Number,
+       value: 86400
+    },
   },
 
   methods: {
@@ -47,13 +71,39 @@ Component({
       this.setData({
         selectIndex : index,
       });
-      this.triggerEvent("selectDifficulty",index);
     },
+
+    getTimeIndex: function (timeItems, currentTime) {
+      console.log(timeItems,currentTime);
+      for (var i = 0; i < timeItems.length; i++) {
+        let oneTime = timeItems[i];
+        console.log(oneTime);
+        if (oneTime == currentTime) {
+          return i;
+        }
+      }
+      return 0;
+    },
+    
     activityTimeTap: function (e) {
+      this.setData({
+        isShowTime:true,
+        timeIndex: this.getTimeIndex(this.properties.timeItems, this.properties.longTime),
+      });
       this.triggerEvent("activityTimeChange", e.currentTarget.id);
     },
-    modeTap:function (e) {
-      this.triggerEvent("modeTap", e.currentTarget.id);
+    editedTap:function (e) {
+      this.triggerEvent("edited", this.properties);
+    },
+    itemTimeTap:function (e) {
+      let index = e.currentTarget.id;
+      let data = this.properties.timeItems[index];
+       this.setData({
+         activityTime:
+           data >= 86400 ? ((data / 3600) + '小时') : ((data / 60) + '分钟'),
+           timeIndex: index,
+         longTime: data
+       })
     },
   },
 });

@@ -1,49 +1,57 @@
+.container {
+  background-color: white;
+}
 
 .userinfo {
 	display: flex;
 	flex-direction: column;
-	padding: 50rpx 0;
+	padding-top: 50rpx;
+  padding-bottom: 50rpx;
 	align-items: center;
-  width: 750rpx;
+  width: 100%;
 }
 
 .page-section{
   width: 100%;
-  margin-bottom: 60rpx;
 }
 
 .userinfo-avatar {
+  margin-bottom: 50rpx;
 	width: 160rpx;
 	height: 160rpx;
-	margin: 40rpx;
 	border-radius: 50%;
-}
-.redp-avatar {
-	width: 50rpx;
-	height: 60rpx;
+  border: 8rpx solid #F44848;
 }
 
 .userinfo-money {
   display: flex;
-  justify-content: space-around;
+  flex-direction:row;
   align-items: center;
+  justify-content: center;
+  align-content: space-around;  
 }
 
-.userinfo-money1-item {
+.userinfo-money-item {
+  flex: 1;
+  /* background-color: red; */
+  align-items: center;
   display: flex;
   flex-direction: column;
 }
 
-.userinfo-nickname {
-  margin-top: 20rpx;
-  color: #FFF;
+.mid-view {
+  flex: 1;
+  height: 80rpx;
+  /* background-color: red; */
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 
-
 .background-line{
-  background-color: gray;
-  width: 1px;
-  height: 80rpx;
+  height: 100%;
+  width: 1rpx;
+  border-right: 1rpx solid #ccc;
 }
 
 .extend-space{

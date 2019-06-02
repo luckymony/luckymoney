@@ -1,14 +1,22 @@
 <view class="play-ui">
 <view class="first-view">
-<view class="one-view">
-<view class="top-view" bindtap="activityTimeTap" id="{{activityTime}}">
+<view class="one-view" bindtap="activityTimeTap" id="{{activityTime}}">
+<view class="top-view">
 <text>活动限时</text>
 <input value="{{activityTime}}" placeholder="24小时" disabled="disabled"/>
 <i-icon type="clock_fill" size="20" color="#80848f"/>
 </view>
 <view class="line-dotted"></view>
 </view>
-<view class="two-view">
+<view class="time-view" wx:if="{{isShowTime}}">
+<view class="item-view" wx:for="{{timeItems}}" wx:for-item="data" wx:for-index="index" bindtap="itemTimeTap" id="{{index}}">
+<view class="{{timeIndex == index ? 'item-view-select' : 'item-view-default'}}">
+<text>{{data >= 86400 ? ((data/3600) + '小时') : ((data/60) + '分钟')}}</text>
+</view>
+</view>
+<view class="line-dotted"></view>
+</view>
+<view class="two-view" wx:if="{{isEmptyMoney}}">
 <view class="top-view">
 <text>空的红包</text>
 <input value="{{emptyMoneyCount}}" placeholder="0" type="number"/>
@@ -35,6 +43,6 @@
 </view>
 </view>
 <view class="second-view">
-<button>完成编辑</button>
+<button bindtap="editedTap">完成编辑</button>
 </view>
 </view>

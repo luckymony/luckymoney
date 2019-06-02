@@ -37,16 +37,46 @@
 }
 .line-dotted{
   width: 100%;
-  height: 4rpx;
-  border-top:4rpx gray dotted;
+  /* border: #ddd solid 0.5rpx;  */
+  border-top: 1rpx solid #ccc;
 }
-.zero-view {
-  flex: 1;
+.time-view {
+  height: 12vh;
   display: flex; 
-  flex-direction:column;
+  flex-direction:row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width:100%;
+  /* background-color: blue; */
+}
+.item-view {
+  position: relative;
+  float: left;
+  width: 33%;
+  height: 45%;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+.item-view-select {
   width: 100%;
-  /* background-color: blueviolet; */
-  margin-top: 10rpx;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  border-radius: 4rpx;
+  background-color: green;
+  color: white;
+}
+.item-view-default {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  border-radius: 4rpx;
+  background-color: lightgray;
+  color: black;
 }
 .one-view {
   flex: 1;
@@ -83,7 +113,6 @@
 .four-view button {
   font-size: 30rpx;
 }
-
 .second-view {
   flex: 1;
   display: flex;
@@ -91,7 +120,6 @@
   justify-content: center;
   align-items: center;
 }
-
 .second-view button {
   width: 50%;
   height: 90rpx;

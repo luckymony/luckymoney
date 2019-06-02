@@ -43,8 +43,7 @@
 
 .line-dotted {
   width: 100%;
-  height: 4rpx;
-  border-top:4rpx gray dotted;
+  border-top: 1rpx solid #ccc;
 }
 .two-line {
   flex: 1;
@@ -119,12 +118,6 @@
 }
 .four-input i-icon {
    /* background-color: blue; */
-}
-
-.mid-view {
-  margin-left: 4.5vw;
-  margin-right: 4.5vw;
-  /* background-color: orange; */
 }
 .second-view {
   height: 40%;

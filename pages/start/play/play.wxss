@@ -13,8 +13,8 @@
   z-index: 5;
   opacity: 0.7;
   top: 7.5%;
-  color: black;
-  background-color: rgb(196, 189, 189);
+  color: white;
+  background-color: #F44848;
   display: flex;
 	flex-direction:column;
   justify-content: center;
@@ -41,17 +41,22 @@
   width: 100%;
   height: 100%;
   background-color: black;
-  opacity: 0.5;
+  opacity: 0.7;
 }
 .playui {
-position:fixed;
-background-color: white;
-width: 92vw;
-height: 60vh;
-margin-left: 4vw;
-margin-right: 4vw;
+  position:fixed;
+  background-color: white;
+  width: 91vw;
+  margin-left: 4.5vw;
+  margin-right: 4.5vw;
+  border-radius: 10rpx;
 }
-.show_playui {
+.time_show {
+  height: 72vh;
+  transform: translateY(14vh);transition: all 0.0s ease;z-index: 11;
+}
+.time_hidden {
+  height: 60vh;
   transform: translateY(20vh);transition: all 0.3s ease;z-index: 11;
 }
 .hidden_playui {

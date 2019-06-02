@@ -1,18 +1,3 @@
-<!-- <view class="play-main" wx:for="{{items}}">
-<view class="{{selectIndex == index ? 'item-select-view' : 'item-view'}}" data-index="{{index}}" bindtap="click">
-{{item}}
-</view>
-</view>
-<view class="background" wx:if="{{isShow}}" bindtap="hidden">
-</view>
-<playui class="playui" wx:if="{{isShow}}" 
-activityTime="15分钟"
-emptyMoneyCount="10"
-chanceCount="2"
-bind:selectDifficulty="selectDifficulty" 
-bind:activityTimeChange="activityTimeChange">
-</playui> -->
-
 <swiper class="main-view" bindchange="handleChange" previous-margin="50rpx" next-margin="50rpx" circular>
   <block wx:for="{{items}}" wx:key="{{index}}">
     <swiper-item class="item-swiper">
@@ -23,11 +8,13 @@ bind:activityTimeChange="activityTimeChange">
   </block>
 </swiper>
 <view wx:if="{{isShow}}" class="cloud_layer" bindtap="hiddenTap"></view>
-<playui class="playui {{isShow ? 'show_playui':'hidden_playui'}}" 
-activityTime="15分钟"
+<playui class="playui {{isShow ? ( isTime ? 'time_show' : 'time_hidden') : 'hidden_playui'}}"
+isShowTime="{{isTime}}"
+timeItems="{{timeItems}}"
+longTime="{{longTime}}"
+activityTime="{{activityTime}}"
 emptyMoneyCount="10"
 chanceCount="2"
-modeName=""
-bind:selectDifficulty="selectDifficulty" 
+bind:edited="edited" 
 bind:activityTimeChange="activityTimeChange">
 </playui>

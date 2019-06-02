@@ -3,26 +3,20 @@
     <image class="userinfo-avatar" src="../../../images/me/user_icon_default.png" background-size="cover"></image>
     <text>张三丰</text>
   </view>
-
   <view class='page-section'>
-    <view class='userinfo-money'>
-
-      <view class='userinfo-money1-item' bindtap='goto_money_detail_page'>
-        <image class="redp-avatar" src="../../../images/me/red_packet.png" ></image>
-        <text style='padding-top:20rpx' >红包</text>
+   <view class='userinfo-money'>
+      <view class='userinfo-money-item' bindtap='goto_money_detail_page'>
+        <i-icon type="redpacket_fill" size="30" color="#F44848"/>
+        <text>红包</text>
       </view>
-
+      <view class='mid-view'>
       <view class='background-line'></view>
-
-      <view class='userinfo-money1-item' bindtap='goto_withdraw_page'>
-        <text>余额(元)</text>
-        <text style='padding-top:20rpx'>88.88</text>
       </view>
-
-
+      <view class='userinfo-money-item' bindtap='goto_withdraw_page'>
+        <i-icon type="financial_fill" size="30" color="#F44848"/>
+        <text>88.88元</text>
+      </view>
     </view>
-
-
     <view class='extend-space'>
       <navigator class='navigator'>
         <view class="navigator-text">推荐给朋友</view>
@@ -33,7 +27,5 @@
         <view class="navigator-arrow"></view>
       </navigator>
     </view>
-
   </view>
-
 </view>

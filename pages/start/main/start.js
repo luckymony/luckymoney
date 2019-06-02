@@ -11,7 +11,8 @@ Page({
                           "八方来财",
                           "敬请期待"
                         ],
-                 time  : "24小时", 
+                 timeItems: [86400, 300, 900, 1800, 2700, 3600],
+                 time  : 3600, 
                  count : 0, 
                  chance: 1,
                  difficulty: 1
