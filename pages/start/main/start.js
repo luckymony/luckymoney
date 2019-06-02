@@ -32,8 +32,6 @@ Page({
 
     secondViewHeight:0,
 
-    iconType: 'enter',
-
     actions: [
       {
         name: '恭喜发财 大吉大利',

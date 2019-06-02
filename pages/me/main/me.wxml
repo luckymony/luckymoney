@@ -3,9 +3,10 @@
     <image class="userinfo-avatar" src="../../../images/me/user_icon_default.png" background-size="cover"></image>
     <text>张三丰</text>
   </view>
+  <view class="empty-view"></view>
   <view class='page-section'>
-   <view class='userinfo-money'>
-      <view class='userinfo-money-item' bindtap='goto_money_detail_page'>
+  <view class='userinfo-money'>
+       <view class='userinfo-money-item' bindtap='goto_money_detail_page'>
         <i-icon type="redpacket_fill" size="30" color="#F44848"/>
         <text>红包</text>
       </view>
@@ -16,15 +17,17 @@
         <i-icon type="financial_fill" size="30" color="#F44848"/>
         <text>88.88元</text>
       </view>
-    </view>
-    <view class='extend-space'>
-      <navigator class='navigator'>
+  </view>
+  <view class="empty-view"></view>
+  <view class='extend-space'>
+      <navigator class='navigator' hover-class="none">
         <view class="navigator-text">推荐给朋友</view>
-        <view class="navigator-arrow"></view>
+        <i-icon type='enter' size="20" color="#80848f"/>
       </navigator>
-      <navigator class='navigator'>
+      <view class='line-dotted'></view>
+      <navigator class='navigator' hover-class="none">
         <view class="navigator-text">常见问题</view>
-        <view class="navigator-arrow"></view>
+        <i-icon type='enter' size="20" color="#80848f"/>
       </navigator>
     </view>
   </view>
