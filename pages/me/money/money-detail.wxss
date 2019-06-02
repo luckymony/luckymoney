@@ -1,10 +1,16 @@
-/* pages/me/money/money-detail.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 32rpx;
+  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}
 
 .nav{
   width: 100%;
   height: 100rpx;
   display: flex;
-  flex-direction: row
+  flex-direction: row;
 }
 
 .default{
@@ -12,7 +18,7 @@
   text-align: center;
   flex: 1;
   border-right: 1px solid gainsboro;
-  /* color: #000; */
+  color: #FFA500;
   font-weight: bold;
   background-color: #fff
 }
@@ -22,9 +28,31 @@
   text-align: center;
   flex: 1;
   border-right: 1px solid gainsboro;
-  /* color: #FFA500; */
+  color:white;
   font-weight: bold;
   background-color: #FFA500
+}
+
+.empty-view {
+  height: 20rpx;
+  width: 100%;
+  background-color: #eee;
+}
+
+.userinfo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  width: 100%;
+  background-color: white;
+}
+
+.userinfo-avatar {
+	width: 160rpx;
+	height: 160rpx;
+	margin-top: 40rpx;
+	border-radius: 50%;
+  border: 8rpx solid #F44848;
 }
 
 .show{
@@ -39,36 +67,33 @@
   padding: 20rpx;
 }
 
-
-
-/* 内容 */
-.container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  justify-content: space-between;
-  font-size: 32rpx;
-  background-color: lightgray;
-  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
-}
-
-.userinfo {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-  width: 750rpx;
-}
-
 .page-section{
   width: 100%;
+  /* background-color: orange; */
+}
+
+.userinfo-money {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  background-color: white;
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
+}
+
+.userinfo-money1-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* background-color: green; */
 }
 
 .list-section{
   background-color: white;
   width: 100%;
-  height: 100%;
-  margin-top: 60rpx;
-  max-height: 500rpx;
+  height: 
 }
 
 .list-item{
@@ -102,28 +127,6 @@
   height: 1px;
   width: 100%；
 }
-
-.userinfo-avatar {
-	width: 160rpx;
-	height: 160rpx;
-	margin-top: 40rpx;
-	border-radius: 50%;
-}
-
-.userinfo-money {
-  display: flex;
-  justify-content: space-around
-}
-
-.userinfo-money1-item {
-  display: flex;
-  flex-direction: column;
-}
-.userinfo-money2-item {
-   display: flex;
-   flex-direction: column
-}
-
 
 /* 隐藏滑动条 */
 ::-webkit-scrollbar{

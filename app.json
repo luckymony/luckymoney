@@ -6,7 +6,6 @@
     "pages/start/play/play",
     "pages/start/tip/tip",
     "pages/me/main/me",
-    "pages/me/test/test",
     "pages/me/money/money-detail",
     "pages/me/withdraw/withdraw"
   ],
