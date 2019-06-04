@@ -21,19 +21,18 @@
       </view>
     </view>
     <view class="empty-view"></view>
-    <scroll-view scroll-y="true" class='list-section'>
-     
-    </scroll-view>
+    <view wx:for="{{money.detail}}" wx:for-index="index" wx:for-item="item">
+      <view class='list-item'>
+       <view class='list-items-top'>
+          <view class='list-items-play'>
+            <view class='list-items-play-name'>{{item.name}}</view>
+            <view class='list-items-play-time'>{{item.time}}</view>
+          </view>
+          <view class='list-items-money'>{{item.money}}</view>
+       </view>
+       <view class='list-item-line'></view>
+     </view>
+    </view>
   </view>
 </view>
 
- <!-- <view wx:for="{{money.detail}}" wx:for-index="index" wx:for-item="item">
-        <view class='list-item'>
-          <view class='list-items-name'>
-            <view class='list-items-name-name'>{{item.name}}</view>
-            <view class='list-items-name-time'>{{item.time}}</view>
-          </view>
-          <view class='list-items-money'>{{item.money}}</view>
-        </view>
-        <view class='list-item-line'></view>
-      </view> -->

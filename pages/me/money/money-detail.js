@@ -12,17 +12,17 @@ Page({
       red_packet_num:68,
       detail:[
         { name:'经典玩法',
-          time:'0517 16:36',
+          time:'2019-05-01 16:36',
           money:"+66.00"
         },
         {
           name: '财源滚滚',
-          time: '0518 12:06',
+          time: '2019-05-01 16:36',
           money: "+66.00"
         },
         {
           name: '四季发财',
-          time: '0317 19:16',
+          time: '2019-05-01 16:36',
           money: "+66.00"
         },
       ]
@@ -39,28 +39,28 @@ Page({
         detail: [
           {
             name: '经典玩法',
-            time: '0517 16:36',
+            time: '2019-05-01 16:36',
             money: "+166.00"
           },
           {
             name: '财源滚滚',
-            time: '0518 12:06',
+            time: '2019-05-01 16:36',
             money: "+9.00"
           },
           {
             name: '四季发财',
-            time: '0317 19:16',
+            time: '2019-05-01 16:36',
             money: "+17.00"
           },
           {
             name: '天女散花',
-            time: '0323 02:36',
-            money: "23.00"
+            time: '2019-05-01 16:36',
+            money: "+23.00"
           },
           {
             name: '转转盘',
-            time: '0417 09:06',
-            money: "160.00"
+            time: '2019-05-01 16:36',
+            money: "+160.00"
           }
         ]
       }
@@ -77,12 +77,12 @@ Page({
         detail: [
           {
             name: '天女散花',
-            time: '0323 02:36',
+            time: '2019-05-01 16:36',
             money: "-23.00"
           },
           {
             name: '转转盘',
-            time: '0417 09:06',
+            time: '2019-05-01 16:36',
             money: "-160.00"
           }
         ]
@@ -98,11 +98,28 @@ Page({
     }
   },
 
+  onPullDownRefresh() {
+    var self = this;
+    console.log('下拉刷新');
+    setTimeout(() => {
+      // 模拟请求数据，并渲染
+      // 数据成功后，停止下拉刷新
+      wx.stopPullDownRefresh();
+    }, 1000);
+  },
+
+  onReachBottom(){
+    console.log('上拉刷新');
+    setTimeout(() => {
+
+    }, 3000);
+  },
   /**
  * 生命周期函数--监听页面加载
  */
   onLoad: function (options) {
-      this.testR()
+      this.testR();
+      wx.setNavigationBarTitle({ title: '红包记录' }); 
   },
 
 

@@ -93,38 +93,53 @@
 .list-section{
   background-color: white;
   width: 100%;
-  height: 
 }
 
 .list-item{
-  padding: 30rpx;
-  display: flex;
-  flex-direction: row;
-  align-items: center
-}
-
-.list-items-name{
   display: flex;
   flex-direction: column;
-  flex-grow: 1
+  background-color: white;
+  height: 120rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
 }
 
-.list-items-name-name{
+.list-items-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 119rpx;
+  background-color: white;
+}
+
+.list-items-play{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list-items-play-name{
+  flex: 1;
   font-size: 35rpx;
 }
-.list-items-name-time{
+.list-items-play-time{
+  flex: 1;
+  margin-top: 10rpx;
   color: gray;
-  padding-top: 20rpx;
   font-size: 30rpx;
 }
 
 .list-items-money{
-  font-size: 50rpx;
+  height: 100%;
+  font-size: 40rpx;
+  font-weight: bolder;
+  /* background-color: orange; */
 }
 
 .list-item-line{
-  background-color: lightgray;
-  height: 1px;
+  background-color: #eee;
+  height: 1rpx;
   width: 100%；
 }
 
