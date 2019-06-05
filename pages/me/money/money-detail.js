@@ -98,7 +98,7 @@ Page({
     }
   },
 
-  onPullDownRefresh() {
+  onPullDownRefresh: function() {
     var self = this;
     console.log('下拉刷新');
     setTimeout(() => {
@@ -108,11 +108,8 @@ Page({
     }, 1000);
   },
 
-  onReachBottom(){
+  onReachBottom:function() {
     console.log('上拉刷新');
-    setTimeout(() => {
-
-    }, 3000);
   },
   /**
  * 生命周期函数--监听页面加载

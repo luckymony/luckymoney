@@ -21,7 +21,9 @@
       </view>
     </view>
     <view class="empty-view"></view>
-    <view wx:for="{{money.detail}}" wx:for-index="index" wx:for-item="item">
+    <view class="list-result">
+    <scroll-view scroll-y="true" bindscrolltolower="searchScrollLower">
+      <view wx:for="{{money.detail}}" wx:for-index="index" wx:for-item="item">
       <view class='list-item'>
        <view class='list-items-top'>
           <view class='list-items-play'>
@@ -32,6 +34,8 @@
        </view>
        <view class='list-item-line'></view>
      </view>
+    </view>
+    </scroll-view>
     </view>
   </view>
 </view>
