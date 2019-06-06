@@ -1,64 +1,70 @@
-.main-view{
-  width: 100%;
-  height: 100vh;
+/* .play-view {
+  display: flex;
+	flex:1;
+	flex-direction:column;
 }
-.item-swiper{
-  height: 100%;
+
+.item-view {
+  margin: 60rpx 60rpx;
+  height: 260rpx;
+  line-height: 260rpx;
+  text-align: center;
+	border-radius: 10rpx;
+  background-color: #fff;
+  box-shadow: 5px 5px 5px gainsboro;
+  color: gray;
+  font-size: 36px;
+  font-family: SourceHanSansSC-regular;
 }
-.item-view{
+
+.item-select-view {
+  margin: 60rpx 60rpx;
+  height: 260rpx;
+  line-height: 260rpx;
+  text-align: center;
+	border-radius: 10rpx;
+  background-color: #F44848;
+  box-shadow: 5px 5px 5px gainsboro;
+  color: white;
+  font-size: 36px;
+  font-family: SourceHanSansSC-regular;
+}
+
+.background {
   position: absolute;
   width: 100%;
-  height: 85%;
-  border-radius: 15rpx;
-  z-index: 5;
-  opacity: 0.7;
-  top: 7.5%;
-  color: white;
-  background-color: #F44848;
-  display: flex;
-	flex-direction:column;
-  justify-content: center;
-  align-items: center;
-}
-.active{
-  opacity: 1;
-  z-index: 10;
-  height: 95%;
-  top: 2.5%;
-  color: white;
-  background-color: #F44848;
-  transition:all .2s ease-in 0s;
-}
-.first-view {
-  font-size: 120rpx;
-  text-align: center;
-  font-family: SourceHanSansSC-regular;
-  writing-mode:vertical-lr;
-}
-.cloud_layer {
-  transform: translateY(0);
-  position:fixed;
-  width: 100%;
   height: 100%;
-  background-color: black;
-  opacity: 0.7;
+  background-color:black;
+  opacity:0.6;
 }
 .playui {
-  position:fixed;
-  background-color: white;
-  width: 91vw;
-  margin-left: 4.5vw;
-  margin-right: 4.5vw;
+  position: absolute;
+  margin-left: 5vw;
+  margin-top: 17vh;
+  width: 90vw;
+  height: 66vh;
   border-radius: 10rpx;
+  background-color: #fff;
+} */
+
+.scroll-box{
+ white-space: nowrap;
+ height: 105vh;
 }
-.time_show {
-  height: 72vh;
-  transform: translateY(14vh);transition: all 0.0s ease;z-index: 11;
+ 
+.card-box{
+ display: inline-block;
 }
-.time_hidden {
-  height: 60vh;
-  transform: translateY(20vh);transition: all 0.3s ease;z-index: 11;
-}
-.hidden_playui {
-  transform: translateY(100vh);transition: all 0.3s ease;z-index: 11;
+ 
+.card{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ box-sizing: border-box;
+ height: 80vh;
+ width: 80vw;
+ margin: 5vh 10vw;
+ font-size: 40px;
+ background: #F8F2DC;
+ border-radius: 4px;
 }

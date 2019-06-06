@@ -23,18 +23,18 @@
     <view class="empty-view"></view>
     <view class="list-result">
     <scroll-view scroll-y="true" bindscrolltolower="searchScrollLower">
-      <view wx:for="{{money.detail}}" wx:for-index="index" wx:for-item="item">
+    <block wx:for="{{money.detail}}" wx:for-index="index" wx:for-item="item">
       <view class='list-item'>
-       <view class='list-items-top'>
+        <view class='list-items-top'>
           <view class='list-items-play'>
             <view class='list-items-play-name'>{{item.name}}</view>
             <view class='list-items-play-time'>{{item.time}}</view>
           </view>
           <view class='list-items-money'>{{item.money}}</view>
-       </view>
-       <view class='list-item-line'></view>
-     </view>
-    </view>
+        </view>
+        <view class='list-item-line'></view>
+      </view>
+    </block>
     </scroll-view>
     </view>
   </view>
