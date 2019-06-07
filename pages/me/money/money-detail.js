@@ -1,12 +1,11 @@
 // pages/me/money/money-detail.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     send:false,
     receive:true,
+    showLoading:false,
+    searchLoadingComplete:false,
+    tipText:"",
     money:{
       money_total:666,
       red_packet_num:68,
@@ -34,7 +33,7 @@ Page({
       send: false,
       receive: true,
       money: {
-        money_total: -800,
+        money_total: +800,
         red_packet_num: 123,
         detail: [
           {
@@ -92,9 +91,17 @@ Page({
 
   select:function(e){
     if ('r' == e.currentTarget.dataset.r){
-      this.testR()
+      this.testR();
+      this.setData({
+        tipText: "",
+        showLoading: true,
+      });
     }else if ('s' == e.currentTarget.dataset.s){
-      this.testS()
+      this.testS();
+      this.setData({
+        tipText:"暂无数据",
+        showLoading: false,
+      });
     }
   },
 
@@ -108,9 +115,17 @@ Page({
     }, 1000);
   },
 
-  onReachBottom:function() {
-    console.log('上拉刷新');
+  onReachBottom: function () {
+    this.setData({
+      showLoading: true,
+    });
+    setTimeout(() => {
+      this.setData({
+        showLoading: false,
+      });
+    }, 2000);
   },
+
   /**
  * 生命周期函数--监听页面加载
  */

@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "loadmore": "../../../component/loadmore/index"
+    "i-load-more": "../../../dist/load-more/index"
   },
   "enablePullDownRefresh": true
 }

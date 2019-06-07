@@ -45,7 +45,7 @@
   /* background-color: blue; */
 }
 .start-button {
-  background-color: green;
+  /* background-color: green; */
   color: white;
   width: 50vw;
   height: 89rpx;

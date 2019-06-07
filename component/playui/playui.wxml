@@ -43,6 +43,6 @@
 </view>
 </view>
 <view class="second-view">
-<button bindtap="editedTap">完成编辑</button>
+<button type="primary" bindtap="editedTap">完成编辑</button>
 </view>
 </view>

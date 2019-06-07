@@ -5,7 +5,30 @@ Page({
    * 页面的初始数据
    */
   data: {
+    balanceMoney:"88.8",
+    inputMoney:"",
+    isShowTiXian:true,
+    isShowMoreThan:false,
+  },
 
+  inputWacth: function (e) {
+    console.log(e.detail.value);
+    if (e.detail.value > this.data.balanceMoney) {
+      this.setData({
+        isShowTiXian:false,
+        isShowMoreThan: true,
+      });
+    }else {
+      this.setData({
+        isShowTiXian: true,
+        isShowMoreThan: false,
+      });
+    }
+  },
+  allMoney:function(e) {
+    this.setData({
+      inputMoney: this.data.balanceMoney
+    });
   },
 
   /**

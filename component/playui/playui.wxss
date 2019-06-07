@@ -123,7 +123,7 @@
 .second-view button {
   width: 50%;
   height: 90rpx;
-  background-color:green;
+  /* background-color:green; */
   color: white;
 }
 .default {

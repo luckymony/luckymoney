@@ -34,7 +34,7 @@
 </view>
 <view class="second-view">
 <text class="money-text">{{"￥" + "0.00"}}</text>
-<button>塞钱进红包</button>
+<button type="primary">塞钱进红包</button>
 <text class="bottom-text">{{"对方可领取的红包金额为0.01~200元"}}</text>
 </view>
 </view>

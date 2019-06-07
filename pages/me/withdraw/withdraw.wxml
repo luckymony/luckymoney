@@ -1,23 +1,21 @@
-<view class='container'>
-
   <view class='content'>
-    <view class='yu_e'>
-      <view class='yu_e_name'>账户余额</view>
-      <view class='yu_e_money'>888.88</view>
+    <view class='yu-e'>
+      <view class='yu-e-name'>账户余额:</view>
+      <view class='yu-e-money'>{{balanceMoney}}</view>
     </view>
-
-    <view class='ti_xian_jin_e'>提现金额</view>
-    <view class='shu_ru_ti_xian_jin_e'>
-      <view style='font-size:50rpx'>¥</view>
-      <input></input>
+    <view class='ti-xian-jin-e'>提现金额:</view>
+    <view class='jin-e-input-view'>
+      <text>¥</text>
+      <input class='jin-e-input' value="{{inputMoney}}" placeholder="" type="digit" bindinput='inputWacth'/>
     </view>
     <view class='background-line'></view>
-    
-    
-    <view class='quan_bu_ti_xian'>提现到微信钱包，全部提现</view>
-    <button type="primary" style='margin: 2.17647059em 15px 0.3em;'>提 现</button>
-    <view class='tixian_tip'>
-    <view>1~5个工作日到账</view>
+    <view class='quan-bu-ti-xian' wx:if="{{isShowTiXian}}">
+    <text>提现到微信钱包,</text>
+    <text class='all-ti-xian' bindtap='allMoney'>全部提现</text>
     </view>
+    <view class='more-than-view' wx:if="{{isShowMoreThan}}">
+    <text>输入金额超过余额</text>
+    </view>
+    <button type="primary">提 现</button>
+    <view class='tixian_tip'>1~5个工作日到账</view>
   </view>
-</view>

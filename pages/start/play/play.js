@@ -1,5 +1,5 @@
 Page({
-
+  
   data: {
     items: [],
     currentIndex: 0,

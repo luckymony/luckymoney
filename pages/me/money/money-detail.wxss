@@ -83,6 +83,12 @@
   padding-bottom: 40rpx;
 }
 
+.money-text {
+  margin-top: 20rpx;
+  font-size: 40rpx;
+  font-weight: bolder;
+}
+
 .userinfo-money1-item {
   flex: 1;
   display: flex;
@@ -90,10 +96,10 @@
   /* background-color: green; */
 }
 
-.list-section{
-  background-color: white;
-  width: 100%;
-}
+.list-result{  
+  flex: auto;  
+  position: relative;  
+}  
 
 .list-item{
   display: flex;
