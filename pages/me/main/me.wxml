@@ -20,8 +20,8 @@
   </view>
   <view class="empty-view"></view>
   <view class='extend-space'>
-      <navigator class='navigator' hover-class="none">
-        <view class="navigator-text">推荐给朋友</view>
+      <navigator url="../share/share" class='navigator' hover-class="none">
+        <view class="navigator-text">推荐给好友</view>
         <i-icon type='enter' size="20" color="#80848f"/>
       </navigator>
       <view class='line-dotted'></view>

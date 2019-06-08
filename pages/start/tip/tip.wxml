@@ -1,20 +1,15 @@
 <!--pages/start/tip/tip.wxml-->
 <view class="main-view">
-<text>
-红包活动最多能发起1000个红包；
-
-单个红包金额不能超过200元；
-
-限时设置默认是24小时，最小限时15分钟；
-
-“开门大吉”玩法，当红包总数小于25个，其余空红包补齐，开始之前会展示当前最大红包的位置，当多人点中最大红包，响应最快的玩家抢得，其他玩家抢夺失败，只能抢其他红包；
-
-“八方来财”玩法，可以选择空红包个数，最多不能超过当前红包的个数；
-
-每人拥有机会默认不限次数，最多不超过红包个数；
-
-难易程度分为：简单、正常、困难；
-
-红包提现正常需1-5个工作日；
-</text>
+<block wx:for="{{items}}" wx:for-index="index" wx:for-item="item">
+<view class="item-view {{!item.selected ? 'item-hidden-detail' : ''}}" bindtap='touchOneItem' id="{{index}}">
+<view class="top-view {{!item.selected ? 'top-hidden-detail' : ''}}">
+<text class="title-view {{item.selected ? 'title-hidden-detail' : ''}}">{{item.title}}</text>
+<i-icon class='icon-view' type="other" size="30" color="#80848f"/>
+</view>
+<view class='foot-view' wx:if="{{item.selected}}">
+<view class='line-view'></view>
+<text decode="{{true}}">&nbsp;&nbsp;{{item.details}}</text>
+</view>
+</view>
+</block>
 </view> 

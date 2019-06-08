@@ -1,4 +1,5 @@
   <view class='content'>
+   <view class='head-view'>
     <view class='yu-e'>
       <view class='yu-e-name'>账户余额:</view>
       <view class='yu-e-money'>{{balanceMoney}}</view>
@@ -16,6 +17,13 @@
     <view class='more-than-view' wx:if="{{isShowMoreThan}}">
     <text>输入金额超过余额</text>
     </view>
+   </view>
+    <view class='foot-view'>
+    <view class='button-view'>
     <button type="primary">提 现</button>
-    <view class='tixian_tip'>1~5个工作日到账</view>
+    </view>
+    <view class='tixian_tip'>
+    <text>1~5个工作日到账</text>
+    </view>
+    </view>
   </view>
