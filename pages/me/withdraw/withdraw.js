@@ -13,7 +13,8 @@ Page({
 
   inputWacth: function (e) {
     console.log(e.detail.value);
-    if (e.detail.value > this.data.balanceMoney) {
+    console.log(this.data.balanceMoney);
+    if (parseFloat(e.detail.value) > parseFloat(this.data.balanceMoney)) {
       this.setData({
         isShowTiXian:false,
         isShowMoreThan: true,
@@ -25,6 +26,7 @@ Page({
       });
     }
   },
+
   allMoney:function(e) {
     this.setData({
       inputMoney: this.data.balanceMoney

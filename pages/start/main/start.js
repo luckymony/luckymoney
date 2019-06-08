@@ -23,15 +23,7 @@ Page({
     visible: false,
 
     isShow: false,
-
-    boxHeight:0,
-
-    mainViewHeight: 0,
-
-    firstViewHeight:0,
-
-    secondViewHeight:0,
-
+    
     actions: [
       {
         name: '恭喜发财 大吉大利',
