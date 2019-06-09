@@ -1,13 +1,15 @@
 <scroll-view class='page-body' scroll-y="true">
 <block wx:for="{{items}}" wx:for-index="index" wx:for-item="item">
 <view class='list-item' bindtap='grabLuckyMoney'>
+<view class='time-view'>{{item.start_time}}</view>
+<view class='lucky-money-view'>
 <view class='item-left-view' wx:if="{{!item.is_me}}">
 <image class='icon-view' src='{{item.icon}}' ></image>
 <view class='left-arrow'></view>
 </view>
 <view class='item-right-view'>
 <view class='item-top-view'>
-<i-icon type="redpacket_fill" size='62' color="#F44848"/>
+<i-icon type="redpacket_fill" size='50' color="#F44848"/>
 <text>{{item.lucky_str}}</text>
 </view>
 <view class='item-bottom-view'>
@@ -17,6 +19,7 @@
 <view class='me-item-right-view' wx:if="{{item.is_me}}">
 <view class='right-arrow'></view>
 <image class='icon-view' src='{{item.icon}}' ></image>
+</view>
 </view>
 </view>
 </block>
