@@ -25,7 +25,7 @@
         <i-icon type='enter' size="20" color="#80848f"/>
       </navigator>
       <view class='line-dotted'></view>
-      <navigator class='navigator' hover-class="none">
+      <navigator url="../problem/problem" class='navigator' hover-class="none">
         <view class="navigator-text">常见问题</view>
         <i-icon type='enter' size="20" color="#80848f"/>
       </navigator>

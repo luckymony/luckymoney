@@ -1,0 +1,15 @@
+<!--pages/me/problem/problem.wxml-->
+<view class="main-view">
+<block wx:for="{{items}}" wx:for-index="index" wx:for-item="item">
+<view class="item-view {{!item.selected ? 'item-hidden-detail' : ''}}" bindtap='touchOneItem' id="{{index}}">
+<view class="top-view {{!item.selected ? 'top-hidden-detail' : ''}}">
+<text class="title-view {{item.selected ? 'title-hidden-detail' : ''}}">{{item.title}}</text>
+<i-icon class='icon-view' type="other" size="30" color="#80848f"/>
+</view>
+<view class='foot-view' wx:if="{{item.selected}}">
+<view class='line-view'></view>
+<text decode="{{true}}">&nbsp;&nbsp;{{item.details}}</text>
+</view>
+</view>
+</block>
+</view> 

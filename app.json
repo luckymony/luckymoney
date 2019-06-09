@@ -8,7 +8,8 @@
     "pages/me/main/me",
     "pages/me/money/money-detail",
     "pages/me/withdraw/withdraw",
-    "pages/me/share/share"
+    "pages/me/share/share",
+    "pages/me/problem/problem"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -18,7 +19,7 @@
   },
   "tabBar": {
     "color": "#fff",
-    "selectedColor": "#efb336",
+    "selectedColor": "#F89B4A",
     "borderStyle": "black",
     "backgroundColor": "#F44848",
     "list": [
