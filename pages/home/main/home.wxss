@@ -63,7 +63,7 @@
   width: 0;
   height: 0;
   border-top: 16rpx solid transparent;
-  border-left: 32rpx solid #F89B4A;
+  border-left: 25rpx solid #F89B4A;
   border-bottom: 16rpx solid transparent;
 }
 .item-right-view {

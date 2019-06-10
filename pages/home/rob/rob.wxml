@@ -24,6 +24,6 @@
 <image src="../../../images/rob/{{'paihang' + (index%3+1) + '.png'}}" class="{{index <= 2 ?'show-image':'hidden-image'}}"></image>
 </view>
 </view>
-<view class="foot-view" bindtap="showAllTap" wx:if="{{showFoot}}">更多排行</view>
 </view>
+<i-load-more tip="{{'加载更多'}}" loading="{{showLoading}}" wx:if="{{showLoading}}"/>
 </scroll-view>
