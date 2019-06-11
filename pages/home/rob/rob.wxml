@@ -1,5 +1,5 @@
 <!--pages/rob/rob.wxml-->
-<scroll-view class="main-vew" scroll-y="true" style='height:{{boxHeight}}px;'>
+<scroll-view class="main-vew" scroll-y="true">
 <view class="top-view">
 <image class="icon-image"></image>
 <text class="name-text">{{'张三丰'}}</text>

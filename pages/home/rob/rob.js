@@ -36,8 +36,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let res = wx.getSystemInfoSync();
-    let height = res.windowHeight;
+    //let res = wx.getSystemInfoSync();
+    //let height = res.windowHeight;
     let newItems = [];
     if (this.data.allItems.length > 5) {
        newItems = this.data.allItems.slice(0, 5)
@@ -46,7 +46,6 @@ Page({
     }
     this.setData({
       currentItems: newItems,
-      boxHeight: height
     });
     wx.setNavigationBarTitle({ title: '开始抢红包' }); 
   },
@@ -91,11 +90,25 @@ Page({
    */
   onReachBottom: function () {
     console.log("上啦加载");
+    let currentLength = this.data.allItems.length - this.data.currentItems.length;
+    if (currentLength <= 0){
+      console.log("加载完成");
+      return;
+    }
     this.setData({
       showLoading: true,
     });
     setTimeout(() => {
+      let currentIndex = this.data.currentItems.length - 1;
+      console.log(currentIndex);
+      currentLength = this.data.allItems.length - this.data.currentItems.length;
+      console.log(currentLength);
+      if (currentLength >= 5) currentLength = 5;
+      console.log(currentLength);
+      let newArray = this.data.allItems.slice(0,5);
+      console.log(newArray);
       this.setData({
+        currentItems: this.data.currentItems.concat(newArray),
         showLoading: false,
       });
     }, 2000);

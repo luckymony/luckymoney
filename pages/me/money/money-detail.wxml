@@ -1,4 +1,4 @@
-<scroll-view class="container" scroll-y="true" bindscrolltolower="searchScrollLower"> 
+<scroll-view class="container" scroll-y="true"> 
   <view class='nav'>
     <view class="{{send?'orange':'default'}}" data-s='s' bindtap='select'>发出的红包</view>
     <view class="{{receive?'orange':'default'}}" data-r='r' bindtap='select'>抢到的红包</view>

@@ -1,21 +1,19 @@
 /* pages/rob/rob.wxss */
 .main-view {
-  height: 100%;
-  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .top-view {
   height: 40vh;
   width: 100vw;
-  /* background-color: red; */
   display: flex; 
   flex-direction:column;
-  /* justify-content: center; */
   align-items:center;
 }
 .mid-view {
   height: 20vh;
   width: 100vw;
-  /* background-color: olivedrab; */
   display: flex; 
   flex-direction:column;
   justify-content: center;
@@ -23,7 +21,6 @@
 .buttom-view {
   flex: 1;
   width: 100vw;
-  /* background-color: blue; */
   display: flex;
 	flex-direction:column;
 }
@@ -36,16 +33,13 @@
 }
 .name-text {
   margin-top: 20rpx;
-  /* background-color: burlywood; */
 }
 .bless-text {
   font-size: 60rpx;
   margin-top: 20rpx;
   font-weight:bold;
-  /* background-color: blue; */
 }
 .start-button {
-  /* background-color: green; */
   color: white;
   width: 50vw;
   height: 89rpx;
@@ -60,16 +54,13 @@
 }
 
 .mid-view text {
-  /* margin-top: 20rpx; */
   color:#efb336;
-  /* background-color: red; */
   text-align: center;
   font-size: 28rpx;
 }
 .item-view{
   display: flex;
   flex-direction:row;
-  /* justify-content: space-between;    */
   align-items: center;
   background-color: #fff;
   margin-bottom: 10rpx;
@@ -89,7 +80,6 @@
 }
 .item-view-name {
   flex: 1;
-  /* background-color: orange; */
   display: flex;
   flex-direction:column;  
   color: black;
@@ -99,10 +89,8 @@
   display: flex;
   flex-direction:column;
   align-items: center;
-  /* background-color: orange; */
 }
 .show-image {
-  /* background-color: red; */
   width: 50rpx;
   height: 50rpx;
   opacity:1.0;
@@ -113,7 +101,6 @@
   opacity:0.0;
 }
 .foot-view{
-  /* background-color: orange; */
   margin-bottom: 10rpx;
   width: 100vw;
   height: 40rpx;
