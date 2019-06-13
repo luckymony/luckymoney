@@ -1,4 +1,5 @@
 // pages/rob/rob.js
+var loadMoreView
 Page({
 
   /**
@@ -38,6 +39,7 @@ Page({
   onLoad: function (options) {
     //let res = wx.getSystemInfoSync();
     //let height = res.windowHeight;
+    loadMoreView = this.selectComponent("#loadMoreView");
     let newItems = [];
     if (this.data.allItems.length > 5) {
        newItems = this.data.allItems.slice(0, 5)
@@ -90,6 +92,7 @@ Page({
    */
   onReachBottom: function () {
     console.log("上啦加载");
+    loadMoreView.loadMore();
     let currentLength = this.data.allItems.length - this.data.currentItems.length;
     if (currentLength <= 0){
       console.log("加载完成");
@@ -100,13 +103,9 @@ Page({
     });
     setTimeout(() => {
       let currentIndex = this.data.currentItems.length - 1;
-      console.log(currentIndex);
       currentLength = this.data.allItems.length - this.data.currentItems.length;
-      console.log(currentLength);
       if (currentLength >= 5) currentLength = 5;
-      console.log(currentLength);
-      let newArray = this.data.allItems.slice(0,5);
-      console.log(newArray);
+      let newArray = this.data.allItems.slice(currentIndex,(currentIndex + currentLength));
       this.setData({
         currentItems: this.data.currentItems.concat(newArray),
         showLoading: false,

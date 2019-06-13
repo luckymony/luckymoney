@@ -1,0 +1,5 @@
+{
+    "usingComponents": {
+        "statusLayout":"../../components/statusLayout/statusLayout"
+    }
+}

@@ -25,5 +25,5 @@
 </view>
 </view>
 </view>
-<i-load-more tip="{{'加载更多'}}" loading="{{showLoading}}" wx:if="{{showLoading}}"/>
+  <loadMore id="loadMoreView" bindloadMoreListener='loadMoreListener' bindclickLoadMore='clickLoadMore' hasMore = true></loadMore>
 </scroll-view>

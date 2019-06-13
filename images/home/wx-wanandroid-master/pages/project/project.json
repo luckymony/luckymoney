@@ -1,0 +1,6 @@
+{
+    "disableScroll": false,
+    "usingComponents": {
+        "load-more":"../../components/load-more/index"
+    }
+}
