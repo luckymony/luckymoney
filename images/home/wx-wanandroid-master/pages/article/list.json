@@ -1,6 +1,0 @@
-{
-    "usingComponents": {
-        "load-more":"../../components/load-more/index",
-        "statusLayout":"../../components/statusLayout/statusLayout"
-    }
-}

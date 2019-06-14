@@ -96,7 +96,7 @@
   opacity:1.0;
 }
 .hidden-image {
-   width: 50rpx;
+  width: 50rpx;
   height: 50rpx;
   opacity:0.0;
 }
@@ -107,4 +107,20 @@
   font-size: 24rpx;
   text-align: center;
   color: black;
+}
+.load-more {
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: center;
+  height: 100rpx;
+  margin-left : 20rpx;
+  margin-right : 20rpx;
+  margin-bottom: 10rpx;
+  background-color: white;
+}
+.load-more image {
+  margin-right: 10rpx;
+  width: 40rpx;
+  height: 40rpx;
 }

@@ -1,5 +1,4 @@
 // pages/rob/rob.js
-var loadMoreView
 Page({
 
   /**
@@ -39,7 +38,6 @@ Page({
   onLoad: function (options) {
     //let res = wx.getSystemInfoSync();
     //let height = res.windowHeight;
-    loadMoreView = this.selectComponent("#loadMoreView");
     let newItems = [];
     if (this.data.allItems.length > 5) {
        newItems = this.data.allItems.slice(0, 5)
@@ -92,7 +90,6 @@ Page({
    */
   onReachBottom: function () {
     console.log("上啦加载");
-    loadMoreView.loadMore();
     let currentLength = this.data.allItems.length - this.data.currentItems.length;
     if (currentLength <= 0){
       console.log("加载完成");

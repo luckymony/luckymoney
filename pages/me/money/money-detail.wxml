@@ -36,6 +36,12 @@
       </view>
     </block>
   </view>
-<i-load-more tip="{{tipText}}" loading="{{showLoading}}" wx:if="{{showLoading}}"/>
+<view class='load-more' wx:if="{{showLoading}}">
+<view class='load-more-top'>
+<image src="../../../images/home/loading.gif"></image>
+<text>{{'数据加载...'}}</text>
+</view>
+<view class='list-item-line'></view>
+</view>
 </scroll-view>
 

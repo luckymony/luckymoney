@@ -25,5 +25,8 @@
 </view>
 </view>
 </view>
-  <loadMore id="loadMoreView" bindloadMoreListener='loadMoreListener' bindclickLoadMore='clickLoadMore' hasMore = true></loadMore>
+<view class='load-more' wx:if="{{showLoading}}">
+<image src="../../../images/home/loading.gif"></image>
+<text>{{'数据加载...'}}</text>
+</view>
 </scroll-view>

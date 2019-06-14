@@ -155,3 +155,24 @@ width: 0;
 height: 0;
 color: transparent;
 }
+
+.load-more {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+  height: 100rpx;
+  background-color: red;
+}
+.load-more-top {
+  flex: 1;
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: center;
+}
+.load-more image {
+  margin-right: 10rpx;
+  width: 40rpx;
+  height: 40rpx;
+}

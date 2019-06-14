@@ -92,16 +92,8 @@ Page({
   select:function(e){
     if ('r' == e.currentTarget.dataset.r){
       this.testR();
-      this.setData({
-        tipText: "",
-        showLoading: true,
-      });
     }else if ('s' == e.currentTarget.dataset.s){
       this.testS();
-      this.setData({
-        tipText:"暂无数据",
-        showLoading: false,
-      });
     }
   },
 
@@ -112,7 +104,7 @@ Page({
       // 模拟请求数据，并渲染
       // 数据成功后，停止下拉刷新
       wx.stopPullDownRefresh();
-    }, 1000);
+    }, 2000);
   },
 
   onReachBottom: function () {
