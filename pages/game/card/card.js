@@ -1,43 +1,18 @@
-// pages/me/withdraw/withdraw.js
+// pages/game/card/card.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    balanceMoney:"88.8",
-    inputMoney:"",
-    isShowTiXian:true,
-    isShowMoreThan:false,
-  },
 
-  inputWacth: function (e) {
-    console.log(e.detail.value);
-    console.log(this.data.balanceMoney);
-    if (parseFloat(e.detail.value) > parseFloat(this.data.balanceMoney)) {
-      this.setData({
-        isShowTiXian:false,
-        isShowMoreThan: true,
-      });
-    }else {
-      this.setData({
-        isShowTiXian: true,
-        isShowMoreThan: false,
-      });
-    }
-  },
-
-  allMoney:function(e) {
-    this.setData({
-      inputMoney: this.data.balanceMoney
-    });
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.setNavigationBarTitle({ title: '余额提现' }); 
+
   },
 
   /**
@@ -51,7 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-     
+
   },
 
   /**

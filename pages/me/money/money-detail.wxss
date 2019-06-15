@@ -162,7 +162,7 @@ color: transparent;
   align-items: center;
   justify-content: center;
   height: 100rpx;
-  background-color: red;
+  background-color: white;
 }
 .load-more-top {
   flex: 1;

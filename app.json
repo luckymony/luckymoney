@@ -9,7 +9,9 @@
     "pages/me/money/money-detail",
     "pages/me/withdraw/withdraw",
     "pages/me/share/share",
-    "pages/me/problem/problem"
+    "pages/me/problem/problem",
+    "pages/game/card",
+    "pages/game/card/card"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -19,7 +21,7 @@
   },
   "tabBar": {
     "color": "#fff",
-    "selectedColor": "#F89B4A",
+    "selectedColor": "#f4ea29",
     "borderStyle": "black",
     "backgroundColor": "#F44848",
     "list": [
