@@ -1,0 +1,4 @@
+<!--pages/game/rain/rain.wxml-->
+<view class='canvas-view'>  
+    <canvas canvas-id="ball"></canvas>  
+</view> 

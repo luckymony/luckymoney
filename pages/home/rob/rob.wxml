@@ -6,7 +6,7 @@
 <text class="bless-text">{{'恭喜发财,大吉大利'}}</text>
 </view>
 <view class="mid-view">
-<button type="primary" class="start-button">开始游戏</button>
+<button type="primary" class="start-button" bindtap='openGame'>开始游戏</button>
 <view class="my-money" bindtap="toMyMoney">
 <i-icon type="redpacket_fill" size="20" color="#efb336"/>
 <text>我的红包</text>

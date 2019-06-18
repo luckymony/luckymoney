@@ -10,8 +10,8 @@
     "pages/me/withdraw/withdraw",
     "pages/me/share/share",
     "pages/me/problem/problem",
-    "pages/game/card",
-    "pages/game/card/card"
+    "pages/game/card/card",
+    "pages/game/rain/rain"
   ],
   "window": {
     "backgroundTextStyle": "dark",
