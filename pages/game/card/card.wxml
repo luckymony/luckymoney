@@ -1,4 +1,4 @@
 <!--pages/game/card/card.wxml-->
-<view>
-
+<view class='main-view'>
+<image src='../../../images/packet/red_packet_bg.png' class='bg-view'></image>
 </view>

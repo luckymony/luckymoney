@@ -1,3 +1,5 @@
+
+/*
 var winWidth = 0
 var winHeight = 0
 var diameter = 5
@@ -87,3 +89,4 @@ Page({
     })
   }
 })  
+*/

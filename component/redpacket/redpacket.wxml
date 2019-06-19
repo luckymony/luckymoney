@@ -1,0 +1,4 @@
+<!--component/redpacket/redpacket.wxml-->
+<view class='main-view'>
+<image src='../../images/packet/red_packet_bg.png' class='bg-view' mode='aspectFill'></image>
+</view>
