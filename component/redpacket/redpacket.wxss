@@ -2,16 +2,14 @@
 .main-view {
     width : 100%;
     height : 100%;
-    background-color: orange;
     display: flex;
     flex-direction:column;
     align-items:center;
-     justify-content: center;
+    justify-content: center;
 }
 .bg-view {
   display:block;
-  max-width: 100%;
-  height: 80%;
+  width: 100%;
 }
 .money-view {
   position:absolute;

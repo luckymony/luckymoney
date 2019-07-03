@@ -1,5 +1,5 @@
 <!--component/redpacket/redpacket.wxml-->
 <view class='main-view'>
-<image src='../../images/packet/red_packet_bg.png' class='bg-view' mode='aspectFill'></image>
-<image src='../../images/packet/icon_open_red_packet1.png' class='money-view'></image>
+<image src='../../images/packet/red_packet_bg.png' class='bg-view' mode="widthFix"></image>
+<image src='{{imageSrc}}' class='money-view' mode='aspectFit'></image>
 </view>

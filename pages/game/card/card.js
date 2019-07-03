@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+     redPackers:[]
   },
 
   /**
@@ -13,6 +13,10 @@ Page({
    */
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '开门大吉' }); 
+    for (let i = 0; i < 25; i++) {
+      this.data.redPackers.push(i);
+    }
+    console.log(this.data.redPackers)
   },
 
   /**

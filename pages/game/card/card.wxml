@@ -1,4 +1,4 @@
 <!--pages/game/card/card.wxml-->
 <view class='main-view'>
-<redpacket class="redpacket-view"></redpacket>
+
 </view>
