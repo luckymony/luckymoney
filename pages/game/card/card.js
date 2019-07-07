@@ -1,11 +1,26 @@
 // pages/game/card/card.js
+
+var windowWidth  = wx.getSystemInfoSync().windowWidth;
+var windowHeight = wx.getSystemInfoSync().windowHeight;
+
+var redPacket = {
+  w:(windowWidth - 90)/5,
+  h:(windowHeight - 260)/5,
+  c:"#ff00ff"
+};
+var redPackets = [];
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-     redPackers:[]
+     
+  },
+
+  canvasEnd:function (e) {
+    console.log(e);
   },
 
   /**
@@ -13,10 +28,23 @@ Page({
    */
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '开门大吉' }); 
-    for (let i = 0; i < 25; i++) {
-      this.data.redPackers.push(i);
+    //使用wx.createContext获取绘图上下文context
+    var x = 0;
+    var y = 0;
+    var context = wx.createContext();
+    for(var i=0;i<25;i++) {
+      x = 15 * ((i % 5) + 1) + redPacket.w * (i % 5);
+      y = 100 + (i / 5) * 15 + redPacket.h * (i / 5);
+      context.setFillStyle(redPacket.c);
+      context.beginPath();
+      context.rect(x, y, redPacket.w, redPacket.h);
+      context.closePath();
+      context.fill();
     }
-    console.log(this.data.redPackers)
+    wx.drawCanvas({
+      canvasId: "flipCardCanvas",
+      actions: context.getActions()
+    });
   },
 
   /**
