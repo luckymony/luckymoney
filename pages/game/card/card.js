@@ -5,7 +5,7 @@ var windowHeight = wx.getSystemInfoSync().windowHeight;
 
 var redPacket = {
   w:(windowWidth - 90)/5,
-  h:(windowWidth - 90)/5*(5/4),
+  h:(windowWidth - 90)/5,
   c:"#ff00ff"
 };
 var redPackets = [];
@@ -32,10 +32,11 @@ Page({
     var x = 0;
     var y = 0;
     var start_y = (windowHeight - (redPacket.h*5 + 60))/2;
+    var start_x = (windowWidth - (redPacket.w*5 + 32))/2;
     //console.log(windowHeight);
     var context = wx.createContext();
     for(var i=0;i<25;i++) {
-      x = 15 * ((i % 5) + 1) + redPacket.w * (i % 5);
+      x = start_x + 8 * (i % 5) + redPacket.w * (i % 5);
       var index = parseInt(i / 5);
       y = start_y + index * 15 + redPacket.h * index;
       context.setFillStyle(redPacket.c);
@@ -47,13 +48,15 @@ Page({
       context.setFontSize(16) //字体大小
       context.setFillStyle('#fff') //字体颜色
       context.textAlign = "center"; //文字居中
-      context.fillText("点击我",x+redPacket.w/2,y+redPacket.h/2);
+      context.fillText(i,x+redPacket.w/2,y+redPacket.h/2);
     }
     wx.drawCanvas({
       canvasId: "flipCardCanvas",
       actions: context.getActions()
     });
   },
+
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成
