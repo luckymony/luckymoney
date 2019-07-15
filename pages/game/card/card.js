@@ -2,10 +2,12 @@
 
 var windowWidth  = wx.getSystemInfoSync().windowWidth;
 var windowHeight = wx.getSystemInfoSync().windowHeight;
-var fromItems = [4];
-var toItems = [10];
+var fromItems = [4,6,7,8,9,10,15,21];
+var toItems = [10,4,15,21,8,13,6,7];
 var mobileDistanceX = 0;
 var mobileDistanceY = 0;
+var totalCount = 0;
+var currentIndex = 0;
 var redPacket = {
   i:0,
   x:0,
@@ -102,28 +104,35 @@ Page({
       }
     }
     
-    var fromPacket = redPackets[4];
-    var toPacket   = redPackets[10];
+    if (totalCount == 50) {
+      totalCount = 0;
+      currentIndex ++;
+      if (currentIndex >= 8)currentIndex = 8;
+      return;
+    }
+    totalCount ++;
+    var fromIndex = fromItems[currentIndex];
+    var toIndex = toItems[currentIndex];
+    var fromPacket = redPackets[fromIndex];
+    var toPacket = redPackets[toIndex];
     var total_x = (fromPacket.x - toPacket.x);
-    var total_y = (toPacket.y - fromPacket.y);
-    var avg_x = total_x/100;
-    var avg_y = total_y/100;
+    var total_y = (fromPacket.y - toPacket.y);
+    var avg_x = total_x / 50;
+    var avg_y = total_y / 50;
     mobileDistanceX += avg_x;
     mobileDistanceY += avg_y;
-    // console.log(mobileDistanceX);
-    // console.log(mobileDistanceY);
-    if(fromPacket.x > toPacket.x) {
+
+    if (fromPacket.x > toPacket.x) {
       fromPacket.x -= mobileDistanceX;
-    }else {
+    } else {
       fromPacket.x += mobileDistanceX;
     }
     if (fromPacket.y > toPacket.y) {
-      fromPacket.y -= mobileDistanceY;
-    } else {
       fromPacket.y += mobileDistanceY;
+    } else {
+      fromPacket.y -= mobileDistanceY;
     }
     fromPacket.c = "#eee";
-    // console.log(fromPacket);
     drawPacket(fromPacket);
     // // console.log(redPackets);
     // for (var i = 0; i < toItems.length; i++) {
@@ -176,7 +185,7 @@ Page({
    */
   onReady: function () {
     this.drawRedPacket();
-    this.interval = setInterval(this.drawRedPacket,50)
+    this.interval = setInterval(this.drawRedPacket,20)
   },
 
   /**
