@@ -6,17 +6,6 @@ var fromItems = [4,6,7,8,9,10,15,21];
 var toItems = [10,4,15,21,8,13,6,7];
 var mobileDistanceX = 0;
 var mobileDistanceY = 0;
-var totalCount = 0;
-var currentIndex = 0;
-var redPacket = {
-  i:0,
-  x:0,
-  y:0,
-  w:(windowWidth - 90)/5,
-  h:(windowWidth - 90)/5,
-  c:"#ff00ff"
-};
-var redPackets = [];
 var movePackets = [];
 
 Page({
@@ -25,7 +14,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-     
+    redPackets:[]
   },
 
   canvasEnd:function (e) {
@@ -42,23 +31,14 @@ Page({
       context.fillText(i,x+redPacket.w/2,y+redPacket.h/2);
   */
   
-
   drawRedPacket:function() {
-    //使用wx.createContext获取绘图上下文context
-    // return;
-    var x = 0;
-    var y = 0;
-    var start_y = (windowHeight - (redPacket.h * 5 + 60)) / 2;
-    var start_x = (windowWidth - (redPacket.w * 5 + 32)) / 2;
 
-    //console.log(windowHeight);
     var context = wx.createContext();
 
     function rand(min, max) {
       return parseInt(Math.random() * (max - min) + min);
     }
-    var allCount = rand(1, 25);
-    
+
     function drawPacket(packet) {
       context.beginPath();
       context.setFillStyle(packet.c);
@@ -86,76 +66,59 @@ Page({
       }
       return false;
     }
-    redPackets = [];
-    for (var i = 0; i < 25; i++) {
-      var packet = {};
-      x = start_x + 8 * (i % 5) + redPacket.w * (i % 5);
-      var index = parseInt(i / 5);
-      y = start_y + index * 8 + redPacket.h * index;
-      packet.x = x;
-      packet.y = y;
-      packet.w = redPacket.w;
-      packet.h = redPacket.h;
-      packet.c = redPacket.c;
-      packet.i = i;
-      redPackets.push(packet);
+
+    var that = this;
+    for (var i = 0; i < that.data.redPackets.length; i++) {
+      var redPacket = that.data.redPackets[i];
       if (!isFromDraw(i)) {
-        drawPacket(packet);
+        drawPacket(redPacket);
+      }else {
+
       }
     }
+
+  //   redPackets = [];
+  //   for (var i = 0; i < 25; i++) {
+  //     var packet = {};
+  //     x = start_x + 8 * (i % 5) + redPacket.w * (i % 5);
+  //     var index = parseInt(i / 5);
+  //     y = start_y + index * 8 + redPacket.h * index;
+  //     packet.x = x;
+  //     packet.y = y;
+  //     packet.w = redPacket.w;
+  //     packet.h = redPacket.h;
+  //     packet.c = redPacket.c;
+  //     packet.i = i;
+  //     redPackets.push(packet);
+  //     if (!isFromDraw(i)) {
+  //       drawPacket(packet);
+  //     }
+  //   }
     
-    if (totalCount == 50) {
-      totalCount = 0;
-      currentIndex ++;
-      if (currentIndex >= 8)currentIndex = 8;
-      return;
-    }
-    totalCount ++;
-    var fromIndex = fromItems[currentIndex];
-    var toIndex = toItems[currentIndex];
-    var fromPacket = redPackets[fromIndex];
-    var toPacket = redPackets[toIndex];
-    var total_x = (fromPacket.x - toPacket.x);
-    var total_y = (fromPacket.y - toPacket.y);
-    var avg_x = total_x / 50;
-    var avg_y = total_y / 50;
-    mobileDistanceX += avg_x;
-    mobileDistanceY += avg_y;
+  //   var fromIndex = fromItems[0];
+  //   var toIndex = toItems[0];
+  //   var fromPacket = redPackets[fromIndex];
+  //   var toPacket = redPackets[toIndex];
+  //   var total_x = (fromPacket.x - toPacket.x);
+  //   var total_y = (fromPacket.y - toPacket.y);
+  //   var avg_x = total_x / 50;
+  //   var avg_y = total_y / 50;
+  //   mobileDistanceX += avg_x;
+  //   mobileDistanceY += avg_y;
 
-    if (fromPacket.x > toPacket.x) {
-      fromPacket.x -= mobileDistanceX;
-    } else {
-      fromPacket.x += mobileDistanceX;
-    }
-    if (fromPacket.y > toPacket.y) {
-      fromPacket.y += mobileDistanceY;
-    } else {
-      fromPacket.y -= mobileDistanceY;
-    }
-    fromPacket.c = "#eee";
-    drawPacket(fromPacket);
-    // // console.log(redPackets);
-    // for (var i = 0; i < toItems.length; i++) {
-    //   var index1 = toItems[i];
-    //   var index2 = fromItems[i];
-    //   var redPacket1 = redPackets[index1];
-    //   var redPacket2 = redPackets[index2];
-    //   var total_x = (redPacket1.x - redPacket2.x);
-    //   var total_y = (redPacket1.y - redPacket2.y);
-    //   var avg_x = total_x/10;
-    //   var avg_y = total_y/10;
-    //   //console.log(avg_x, avg_y);
-    //   redPacket2.x += avg_x;
-    //   redPacket2.y += avg_y;
-    //   redPacket2.c = "#eee";
-    //   drawPacket(redPacket2);
-    // }
+  //   if (fromPacket.x > toPacket.x) {
+  //     fromPacket.x -= mobileDistanceX;
+  //   } else {
+  //     fromPacket.x += mobileDistanceX;
+  //   }
+  //   if (fromPacket.y > toPacket.y) {
+  //     fromPacket.y += mobileDistanceY;
+  //   } else {
+  //     fromPacket.y -= mobileDistanceY;
+  //   }
+  //   fromPacket.c = "#eee";
+  //   drawPacket(fromPacket);
 
-    // console.log(redPackets[4]);
-    // redPackets[4].x = 200;
-    // redPackets[4].y = 300;
-    // redPackets[4].c = "#ccc";
-    // DrawRedPacket(redPackets[4]);
     wx.drawCanvas({
       canvasId: "flipCardCanvas",
       actions: context.getActions()
@@ -166,7 +129,32 @@ Page({
 
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '开门大吉' }); 
-    
+    this.initRedPackets();
+    this.drawRedPacket();
+  },
+
+  initRedPackets:function() {
+    var width = (windowWidth - 90) / 5;
+    var height = (windowWidth - 90) / 5;
+    var x = 0;
+    var y = 0;
+    var start_y = (windowHeight - (height * 5 + 60)) / 2;
+    var start_x = (windowWidth - (width * 5 + 32)) / 2;
+    for (var i = 0; i < 25; i++) {
+      var packet = {};
+      x = start_x + 8 * (i % 5) + width * (i % 5);
+      var index = parseInt(i / 5);
+      y = start_y + index * 8 + height * index;
+      packet.x = x;
+      packet.y = y;
+      packet.w = width;
+      packet.h = height;
+      packet.c = "#ff00ff";
+      packet.i = i;
+      var that = this;
+      that.data.redPackets.push(packet);
+    }
+    console.log(this.data.redPackets);
   },
 
   /** 移动方案1
@@ -184,8 +172,8 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.drawRedPacket();
-    this.interval = setInterval(this.drawRedPacket,20)
+    //this.drawRedPacket();
+    //this.interval = setInterval(this.drawRedPacket,20)
   },
 
   /**
@@ -206,7 +194,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    clearInterval(this.interval)
+    // clearInterval(this.interval)
   },
 
   /**
