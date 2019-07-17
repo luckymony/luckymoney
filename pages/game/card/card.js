@@ -14,11 +14,32 @@ Page({
    * 页面的初始数据
    */
   data: {
-    redPackets:[]
+    redPackets:[],
+    fromePackets:[]
   },
 
   canvasEnd:function (e) {
     console.log(e);
+  },
+
+    isFromDraw:function (index) {
+      for(var i = 0; i<fromItems.length; i++) {
+        var obj = fromItems[i];
+        if (index == obj) {
+          return true;
+        }
+      }
+      return false;
+    },
+
+  isToDraw:function (index) {
+    for (var i = 0; i < toItems.length; i++) {
+      var obj = toItems[i];
+      if (index == obj) {
+        return true;
+      }
+    }
+    return false;
   },
 
   /**
@@ -47,33 +68,13 @@ Page({
       context.fill();
     }
 
-    function isFromDraw(index) {
-      for (var i = 0; i < fromItems.length; i++) {
-        var obj = fromItems[i];
-        if (index == obj) {
-          return true;
-        }
-      }
-      return false;
-    }
-
-    function isToDraw(index) {
-      for (var i = 0; i < toItems.length; i++) {
-        var obj = toItems[i];
-        if (index == obj) {
-          return true;
-        }
-      }
-      return false;
-    }
-
     var that = this;
     for (var i = 0; i < that.data.redPackets.length; i++) {
       var redPacket = that.data.redPackets[i];
-      if (!isFromDraw(i)) {
+      var fromPacket;
+      var toPacket;
+      if (!that.isFromDraw(i)) {
         drawPacket(redPacket);
-      }else {
-
       }
     }
 
@@ -134,7 +135,7 @@ Page({
   },
 
   initRedPackets:function() {
-    var width = (windowWidth - 90) / 5;
+    var width  = (windowWidth - 90) / 5;
     var height = (windowWidth - 90) / 5;
     var x = 0;
     var y = 0;
@@ -153,8 +154,12 @@ Page({
       packet.i = i;
       var that = this;
       that.data.redPackets.push(packet);
+      if (this.isFromDraw(i)){
+        that.data.fromePackets.push(packet);
+      }
     }
     console.log(this.data.redPackets);
+    console.log(this.data.fromePackets);
   },
 
   /** 移动方案1
