@@ -71,10 +71,10 @@ Page({
     var that = this;
     for (var i = 0; i < that.data.redPackets.length; i++) {
       var redPacket = that.data.redPackets[i];
-      var fromPacket;
-      var toPacket;
       if (!that.isFromDraw(i)) {
         drawPacket(redPacket);
+      }else {
+       
       }
     }
 
@@ -152,11 +152,33 @@ Page({
       packet.h = height;
       packet.c = "#ff00ff";
       packet.i = i;
+      packet.avg_x=0;
+      packet.avg_y=0;
+      packet.n=0;
       var that = this;
       that.data.redPackets.push(packet);
       if (this.isFromDraw(i)){
         that.data.fromePackets.push(packet);
       }
+    }
+
+    for (var j = 0; j < fromItems.length; j++) {
+      var fromIndex = fromItems[j];
+      var toIndex = toItems[j];
+      var fromPacket = this.data.redPackets[fromIndex];
+      var toPacket = this.data.redPackets[toIndex];
+      var total_x = (fromPacket.x - toPacket.x);
+      var total_y = (fromPacket.y - toPacket.y);
+      var avg_x = total_x / 50;
+      var avg_y = total_y / 50;
+      var avg_x_val = 'fromePackets[' + j + '].avg_x';
+      var avg_y_val = 'fromePackets[' + j + '].avg_y';
+      var num_val = 'fromePackets[' + j + '].n';
+      this.setData({
+        [avg_x_val]: avg_x,
+        [avg_y_val]: avg_y,
+        [num_val]:50
+      });
     }
     console.log(this.data.redPackets);
     console.log(this.data.fromePackets);
