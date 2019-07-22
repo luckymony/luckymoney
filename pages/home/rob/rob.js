@@ -33,7 +33,7 @@ Page({
 
   openGame:function(e) {
     wx.navigateTo({
-      url: '../../game/card/card',
+      url: '../../game/rain/rain',
     })
   },
 

@@ -1,4 +1,7 @@
 <!--pages/game/rain/rain.wxml-->
-<view class='canvas-view'>  
-    <!-- <canvas canvas-id="ball"></canvas>   -->
-</view> 
+<view style="margin-top:{{viewTop}}rpx; margin-left:60rpx; margin-right:60rpx; height:{{viewHeight}}rpx; background-color:blue">
+<view style="margin-top:10rpx; margin-left:10rpx; width:46rpx; height:46rpx; background-color:red">
+</view>
+<view style="margin-top:10rpx; margin-left:66rpx; width:46rpx; height:46rpx; background-color:red">
+</view>
+</view>

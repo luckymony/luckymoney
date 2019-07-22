@@ -3,7 +3,7 @@
 var windowWidth  = wx.getSystemInfoSync().windowWidth;
 var windowHeight = wx.getSystemInfoSync().windowHeight;
 var fromItems = [4,6,7,8,9,10,15,21];
-var toItems = [10,4,15,21,8,13,6,7];
+var toItems = [10,4,15,21,8,9,6,7];
 var mobileDistanceX = 0;
 var mobileDistanceY = 0;
 var movePackets = [];
@@ -14,23 +14,24 @@ Page({
    * 页面的初始数据
    */
   data: {
+    bigRedPackets:[],
     redPackets:[],
-    fromePackets:[]
+    fromPackets:[]
   },
 
   canvasEnd:function (e) {
     console.log(e);
   },
 
-    isFromDraw:function (index) {
-      for(var i = 0; i<fromItems.length; i++) {
-        var obj = fromItems[i];
-        if (index == obj) {
-          return true;
-        }
+  isFromDraw:function (index) {
+    for(var i = 0; i<fromItems.length; i++) {
+      var obj = fromItems[i];
+      if (index == obj) {
+        return true;
       }
-      return false;
-    },
+    }
+    return false;
+  },
 
   isToDraw:function (index) {
     for (var i = 0; i < toItems.length; i++) {
@@ -42,146 +43,157 @@ Page({
     return false;
   },
 
+  isMoveAnimationEnd:function(packets) {
+    for(var j = 0; j<packets.length; j++) {
+      var packet = packets[j];
+      if (packet.n >= 0) {
+          return false;
+      }
+    }
+    return true;
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
-  /*
-      context.setFontSize(16) //字体大小
-      context.setFillStyle('#fff') //字体颜色
-      context.textAlign = "center"; //文字居中
-      context.fillText(i,x+redPacket.w/2,y+redPacket.h/2);
-  */
-  
+
   drawRedPacket:function() {
-
+    var that = this;
     var context = wx.createContext();
-
-    function rand(min, max) {
-      return parseInt(Math.random() * (max - min) + min);
-    }
+    context.clearRect(0, 0, windowWidth, windowHeight);
 
     function drawPacket(packet) {
       context.beginPath();
       context.setFillStyle(packet.c);
-      context.rect(packet.x, packet.y, packet.w, packet.h);
+      context.rect(packet.x, packet.y, packet.w, packet.h);  
       context.closePath();
       context.fill();
+      context.setFontSize(16) //字体大小
+      context.setFillStyle('#ccc') //字体颜色
+      context.textAlign = "center"; //文字居中
+      context.fillText(packet.i, (packet.x + packet.w / 2), (packet.y + packet.h / 2) + 8 );
     }
 
-    var that = this;
-    for (var i = 0; i < that.data.redPackets.length; i++) {
-      var redPacket = that.data.redPackets[i];
-      if (!that.isFromDraw(i)) {
-        drawPacket(redPacket);
+    function swingAnimation (i,redPacket){
+      var n = 'redPackets[' + i + '].n';
+      var x = 'redPackets[' + i + '].x';
+      that.setData({
+        [x]: (redPacket.n == 1) ? (redPacket.x + 4) : (redPacket.x - 4),
+        [n]: (redPacket.n == 1) ? 0 : 1,
+      });
+    }
+
+    function moveAnimation (otherPacket,j) {
+      if (otherPacket.n >= 0) {
+        var x = 'fromPackets[' + j + '].x';
+        var y = 'fromPackets[' + j + '].y';
+        var n = 'fromPackets[' + j + '].n';
+        that.setData({
+          [x]: (otherPacket.n == 0) ? otherPacket.t_x : (otherPacket.avg_x + redPacket.x),
+          [y]: (otherPacket.n == 0) ? otherPacket.t_y : (otherPacket.avg_y + redPacket.y),
+          [n]: otherPacket.n - 1,
+        });
       }else {
-       
+        if (that.isMoveAnimationEnd(that.data.fromPackets)) {
+           //console.log('结束====');
+        }
       }
     }
 
-  //   redPackets = [];
-  //   for (var i = 0; i < 25; i++) {
-  //     var packet = {};
-  //     x = start_x + 8 * (i % 5) + redPacket.w * (i % 5);
-  //     var index = parseInt(i / 5);
-  //     y = start_y + index * 8 + redPacket.h * index;
-  //     packet.x = x;
-  //     packet.y = y;
-  //     packet.w = redPacket.w;
-  //     packet.h = redPacket.h;
-  //     packet.c = redPacket.c;
-  //     packet.i = i;
-  //     redPackets.push(packet);
-  //     if (!isFromDraw(i)) {
-  //       drawPacket(packet);
-  //     }
-  //   }
-    
-  //   var fromIndex = fromItems[0];
-  //   var toIndex = toItems[0];
-  //   var fromPacket = redPackets[fromIndex];
-  //   var toPacket = redPackets[toIndex];
-  //   var total_x = (fromPacket.x - toPacket.x);
-  //   var total_y = (fromPacket.y - toPacket.y);
-  //   var avg_x = total_x / 50;
-  //   var avg_y = total_y / 50;
-  //   mobileDistanceX += avg_x;
-  //   mobileDistanceY += avg_y;
-
-  //   if (fromPacket.x > toPacket.x) {
-  //     fromPacket.x -= mobileDistanceX;
-  //   } else {
-  //     fromPacket.x += mobileDistanceX;
-  //   }
-  //   if (fromPacket.y > toPacket.y) {
-  //     fromPacket.y += mobileDistanceY;
-  //   } else {
-  //     fromPacket.y -= mobileDistanceY;
-  //   }
-  //   fromPacket.c = "#eee";
-  //   drawPacket(fromPacket);
+    for (var i = 0; i < that.data.redPackets.length; i++) {
+      var redPacket = that.data.redPackets[i];
+      drawPacket(redPacket);
+      // if (that.isFromDraw(i)) {
+      //   for (var j = 0; j < that.data.fromPackets.length; j++) {
+      //     var otherPacket = that.data.fromPackets[j];
+      //     if(otherPacket.i == i) {
+      //       moveAnimation(otherPacket,j);
+      //     }
+      //       drawPacket(otherPacket); 
+      //   }
+      // }else {
+      //   drawPacket(redPacket);
+      // }
+    }
 
     wx.drawCanvas({
       canvasId: "flipCardCanvas",
       actions: context.getActions()
     });
-   
   },
 
 
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '开门大吉' }); 
     this.initRedPackets();
-    this.drawRedPacket();
+    this.initMovePackets();
   },
 
-  initRedPackets:function() {
-    var width  = (windowWidth - 90) / 5;
+  initPacket:function(i) {
+    var width = (windowWidth - 90) / 5;
     var height = (windowWidth - 90) / 5;
     var x = 0;
     var y = 0;
     var start_y = (windowHeight - (height * 5 + 60)) / 2;
     var start_x = (windowWidth - (width * 5 + 32)) / 2;
-    for (var i = 0; i < 25; i++) {
-      var packet = {};
-      x = start_x + 8 * (i % 5) + width * (i % 5);
-      var index = parseInt(i / 5);
-      y = start_y + index * 8 + height * index;
-      packet.x = x;
-      packet.y = y;
-      packet.w = width;
-      packet.h = height;
-      packet.c = "#ff00ff";
-      packet.i = i;
-      packet.avg_x=0;
-      packet.avg_y=0;
-      packet.n=0;
-      var that = this;
-      that.data.redPackets.push(packet);
-      if (this.isFromDraw(i)){
-        that.data.fromePackets.push(packet);
-      }
-    }
+    var packet = {};
+    x = start_x + 8 * (i % 5) + width * (i % 5);
+    var index = parseInt(i / 5);
+    y = start_y + index * 8 + height * index;
+    packet.x = x;
+    packet.y = y;
+    packet.t_x = 0;
+    packet.t_y = 0;
+    packet.t_i = 0;
+    packet.w = width;
+    packet.h = height;
+    packet.c = "#ff00ff";
+    packet.i = i;
+    packet.avg_x = 0;
+    packet.avg_y = 0;
+    packet.n = 0;
+    return packet;
+  },
 
+  initMovePackets:function() {
+    function rand(min, max) {
+      return parseInt(Math.random() * (max - min) + min);
+    }
     for (var j = 0; j < fromItems.length; j++) {
       var fromIndex = fromItems[j];
       var toIndex = toItems[j];
       var fromPacket = this.data.redPackets[fromIndex];
       var toPacket = this.data.redPackets[toIndex];
-      var total_x = (fromPacket.x - toPacket.x);
-      var total_y = (fromPacket.y - toPacket.y);
-      var avg_x = total_x / 50;
-      var avg_y = total_y / 50;
-      var avg_x_val = 'fromePackets[' + j + '].avg_x';
-      var avg_y_val = 'fromePackets[' + j + '].avg_y';
-      var num_val = 'fromePackets[' + j + '].n';
+      var total_x = (toPacket.x - fromPacket.x);
+      var total_y = (toPacket.y - fromPacket.y);
+      var num_val = rand(10, 30);
+      var avg_x = total_x / num_val;
+      var avg_y = total_y / num_val;
+      var avg_x_val = 'fromPackets[' + j + '].avg_x';
+      var avg_y_val = 'fromPackets[' + j + '].avg_y';
+      var t_y_val = 'fromPackets[' + j + '].t_y';
+      var t_x_val = 'fromPackets[' + j + '].t_x';
+      var t_i_val = 'fromPackets[' + j + '].t_i';
+      var n_val = 'fromPackets[' + j + '].n';
+      var c_val = 'fromPackets[' + j + '].c';
       this.setData({
         [avg_x_val]: avg_x,
         [avg_y_val]: avg_y,
-        [num_val]:50
+        [t_x_val]: toPacket.x,
+        [t_y_val]: toPacket.y,
+        [t_i_val]: toPacket.i,
+        [n_val]: num_val,
+        [c_val]: "#fff",
       });
     }
-    console.log(this.data.redPackets);
-    console.log(this.data.fromePackets);
+  },
+
+  initRedPackets:function() {
+    for (var i = 0; i < 25; i++) {
+      var that = this;
+      var packet = that.initPacket(i);
+      that.data.redPackets.push(packet);
+    }
   },
 
   /** 移动方案1
@@ -199,8 +211,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    //this.drawRedPacket();
-    //this.interval = setInterval(this.drawRedPacket,20)
+    this.drawRedPacket();
   },
 
   /**
@@ -221,7 +232,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    // clearInterval(this.interval)
+    clearInterval(this.interval)
   },
 
   /**
