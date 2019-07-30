@@ -15,7 +15,7 @@
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#F44848",
+    "navigationBarBackgroundColor": "#EB5646",
     "navigationBarTitleText": "抢红包",
     "navigationBarTextStyle": "white"
   },
@@ -23,7 +23,7 @@
     "color": "#fff",
     "selectedColor": "#f4ea29",
     "borderStyle": "black",
-    "backgroundColor": "#F44848",
+    "backgroundColor": "#EB5646",
     "list": [
       {
         "selectedIconPath": "images/tabbar/search_list_selected.png",

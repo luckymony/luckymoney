@@ -7,14 +7,14 @@
   <view class='page-section'>
   <view class='userinfo-money'>
        <view class='userinfo-money-item' bindtap='goto_money_detail_page'>
-        <i-icon type="redpacket_fill" size="30" color="#F44848"/>
+        <i-icon type="redpacket_fill" size="30" color="#EB5646"/>
         <text>红包</text>
       </view>
       <view class='mid-view'>
       <view class='background-line'></view>
       </view>
       <view class='userinfo-money-item' bindtap='goto_withdraw_page'>
-        <i-icon type="financial_fill" size="30" color="#F44848"/>
+        <i-icon type="financial_fill" size="30" color="#EB5646"/>
         <text>88.88元</text>
       </view>
   </view>

@@ -9,7 +9,7 @@
 </view>
 <view class='item-right-view'>
 <view class='item-top-view'>
-<i-icon type="redpacket_fill" size='50' color="#F44848"/>
+<i-icon type="redpacket_fill" size='50' color="#EB5646"/>
 <text>{{item.lucky_str}}</text>
 </view>
 <view class='item-bottom-view'>
