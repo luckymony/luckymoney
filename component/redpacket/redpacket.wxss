@@ -17,14 +17,4 @@
   width: 80%;
   height: 100%;
 }
-.money-view {
-  position:absolute;
-  height: 30vw;
-  width: 30vw
-}
-.close-view {
-  position:absolute;
-  margin-top: 30rpx;
-  height: 50rpx;
-  width: 50rpx;
-}
+

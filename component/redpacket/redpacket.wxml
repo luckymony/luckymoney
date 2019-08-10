@@ -1,6 +1,7 @@
 <!--component/redpacket/redpacket.wxml-->
 <view class='main-view'>
-<canvas class='canvas-view2' canvas-id="redPacketCanvas2" bindtouchstart="_canvasStart" bindtouchmove="_canvasMove" bindtouchend="_canvasEnd"></canvas>
+<canvas class='canvas-view2' canvas-id="redPacketCanvas2" bindtouchmove="_canvasMove" bindtouchend="_canvasEnd"></canvas>
 <canvas class='canvas-view1' canvas-id="redPacketCanvas1"></canvas>
-<!-- <image src='{{closeImageSrc}}' class='close-view' mode='aspectFit' hidden='{{coinHidden}}'></image> -->
 </view>
+<!-- bindtouchstart="_canvasStart" bindtouchmove="_canvasMove" bindtouchend="_canvasEnd" -->
+<!-- bindtouchstart="_canvasStart" -->
