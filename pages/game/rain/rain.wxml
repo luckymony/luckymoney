@@ -1,3 +1,3 @@
 <!--pages/game/rain/rain.wxml-->
-<redpacket class = 'redpacket-view' id = 'redpacket' wx:if="{{hidden}}"></redpacket>
+<redpacket class = 'redpacket-view' id = 'redpacket' wx:if="{{hidden}}" bind:toRedPacketRecord="toRedPacketRecord"></redpacket>
 <button type="primary" class="button-view1" bindtap='openRedPacket' hidden='{{hidden}}'>打开红包</button>

@@ -268,11 +268,11 @@ Component({
         var height = h * 0.8;
         var width  = w * 0.8;
         context1.save();
-        that._roundRect(context1,0,that.data.moveY1, width, height/2,0);
+        that._roundRect(context1, 0, that.data.moveY1, width, Math.ceil(height/2)+1,0);
         context1.restore();
 
         context1.save();
-        that._roundRect(context1,0,that.data.moveY2, width, height/2, 0);
+        that._roundRect(context1, 0, that.data.moveY2, width, Math.ceil(height/2)+1, 0);
         context1.restore();
       }else {
         context1.save();
@@ -298,7 +298,7 @@ Component({
         var imageWidth = moneyImage.width * (100 / moneyImage.height);
         var imageHeight = 100;
         var money_x = (w * 0.8 - imageWidth) / 2;
-        var money_y = (h - imageHeight)/ 2;
+        var money_y = (h - imageHeight)/ 2 + 30;
         context1.drawImage(moneyImage.url, money_x, money_y, imageWidth, imageHeight);
         context1.restore();
 
@@ -335,6 +335,7 @@ Component({
 
     _canvasStart: function (e) {
       var that = this;
+      console.log(e);
     },
 
     _canvasMove: function (e) {
@@ -347,6 +348,11 @@ Component({
     
     _canvasEnd: function (e) {
       var that = this;
+      if (e.changedTouches[0].y >= 170 
+      && e.changedTouches[0].y <= 210) {
+        console.log('点击了钱包');
+        this.triggerEvent("toRedPacketRecord",e);
+      }
       that.setData({
         startY: 100
       });
