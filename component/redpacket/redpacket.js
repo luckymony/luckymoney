@@ -118,18 +118,17 @@ Component({
       console.log('开始动画')
       var that = this;
       that._animation1();
-      that.currentTimeout = setTimeout(function (){
-        that.setData({
-          coinHidden:true
-        });
-        that._animation3();
-      },5000);
     },
 
     openReadPacketSuccess:function() {
       console.log('成功获得红包')
       var that = this;
-      that._animation3();
+      that.currentTimeout = setTimeout(function () {
+        that.setData({
+          coinHidden: true
+        });
+        that._animation3();
+      }, 5000);
     },
 
     openRedPakcetFailed:function() {
@@ -172,19 +171,19 @@ Component({
             moveY2: that.data.moveY2 + 60,
             transparency: that.data.transparency + 0.1
           });
-          that._drawRedPacketEnd(that.data.startY);
           if (that.data.moveY1 < - (that.data.windowHeight * 0.4 + 60)
             && that.data.moveY2 > that.data.windowHeight + 60) {
             clearInterval(that.data.setInter);
             that.setData({
               transparency: 1
             });
-            that._drawRedPacketEnd(that.data.startY);
           }
+          that._drawRedPacketEnd(that.data.startY);
         }, 100); 
     },
     
     _drawRedPacketEnd:function (y) {
+
       function circleImg(ctx,w,img) {
         var that = this;
         var x = w / 2 - 15;
@@ -236,6 +235,7 @@ Component({
       drawRedPacketText(context2, that.data.money.toFixed(2), 50, w,160,true);
       drawRedPacketText(context2,'已存入钱包',18,w,200,false);
       context2.draw();
+
     },
 
       _roundRect: function(ctx, x, y, w, h, r) {
@@ -349,9 +349,9 @@ Component({
     _canvasEnd: function (e) {
       var that = this;
       if (e.changedTouches[0].y >= 170 
-      && e.changedTouches[0].y <= 210) {
-        console.log('点击了钱包');
-        this.triggerEvent("toRedPacketRecord",e);
+      && e.changedTouches[0].y <= 210
+      && that.data.transparency == 1) {
+        this.triggerEvent("toRedPacketRecord");
       }
       that.setData({
         startY: 100

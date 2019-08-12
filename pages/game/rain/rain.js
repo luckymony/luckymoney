@@ -20,19 +20,12 @@ Page({
     });
     this.redpacket = this.selectComponent("#redpacket");
     this.redpacket.startOpenReadPacket();
+    this.redpacket.openReadPacketSuccess();
   },
 
-  toRedPacketRecord:function (e) {
-    console.log('点击了========');
-    wx.showToast({
-      title: '点击去红包记录',
-      icon: 'success',
-      image: '',
-      duration: 2000,
-      mask: true,
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
+  toRedPacketRecord:function () {
+    wx.redirectTo({
+      url: '../../me/withdraw/withdraw',
     })
   },
 
