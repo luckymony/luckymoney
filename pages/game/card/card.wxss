@@ -1,6 +1,7 @@
 /* pages/game/card/card.wxss */
 
 .card-module {
+    margin-top: 25%;
     padding: 20rpx;
     display: flex;
     flex-direction: row;

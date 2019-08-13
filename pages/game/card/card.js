@@ -278,7 +278,7 @@ Page({
       success(res) {
         carWidth  = parseInt((res.windowWidth - 20) / 5);
         marginTop = (res.windowHeight - res.windowWidth)/2;
-        console.log(carWidth, marginTop)
+        console.log(res.windowWidth, res.windowHeight)
       }
     })
     this.setData({
