@@ -1,7 +1,13 @@
 /* pages/game/card/card.wxss */
-
+.main-view {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content: center;
+}
 .card-module {
-    margin-top: 25%;
     padding: 20rpx;
     display: flex;
     flex-direction: row;

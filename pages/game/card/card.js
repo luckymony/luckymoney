@@ -270,21 +270,8 @@ Page({
 
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '开门大吉' }); 
-    let carWidth = 0;
-    let marginTop = 0;
     const { cardData } = this.data;
     this.addPosition(cardData); // 数组添加移动坐标位置
-    wx.getSystemInfo({
-      success(res) {
-        carWidth  = parseInt((res.windowWidth - 20) / 5);
-        marginTop = (res.windowHeight - res.windowWidth)/2;
-        console.log(res.windowWidth, res.windowHeight)
-      }
-    })
-    this.setData({
-      carWidth:carWidth,
-      marginTop:marginTop
-    })
   },
 
   // 数组添加移动坐标值 并且把所有的disabled 状态还原会false 
@@ -295,6 +282,8 @@ Page({
       let y = parseInt(index / lineTotal)
       item.twoArry = { x, y }
       item.disabled = false;   // 还原所有的disabled 状态
+      console.log(x,y);
+      console.log(windowWidth);
     })
     this.setData({ cardData })
   },
