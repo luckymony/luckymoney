@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "redpacket": "../../../component/redpacket/redpacket"
-  }
+  },
+  "disableScroll": true
 }
