@@ -29,8 +29,9 @@ Page({
 
   },
   grabLuckyMoney: function(e) {
+    var index = e.currentTarget.dataset['index'];
     wx.navigateTo({
-      url: '../rob/rob',
+      url: '../rob/rob?type=' + index,
     })
   },
   onLoad: function (options) {

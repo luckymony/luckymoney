@@ -14,7 +14,8 @@ Page({
       { icon: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555004603689&di=6161b038a8a7046bfe88e4d72e975729&imgtype=0&src=http%3A%2F%2Fwww.36588.com.cn%2FImageResourceMongo%2FUploadedFile%2Fdimension%2Fbig%2F7d10bc2b-db5b-4247-925c-0628d65b3f50.png", name: "张三丰", time: "08-08 10:00", money: "88.88"}, 
       { icon: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555004603689&di=6161b038a8a7046bfe88e4d72e975729&imgtype=0&src=http%3A%2F%2Fwww.36588.com.cn%2FImageResourceMongo%2FUploadedFile%2Fdimension%2Fbig%2F7d10bc2b-db5b-4247-925c-0628d65b3f50.png", name: "张三丰", time: "08-08 10:00", money: "88.88"}],
     currentItems: [],
-    showLoading: false
+    showLoading: false,
+    playType:0
   },
 
   showAllTap:function (e) {
@@ -32,15 +33,24 @@ Page({
   },
 
   openGame:function(e) {
-    wx.navigateTo({
-      url: '../../game/card/card',
-    })
+    if(this.data.playType == 0) {
+      wx.navigateTo({
+        url: '../../game/card/card',
+      })
+    }else if (this.data.playType == 1) {
+      wx.navigateTo({
+        url: '../../game/rain/rain',
+      })
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      playType: options["type"]
+    });
     let newItems = [];
     if (this.data.allItems.length > 5) {
        newItems = this.data.allItems.slice(0, 5)

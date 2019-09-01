@@ -1,12 +1,6 @@
 /* pages/game/rain/rain.wxss */
-.redpacket-view {
+.main-view {
   width: 100%;
   height: 100%;
-}
-.button-view1 {
-  position: absolute;
-  left: 100rpx;
-  top: 100rpx;
-  width: 200rpx;
-  height: 100rpx;
+  background-color: orange;
 }

@@ -1,6 +1,6 @@
 <scroll-view class='page-body' scroll-y="true">
 <block wx:for="{{items}}" wx:for-index="index" wx:for-item="item">
-<view class='list-item' bindtap='grabLuckyMoney'>
+<view class='list-item' bindtap='grabLuckyMoney' data-index="{{index}}">
 <view class='time-view'>{{item.start_time}}</view>
 <view class='lucky-money-view'>
 <view class='item-left-view' wx:if="{{!item.is_me}}">
