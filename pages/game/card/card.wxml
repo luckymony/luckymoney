@@ -1,5 +1,5 @@
 <!--pages/game/card/card.wxml-->
-<view class='main-view'>
+<view class='main-view' wx:if="{{!isShowRedPacket}}">
       <view class="card-module">
         <view class="card {{ item.showClass ? 'change' : ''}}"
         wx:for="{{cardData}}" wx:for-index="index" wx:for-item="item"
@@ -9,3 +9,4 @@
         </view>
     </view>
 </view>
+<redpacket class = 'redpacket-view' id = 'redpacket' wx:if="{{isShowRedPacket}}" bind:toRedPacketRecord="toRedPacketRecord"></redpacket>

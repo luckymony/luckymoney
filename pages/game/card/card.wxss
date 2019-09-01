@@ -71,3 +71,8 @@
 .card-module .card.change .opacity {
     opacity: 0.5;
 }
+.redpacket-view {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}

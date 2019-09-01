@@ -9,11 +9,13 @@ Page({
    */
   data: {
     carWidth: '', //卡片宽度
-    marginTop: 0,
+    isCanAction: false,
     number: 10,
     setInter: '',
     stopShaking: true,
     currentIndex: 0,
+    flipArray:[],
+    isShowRedPacket:false,
     cardData: [
       {
         animationData: {},
@@ -269,10 +271,111 @@ Page({
   },
 
   onLoad: function (options) {
+
     wx.setNavigationBarTitle({ title: '开门大吉' }); 
+    let carWidth = 0;
     const { cardData } = this.data;
     this.addPosition(cardData); // 数组添加移动坐标位置
+    wx.getSystemInfo({
+      success(res) {
+        carWidth = parseInt((res.windowWidth - 20) / 5);
+      }
+    });
+
+    this.setData({
+      carWidth
+    });
+
+    wx.showToast({
+      title: '加载中...',
+      mask: true,
+      icon: 'loading',
+      duration: 5000
+    });
+
+    let timer1 = setTimeout(() => {
+      clearTimeout(timer1);
+      wx.hideToast();
+      const { carWidth, cardData } = this.data;
+      this.shuffle(carWidth,true);
+      let timer2 = setTimeout(() => {
+        clearTimeout(timer2)
+        cardData.sort(this.randomsort);
+        this.addPosition(cardData)
+        this.shuffle(0,true)
+        let timer3 = setTimeout(() => {
+          clearTimeout(timer3)
+          this.shuffle(carWidth, false);
+          let timer4 = setTimeout(() => {
+            clearTimeout(timer4)
+            cardData.sort(this.randomsort);
+            this.addPosition(cardData)
+            this.shuffle(0, false)
+            let timer5 = setTimeout(()=>{
+              clearTimeout(timer5)
+              this.setData({
+                stopShaking : false,
+                isCanAction : true
+              })
+              this.shaking()
+            },1000)
+          },1000)
+        },3000)
+      }, 1000)
+    }, 5000) 
   },
+
+  randomsort(a, b) {
+    return Math.random() > .5 ? -1 : 1;
+    //用Math.random()函数生成0~1之间的随机数与0.5比较，返回-1或1
+  },
+   
+  getFlipCard(){
+    var that = this;
+    let { flipArray } = that.data;
+    flipArray = [];
+    that.setData({ flipArray });
+    while(flipArray.length < 5) {
+      var index = that.rand(0, 24);
+      if (flipArray.indexOf(index) <= -1) { //不包含
+        flipArray.push(index);
+      }
+      that.setData({ flipArray });
+    }
+  },
+
+  // 洗牌函数
+  shuffle(translateUnit,isShow) {
+    var that = this;
+    if (isShow) {
+      that.getFlipCard();
+    }
+    let { cardData } = that.data;
+    let { flipArray } = that.data;
+    cardData.map((item, index) => {
+      let animation = wx.createAnimation({
+        duration: 500,
+        timingFunction: 'ease'
+      })
+      const translateUnitX = translateUnit * (2 - item.twoArry.x)
+      const translateUnitY = translateUnit * (2 - item.twoArry.y)
+      animation.translate(translateUnitX, translateUnitY).step()
+      item.animationData = animation.export()
+      item.opacity = false;
+      if (item.showClass) {
+        item.showClass = false;
+      }
+      if (isShow) {
+        if (flipArray.indexOf(index) >= 0) {
+          item.showClass = true;
+        }
+      }
+    })
+    this.setData({
+      cardData
+    })
+  },
+
 
   // 数组添加移动坐标值 并且把所有的disabled 状态还原会false 
   addPosition(cardData) {
@@ -282,12 +385,117 @@ Page({
       let y = parseInt(index / lineTotal)
       item.twoArry = { x, y }
       item.disabled = false;   // 还原所有的disabled 状态
-      console.log(x,y);
-      console.log(windowWidth);
     })
     this.setData({ cardData })
   },
 
+  //摇晃动画
+  shaking() {
+    // 1: 创建动画实例animation:
+    var that = this;
+    if (that.data.stopShaking) return;
+    var animation = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease',
+    })
+    var next = true;
+    //连续动画关键步骤
+    that.data.setInter = setInterval(function () {
+      if (that.data.stopShaking) return;
+      //console.log('间隔摇摆')
+      //2: 调用动画实例方法来描述动画
+      if (next) {
+        animation.translateX(4).step();
+        animation.rotate(19).step()
+        next = !next;
+      } else {
+        animation.translateX(-4).step();
+        animation.rotate(-19).step()
+        next = !next;
+      }
+      let animationData = 'cardData[' + that.data.currentIndex + '].animationData';
+      //3: 将动画export导出，把动画数据传递组件animation的属性 
+      that.setData({
+        [animationData]: animation.export()
+      })
+    }, 300)
+
+    let timer = setTimeout(() => {
+      clearTimeout(timer);
+      clearInterval(that.data.setInter);
+      var animation = wx.createAnimation({
+        duration: 200,
+        timingFunction: 'ease',
+      })
+      animation.translateX(0).step();
+      animation.rotate(0).step();
+      let animationData = 'cardData[' + that.data.currentIndex + '].animationData';
+      that.setData({
+        [animationData]: animation.export()
+      })
+      if (!that.data.stopShaking) {
+        that.setData({
+          currentIndex: that.rand(0, 24)
+        });
+        that.shaking();
+      }
+    }, 2000)
+  },
+
+  handleCurClick(event) {
+    let { isCanAction } = this.data;
+    if (!isCanAction)return;
+
+    let curId = event.currentTarget.dataset.id;
+    // 每次点击时获取被点击拍的disable 属性，
+    let disabled = event.currentTarget.dataset.disabled;
+    //如果为true 就返回不继续向下执行
+    if (disabled) {
+      return;
+    }
+    let { cardData, number, carWidth } = this.data;
+    let money = '';
+    cardData.forEach(item => {
+      item.disabled = true;  // 点击一张拍以后，把所有的牌的disabled 属性改成true ，
+      if (item.id === curId) {
+        item.showClass = true;
+        money = item.money;
+      } else {
+        item.opacity = true
+      }
+    })
+    number -= 1;
+    this.setData({
+      cardData,
+      number
+    })
+
+    this.setData({
+      stopShaking: true
+    });
+    
+    let that = this;
+    let timer1 = setTimeout(() => {
+      clearTimeout(timer1)
+      that.setData({
+        isCanAction:false,
+        isShowRedPacket: true
+      });
+      that.redpacket = that.selectComponent("#redpacket");
+      that.redpacket.startOpenReadPacket();
+      that.redpacket.openReadPacketSuccess();
+    },2025)
+  },
+
+  toRedPacketRecord: function () {
+    wx.redirectTo({
+      url: '../../me/withdraw/withdraw',
+    })
+  },
+
+  rand(min, max) {
+    return parseInt(Math.random() * (max - min) + min);
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -313,7 +521,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    clearInterval(this.interval)
+    clearInterval(this.data.setInter)
   },
 
   /**
