@@ -1,2 +1,5 @@
 <!--pages/game/rain/rain.wxml-->
-<canvas class='main-view'></canvas>
+<view class='main-view'>
+<image src="../../../images/rain/red_backet_bg.jpg"></image>
+</view>
+<canvas canvas-id="caxCanvas" style="position: absolute;"> </canvas>

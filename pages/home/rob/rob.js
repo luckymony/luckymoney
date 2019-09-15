@@ -55,7 +55,7 @@ Page({
     if (this.data.allItems.length > 5) {
        newItems = this.data.allItems.slice(0, 5)
     }else {
-      newItems = this.data.allItems
+       newItems = this.data.allItems
     }
     this.setData({
       currentItems: newItems,

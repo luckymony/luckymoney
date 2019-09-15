@@ -2,5 +2,11 @@
 .main-view {
   width: 100%;
   height: 100%;
-  background-color: orange;
 }
+.main-view image {
+  width: 100%;
+  height: 100%;
+}
+/* .cax-canvas {
+  position: absolute;
+} */
