@@ -469,10 +469,6 @@ Page({
       cardData,
       number
     })
-
-    this.setData({
-      stopShaking: true
-    });
     
     let that = this;
     let timer1 = setTimeout(() => {

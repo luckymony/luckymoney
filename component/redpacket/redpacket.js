@@ -146,9 +146,9 @@ Component({
           } else {
             if (scale >= 1.0) scale = 1.0;
             that._drawRedPacketStart(scale);
-            if (scale < 1) scale = scale + 0.2;
+            if (scale < 1) scale = scale + 0.1;
           }
-        }, 50); 
+        }, 30); 
     },
 
     _animation2:function() {
