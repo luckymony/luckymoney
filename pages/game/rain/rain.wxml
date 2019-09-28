@@ -1,5 +1,17 @@
 <!--pages/game/rain/rain.wxml-->
 <view class='main-view'>
-<image src="../../../images/rain/red_backet_bg.jpg"></image>
+<image  src="../../../images/rain/red_backet_bg.jpg"></image>
 </view>
-<canvas canvas-id="caxCanvas" style="width:100%;height:100%; position: absolute;"> </canvas>
+<view class='timeout-warpper'>
+<view class="timeout">倒计时</view>
+<view class="sec">
+<view class="numOfTime">{{time}}</view>
+<view class="miao">s</view>
+</view>
+</view>
+<view wx:if="{{readyVisible}}" class="bg-view"></view>
+<view wx:if="{{readyVisible}}" class="ready-time">
+<view class="top">一大波红包即将来袭</view>
+<view class="countdown">{{readyTime}}</view>
+</view>
+<!-- <canvas canvas-id="caxCanvas" style="width:100%;height:100%; position: absolute;"> </canvas> -->
