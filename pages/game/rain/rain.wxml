@@ -2,6 +2,12 @@
 <view class='main-view'>
 <image  src="../../../images/rain/red_backet_bg.jpg"></image>
 </view>
+<view wx:if="{{readyVisible}}" class="bg-view"></view>
+<view wx:if="{{readyVisible}}" class="ready-time">
+<view class="top">一大波红包即将来袭</view>
+<view class="countdown">{{readyTime}}</view>
+</view>
+<canvas canvas-id="caxCanvas" style="width:100%;height:100%; position: absolute;"> </canvas>
 <view class='timeout-warpper'>
 <view class="timeout">倒计时</view>
 <view class="sec">
@@ -9,9 +15,7 @@
 <view class="miao">s</view>
 </view>
 </view>
-<view wx:if="{{readyVisible}}" class="bg-view"></view>
-<view wx:if="{{readyVisible}}" class="ready-time">
-<view class="top">一大波红包即将来袭</view>
-<view class="countdown">{{readyTime}}</view>
+<view class="rain-score">
+<view>金币:{{score}}</view>
+<view class='scoreChangeClass {{changeScore < 0 ? "scoreChangeClass2_color":""}}' animation="{{animationData}}">{{changeScore>0 ? "+":""}}{{changeScore}}</view>
 </view>
-<!-- <canvas canvas-id="caxCanvas" style="width:100%;height:100%; position: absolute;"> </canvas> -->

@@ -77,3 +77,39 @@
     font-weight: bold;
     color: white;
 }
+
+.rain-score {
+    position: absolute;
+    font-size: 45rpx;
+    color: white;
+    padding-left: 50rpx;
+    top: 150rpx;
+    font-weight: bold;
+    left: 20rpx;
+    z-index: 1010;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.continuationClass {
+    position: absolute;
+    text-align: center;
+    font-size: 45rpx;
+    color: white;
+    padding-left: 50rpx;
+    top: 90rpx;
+    font-weight: bold;
+    left: 20rpx;
+    z-index: 1010;
+}
+.scoreChangeClass {
+    margin-left: 10rpx;
+    font-size: 40rpx;
+    color: #fffdc5;
+    opacity: 0;
+}
+
+.scoreChangeClass2_color {
+    color: red;
+}
