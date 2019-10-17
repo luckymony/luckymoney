@@ -10,6 +10,7 @@ Page({
     readyTime : 5,
     time:10,
     addRedpackTime:null,
+    dreawTime:null,
     redpackets:[]
   },
 
@@ -53,40 +54,63 @@ Page({
       })
     }, 1000)
 
-    var index = 0;
     that.data.addRedpackTime = setInterval(function () {
-         var redpacket = {
-         w:64 * that.rand(0.8,1.0),
-         y:0,
-         x:that.rand(10, windowWidth - 10 - 64 * that.rand(0.8, 1.0)),
-         t:60,
-         inter:'',
-         index:index
-         }
-         that.data.redpackets.push(redpacket)
-         index++;
-         console.log(that.data.redpackets)
-         that.redpacketRolling()
-    }, 1000)
-
+        var lastRedpacket = null;
+        if (that.data.redpackets.length > 0){
+          lastRedpacket = that.data.redpackets[that.data.redpackets.length - 1];
+        }
+        if (lastRedpacket === null) {
+          var redpacket = {
+            w: 64 * that.rand(0.8, 1.0),
+            y: 0,
+            x: that.rand(0, windowWidth- 64 * that.rand(0.8, 1.0)),
+            image:'../../../images/rain/rdc.png'
+          }
+          that.data.redpackets.push(redpacket)
+        }else {
+          if (lastRedpacket.x > windowWidth/2) {
+            var redpacket = {
+              w: 64 * that.rand(0.8, 1.0),
+              y: 0,
+              x: that.rand(0, windowWidth/2),
+              image: '../../../images/rain/rdc.png'
+            }
+            that.data.redpackets.push(redpacket)
+          }else {
+            var redpacket = {
+              w: 64 * that.rand(0.8, 1.0),
+              y: 0,
+              x: that.rand(windowWidth / 2, windowWidth - 64 * that.rand(0.8, 1.0)),
+              image: '../../../images/rain/zhadan.png'
+            }
+            that.data.redpackets.push(redpacket)
+          }
+        }
+         console.log(that.data.redpackets);
+    },350)
+    that.redpacketRolling();
   },
 
   redpacketRolling() {
     var that = this
-    for (var i = 0; i < that.data.redpackets.length; i++) {
-      var redpacket = that.data.redpackets[i];
+    var isNext = true;
+    that.data.dreawTime  = setInterval(function () {
+      if(!isNext)return
+      isNext = false;
       var context = wx.createContext()
       context.beginPath();
-      context.drawImage('../../../images/rain/rdc.png',
-        redpacket.x, redpacket.y, redpacket.w, redpacket.w)
-      //console.log(redpacket.x, redpacket.y);
-      if (redpacket.y >= windowHeight) { //删除当前红包
-        // clearInterval(redpacket.inter);
-        // console.log(that.data.redpackets.length);
-        // that.data.redpackets.splice(redpacket.index,1);
-        // console.log(that.data.redpackets.length);
-      } else {
-        redpacket.y += 20;
+      for (var i = 0; i < that.data.redpackets.length; i++) {
+        var redpacket = that.data.redpackets[i];
+        context.drawImage(redpacket.image,
+          redpacket.x, redpacket.y, redpacket.w, redpacket.w)
+        if (redpacket.y >= windowHeight + redpacket.w) { //删除当前红包
+           var removeTimeout = setTimeout(function() {
+              that.data.redpackets.splice(0, 1)
+              clearTimeout(removeTimeout);
+           },30);
+        } else {
+          redpacket.y += 10;
+        }
       }
       context.closePath();
       context.fill();
@@ -94,7 +118,8 @@ Page({
         canvasId: 'caxCanvas',
         actions: context.getActions()
       })
-    }
+      isNext = true;
+    },50)
   },
 
   rand(min, max) {
@@ -105,9 +130,9 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    clearInterval(this.data.setInter)
+    clearInterval(this.data.dreawTime);
     clearInterval(this.data.gameTimer);
-    clearTimeout(this.data.addTimeout);
+    clearInterval(this.data.addRedpackTime);
   },
 
 });
