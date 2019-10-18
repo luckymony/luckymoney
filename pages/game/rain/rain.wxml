@@ -7,7 +7,8 @@
 <view class="top">一大波红包即将来袭</view>
 <view class="countdown">{{readyTime}}</view>
 </view>
-<canvas canvas-id="caxCanvas" style="width:100%;height:100%; position: absolute;"> </canvas>
+<canvas canvas-id="caxCanvas" style="width:100%;height:100%; position: absolute;"bindtouchstart="touchStart" bindtouchmove="touchMove" 
+bindtouchend="touchEnd" > </canvas>
 <view class='timeout-warpper'>
 <view class="timeout">倒计时</view>
 <view class="sec">
