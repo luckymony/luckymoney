@@ -62,15 +62,26 @@ Page({
         if (that.data.redpackets.length > 0){
           lastRedpacket = that.data.redpackets[that.data.redpackets.length - 1];
         }
-        var type = that.randInt(1,4);
-        var score = type <= 2 ? that.randInt(0, 10) : that.randInt(-10,-1);
+        var proportion = that.rand(0.8, 1.0);
+        var type = that.randInt(1,2);
+        console.log(type);
+        var score = 0;
+        if(proportion >= 0.8 && proportion < 0.9) {
+          var score1 = that.randInt(1, 5);
+          var score2 = that.randInt(-10, -5);
+          score = type <= 0 ? score1 : score2;
+        } else if (proportion >= 0.9 && proportion <= 1.0) {
+          var score1 = that.randInt(5, 10);
+          var score2 = that.randInt(-5, -1);
+          score = type <= 2 ? score1 : score2;
+        }
         var src1 = '../../../images/rain/rdc.png';
         var src2 = '../../../images/rain/zhadan.png';
         if (lastRedpacket === null) {
           var redpacket = {
-            w: 64 * that.rand(0.8, 1.0),
+            w: 64 * proportion,
             y: 0,
-            x: that.rand(0, windowWidth- 64 * that.rand(0.8, 1.0)),
+            x: that.rand(0, windowWidth - 64 * proportion),
             image: type <= 2 ? src1 : src2,
             type: type,
             score: score
@@ -79,7 +90,7 @@ Page({
         }else {
           if (lastRedpacket.x > windowWidth/2) {
             var redpacket = {
-              w: 64 * that.rand(0.8, 1.0),
+              w: 64 * proportion,
               y: 0,
               x: that.rand(0, windowWidth/2),
               image: type <= 2 ? src1 : src2,
@@ -89,9 +100,9 @@ Page({
             that.data.redpackets.push(redpacket)
           }else {
             var redpacket = {
-              w: 64 * that.rand(0.8, 1.0),
+              w: 64 * proportion,
               y: 0,
-              x: that.rand(windowWidth / 2, windowWidth - 64 * that.rand(0.8, 1.0)),
+              x: that.rand(windowWidth / 2, windowWidth - 64 * proportion),
               image: type <= 2 ? src1 : src2,
               type: type,
               score: score
