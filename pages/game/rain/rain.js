@@ -6,6 +6,7 @@ Page({
 
   data: {
     readyVisible : true,
+    isShowBig: false,
     readyRainTimer: null, // 准备时间Timer
     readyTime : 5,
     time:10,
@@ -58,22 +59,25 @@ Page({
     }, 1000)
 
     that.data.addRedpackTime = setInterval(function () {
+        if (that.data.isShowBig) {
+            clearInterval(that.data.addRedpackTime);
+        }
         var lastRedpacket = null;
         if (that.data.redpackets.length > 0){
           lastRedpacket = that.data.redpackets[that.data.redpackets.length - 1];
         }
         var proportion = that.rand(0.8, 1.0);
-        var type = that.randInt(1,2);
-        console.log(type);
+        var type = that.data.isShowBig ? 2 : that.randInt(0,2);
+        // console.log(type);
         var score = 0;
         if(proportion >= 0.8 && proportion < 0.9) {
           var score1 = that.randInt(1, 5);
           var score2 = that.randInt(-10, -5);
-          score = type <= 0 ? score1 : score2;
+          score = type === 0 ? score1 : score2;
         } else if (proportion >= 0.9 && proportion <= 1.0) {
           var score1 = that.randInt(5, 10);
           var score2 = that.randInt(-5, -1);
-          score = type <= 2 ? score1 : score2;
+          score = type === 0 ? score1 : score2;
         }
         var src1 = '../../../images/rain/rdc.png';
         var src2 = '../../../images/rain/zhadan.png';
@@ -82,7 +86,8 @@ Page({
             w: 64 * proportion,
             y: 0,
             x: that.rand(0, windowWidth - 64 * proportion),
-            image: type <= 2 ? src1 : src2,
+            s: type === 2 ? 30 : 10,
+            image: type === 0 ? src1 : src2,
             type: type,
             score: score
           }
@@ -93,7 +98,8 @@ Page({
               w: 64 * proportion,
               y: 0,
               x: that.rand(0, windowWidth/2),
-              image: type <= 2 ? src1 : src2,
+              s: type === 2 ? 30 : 10,
+              image: type === 0 ? src1 : src2,
               type: type,
               score: score
             }
@@ -103,14 +109,15 @@ Page({
               w: 64 * proportion,
               y: 0,
               x: that.rand(windowWidth / 2, windowWidth - 64 * proportion),
-              image: type <= 2 ? src1 : src2,
+              s: type === 2 ? 30 : 10,
+              image: type === 0 ? src1 : src2,
               type: type,
               score: score
             }
             that.data.redpackets.push(redpacket)
           }
         }
-        //  console.log(that.data.redpackets);
+        // console.log(that.data.redpackets);
     },350)
     that.redpacketRolling();
   },
@@ -123,18 +130,31 @@ Page({
       isNext = false;
       var context = wx.createContext()
       context.beginPath();
+      var index = 0;
+      var isDel = false;
+
       for (var i = 0; i < that.data.redpackets.length; i++) {
         var redpacket = that.data.redpackets[i];
         context.drawImage(redpacket.image,
           redpacket.x, redpacket.y, redpacket.w, redpacket.w)
         if (redpacket.y >= windowHeight + redpacket.w) { //删除当前红包
-           var removeTimeout = setTimeout(function() {
-              that.data.redpackets.splice(0, 1)
-              clearTimeout(removeTimeout);
-           },30);
+          index = i;
+          isDel = true;
+          if (redpacket.type === 2) { //没有点中大红包
+            console.log('没有点中大红包')
+          }
         } else {
-          redpacket.y += 10;
+          if (that.data.isShowBig) {
+            if (redpacket.type === 2) {
+                redpacket.y += redpacket.s;
+            }
+          }else {
+            redpacket.y += redpacket.s;
+          }
         }
+      }
+      if (isDel) {
+        that.data.redpackets.splice(index, 1)
       }
       context.closePath();
       context.fill();
@@ -151,7 +171,7 @@ Page({
   },
 
   randInt(min,max) {
-    return parseInt(Math.random() * (max - min) + min);
+    return Math.floor(Math.random() * (max - min) + min);
   },
 
   /**
@@ -173,14 +193,25 @@ Page({
         && redpacket.y + redpacket.w >= evt.touches[0].y
         && redpacket.y <= evt.touches[0].y
         ){
+          if (that.data.isShowBig) {
+            if (redpacket.type === 2) {
+              // console.log('点中了' + i + '红包');
+            }
+          } else {
             that.animationOfScore();
             // console.log('点中了'+i+'红包');
             that.data.redpackets.splice(i, 1)
             var score = that.data.score + redpacket.score;
-            that.setData ({
-              changeScore:redpacket.score,
+            if (score >= 10) {
+              that.setData({ 
+                isShowBig : true
+              })
+            }
+            that.setData({
+              changeScore: redpacket.score,
               score: score
             })
+          }
         }
     }
   },
