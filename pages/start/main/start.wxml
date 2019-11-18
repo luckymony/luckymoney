@@ -39,8 +39,8 @@
 </view>
 </view>
 <view class="foot-view">
-<text bindtap="toTip">玩法介绍</text>
-<text decode="{{true}}">&nbsp;&nbsp;|&nbsp;&nbsp;</text>
-<text>联系客服</text>
+<text bindtap="toTip">--- 玩法介绍 ---</text>
+<!-- <text decode="{{true}}">&nbsp;&nbsp;|&nbsp;&nbsp;</text>
+<text>联系客服</text> -->
 </view>
 <i-action-sheet visible="{{visible}}" actions="{{actions}}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem"/>

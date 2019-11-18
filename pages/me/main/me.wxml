@@ -8,7 +8,7 @@
   <view class='userinfo-money'>
        <view class='userinfo-money-item' bindtap='goto_money_detail_page'>
         <i-icon type="redpacket_fill" size="30" color="#EB5646"/>
-        <text>红包</text>
+        <text>红包记录</text>
       </view>
       <view class='mid-view'>
       <view class='background-line'></view>
@@ -21,14 +21,22 @@
   <view class="empty-view"></view>
   <view class='extend-space'>
       <navigator url="../share/share" class='navigator' hover-class="none">
+        <i-icon type='share_fill' size="25" color="#EB5646"/>
         <view class="navigator-text">推荐给好友</view>
         <i-icon type='enter' size="20" color="#80848f"/>
       </navigator>
       <view class='line-dotted'></view>
       <navigator url="../problem/problem" class='navigator' hover-class="none">
+        <i-icon type='feedback_fill' size="25" color="#EB5646"/>
         <view class="navigator-text">常见问题</view>
         <i-icon type='enter' size="20" color="#80848f"/>
       </navigator>
-    </view>
+      <view class='line-dotted'></view>
+      <navigator url="" class='navigator' hover-class="none">
+      <i-icon type='customerservice_fill' size="25" color="#EB5646"/>
+      <view class="navigator-text">联系客服</view>
+      <i-icon type='enter' size="20" color="#80848f"/>
+      </navigator>
+  </view>
   </view>
 </view>

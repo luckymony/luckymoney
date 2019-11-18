@@ -12,6 +12,7 @@
 <text>我的红包</text>
 </view>
 </view>
+
 <view class="buttom-view">
 <view class="item-view" wx:for="{{currentItems}}" wx:for-item="data" wx:for-index="index">
 <image src="{{data.icon}}" class="item-icon"></image>

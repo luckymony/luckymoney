@@ -10,6 +10,7 @@ Page({
         long_time:"60",
         count:"10",
         lucky_str: "恭喜发财,财源广进",
+        play_name:"开门大吉",
         play_type:"1",
         play_id: 1,
         is_me:0
@@ -21,6 +22,7 @@ Page({
         long_time: "60",
         count: "10",
         lucky_str: "七星高照,八方来财",
+        play_name: "八方来财",
         play_type: "2",
         play_id:2,
         is_me:1
@@ -29,9 +31,11 @@ Page({
 
   },
   grabLuckyMoney: function(e) {
+    console.log(e.currentTarget)
     var index = e.currentTarget.dataset['index'];
+    var name = e.currentTarget.dataset['title'];
     wx.navigateTo({
-      url: '../rob/rob?type=' + index,
+      url: '../rob/rob?type=' + index +'&name=' + name,
     })
   },
   onLoad: function (options) {

@@ -48,6 +48,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options);
     this.setData({
       playType: options["type"]
     });
@@ -60,7 +61,7 @@ Page({
     this.setData({
       currentItems: newItems,
     });
-    wx.setNavigationBarTitle({ title: '开始抢红包' }); 
+    wx.setNavigationBarTitle({ title: options['name']}); 
   },
 
   /**
@@ -94,6 +95,7 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
+
   onPullDownRefresh: function () {
     console.log("下啦加载");
   },
@@ -101,6 +103,7 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
+
   onReachBottom: function () {
     console.log("上啦加载");
     let currentLength = this.data.allItems.length - this.data.currentItems.length;

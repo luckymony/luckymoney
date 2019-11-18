@@ -97,6 +97,13 @@ Page({
     }
   },
 
+  pushDeail:function(e){
+    var index = e.currentTarget.dataset['index'];
+    wx.navigateTo({
+      url: '../../home/rob/rob?type=' + index,
+    })
+  },
+
   onPullDownRefresh: function() {
     var self = this;
     console.log('下拉刷新');
