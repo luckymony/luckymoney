@@ -12,10 +12,12 @@ Page({
     isCanAction: false,
     number: 10,
     setInter: '',
+    shakTimeout:'',
     stopShaking: true,
     currentIndex: 0,
     flipArray:[],
     isShowRedPacket:false,
+    cardTimes:[],
     cardData: [
       {
         animationData: {},
@@ -271,58 +273,60 @@ Page({
   },
 
   onLoad: function (options) {
-
     wx.setNavigationBarTitle({ title: '开门大吉' }); 
     let carWidth = 0;
-    const { cardData } = this.data;
-    this.addPosition(cardData); // 数组添加移动坐标位置
+    let that = this;
+    const { cardData } = that.data;
+    that.addPosition(cardData); // 数组添加移动坐标位置
     wx.getSystemInfo({
       success(res) {
         carWidth = parseInt((res.windowWidth - 20) / 5);
       }
     });
 
-    this.setData({
+    that.setData({
       carWidth
-    });
-
-    wx.showToast({
-      title: '加载中...',
-      mask: true,
-      icon: 'loading',
-      duration: 5000
     });
 
     let timer1 = setTimeout(() => {
       clearTimeout(timer1);
-      wx.hideToast();
-      const { carWidth, cardData } = this.data;
-      this.shuffle(carWidth,true);
+      that.data.cardTimes.splice(0, 1)
+      const { carWidth, cardData } = that.data;
+      that.shuffle(carWidth,true);
       let timer2 = setTimeout(() => {
         clearTimeout(timer2)
+        that.data.cardTimes.splice(1, 1)
         cardData.sort(this.randomsort);
-        this.addPosition(cardData)
-        this.shuffle(0,true)
+        that.addPosition(cardData)
+        that.shuffle(0,true)
         let timer3 = setTimeout(() => {
           clearTimeout(timer3)
-          this.shuffle(carWidth, false);
+          that.data.cardTimes.splice(2, 1)
+          that.shuffle(carWidth, false);
           let timer4 = setTimeout(() => {
             clearTimeout(timer4)
-            cardData.sort(this.randomsort);
-            this.addPosition(cardData)
-            this.shuffle(0, false)
+            that.data.cardTimes.splice(3, 1)
+            cardData.sort(that.randomsort);
+            that.addPosition(cardData)
+            that.shuffle(0, false)
             let timer5 = setTimeout(()=>{
               clearTimeout(timer5)
-              this.setData({
+              that.data.cardTimes.splice(4, 1)
+              that.setData({
                 stopShaking : false,
                 isCanAction : true
               })
-              this.shaking()
+              that.shaking()
+              that.data.cardTimes.push(timer5); 
             },1000)
+            that.data.cardTimes.push(timer4); 
           },1000)
-        },3000)
-      }, 1000)
-    }, 5000) 
+          that.data.cardTimes.push(timer3); 
+        },500) //设置展示时间
+      },1000)
+      that.data.cardTimes.push(timer2); 
+    },2000)
+    that.data.cardTimes.push(timer1); 
   },
 
   randomsort(a, b) {
@@ -371,11 +375,10 @@ Page({
         }
       }
     })
-    this.setData({
+    that.setData({
       cardData
     })
   },
-
 
   // 数组添加移动坐标值 并且把所有的disabled 状态还原会false 
   addPosition(cardData) {
@@ -420,8 +423,8 @@ Page({
       })
     }, 300)
 
-    let timer = setTimeout(() => {
-      clearTimeout(timer);
+    that.data.shakTimeout = setTimeout(() => {
+      clearTimeout(that.data.shakTimeout);
       clearInterval(that.data.setInter);
       var animation = wx.createAnimation({
         duration: 200,
@@ -517,7 +520,12 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    clearInterval(this.data.setInter)
+    clearInterval(this.data.setInter);
+    clearTimeout(this.data.shakTimeout);
+    for(var i = 0;i<this.data.cardTimes.count;i++) {
+      var time = this.data.cardTimes.count;
+      clearTimeout(time);
+    }
   },
 
   /**
