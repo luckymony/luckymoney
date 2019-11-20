@@ -280,7 +280,7 @@ Page({
     that.addPosition(cardData); // 数组添加移动坐标位置
     wx.getSystemInfo({
       success(res) {
-        carWidth = parseInt((res.windowWidth - 20) / 5);
+        carWidth = parseInt((res.windowWidth - 20)/5);
       }
     });
 
@@ -290,25 +290,25 @@ Page({
 
     let timer1 = setTimeout(() => {
       clearTimeout(timer1);
-      that.data.cardTimes.splice(0, 1)
-      const { carWidth, cardData } = that.data;
-      that.shuffle(carWidth,true);
+      that.data.cardTimes.splice(0,1)
+      const {carWidth,cardData} = that.data;
+      that.shuffle(carWidth,false);
       let timer2 = setTimeout(() => {
         clearTimeout(timer2)
-        that.data.cardTimes.splice(1, 1)
+        that.data.cardTimes.splice(1,1)
         cardData.sort(this.randomsort);
         that.addPosition(cardData)
         that.shuffle(0,true)
         let timer3 = setTimeout(() => {
           clearTimeout(timer3)
           that.data.cardTimes.splice(2, 1)
-          that.shuffle(carWidth, false);
+          that.shuffle(carWidth,false);
           let timer4 = setTimeout(() => {
             clearTimeout(timer4)
             that.data.cardTimes.splice(3, 1)
             cardData.sort(that.randomsort);
             that.addPosition(cardData)
-            that.shuffle(0, false)
+            that.shuffle(0,false)
             let timer5 = setTimeout(()=>{
               clearTimeout(timer5)
               that.data.cardTimes.splice(4, 1)
@@ -322,7 +322,7 @@ Page({
             that.data.cardTimes.push(timer4); 
           },1000)
           that.data.cardTimes.push(timer3); 
-        },500) //设置展示时间
+        },5000) //设置展示时间
       },1000)
       that.data.cardTimes.push(timer2); 
     },2000)
@@ -340,12 +340,13 @@ Page({
     flipArray = [];
     that.setData({ flipArray });
     while(flipArray.length < 5) {
-      var index = that.rand(0, 24);
+      var index = that.rand(0,24);
       if (flipArray.indexOf(index) <= -1) { //不包含
-        flipArray.push(index);
+          flipArray.push(index);
       }
       that.setData({ flipArray });
     }
+    console.log(that.data.flipArray);
   },
 
   // 洗牌函数
@@ -357,6 +358,7 @@ Page({
     let { cardData } = that.data;
     let { flipArray } = that.data;
     cardData.map((item, index) => {
+      console.log(item);
       let animation = wx.createAnimation({
         duration: 500,
         timingFunction: 'ease'
@@ -367,7 +369,7 @@ Page({
       item.animationData = animation.export()
       item.opacity = false;
       if (item.showClass) {
-        item.showClass = false;
+          item.showClass = false;
       }
       if (isShow) {
         if (flipArray.indexOf(index) >= 0) {
@@ -378,6 +380,7 @@ Page({
     that.setData({
       cardData
     })
+    // console.log(that.data.cardData);
   },
 
   // 数组添加移动坐标值 并且把所有的disabled 状态还原会false 
@@ -446,10 +449,10 @@ Page({
   },
 
   handleCurClick(event) {
-    let { isCanAction } = this.data;
+    let {isCanAction} = this.data;
     if (!isCanAction)return;
-
     let curId = event.currentTarget.dataset.id;
+    console.log(curId);
     // 每次点击时获取被点击拍的disable 属性，
     let disabled = event.currentTarget.dataset.disabled;
     //如果为true 就返回不继续向下执行
@@ -476,6 +479,7 @@ Page({
     let that = this;
     let timer1 = setTimeout(() => {
       clearTimeout(timer1)
+      that.data.cardTimes.splice(that.data.cardTimes.length - 1, 1)
       that.setData({
         isCanAction:false,
         isShowRedPacket: true
@@ -484,6 +488,7 @@ Page({
       that.redpacket.startOpenReadPacket();
       that.redpacket.openReadPacketSuccess();
     },2025)
+    that.data.cardTimes.push(timer1);
   },
 
   toRedPacketRecord: function () {
