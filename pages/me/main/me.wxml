@@ -15,7 +15,7 @@
       </view>
       <view class='userinfo-money-item' bindtap='goto_withdraw_page'>
         <i-icon type="financial_fill" size="30" color="#EB5646"/>
-        <text>88.88元</text>
+        <text>钱包余额</text>
       </view>
   </view>
   <view class="empty-view"></view>

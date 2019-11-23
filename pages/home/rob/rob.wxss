@@ -6,44 +6,134 @@
   flex-direction: column;
 }
 .top-view {
-  height: 40vh;
+  height: 100vh;
   width: 100vw;
   display: flex; 
   flex-direction:column;
   align-items:center;
-}
-.mid-view {
-  height: 20vh;
-  width: 100vw;
+  background-color: #EB5646;
+} 
+.icon-view {
+  flex: 1;
   display: flex; 
   flex-direction:column;
-  justify-content: center;
+  align-items:center;
+  /* background-color: green; */
 }
-.buttom-view {
+.icon-center-view {
   flex: 1;
-  width: 100vw;
-  display: flex;
-	flex-direction:column;
+  display: flex; 
+  flex-direction:column;
+  align-items:center;
+  /* background-color: greenyellow; */
 }
+.button-view {
+  flex: 1;
+  display: flex; 
+  flex-direction:row;
+  align-items:center;
+  /* background-color: blue; */
+}
+
 .icon-image {
-  margin-top: 40rpx;
   width: 200rpx;
-  height: 200rpx;
-  background-color: orange;
-  border-radius: 100rpx;
+	height: 200rpx;
+	border-radius: 50%;
+  background-color: #F89B4A;
+  border: 10rpx solid #F44848;
 }
 .name-text {
   margin-top: 20rpx;
+  padding: 15rpx;
+  background-color: brown;
+  color: white;
+  font-size: 24rpx;
+  border-radius: 30rpx;
+}
+.icon-center-image {
+  width: 50vw;
+	height: 50vw;
 }
 .bless-text {
   font-size: 60rpx;
   margin-top: 20rpx;
+  color: #F89B4A;
+  font-weight:bold;
+}
+.game-text {
+  font-size: 40rpx;
+  margin-top: 20rpx;
+  color:white;
   font-weight:bold;
 }
 .start-button {
-  color: white;
-  width: 50vw;
-  height: 89rpx;
+  color: rgb(202, 136, 78);
+  width: 200rpx;
+  height: 200rpx;
+  text-align: center;
+  line-height: 200rpx;
+  font-size: 80rpx;
+  font-weight: bold;
+  border-radius: 50%;
+  background-color: rgb(248, 185, 130);
+  border: 10rpx solid rgb(236, 173, 118);
+}
+.send-packet {
+  margin-right: 40rpx;
+  display: flex; 
+  flex-direction:column;
+  justify-content: center;
+  align-items:center;
+  /* background-color: blue; */
+}
+.send-packet-button {
+  display: flex; 
+  flex-direction:column;
+  justify-content: center;
+  align-items:center;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background-color: rgb(248, 185, 130);
+  border: 5rpx solid rgb(236, 173, 118);
+}
+.send-packet-text {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: rgb(248, 185, 130);
+}
+
+.share-packet {
+  margin-left: 40rpx;
+  display: flex; 
+  flex-direction:column;
+  justify-content: center;
+  align-items:center;
+}
+
+.share-packet-button {
+  display: flex; 
+  flex-direction:column;
+  justify-content: center;
+  align-items:center;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background-color: rgb(248, 185, 130);
+  border: 5rpx solid rgb(236, 173, 118);
+}
+
+.share-packet-text {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: rgb(248, 185, 130);
+}
+
+.buttom-view {
+  margin-top: 10rpx;
+  width: 100vw;
+  display: flex;
+	flex-direction:column;
 }
 
 .my-money {
@@ -100,6 +190,9 @@
   width: 50rpx;
   height: 50rpx;
   opacity:0.0;
+}
+.tip-text {
+   font-size: 24rpx;
 }
 .foot-view{
   margin-bottom: 10rpx;

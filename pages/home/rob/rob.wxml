@@ -1,18 +1,31 @@
 <!--pages/rob/rob.wxml-->
 <scroll-view class="main-vew" scroll-y="true">
 <view class="top-view">
+<view class="icon-view">
 <image class="icon-image"></image>
-<text class="name-text">{{'张三丰'}}</text>
+<text class="name-text">{{'张三丰的红包'}}</text>
 <text class="bless-text">{{'恭喜发财,大吉大利'}}</text>
 </view>
-<view class="mid-view">
-<button type="primary" class="start-button" bindtap='openGame'>开始游戏</button>
-<view class="my-money" bindtap="toMyMoney">
-<i-icon type="redpacket_fill" size="20" color="#efb336"/>
-<text>我的红包</text>
+<view class="icon-center-view">
+<image class="icon-center-image" src="../../../images/home/mouse.png"></image>
+<text class="game-text">{{'游戏正在进行...'}}</text>
+</view>
+<view class="button-view">
+<view class="send-packet">
+<view class="send-packet-button" bindtap='sendPacket'>
+<i-icon type="redpacket_fill" size="25" color="#EB5646"/>
+</view>
+<text class="send-packet-text">我也发起红包</text>
+</view>
+<view class="start-button" bindtap='openGame'>开始</view>
+<view class="share-packet">
+<view class="share-packet-button">
+<i-icon type="share_fill" size="25" color="#EB5646"/>
+</view>
+<text class="share-packet-text">邀请好友来玩</text>
 </view>
 </view>
-
+</view>
 <view class="buttom-view">
 <view class="item-view" wx:for="{{currentItems}}" wx:for-item="data" wx:for-index="index">
 <image src="{{data.icon}}" class="item-icon"></image>
@@ -22,7 +35,8 @@
 </view>
 <view class="item-view-money">
 <text>{{data.money}}</text>
-<image src="../../../images/rob/{{'paihang' + (index%3+1) + '.png'}}" class="{{index <= 2 ?'show-image':'hidden-image'}}"></image>
+<image src="../../../images/rob/{{'paihang' + (index%3+1) + '.png'}}" class="{{index <= 2 ?'show-image':'hidden-image'}}" wx:if="{{index<=2}}" ></image>
+<text wx:if="{{index>2}}" class="tip-text">{{data.state===0?"挑战成功":"挑战失败"}}</text>
 </view>
 </view>
 </view>

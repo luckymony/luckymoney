@@ -14,7 +14,7 @@
   box-shadow: 5px 5px 5px gainsboro;
 }
 .item-hidden-detail {
-  height: 100rpx;
+  height: 80rpx;
 }
 .top-view {
   height: 30%;

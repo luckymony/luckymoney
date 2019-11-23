@@ -346,7 +346,7 @@ Page({
       }
       that.setData({ flipArray });
     }
-    console.log(that.data.flipArray);
+    //console.log(that.data.flipArray);
   },
 
   // 洗牌函数
@@ -358,7 +358,7 @@ Page({
     let { cardData } = that.data;
     let { flipArray } = that.data;
     cardData.map((item, index) => {
-      console.log(item);
+      // console.log(item);
       let animation = wx.createAnimation({
         duration: 500,
         timingFunction: 'ease'
