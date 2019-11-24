@@ -11,7 +11,8 @@
     "pages/me/share/share",
     "pages/me/problem/problem",
     "pages/game/card/card",
-    "pages/game/rain/rain"
+    "pages/game/rain/rain",
+    "pages/auth/auth"
   ],
   "window": {
     "backgroundTextStyle": "dark",
