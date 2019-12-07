@@ -8,13 +8,6 @@
   </block>
 </swiper>
 <view wx:if="{{isShow}}" class="cloud_layer" bindtap="hiddenTap"></view>
-<playui class="playui {{isShow ? ( isTime ? 'time_show' : 'time_hidden') : 'hidden_playui'}}"
-isShowTime="{{isTime}}"
-timeItems="{{timeItems}}"
-longTime="{{longTime}}"
-activityTime="{{activityTime}}"
-emptyMoneyCount="10"
-chanceCount="2"
-bind:edited="edited" 
-bind:activityTimeChange="activityTimeChange">
+<playui class="playui {{isShow ? 'time_hidden' : 'hidden_playui'}}"
+longTime="{{longTime}}"chanceCount="{{chanceCount}}" playType="{{currentIndex+1}}" bind:edited="edited">
 </playui>

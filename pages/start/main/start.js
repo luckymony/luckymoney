@@ -8,22 +8,16 @@ Page({
                  index  : 0,
                  types: [
                           "开门大吉",
-                          "八方来财",
-                          "敬请期待"
+                          "八方来财"
                         ],
-                 timeItems: [86400, 300, 900, 1800, 2700, 3600],
-                 time  : 3600, 
                  count : 0, 
                  chance: 1,
-                 difficulty: 1
+                 difficulty: 0
                }
        }
     ],
-
     visible: false,
-
     isShow: false,
-    
     actions: [
       {
         name: '恭喜发财 大吉大利',

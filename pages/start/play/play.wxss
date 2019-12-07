@@ -51,10 +51,6 @@
   border-top-right-radius: 10rpx;
   border-top-left-radius: 10rpx;
 }
-.time_show {
-  height: 72vh;
-  transform: translateY(14vh);transition: all 0.0s ease;
-}
 .time_hidden {
   height: 60vh;
   transform: translateY(40vh);transition: all 0.3s ease;

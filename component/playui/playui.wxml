@@ -1,18 +1,18 @@
 <view class="play-ui">
 <view class="first-view">
-<view class="one-view" bindtap="activityTimeTap" id="{{activityTime}}">
+<view class="one-view">
 <view class="top-view">
-<text>活动限时</text>
-<input value="{{activityTime}}" placeholder="" disabled="disabled"/>
-<i-icon type="clock_fill" size="20" color="#80848f"/>
+<text>游戏限时</text>
+<input value="{{activityTime}}" placeholder="120" type="number"/>
+<text>秒</text>
 </view>
 <view class="line-dotted"></view>
 </view>
-<view class="two-view" wx:if="{{isEmptyMoney}}">
+<view class="two-view">
 <view class="top-view">
-<text>空的红包</text>
+<text>{{playType == 1 ? '点击红包' : '红包积分'}}</text>
 <input value="{{emptyMoneyCount}}" placeholder="0" type="number"/>
-<text>个</text>
+<text>{{playType == 1 ? '个' : '分'}}</text>
 </view>
 <view class="line-dotted"></view>
 </view>

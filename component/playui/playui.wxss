@@ -121,8 +121,8 @@
 }
 .second-view button {
   width: 50%;
-  height: 90rpx;
-  /* background-color:green; */
+  font-size: 40rpx;
+  /* background-color:orange; */
   color: white;
 }
 .default {
@@ -130,6 +130,6 @@
   color: black;
 }
 .selected {
-  background-color: green;
+  background-color: #1AAD19;
   color: white;
 }
