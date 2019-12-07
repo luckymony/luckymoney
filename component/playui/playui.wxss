@@ -1,7 +1,6 @@
 .play-ui {
   display: flex;
   flex-direction:column;
-  border-radius: 20rpx;
   padding-left: 5%;
   padding-right: 5%;
   width: 90%;

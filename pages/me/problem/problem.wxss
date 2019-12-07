@@ -30,7 +30,7 @@
   height: 100%;
 }
 .title-view {
-  font-size: 40rpx;
+  font-size: 35rpx;
   color: black;
   /* background-color: red; */
 }

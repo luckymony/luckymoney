@@ -129,12 +129,18 @@
   margin-left: 4.5vw;
   margin-right: 4.5vw;
 }
+.symbol-text {
+  /* background-color: orange; */
+  color: black;
+  font-size: 80rpx;
+  font-weight: bolder;
+  text-align: center;
+  font-family: PingFangSC-bold;
+}
 .money-text {
   /* background-color: red; */
-  width: 100%;
-  height: 160rpx;
   color: black;
-  font-size: 60px;
+  font-size: 120rpx;
   font-weight: bolder;
   text-align: center;
   font-family: PingFangSC-bold;
@@ -142,8 +148,8 @@
 .second-view button {
   margin-top: 20rpx;
   width: 50%;
-  height: 90rpx;
-  /* background-color:green; */
+  font-size: 40rpx;
+  /* background-color:orange; */
   color: white;
 }
 
@@ -165,4 +171,18 @@
   font-size: 28rpx;
   height: 100rpx;
   color: gray;
+}
+
+.line-view1 {
+  margin-right: 20rpx;
+  width: 80rpx;
+  height: 1rpx;
+  border-top: 1rpx solid gray;
+}
+
+.line-view2{
+  margin-left: 20rpx;
+  width: 80rpx;
+  height: 1rpx;
+  border-top: 1rpx solid gray;
 }

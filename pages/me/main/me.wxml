@@ -1,7 +1,7 @@
 <view class="container">
   <view class="userinfo">
-    <image class="userinfo-avatar" src="../../../images/me/user_icon_default.png" background-size="cover"></image>
-    <text>张三丰</text>
+    <image class="userinfo-avatar" src="{{iconUrl}}" background-size="cover"></image>
+    <text>{{nickName}}</text>
   </view>
   <view class="empty-view"></view>
   <view class='page-section'>

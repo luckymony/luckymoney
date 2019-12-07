@@ -5,7 +5,7 @@
   </view>
   <view class="empty-view"></view>
   <view class="userinfo">
-    <image class="userinfo-avatar" src="../../../images/me/user_icon_default.png" background-size="cover"></image>
+    <image class="userinfo-avatar" src="{{iconUrl}}" background-size="cover"></image>
     <view class="{{send?'show':'hidden'}}">发出的红包</view>
     <view class="{{receive?'show':'hidden'}}">抢到的红包</view>
   </view>

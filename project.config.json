@@ -21,9 +21,9 @@
 			"outputPath": ""
 		}
 	},
-	"compileType": "miniprogram",
+	"compileType": "game",
 	"libVersion": "2.0.4",
-	"appid": "wx8093083949ea340a",
+	"appid": "wxc799ef9d6bcbe66d",
 	"projectname": "luckymoney",
 	"debugOptions": {
 		"hidedInDevtools": []

@@ -1,12 +1,19 @@
+
+const app = getApp()
 Page({
   data: {
-    // text:"这是一个页面"
+    nickName: null,
+    iconUrl: null
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '我的' }); 
   },
   onReady: function () {
     // 页面渲染完成
+    this.setData({
+      nickName: app.globalData.userInfo.nickname,
+      iconUrl: app.globalData.userInfo.avatarUrl
+    });
   },
   onShow: function () {
     // 页面显示

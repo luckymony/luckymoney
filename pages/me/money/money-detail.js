@@ -1,4 +1,7 @@
 // pages/me/money/money-detail.js
+
+const app = getApp()
+
 Page({
   data: {
     send:false,
@@ -6,6 +9,7 @@ Page({
     showLoading:false,
     searchLoadingComplete:false,
     tipText:"",
+    iconUrl: null,
     money:{
       money_total:666,
       red_packet_num:68,
@@ -30,6 +34,7 @@ Page({
 
   testR:function(){
     this.setData({
+      iconUrl: app.globalData.userInfo.avatarUrl,
       send: false,
       receive: true,
       money: {

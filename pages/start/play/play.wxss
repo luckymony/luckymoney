@@ -32,7 +32,7 @@
 .first-view {
   font-size: 120rpx;
   text-align: center;
-  font-family: SourceHanSansSC-regular;
+  font-family: SimSun;
   writing-mode:vertical-lr;
 }
 .cloud_layer {
@@ -46,19 +46,19 @@
 .playui {
   position:fixed;
   background-color: white;
-  width: 91vw;
-  margin-left: 4.5vw;
-  margin-right: 4.5vw;
-  border-radius: 10rpx;
+  width: 100%;
+  /* border-radius: 10rpx; */
+  border-top-right-radius: 10rpx;
+  border-top-left-radius: 10rpx;
 }
 .time_show {
   height: 72vh;
-  transform: translateY(14vh);transition: all 0.0s ease;z-index: 11;
+  transform: translateY(14vh);transition: all 0.0s ease;
 }
 .time_hidden {
   height: 60vh;
-  transform: translateY(20vh);transition: all 0.3s ease;z-index: 11;
+  transform: translateY(40vh);transition: all 0.3s ease;
 }
 .hidden_playui {
-  transform: translateY(100vh);transition: all 0.3s ease;z-index: 11;
+  transform: translateY(100vh);transition: all 0.3s ease;
 }

@@ -25,7 +25,7 @@
 </view>
 <view class="four-line">
 <view class="four-input" bindtap="toPlay">
-<text>红包模式</text>
+<text>红包玩法</text>
 <input value="{{items[3].value.types[items[3].value.index]}}" disabled="disabled"/>
 <i-icon type='enter' size="20" color="#80848f"/>
 </view>
@@ -33,13 +33,15 @@
 </view>
 </view>
 <view class="second-view">
-<text class="money-text">{{"￥" + "0.00"}}</text>
+<text class="money-text"><text class="symbol-text">{{"￥"}}</text>{{"0.00"}}</text>
 <button type="primary">塞钱进红包</button>
 <text class="bottom-text">{{"对方可领取的红包金额为0.01~200元"}}</text>
 </view>
 </view>
 <view class="foot-view">
-<text bindtap="toTip">--- 玩法介绍 ---</text>
+<view class="line-view1"></view>
+<text bindtap="toTip">玩法介绍</text>
+<view class="line-view2"></view>
 <!-- <text decode="{{true}}">&nbsp;&nbsp;|&nbsp;&nbsp;</text>
 <text>联系客服</text> -->
 </view>
