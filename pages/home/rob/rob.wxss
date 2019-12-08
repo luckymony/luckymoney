@@ -12,6 +12,8 @@
   flex-direction:column;
   align-items:center;
   background-color: #EB5646;
+  border-bottom-right-radius: 30%;
+  border-bottom-left-radius: 30%;
 } 
 .icon-view {
   flex: 1;
