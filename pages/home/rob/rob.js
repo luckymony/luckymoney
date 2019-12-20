@@ -14,8 +14,10 @@ Page({
       { icon: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555004603689&di=6161b038a8a7046bfe88e4d72e975729&imgtype=0&src=http%3A%2F%2Fwww.36588.com.cn%2FImageResourceMongo%2FUploadedFile%2Fdimension%2Fbig%2F7d10bc2b-db5b-4247-925c-0628d65b3f50.png", name: "张三丰", time: "08-08 10:00", money: "88.88", state: 0}, 
       { icon: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555004603689&di=6161b038a8a7046bfe88e4d72e975729&imgtype=0&src=http%3A%2F%2Fwww.36588.com.cn%2FImageResourceMongo%2FUploadedFile%2Fdimension%2Fbig%2F7d10bc2b-db5b-4247-925c-0628d65b3f50.png", name: "张三丰", time: "08-08 10:00", money: "0.00", state: 1}],
     currentItems: [],
+    coinIcon:"../../../images/rob/fu.gif",
     showLoading: false,
-    playType:0
+    playType:0,
+    interval:null
   },
 
   showAllTap:function (e) {
@@ -55,18 +57,29 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
-    this.setData({
+    var that = this;
+    that.setData({
       playType: options["type"]
     });
     let newItems = [];
-    if (this.data.allItems.length > 5) {
-       newItems = this.data.allItems.slice(0, 5)
+    if (that.data.allItems.length > 5) {
+      newItems = that.data.allItems.slice(0, 5)
     }else {
-       newItems = this.data.allItems
+      newItems = that.data.allItems
     }
-    this.setData({
+    that.setData({
       currentItems: newItems,
     });
+    var index = 0;
+    that.data.interval = setInterval(function () {
+      that.setData({
+        //coinIcon: '../../../images/rob/fu_' + (index + 1) + '.png'
+      })
+      index ++;
+      if(index >= 9) {
+        index = 0;
+      }
+    },200);
     wx.setNavigationBarTitle({ title: options['name']}); 
   },
 
@@ -88,14 +101,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    clearInterval(this.data.interval);
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    clearInterval(this.data.interval);
   },
 
   /**

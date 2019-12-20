@@ -12,8 +12,8 @@
   flex-direction:column;
   align-items:center;
   background-color: #EB5646;
-  border-bottom-right-radius: 30%;
-  border-bottom-left-radius: 30%;
+  border-bottom-right-radius: 40rpx;
+  border-bottom-left-radius: 40rpx;
 } 
 .icon-view {
   flex: 1;
@@ -27,6 +27,7 @@
   display: flex; 
   flex-direction:column;
   align-items:center;
+  justify-content: center;
   /* background-color: greenyellow; */
 }
 .button-view {
@@ -53,13 +54,12 @@
   border-radius: 30rpx;
 }
 .icon-center-image {
-  width: 50vw;
-	height: 50vw;
+  flex: 1;
 }
 .bless-text {
   font-size: 60rpx;
   margin-top: 20rpx;
-  color: #F89B4A;
+  color: white;
   font-weight:bold;
 }
 .game-text {

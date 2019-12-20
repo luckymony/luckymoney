@@ -80,8 +80,8 @@ Page({
           lastRedpacket = that.data.redpackets[that.data.redpackets.length - 1];
         }
         var proportion = that.rand(0.8, 1.0);
-      var type = that.data.isHit ? 2 : that.randInt(0,2);
-        // console.log(type);
+        var type = that.data.isHit ? 2 : that.randInt(0,2);
+        //console.log(type);
         var score = 0;
         if(proportion >= 0.8 && proportion < 0.9) {
           var score1 = that.randInt(1,5);
@@ -92,15 +92,17 @@ Page({
           var score2 = that.randInt(-5, -1);
           score = type === 0 ? score1 : score2;
         }
-        var src1 = '../../../images/card/zhengmian.png';
-        var src2 = '../../../images/rain/koufen.png';
+        var src1 = '../../../images/rain/jiafen_' + that.randInt(1,5) + '.png';
+        var src2 = '../../../images/rain/jianfen_' + that.randInt(1,5) + '.png';
+        var src3 = '../../../images/rain/qiang.png';
+
         if (lastRedpacket === null) {
           var redpacket = {
             w: 64 * proportion,
             y: 0,
             x: that.rand(0, windowWidth - 64 * proportion),
             s: type === 2 ? 30 : 10,
-            image: type === 0 ? src1 : src2,
+            image: type === 0 ? src1 : type === 1 ? src2 : src3,
             type: type,
             score: score
           }
@@ -112,7 +114,7 @@ Page({
               y: 0,
               x: that.rand(0, windowWidth/2),
               s: type === 2 ? 30 : 10,
-              image: type === 0 ? src1 : src2,
+              image: type === 0 ? src1 : type === 1 ? src2 : src3,
               type: type,
               score: score
             }
@@ -123,7 +125,7 @@ Page({
               y: 0,
               x: that.rand(windowWidth / 2, windowWidth - 64 * proportion),
               s: type === 2 ? 30 : 10,
-              image: type === 0 ? src1 : src2,
+              image: type === 0 ? src1 : type === 1 ? src2 : src3,
               type: type,
               score: score
             }

@@ -1,15 +1,4 @@
 <!--pages/me/share.wxml-->
 <view class='main-view'>
-<view class='icon-view'>
-<image src="../../../images/me/user_icon_default.png"></image>
-</view>
-<view class='lucky-label'>
-<text>快给好友分享\n您的幸运红包</text>
-</view>
-<view class='qr-code'>
-<image src="../../../images/me/qr-code.png"></image>
-</view>
-<view class='share-button'>
-<button type="primary">转发给好友或群组</button>
-</view>
+<image src="../../../images/me/share.png"></image>
 </view>

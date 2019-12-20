@@ -93,6 +93,10 @@ Page({
     })
   },
 
+  payMoney:function() {
+
+  },
+
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '发红包' }); 
   },
@@ -110,4 +114,8 @@ Page({
     // 页面关闭
   },
 
+  
+
 })
+
+

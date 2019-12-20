@@ -1,6 +1,6 @@
 <!--pages/game/rain/rain.wxml-->
 <view class='main-view'>
-<image  src="../../../images/rain/red_backet_bg.jpg"></image>
+<image  src="../../../images/rain/bg.gif"></image>
 </view>
 <canvas canvas-id="caxCanvas" style="width:100%;height:100%; position: absolute;"bindtouchstart="touchStart" bindtouchmove="touchMove" 
 bindtouchend="touchEnd" > </canvas>
