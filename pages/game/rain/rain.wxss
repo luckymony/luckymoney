@@ -15,8 +15,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     z-index: 100;
+    /* background-color: orange; */
 }
 
 .bg-view {
@@ -28,15 +29,16 @@
 }
 
 .ready-time .top {
-    margin-top: 244rpx;
     font-size: 60rpx;
     color: #fffdc5;
+    /* background-color: red; */
 }
 
 .ready-time .countdown {
     margin-top: 100rpx;
     font-size: 240rpx;
     color: #fffdc5;
+    /* background-color: blue; */
 }
 
 .timeout-warpper {

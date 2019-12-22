@@ -7,7 +7,7 @@
 <text class="bless-text">{{'恭喜发财,大吉大利'}}</text>
 </view>
 <view class="icon-center-view">
-<image class="icon-center-image" mode='aspectFill' src="{{coinIcon}}"></image>
+<image class="icon-center-image" mode='aspectFit' src="{{coinIcon}}"></image>
 </view>
 <view class="button-view">
 <view class="send-packet">

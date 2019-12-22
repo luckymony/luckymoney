@@ -36,11 +36,11 @@ Page({
 
   openGame:function(e) {
     if(this.data.playType == 0) {
-      wx.navigateTo({
+      wx.redirectTo({
         url: '../../game/card/card',
       })
     }else if (this.data.playType == 1) {
-      wx.navigateTo({
+      wx.redirectTo({
         url: '../../game/rain/rain',
       })
     }

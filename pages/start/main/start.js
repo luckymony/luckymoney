@@ -8,7 +8,8 @@ Page({
                  index  : 0,
                  types: [
                           "开门大吉",
-                          "八方来财"
+                          "八方来财",
+                          "好运连绵"
                         ],
                  count : 0, 
                  chance: 1,
