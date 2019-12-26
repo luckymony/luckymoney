@@ -1,6 +1,8 @@
 {
   "usingComponents": {
     "i-divider": "../../../dist/divider/index",
-    "i-icon": "../../../dist/icon/index"
+    "i-icon": "../../../dist/icon/index",
+    "failed": "../../../component/failed/failed",
+    "i-load-more": "../../dist/load-more/index"
   }
 }

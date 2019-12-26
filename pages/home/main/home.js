@@ -26,6 +26,18 @@ Page({
         play_type: "2",
         play_id:2,
         is_me:1
+      },
+      {
+        icon: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555004603689&di=6161b038a8a7046bfe88e4d72e975729&imgtype=0&src=http%3A%2F%2Fwww.36588.com.cn%2FImageResourceMongo%2FUploadedFile%2Fdimension%2Fbig%2F7d10bc2b-db5b-4247-925c-0628d65b3f50.png",
+        name: "李世民",
+        start_time: "1568086490",
+        long_time: "60",
+        count: "10",
+        lucky_str: "一帆风顺,四季平安",
+        play_name: "好运连绵",
+        play_type: "3",
+        play_id: 3,
+        is_me: 0
       }
       ],
 
@@ -58,5 +70,18 @@ Page({
   },
   onUnload: function () {
     // 页面关闭
+  },
+  onPullDownRefresh: function () {
+    // wx.startPullDownRefresh()
+    wx.showNavigationBarLoading() 
+    setTimeout(() => {
+      wx.hideNavigationBarLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
+    }, 2000);
+  },
+  onReachBottom: function () {
+    setTimeout(() => {
+
+    }, 2000);
   }
 })

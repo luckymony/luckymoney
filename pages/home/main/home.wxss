@@ -1,6 +1,11 @@
+/* 隐藏滑动条 */
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: transparent;
+}
+
 .page-body {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
 }

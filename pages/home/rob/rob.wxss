@@ -12,8 +12,8 @@
   flex-direction:column;
   align-items:center;
   background-color: #EB5646;
-  border-bottom-right-radius: 40rpx;
-  border-bottom-left-radius: 40rpx;
+  /* border-bottom-right-radius: 40rpx; */
+  /* border-bottom-left-radius: 40rpx; */
 } 
 .icon-view {
   flex: 1;
@@ -131,11 +131,130 @@
   color: rgb(248, 185, 130);
 }
 
+.circular-view {
+  width: 100%;
+  height: 200rpx;
+  background-color: #EB5646;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  display: flex; 
+  flex-direction:row;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.circular-view image {
+  margin-top: 30rpx;
+  margin-left: -30rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.circular-view text {
+  margin-top: 30rpx;
+  margin-left: 20rpx;
+  color: white;
+  font-size: 40rpx;
+}
+
+.my-view {
+  margin-top: -80rpx;
+  height: 200rpx;
+  background-color: white;
+  border-radius: 20rpx;
+  margin-left : 20rpx;
+  margin-right : 20rpx;
+  display: flex; 
+  flex-direction:row;
+  justify-content: center;
+  font-size: 30rpx;
+}
+
+.my-left-view {
+  flex: 1;
+  display: flex; 
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: red; */
+}
+
+.my-rank-money {
+  color: #efb336;
+}
+
+.my-center-view {
+  flex: 1;
+  display: flex; 
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: blue; */
+}
+
+.my-center-view image {
+  width: 100rpx;
+  height: 100rpx;
+  margin-bottom: 10rpx;
+  border-radius: 50rpx;
+}
+
+.my-right-view {
+  flex: 1;
+  display: flex; 
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: orange; */
+}
+
+.head-view {
+  margin-top: 20rpx;
+  height: 100rpx;
+  background-color: white;
+  margin-left : 20rpx;
+  margin-right : 20rpx;
+  border-top-right-radius: 20rpx; 
+  border-top-left-radius: 20rpx;
+  display: flex; 
+  flex-direction:column;
+  justify-content: center;
+}
+
+.title-view {
+  height: 59rpx;
+  display: flex; 
+  flex-direction:row;
+  justify-content: space-between;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  font-size: 30rpx;
+}
+
+.line-view {
+  height: 1rpx;
+  background-color: #eee;
+  margin-left : 40rpx;
+  margin-right : 40rpx;
+}
+
 .buttom-view {
-  margin-top: 10rpx;
   width: 100vw;
   display: flex;
 	flex-direction:column;
+}
+
+.load-more-view {
+  background-color: white;
+  height: 100rpx;
+  margin-left : 20rpx;
+  margin-right : 20rpx;
+  border-bottom-right-radius: 20rpx; 
+  border-bottom-left-radius: 20rpx;
+}
+
+.margin-bottom {
+  margin-bottom: 20rpx;
 }
 
 .my-money {
@@ -151,26 +270,62 @@
   text-align: center;
   font-size: 28rpx;
 }
+
 .item-view{
   display: flex;
   flex-direction:row;
-  align-items: center;
   background-color: #fff;
-  margin-bottom: 10rpx;
-  /* width: 98vw; */
   height: 120rpx;
   margin-left : 20rpx;
   margin-right : 20rpx;
   padding-left: 10rpx;
   padding-right: 10rpx;
-  border-radius: 4rpx;
 }
+
+.last-item-view {
+  border-bottom-right-radius: 20rpx; 
+  border-bottom-left-radius: 20rpx;
+}
+
+.rank-view {
+  width: 100rpx;
+  text-align: center;
+  /* background-color: red; */
+}
+
+.rank-view text {
+  line-height: 120rpx;
+}
+
+.user-view {
+  flex: 1;
+  display: flex;
+  flex-direction:row;
+  /* background-color: blue; */
+}
+
+.user-view text {
+  margin-left: 20rpx;
+  line-height: 120rpx;
+  color: #999;
+}
+
+.money-view {
+  width: 150rpx;
+  line-height: 120rpx;
+  text-align: center;
+  color:#efb336;
+  /* background-color: orange; */
+}
+
 .item-icon {
+  margin-left: 50rpx;
+  margin-top: 10rpx;
   width: 100rpx;
   height: 100rpx;
   border-radius: 50rpx;
-  margin-right: 18rpx;
 }
+
 .item-view-name {
   flex: 1;
   display: flex;
@@ -178,21 +333,26 @@
   color: black;
   font-size: 28rpx;
 }
+
 .item-view-money {
   display: flex;
   flex-direction:column;
   align-items: center;
 }
+
 .show-image {
+  margin-top: 35rpx;
   width: 50rpx;
   height: 50rpx;
   opacity:1.0;
 }
+
 .hidden-image {
   width: 50rpx;
   height: 50rpx;
   opacity:0.0;
 }
+
 .tip-text {
    font-size: 24rpx;
 }
@@ -212,8 +372,9 @@
   height: 100rpx;
   margin-left : 20rpx;
   margin-right : 20rpx;
-  margin-bottom: 10rpx;
   background-color: white;
+  border-bottom-right-radius: 20rpx; 
+  border-bottom-left-radius: 20rpx;
 }
 .load-more image {
   margin-right: 10rpx;

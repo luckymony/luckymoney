@@ -110,12 +110,10 @@ Page({
   },
 
   onPullDownRefresh: function() {
-    var self = this;
-    console.log('下拉刷新');
+    wx.showNavigationBarLoading();
     setTimeout(() => {
-      // 模拟请求数据，并渲染
-      // 数据成功后，停止下拉刷新
       wx.stopPullDownRefresh();
+      wx.hideNavigationBarLoading();
     }, 2000);
   },
 

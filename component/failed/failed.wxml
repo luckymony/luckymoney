@@ -1,0 +1,28 @@
+<!--component/failed/failed.wxml-->
+<view class="bg-view" wx:if='{{isShow}}'>
+</view>
+<view class="main-view" wx:if='{{isShow}}'>
+<view class="center-view">
+<text class="title-view">
+很遗憾您没有抢到红包!
+</text>
+<text class="subText-view">
+{{count > 0 ? "当前还拥有" + count + "次机会" : '当前机会已用完'}}
+</text>
+</view>
+<view class="button-view" wx:if='{{count > 0}}'>
+<button class="left-button" bindtap="cancelBindtap">
+放弃
+</button>
+<button class="right-button" bindtap="continueBindtap">
+继续
+</button>
+</view>
+<button class="determine-button" wx:if='{{!count > 0}}' bindtap="okBindtap">
+确定
+</button>
+</view>
+<image class="failed-icon" 
+src="../../images/rob/failed.png" wx:if='{{isShow}}'>
+</image>
+

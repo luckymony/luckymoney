@@ -13,7 +13,7 @@
 <text>{{item.lucky_str}}</text>
 </view>
 <view class='item-bottom-view'>
-<text>幸运红包</text>
+<text>{{item.play_name + '红包'}}</text>
 </view>
 </view>
 <view class='me-item-right-view' wx:if="{{item.is_me}}">

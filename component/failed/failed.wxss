@@ -1,0 +1,91 @@
+/* component/failed/failed.wxss */
+.bg-view {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.7;
+}
+
+.main-view {
+  position: absolute;
+  width: 80%;
+  height: 38%;
+  left: 10%;
+  top: 31%; 
+  background-color: white;
+  border-radius: 20rpx; 
+  display: flex;
+  flex-direction:column;
+}
+
+.center-view {
+ flex: 1;
+ display: flex;
+ flex-direction:column;
+ justify-content: center;
+ align-items: center;
+ /* background-color: orange; */
+}
+
+.button-view {
+ /* height: 150rpx; */
+ margin-bottom: 20rpx;
+ display: flex;
+ flex-direction:row;
+ justify-content: center;
+ align-items: center;
+ /* background-color: red; */
+}
+
+.left-button {
+ flex: 1;
+ margin-right: 10rpx;
+ margin-left: 20rpx;
+ background-color: gray;
+ text-align: center; 
+ align-items: center;
+ font-size: 25rpx; 
+ color: #fff;
+}
+
+.right-button {
+ flex: 1;
+ margin-left: 10rpx;
+ margin-right: 20rpx;
+ background-color: #EB5646;
+ text-align: center; 
+ align-items: center;
+ font-size: 25rpx;
+ color: white;
+}
+
+.title-view {
+  justify-content: center;
+  align-items: center;
+  font-size: 50rpx;
+  display: flex;
+}
+
+.subText-view {
+ font-size: 30rpx;
+}
+
+.failed-icon {
+  position: absolute;
+  width: 25%;
+  height: 30%;
+  left: 37.5%;
+  top: 12%; 
+}
+
+.determine-button {
+ width: 60%;
+ margin-bottom: 20rpx;
+ /* height: 60rpx; */
+ /* padding-left: 10rpx; */
+ background-color: #EB5646;
+ text-align: center; 
+ align-items: center;
+ font-size: 25rpx;
+ color: white;
+}

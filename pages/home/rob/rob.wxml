@@ -25,22 +25,53 @@
 </view>
 </view>
 </view>
-<view class="buttom-view">
-<view class="item-view" wx:for="{{currentItems}}" wx:for-item="data" wx:for-index="index">
+<view class="circular-view">
+<image src="../../../images/rob/guanjun.png"></image>
+<text>排行榜</text>
+</view>
+<view class="my-view">
+<view class="my-left-view">
+<text>我的排名</text>
+<text class="my-rank-money">--</text>
+</view>
+<view class="my-center-view">
+<image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555004603689&di=6161b038a8a7046bfe88e4d72e975729&imgtype=0&src=http%3A%2F%2Fwww.36588.com.cn%2FImageResourceMongo%2FUploadedFile%2Fdimension%2Fbig%2F7d10bc2b-db5b-4247-925c-0628d65b3f50.png"></image>
+<text>我的名字</text>
+</view>
+<view class="my-right-view">
+<text>红包金额</text>
+<text class="my-rank-money">--</text>
+</view>
+</view>
+<view class="head-view">
+<view class="title-view">
+<text>排名</text>
+<text>用户</text>
+<text>红包金额</text>
+</view>
+<view class="line-view"></view>
+</view>
+<view class="buttom-view {{showLoading ? '' : 'margin-bottom'}}">
+<view class="item-view {{index == (allItems.length - 1)  ? 'last-item-view' : ''}}" wx:for="{{currentItems}}" wx:for-item="data" wx:for-index="index">
+<view class="rank-view">
+<image src="../../../images/rob/{{'paihang' + (index%3+1) + '.png'}}" class="{{index <= 2 ?'show-image':''}}" wx:if="{{index<=2}}"></image>
+<text wx:if="{{index>2}}">{{index + 1}}</text>
+</view>
+<view class="user-view">
 <image src="{{data.icon}}" class="item-icon"></image>
-<view class="item-view-name">
 <text>{{data.name}}</text>
-<text>{{data.time}}</text>
 </view>
-<view class="item-view-money">
+<view class="money-view">
 <text>{{data.money}}</text>
-<image src="../../../images/rob/{{'paihang' + (index%3+1) + '.png'}}" class="{{index <= 2 ?'show-image':'hidden-image'}}" wx:if="{{index<=2}}" ></image>
-<text wx:if="{{index>2}}" class="tip-text">{{data.state===0?"挑战成功":"挑战失败"}}</text>
 </view>
-</view>
+</view> 
+<i-load-more tip="暂无数据" loading="{{ false }}"
+ wx:if="{{allItems.length == 0}}"
+ class="load-more-view" />
 </view>
 <view class='load-more' wx:if="{{showLoading}}">
 <image src="../../../images/home/loading.gif"></image>
 <text>{{'数据加载...'}}</text>
 </view>
 </scroll-view>
+<!-- <failed class = "failed-view"></failed> -->
