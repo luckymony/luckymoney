@@ -1,0 +1,9 @@
+<!--pages/home/relay/relay.wxml-->
+<view class="main-view">
+<view class="top-view">
+</view>
+<view class="center-view">
+</view>
+<view class="bottom-view">
+</view>
+</view>

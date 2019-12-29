@@ -16,7 +16,7 @@ const formatNumber = n => {
 function getTimeStrFromTimeStamp(time) {
   var n = time * 1000;
   var date = new Date(n);  
-  console.log(date);
+  // console.log(date);
   var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1)
   var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate(); 
   var h = date.getHours();

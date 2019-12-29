@@ -1,0 +1,41 @@
+<!--component/openplay/openplay.wxml-->
+<view class="play-ui">
+<view class="first-view">
+<view class="one-view">
+<view class="top-view">
+<text>游戏限时</text>
+<input value="{{activityTime}}" placeholder="游戏时长" type="number"/>
+<text>秒</text>
+</view>
+<view class="line-dotted"></view>
+</view>
+<view class="two-view">
+<view class="top-view">
+<text>点击红包</text>
+<input value="{{moneyCount}}" placeholder="打开红包个数" type="number"/>
+<text>个</text>
+</view>
+<view class="line-dotted"></view>
+</view>
+<view class="three-view">
+<view class="top-view">
+<text>拥有机会</text>
+<input value="{{chanceCount}}" placeholder="游戏机会次数" type="number"/>
+<text>次</text>
+</view>
+<view class="line-dotted"></view>
+</view>
+<view class="four-view">
+<view class="top-view">
+<text>设置难度</text>
+<block wx:for="{{difficulty}}" wx:key="{{index}}">
+<button class="{{selectIndex == index ? 'selected' : 'default'}}" data-index="{{index}}"bindtap="difficultyTap">{{difficulty[index].name}}</button>
+</block>
+</view>
+<view class="line-dotted"></view>
+</view>
+</view>
+<view class="second-view">
+<button bindtap="editedTap">完成编辑</button>
+</view>
+</view>

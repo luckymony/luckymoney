@@ -1,19 +1,19 @@
 Page({
   
   data: {
-    items: [],
+    items: [
+     { title: "开门大吉", longTime: 120, moneyCount: 5, chanceCount: 1, difficulty: 0 },
+     { title: "八方来财", longTime: 120, integralCount: 200, chanceCount: 1, difficulty: 0 }, 
+     { title: "好运连绵", longTime: 120, startTime: 200}],
     currentIndex: 0,
     isShow:false,
-    longTime:120,
-    chanceCount:1
   },
 
   onLoad: function (options) {
     var obj = JSON.parse(options.value);
-    // console.log(obj);
+     console.log(obj);
     this.setData({
-      items: obj.types,
-      currentIndex: obj.index
+      currentIndex: obj
     });
     wx.setNavigationBarTitle({ title: '红包玩法' });
   },
@@ -38,8 +38,23 @@ Page({
   },
 
   edited:function(e) {
-    this.setData({
+    var that = this;
+    that.setData({
       isShow: false
+    })
+    let timeout = setTimeout(() => {
+      clearTimeout(timeout)
+      wx.navigateBack({
+
+      })
+    }, 250)
+    var pages = getCurrentPages();
+    var prevPage = pages[pages.length - 2];
+    prevPage.setData({
+      playParameter: {
+        type: that.data.currentIndex,
+        parameter: that.data.items[that.data.currentIndex]
+      }
     })
   },
 })

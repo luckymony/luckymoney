@@ -12,14 +12,15 @@
     "pages/me/problem/problem",
     "pages/game/card/card",
     "pages/game/rain/rain",
+    "pages/home/relay/relay",
     "pages/auth/auth"
   ],
   "window": {
-    "backgroundColorTop" : "#EB5646",
-    "backgroundColorBottom" : "#ffffff",
+    "backgroundColorTop": "#EB5646",
+    "backgroundColorBottom": "#ffffff",
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#EB5646",
-    "navigationBarTitleText": "抢红包",
+    "navigationBarTitleText": "斗利是",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
@@ -32,7 +33,7 @@
         "selectedIconPath": "images/tabbar/search_list_selected.png",
         "iconPath": "images/tabbar/search_list_default.png",
         "pagePath": "pages/home/main/home",
-        "text": "抢红包"
+        "text": "斗利是"
       },
       {
         "selectedIconPath": "images/tabbar/lucky_money_selected.png",

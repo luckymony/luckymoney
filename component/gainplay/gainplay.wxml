@@ -1,25 +1,26 @@
+<!--component/gainplay/gainplay.wxml-->
 <view class="play-ui">
 <view class="first-view">
 <view class="one-view">
 <view class="top-view">
 <text>游戏限时</text>
-<input value="{{activityTime}}" placeholder="120" type="number"/>
+<input value="{{activityTime}}" placeholder="游戏时长" type="number"/>
 <text>秒</text>
 </view>
 <view class="line-dotted"></view>
 </view>
 <view class="two-view">
 <view class="top-view">
-<text>{{playType == 1 ? '点击红包' : '红包积分'}}</text>
-<input value="{{emptyMoneyCount}}" placeholder="0" type="number"/>
-<text>{{playType == 1 ? '个' : '分'}}</text>
+<text>红包积分</text>
+<input value="{{integralCount}}" placeholder="游戏积分" type="number"/>
+<text>分</text>
 </view>
 <view class="line-dotted"></view>
 </view>
 <view class="three-view">
 <view class="top-view">
 <text>拥有机会</text>
-<input value="{{chanceCount}}" placeholder="1" type="number"/>
+<input value="{{chanceCount}}" placeholder="游戏机会次数" type="number"/>
 <text>次</text>
 </view>
 <view class="line-dotted"></view>
@@ -35,6 +36,6 @@
 </view>
 </view>
 <view class="second-view">
-<button type="primary" bindtap="editedTap">完成编辑</button>
+<button bindtap="editedTap">完成编辑</button>
 </view>
 </view>

@@ -1,13 +1,19 @@
-<swiper class="main-view" bindchange="handleChange" previous-margin="50rpx" next-margin="50rpx" circular>
+<swiper class="main-view" bindchange="handleChange" previous-margin="50rpx" next-margin="50rpx" circular="true" current="{{currentIndex}}">
   <block wx:for="{{items}}" wx:key="{{index}}">
-    <swiper-item class="item-swiper">
+    <swiper-item class="item-swiper" current="{{currentIndex}}">
       <view class="item-view {{currentIndex == index ? 'active': ''}}" bindtap="touchAction">
-      <text class="first-view">{{item}}</text>
+      <text class="first-view">{{item['title']}}</text>
       </view>
     </swiper-item>
   </block>
 </swiper>
 <view wx:if="{{isShow}}" class="cloud_layer" bindtap="hiddenTap"></view>
-<playui class="playui {{isShow ? 'time_hidden' : 'hidden_playui'}}"
-longTime="{{longTime}}"chanceCount="{{chanceCount}}" playType="{{currentIndex+1}}" bind:edited="edited">
-</playui>
+<openplay class="playui {{isShow ? 'show_playui1' : 'hidden_playui'}}"
+bind:edited="edited" wx:if="{{currentIndex == 0}}">
+</openplay>
+<gainplay class="playui {{isShow ? 'show_playui1' : 'hidden_playui'}}"
+bind:edited="edited" wx:if="{{currentIndex == 1}}">
+</gainplay>
+<contplay class="playui {{isShow ? 'show_playui2' : 'hidden_playui'}}"
+bind:edited="edited" wx:if="{{currentIndex == 2}}">
+</contplay>

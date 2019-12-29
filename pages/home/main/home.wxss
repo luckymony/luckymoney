@@ -96,9 +96,16 @@ color: transparent;
   display: flex;
   flex-direction:column;
   justify-content: center;
+  /* background-color: greenyellow; */
 }
-.item-bottom-view text {
+.item-bottom-left {
   font-size: 24rpx;
-  color: lightgray;
+  color: #ccc;
   margin-left: 20rpx;
+}
+.item-bottom-right {
+  font-size: 24rpx;
+  color: #ccc;
+  text-align:right;
+  margin-right: 20rpx;
 }

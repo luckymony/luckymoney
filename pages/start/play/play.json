@@ -1,6 +1,8 @@
 {
   "usingComponents": {
-    "playui": "../../../component/playui/playui"
+    "openplay": "../../../component/openplay/openplay",
+    "gainplay":"../../../component/gainplay/gainplay",
+    "contplay":"../../../component/contplay/contplay"
   },
   "disableScroll": true
 }

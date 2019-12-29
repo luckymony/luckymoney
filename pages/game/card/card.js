@@ -317,12 +317,12 @@ Page({
                 isCanAction : true
               })
               that.shaking()
-              that.data.cardTimes.push(timer5); 
             },1000)
-            that.data.cardTimes.push(timer4); 
+            that.data.cardTimes.push(timer5); 
           },1000)
-          that.data.cardTimes.push(timer3); 
+          that.data.cardTimes.push(timer4); 
         },5000) //设置展示时间
+        that.data.cardTimes.push(timer3); 
       },1000)
       that.data.cardTimes.push(timer2); 
     },2000)

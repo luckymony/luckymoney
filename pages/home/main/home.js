@@ -44,14 +44,20 @@ Page({
   },
   grabLuckyMoney: function(e) {
     console.log(e.currentTarget)
-    var index = e.currentTarget.dataset['index'];
+    var type = e.currentTarget.dataset['index'];
     var name = e.currentTarget.dataset['title'];
-    wx.navigateTo({
-      url: '../rob/rob?type=' + index +'&name=' + name,
-    })
+    if (type == 3) {
+      wx.navigateTo({
+        url: '../relay/relay',
+      })
+    }else {
+      wx.navigateTo({
+        url: '../rob/rob?type=' + type + '&name=' + name,
+      })
+    }
   },
   onLoad: function (options) {
-    wx.setNavigationBarTitle({ title: '抢红包' }); 
+    wx.setNavigationBarTitle({ title: '斗利是' }); 
     for(var i=0;i<this.data.items.length;i++) {
       var itemTimeStr = 'items[' + i + '].start_time';
       this.setData({
