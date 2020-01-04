@@ -9,6 +9,7 @@ color: transparent;
   display: flex;
   flex-direction: column;
 }
+
 .list-item {
   display: flex;
   flex-direction:column;

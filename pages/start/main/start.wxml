@@ -10,7 +10,7 @@
 <view class="two-line">
 <view class="two-input">
 <text>{{items[1].title}}</text>
-<input value="{{items[1].number}}" placeholder="0.00" type="number"/>
+<input value="{{items[1].number}}" placeholder="0.00" type="digit" bindinput= 'watchMoney' maxlength="8"/>
 <text>元</text>
 </view>
 <view class="line-dotted"></view>
@@ -18,7 +18,7 @@
 <view class="three-line">
 <view class="three-input">
 <text>{{items[2].title}}</text>
-<input value="{{items[2].number}}" placeholder="0" type="number"/>
+<input value="{{items[2].number}}" placeholder="填写个数" type="number" bindinput= 'watchCount' maxlength="4"/>
 <text>个</text>
 </view>
 <view class="line-dotted"></view>
@@ -35,10 +35,10 @@
 <view class="second-view">
 <view class="money-view">
 <text class="symbol-text">{{"￥"}}</text>
-<text class="money-text">{{'50'+'.'+'00'}}</text>
+<text class="money-text">{{moneyCount}}</text>
 </view>
 <button bindtap="payMoney" class="pay-button">塞钱进红包</button>
-<text class="bottom-text">{{"对方可领取的红包金额为0.01~200元"}}</text>
+<text class="bottom-text">{{'需支付￥'+ serviceFee + '服务费'}}</text>
 </view>
 </view>
 <view class="foot-view">
@@ -47,3 +47,4 @@
 <view class="line-view2"></view>
 </view>
 <i-action-sheet visible="{{visible}}" actions="{{actions}}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem"/>
+<i-message id="message"/>

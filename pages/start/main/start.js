@@ -1,15 +1,18 @@
-
+var util = require('../../../utils/util.js')
+const {$Message} = require('../../../dist/base/index');
 const app = getApp() 
 Page({
   data: {
-    items: [{ title: "恭喜发财 大吉大利",number:0},{ title: "总金额数", number: 50 },
-    { title: "红包个数", number: 8},{ title: "红包玩法", type: "开门大吉"}],
+    items: [{ title: "恭喜发财 大吉大利",number:0},{ title: "总金额数", number:null},
+    { title: "红包个数", number: null},{ title: "红包玩法", type: "开门大吉"}],
     playTypes:["开门大吉","八方来财","好运连绵"],
     actions: [{name: "鼠兆丰年 盛世贺岁"},{name: "恭喜发财 大吉大利"}, 
               {name: "合乐融融 财运滚滚"},{name: "一帆风顺 二龙腾飞"}, 
               {name: "七星高照 八方来财"},{name: "鼠你最美 鼠你最棒"}], 
     visible: false,
-    isShow: false,
+    moneyCount: '0.00',
+    redPacketCount:'0',
+    serviceFee:'0.00',
   },
 
   toTip:function(e) {
@@ -74,6 +77,79 @@ Page({
     var index = that.data.playTypes.indexOf(that.data.items[3].type);
     wx.navigateTo({
       url: '../play/play?value=' + JSON.stringify(index),
+    })
+  },
+
+  watchMoney:function(e) {
+    // console.log(e.detail);
+    var that = this;
+    if(e.detail.value > 20000) {
+      that.setData({
+        'items[1].number': parseFloat(that.data.moneyCount)
+      })
+      $Message({
+        content: '单次支付总金额不可超过20000元',
+        type: 'warning',
+        duration:3
+      });
+      return;
+    } else if (e.detail.value < 1.0) {
+      $Message({
+        content: '单次支付总金额大于1.00元',
+        type: 'warning',
+        duration: 3
+      });
+      return;
+    }else if ((e.detail.value/that.data.items[2].number*1.00) < 0.01) {
+      $Message({
+        content: '最小红包金额不能小于0.01元',
+        type: 'warning',
+        duration: 3
+      });
+      return;
+    }
+  
+    var num = util.pointNumer(e.detail.value);
+    that.setData({
+      'items[1].number': num,
+      moneyCount: num ? util.moneyFormat(num.toString()) : '0.00',
+      serviceFee: num ? util.getServiceFee(num) : '0.00'
+    })
+    return // 必加，不然输入框可以输入多位小数
+  },
+
+  watchCount:function(e) {
+    var that = this;
+    if (e.detail.value > 500) {
+      that.setData({
+        'items[2].number': parseInt(that.data.redPacketCount)
+      })
+      $Message({
+        content: '一次最多发500个红包',
+        type: 'warning',
+        duration: 3
+      });
+      return;
+    } else if (e.detail.value < 1) {
+      $Message({
+        content: '请填写红包个数',
+        type: 'warning',
+        duration: 3
+      });
+      return;
+    } else if (that.data.moneyCount > 0 
+    && (that.data.moneyCount / e.detail.value * 1.00) < 0.01) {
+      $Message({
+        content: '最小红包金额不能小于0.01元',
+        type: 'warning',
+        duration: 3
+      });
+      return;
+    }
+
+    that.setData({
+      'items[2].number': e.detail.value,
+      redPacketCount: e.detail.value
     })
   },
 
@@ -145,6 +221,7 @@ Page({
   onReady: function () {
     // 页面渲染完成
   },
+
   onShow: function () {
     // 页面显示
     var pages = getCurrentPages();
@@ -155,14 +232,16 @@ Page({
       that.setData({
         'items[3].type': json.parameter.title,
         'items[1].title': (json.type <= 1) ? "总金额数" : "我的红包",
-        'items[2].title': (json.type <= 1) ? "红包个数" : "凑红包人数"
+        'items[2].title': (json.type <= 1) ? "红包个数" : "凑钱人数"
       });
       console.log(that.data.playParameter);
     }
   },
+
   onHide: function () {
     // 页面隐藏
   },
+
   onUnload: function () {
     // 页面关闭
   },

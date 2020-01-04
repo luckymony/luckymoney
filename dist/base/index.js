@@ -31,6 +31,11 @@ function Message(options) {
     ctx.handleShow(options);
 }
 
+function hiddenTip() {
+  const ctx = getCtx(selector);
+  ctx.handleHide();
+}
+
 module.exports = {
     $Toast: Toast,
     $Message: Message
