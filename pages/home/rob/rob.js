@@ -59,7 +59,7 @@ Page({
     console.log(options);
     var that = this;
     that.setData({
-      playType: options["type"]
+      playType: parseInt(options["type"]) - 1
     });
     let newItems = [];
     if (that.data.allItems.length > 5) {

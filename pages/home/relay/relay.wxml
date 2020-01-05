@@ -1,29 +1,6 @@
 <view class="main-view">
 <view class="top-view">
-10:10:10
-</view>
-<view class="money-view">
-<view class="circle-view">
-</view>
 </view>
 <view class="center-view">
-<view class="button-view">
-<view class="ten-line1">
-<view class="ten-line2">
-</view>
-</view>
-</view>
-<view class="record-view">
-<view class="item-view" wx:for="{{items}}" wx:for-item="data" wx:key="{{index}}">
-<image src="{{data.icon}}" class="item-icon"></image>
-<view class="user-view">
-<text class="user-name"></text>
-<text class="time-view"></text>
-</view>
-</view>
-</view>
-</view>
-<view class="bottom-view">
-1
 </view>
 </view>

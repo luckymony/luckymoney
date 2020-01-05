@@ -42,6 +42,7 @@ Page({
       ],
 
   },
+
   grabLuckyMoney: function(e) {
     console.log(e.currentTarget)
     var type = e.currentTarget.dataset['index'];
@@ -56,6 +57,7 @@ Page({
       })
     }
   },
+  
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '斗利是' }); 
     for(var i=0;i<this.data.items.length;i++) {
