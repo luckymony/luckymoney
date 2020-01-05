@@ -4,25 +4,33 @@
 <view class="one-view">
 <view class="top-view">
 <text>游戏限时</text>
-<input value="{{activityTime}}" placeholder="游戏时长" type="number"/>
+<input value="{{activityTime}}" placeholder="游戏时长" type="number" bindinput= 'watchTimeLength'/>
 <text>秒</text>
 </view>
 <view class="line-dotted"></view>
 </view>
 <view class="two-view">
 <view class="top-view">
+<text>最小红包</text>
+<input value="{{minMoneyCount}}" placeholder="0.00" type="digit" bindinput= 'watchMoney'/>
+<text>元</text>
+</view>
+<view class="line-dotted"></view>
+</view>
+<view class="three-view">
+<view class="top-view">
 <text>开始日期</text>
-<picker mode="date" value="{{startDate}}" start="" end="" bindchange="bindDateChange">
+<picker mode="date" value="{{startDate}}" start="{{pickerStartDate}}" end="{{pickerEndDate}}" bindchange="bindDateChange">
 <input value="{{startDate}}" placeholder="游戏开始日期" disabled="true"/>
 </picker>
 <i-icon type="activity_fill" size='20' color="#80848f"/>
 </view>
 <view class="line-dotted"></view>
 </view>
-<view class="three-view">
+<view class="four-view">
 <view class="top-view">
 <text>开始时间</text>
-<picker mode="time" value="{{startTime}}" start="" end="" bindchange="bindDateChange">
+<picker mode="time" value="{{startTime}}" start="{{pickerStartTime}}" end="{{pickerEndTime}}" bindchange="bindTimeChange">
 <input value="{{startTime}}" placeholder="游戏开始时间" disabled="true"/>
 </picker>
 <i-icon type="clock_fill" size='20' color="#80848f"/>

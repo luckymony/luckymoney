@@ -7,19 +7,19 @@ Component({
     //活动限时
     activityTime: {
       type: Number,
-      value: 120
+      value: null
     },
 
     //需要打开红包个数
     moneyCount: {
       type: Number,
-      value: 5
+      value: null
     },
 
     //机会个数
     chanceCount: {
       type: Number,
-      value: 1
+      value: null
     },
 
     //选择难度

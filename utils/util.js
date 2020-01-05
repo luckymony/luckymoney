@@ -19,10 +19,51 @@ function getTimeStrFromTimeStamp(time) {
   // console.log(date);
   var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1)
   var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate(); 
-  var h = date.getHours();
-  var m = date.getMinutes(); 
+  var h = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+  var m = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes(); 
   var newTimeStr = M +"-"+ D +" "+ h + ":" + m;
   return newTimeStr;
+}
+
+function getStartDate() {
+  var date = new Date();  
+  var Y = date.getFullYear();
+  var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+  var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate(); 
+  var timeStr = Y + "-" + M + "-" + D;
+  return timeStr;
+}
+
+function getEndDate() {
+  var date = new Date();
+  var Y = date.getFullYear();
+  var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+  var D = date.getDate() < 10 ? '0' + (date.getDate() + 1) : (date.getDate() + 1);
+  var timeStr = Y + "-" + M + "-" + D;
+  return timeStr;
+}
+
+function getCurrentStartTime() {
+  var date = new Date();
+  var h = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+  var m = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+  return h + ':' + m;
+}
+
+function getStartTime(value) {
+  var date = new Date();
+  var Y = date.getFullYear();
+  var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+  var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+  var timeStr = Y + "-" + M + "-" + D;
+  console.log('timestr == ' + timeStr);
+  console.log('value == ' + value);
+  if(timeStr == value) {
+    var h = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+    var m = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes(); 
+    return h + ':' + m;
+  }
+  return '00:00'
 }
 
 function moneyFormat(value) {
@@ -58,12 +99,17 @@ function pointNumer(obj) {
 }
 
 function getServiceFee(value) {
+  if (value <= 0) {
+    return '0.00';
+  } else if (value < 1) {
+    return '0.01';
+  }
   var serviceFee = this.moneyFormat((value * 0.02).toString());
   var fee = parseFloat(serviceFee);
-  if (fee >0 && fee <= 0.01) {
+  if (fee <= 0.01) {
     return '0.01';
   }else {
-    return serviceFee;
+    return fee.toFixed(2).toString();
   }
 }
 
@@ -73,5 +119,9 @@ module.exports = {
   moneyFormat: moneyFormat,
   isNumber: isNumber,
   pointNumer: pointNumer,
-  getServiceFee: getServiceFee
+  getServiceFee: getServiceFee,
+  getStartDate: getStartDate,
+  getEndDate: getEndDate,
+  getCurrentStartTime: getCurrentStartTime,
+  getStartTime: getStartTime
 }

@@ -83,9 +83,9 @@ Page({
   watchMoney:function(e) {
     // console.log(e.detail);
     var that = this;
-    if(e.detail.value > 20000) {
+    if (e.detail.value > 0 && e.detail.value > 20000) {
       that.setData({
-        'items[1].number': parseFloat(that.data.moneyCount)
+        'items[1].number': parseFloat(that.data.moneyCount) > 0 ? parseFloat(that.data.moneyCount):null
       })
       $Message({
         content: '单次支付总金额不可超过20000元',
@@ -93,20 +93,37 @@ Page({
         duration:3
       });
       return;
-    } else if (e.detail.value < 1.0) {
+    } else if (e.detail.value > 0 && e.detail.value < 1.0) {
       $Message({
         content: '单次支付总金额大于1.00元',
         type: 'warning',
         duration: 3
       });
+      console.log(parseFloat(that.data.moneyCount).toString())
+      that.setData({
+        'items[1].number': parseFloat(that.data.moneyCount) > 0 ? parseFloat(that.data.moneyCount):null
+      })
       return;
-    }else if ((e.detail.value/that.data.items[2].number*1.00) < 0.01) {
+    } else if (
+      e.detail.value > 0
+      && that.data.items[2].number > 0
+      && (e.detail.value/that.data.items[2].number*1.00) < 0.01) {
       $Message({
-        content: '最小红包金额不能小于0.01元',
+        content: '单个最小红包金额不能小于0.01元',
         type: 'warning',
         duration: 3
       });
+      that.setData({
+        'items[1].number': parseFloat(that.data.moneyCount) > 0 ? parseFloat(that.data.moneyCount):null
+      })
       return;
+    }else if (e.detail.value == 0) {
+      that.setData({
+        'items[1].number': null,
+        moneyCount: '0.00',
+        serviceFee: '0.00'
+      })
+      return
     }
   
     var num = util.pointNumer(e.detail.value);
@@ -120,7 +137,7 @@ Page({
 
   watchCount:function(e) {
     var that = this;
-    if (e.detail.value > 500) {
+    if (e.detail.value && e.detail.value > 500) {
       that.setData({
         'items[2].number': parseInt(that.data.redPacketCount)
       })
@@ -130,20 +147,28 @@ Page({
         duration: 3
       });
       return;
-    } else if (e.detail.value < 1) {
+    } else if (e.detail.value && e.detail.value < 1) {
       $Message({
         content: '请填写红包个数',
         type: 'warning',
         duration: 3
       });
+      that.setData({
+        'items[2].number': parseInt(that.data.redPacketCount)
+      })
       return;
-    } else if (that.data.moneyCount > 0 
-    && (that.data.moneyCount / e.detail.value * 1.00) < 0.01) {
+    } else if (
+       e.detail.value 
+       && that.data.moneyCount > 0 
+       && (that.data.moneyCount / e.detail.value * 1.00) < 0.01) {
       $Message({
-        content: '最小红包金额不能小于0.01元',
+        content: '单个最小红包金额不能小于0.01元',
         type: 'warning',
         duration: 3
       });
+      that.setData({
+        'items[2].number': parseInt(that.data.redPacketCount)
+      })
       return;
     }
 

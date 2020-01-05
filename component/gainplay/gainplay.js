@@ -7,19 +7,19 @@ Component({
     //活动限时
     activityTime: {
       type: Number,
-      value: 120
+      value: null
     },
 
     //红包积分
     integralCount: {
       type: Number,
-      value: 200
+      value: null
     },
 
     //机会个数
     chanceCount: {
       type: Number,
-      value: 1
+      value: null
     },
 
     //选择难度
@@ -31,7 +31,8 @@ Component({
     //设置难度
     difficulty: {
       type: Array,
-      value: [{ name: "简单", level: 0 },
+      value: [
+      { name: "简单", level: 0 },
       { name: "正常", level: 1 },
       { name: "困难", level: 2 }]
     }
