@@ -38,6 +38,7 @@ Page({
   },
 
   edited:function(e) {
+    console.log(e);
     var that = this;
     that.setData({
       isShow: false

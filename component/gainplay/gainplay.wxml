@@ -4,7 +4,9 @@
 <view class="one-view">
 <view class="top-view">
 <text>游戏限时</text>
-<input value="{{activityTime}}" placeholder="游戏时长" type="number"/>
+<picker mode="selector" value="{{index1}}" range="{{timeArray}}" bindchange="bindPickerChange1">
+<input value="{{activityTime}}" placeholder="游戏时长" disabled="true"/>
+</picker>
 <text>秒</text>
 </view>
 <view class="line-dotted"></view>
@@ -12,7 +14,9 @@
 <view class="two-view">
 <view class="top-view">
 <text>红包积分</text>
-<input value="{{integralCount}}" placeholder="游戏积分" type="number"/>
+<picker mode="selector" value="{{index2}}" range="{{integralArray}}" bindchange="bindPickerChange2">
+<input value="{{integralCount}}" placeholder="游戏积分" disabled="true"/>
+</picker>
 <text>分</text>
 </view>
 <view class="line-dotted"></view>
@@ -20,7 +24,9 @@
 <view class="three-view">
 <view class="top-view">
 <text>拥有机会</text>
-<input value="{{chanceCount}}" placeholder="游戏机会次数" type="number"/>
+<picker mode="selector" value="{{index3}}" range="{{chanceArray}}" bindchange="bindPickerChange3">
+<input value="{{chanceCount}}" placeholder="游戏机会次数" disabled="true"/>
+</picker>
 <text>次</text>
 </view>
 <view class="line-dotted"></view>

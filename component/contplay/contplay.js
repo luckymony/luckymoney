@@ -8,22 +8,22 @@ Component({
     //活动限时
     activityTime: {
       type: String,
-      value: null
+      value: '120'
     },
     //最小红包
     minMoneyCount: {
       type: String,
-      value: null
+      value: '8'
     },
     //开始日前
     startDate: {
       type: String,
-      value: null
+      value: util.getStartDate()
     },
     //开始时间
     startTime: {
       type: String,
-      value: null
+      value: util.getCurrentStartTime()
     },
     //开始时间戳
     startStamp: {
@@ -57,38 +57,17 @@ Component({
    */
   data: {
     currentMoney:'0.00',
-    inputTimerout:null
+    inputTimerout:null,
+    timeArray:['60','120','180','240','300'],
+    index:1
   },
-
   /**
    * 组件的方法列表
    */
   methods: {
 
-    watchTimeLength:function(e) {
-      var that = this;
-      if (that.data.inputTimerout) {
-        clearTimeout(that.data.inputTimerout);
-      }
-      that.data.inputTimerout = setTimeout(() => {
-        clearTimeout(that.data.inputTimerout)
-        if (e.detail.value > 0 && e.detail.value < 60) { //小于60秒
-          // console.log('小于60秒')
-          that.triggerEvent("dataError", '游戏限时需大于等于60秒');
-        } else if (e.detail.value > 0 && e.detail.value > 300) { //大于300秒
-          // console.log('大于300秒')
-          that.triggerEvent("dataError", '游戏限时需小于等于300秒');
-        }
-      },2000);
-
-      that.setData({
-        activityTime: e.detail.value > 0 ? e.detail.value : null
-      })
-    },
-
     watchMoney:function(e) {
       var that = this;
-      console.log(e.detail);
       if (e.detail.value > 0 && e.detail.value > 20000) {
         that.setData({
           minMoneyCount: parseFloat(that.data.currentMoney) > 0 ? parseFloat(that.data.currentMoney) : null
@@ -122,6 +101,14 @@ Component({
       var that = this;
       that.setData({
         startTime: e.detail.value
+      })
+    },
+
+    bindPickerChange:function(e) {
+      var that = this;
+      that.setData({
+        activityTime:that.data.timeArray[e.detail.value],
+        index: e.detail.value
       })
     },
 

@@ -14,6 +14,6 @@ bind:edited="edited" wx:if="{{currentIndex == 0}}">
 <gainplay class="playui {{isShow ? 'show_playui1' : 'hidden_playui'}}"
 bind:edited="edited" wx:if="{{currentIndex == 1}}">
 </gainplay>
-<contplay class="playui {{isShow ? 'show_playui2' : 'hidden_playui'}}"
+<contplay class="playui {{isShow ? 'show_playui1' : 'hidden_playui'}}"
 bind:edited="edited" wx:if="{{currentIndex == 2}}">
 </contplay>

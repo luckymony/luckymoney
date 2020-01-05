@@ -4,7 +4,9 @@
 <view class="one-view">
 <view class="top-view">
 <text>游戏限时</text>
-<input value="{{activityTime}}" placeholder="游戏时长" type="number" bindinput= 'watchTimeLength'/>
+<picker mode="selector" value="{{index}}" range="{{timeArray}}" bindchange="bindPickerChange">
+<input value="{{activityTime}}" placeholder="游戏时长" disabled="true"/>
+</picker>
 <text>秒</text>
 </view>
 <view class="line-dotted"></view>

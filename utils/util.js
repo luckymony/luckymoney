@@ -45,8 +45,15 @@ function getEndDate() {
 
 function getCurrentStartTime() {
   var date = new Date();
-  var h = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
-  var m = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+  var h = date.getHours();
+  var m = date.getMinutes();
+  m = m + 10;
+  if (m >= 60) {
+    h = h + 1;
+    m = m - 60;
+  }
+  h = h > 10 ? h : '0' + h;
+  m = m > 10 ? m : '0' + m;
   return h + ':' + m;
 }
 
@@ -56,8 +63,6 @@ function getStartTime(value) {
   var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
   var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
   var timeStr = Y + "-" + M + "-" + D;
-  console.log('timestr == ' + timeStr);
-  console.log('value == ' + value);
   if(timeStr == value) {
     var h = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
     var m = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes(); 
