@@ -1,6 +1,60 @@
 <view class="main-view">
 <view class="top-view">
+<view class="first-view">
+<view class="time-view">
+<i-icon type="clock_fill" size="25" color="#fff"/>
+<text>08:08:08</text>
+</view>
+<view class="money-view">
+<text class="title-text">{{'总红包金额'}}</text>
+<view>
+<text class="money-text">{{money}}</text>
+<text class="unit-text">元</text>
+</view>
+</view>
+</view>
+<view class="gif-view">
+<image class="gif-image" mode='aspectFit' src="{{coinIcon}}"></image>
+</view>
+<view class="button-view">
+<view class="send-packet">
+<view class="send-button" bindtap='sendPacket'>
+<i-icon type="redpacket_fill" size="25" color="#EB5646"/>
+</view>
+<text class="send-text">我也发起红包</text>
+</view>
+<view class="start-button" bindtap='openGame'>开始</view>
+<view class="share-packet">
+<view class="share-button">
+<i-icon type="share_fill" size="25" color="#EB5646"/>
+</view>
+<text class="share-text">邀请好友来玩</text>
+</view>
+</view>
+</view>
+<view class="circular-view">
+</view>
+<view class="participate-view">
+1234
 </view>
 <view class="center-view">
+<view class="rank-view">
+<image src="../../../images/rob/guanjun.png"></image>
+<text>排行榜</text>
+</view>
+<view class="my-view">
+<view class="my-left-view">
+<text>我的排名</text>
+<text class="my-rank-money">--</text>
+</view>
+<view class="my-center-view">
+<image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555004603689&di=6161b038a8a7046bfe88e4d72e975729&imgtype=0&src=http%3A%2F%2Fwww.36588.com.cn%2FImageResourceMongo%2FUploadedFile%2Fdimension%2Fbig%2F7d10bc2b-db5b-4247-925c-0628d65b3f50.png"></image>
+<text>我的名字</text>
+</view>
+<view class="my-right-view">
+<text>红包金额</text>
+<text class="my-rank-money">--</text>
+</view>
+</view>
 </view>
 </view>

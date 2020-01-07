@@ -9,6 +9,7 @@
   height: 0;
   color: transparent;
 }
+
 .top-view {
   height: 100vh;
   width: 100vw;
@@ -19,6 +20,7 @@
   /* border-bottom-right-radius: 40rpx; */
   /* border-bottom-left-radius: 40rpx; */
 } 
+
 .icon-view {
   flex: 1;
   display: flex; 
@@ -26,6 +28,7 @@
   align-items:center;
   /* background-color: green; */
 }
+
 .icon-center-view {
   flex: 1;
   display: flex; 
@@ -34,6 +37,7 @@
   justify-content: center;
   /* background-color: greenyellow; */
 }
+
 .button-view {
   flex: 1;
   display: flex; 
@@ -43,8 +47,8 @@
 }
 
 .icon-image {
-  width: 200rpx;
-	height: 200rpx;
+  width: 150rpx;
+	height: 150rpx;
 	border-radius: 50%;
   background-color: #F89B4A;
   border: 10rpx solid #F44848;
@@ -57,9 +61,11 @@
   font-size: 24rpx;
   border-radius: 30rpx;
 }
+
 .icon-center-image {
   flex: 1;
 }
+
 .bless-text {
   font-size: 60rpx;
   margin-top: 20rpx;
