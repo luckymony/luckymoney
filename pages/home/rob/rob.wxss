@@ -155,14 +155,13 @@
 
 .circular-view image {
   margin-top: 30rpx;
-  margin-left: -30rpx;
   width: 50rpx;
   height: 50rpx;
 }
 
 .circular-view text {
   margin-top: 30rpx;
-  margin-left: 20rpx;
+  margin-left: 10rpx;
   color: white;
   font-size: 40rpx;
 }

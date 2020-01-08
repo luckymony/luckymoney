@@ -1,46 +1,49 @@
-<view class="main-view">
+<view class="main-vew">
 <view class="top-view">
 <view class="first-view">
 <view class="time-view">
 <i-icon type="clock_fill" size="25" color="#fff"/>
 <text>08:08:08</text>
 </view>
-<view class="money-view">
-<text class="title-text">{{'总红包金额'}}</text>
+<text class="name-text">{{'红包总金额'}}</text>
 <view>
 <text class="money-text">{{money}}</text>
 <text class="unit-text">元</text>
 </view>
 </view>
-</view>
-<view class="gif-view">
-<image class="gif-image" mode='aspectFit' src="{{coinIcon}}"></image>
+<view class="icon-center-view">
+<image class="icon-center-image" mode='aspectFit' src="{{coinIcon}}"></image>
 </view>
 <view class="button-view">
 <view class="send-packet">
-<view class="send-button" bindtap='sendPacket'>
+<view class="send-packet-button" bindtap='sendPacket'>
 <i-icon type="redpacket_fill" size="25" color="#EB5646"/>
 </view>
-<text class="send-text">我也发起红包</text>
+<text class="send-packet-text">我也发起红包</text>
 </view>
 <view class="start-button" bindtap='openGame'>开始</view>
 <view class="share-packet">
-<view class="share-button">
+<view class="share-packet-button">
 <i-icon type="share_fill" size="25" color="#EB5646"/>
 </view>
-<text class="share-text">邀请好友来玩</text>
+<text class="share-packet-text">邀请好友来玩</text>
 </view>
 </view>
 </view>
 <view class="circular-view">
-</view>
-<view class="participate-view">
-1234
-</view>
-<view class="center-view">
-<view class="rank-view">
+<view class="rank-head">
 <image src="../../../images/rob/guanjun.png"></image>
 <text>排行榜</text>
+</view>
+</view>
+<view class="participate-view" bindtap="toParticipate">
+<text>参与人:</text>
+<scroll-view scroll-x="true" class="scroll-view">
+<view class="transverse-item" wx:for="{{allItems}}" wx:for-item="data" wx:for-index="index">
+<image class="icon-image" src="{{data.icon}}"></image>
+</view>
+</scroll-view>
+<i-icon type="enter" size="20" color="#333"/>
 </view>
 <view class="my-view">
 <view class="my-left-view">
@@ -56,5 +59,34 @@
 <text class="my-rank-money">--</text>
 </view>
 </view>
+<view class="head-view">
+<view class="title-view">
+<text>排名</text>
+<text>用户</text>
+<text>红包金额</text>
+</view>
+<view class="line-view"></view>
+</view>
+<view class="buttom-view {{showLoading ? '' : 'margin-bottom'}}">
+<view class="item-view {{index == (allItems.length - 1)  ? 'last-item-view' : ''}}" wx:for="{{currentItems}}" wx:for-item="data" wx:for-index="index">
+<view class="rank-view">
+<image src="../../../images/rob/{{'paihang' + (index%3+1) + '.png'}}" class="{{index <= 2 ?'show-image':''}}" wx:if="{{index<=2}}"></image>
+<text wx:if="{{index>2}}">{{index + 1}}</text>
+</view>
+<view class="user-view">
+<image src="{{data.icon}}" class="item-icon"></image>
+<text>{{data.name}}</text>
+</view>
+<view class="money-view">
+<text>{{data.money}}</text>
+</view>
+</view> 
+<i-load-more tip="暂无数据" loading="{{ false }}"
+ wx:if="{{allItems.length == 0}}"
+ class="load-more-view" />
+</view>
+<view class='load-more' wx:if="{{showLoading}}">
+<image src="../../../images/home/loading.gif"></image>
+<text>{{'数据加载...'}}</text>
 </view>
 </view>

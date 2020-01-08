@@ -16,8 +16,7 @@ Page({
     currentItems: [],
     coinIcon:"../../../images/rob/fu.gif",
     showLoading: false,
-    playType:0,
-    interval:null
+    playType:0
   },
 
   showAllTap:function (e) {
@@ -91,14 +90,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    clearInterval(this.data.interval);
+    
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    clearInterval(this.data.interval);
+    
   },
 
   /**

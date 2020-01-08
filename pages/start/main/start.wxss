@@ -65,6 +65,9 @@
 }
 
 .two-input input {
+  flex: 1;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
   height: 80%;
   text-align:right; 
   color: gray;
@@ -89,6 +92,9 @@
 }
 
 .three-input input {
+  flex: 1;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
   height: 80%;
   text-align:right; 
   color: gray;
@@ -113,6 +119,9 @@
 }
 
 .four-input input {
+  flex: 1;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
   height: 80%;
   text-align:right; 
   color: gray;

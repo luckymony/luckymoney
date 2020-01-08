@@ -47,15 +47,10 @@ Page({
     console.log(e.currentTarget)
     var type = e.currentTarget.dataset['index'];
     var name = e.currentTarget.dataset['title'];
-    if (type == 3) {
-      wx.navigateTo({
-        url: '../relay/relay',
-      })
-    }else {
-      wx.navigateTo({
-        url: '../rob/rob?type=' + type + '&name=' + name,
-      })
-    }
+    var urlStr = type == 3 ? '../relay/relay?' : '../rob/rob?';
+    wx.navigateTo({
+      url: urlStr + 'type=' + type + '&name=' + name,
+    })
   },
   
   onLoad: function (options) {

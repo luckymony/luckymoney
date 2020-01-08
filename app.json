@@ -13,7 +13,8 @@
     "pages/game/card/card",
     "pages/game/rain/rain",
     "pages/home/relay/relay",
-    "pages/auth/auth"
+    "pages/auth/auth",
+    "pages/home/participate/participate"
   ],
   "window": {
     "backgroundColorTop": "#EB5646",
