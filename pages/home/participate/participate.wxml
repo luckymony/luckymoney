@@ -1,2 +1,4 @@
 <!--pages/home/participate/participate.wxml-->
-<text>pages/home/participate/participate.wxml</text>
+<view class="main-view">
+
+</view>
