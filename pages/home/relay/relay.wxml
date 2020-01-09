@@ -37,7 +37,7 @@
 </view>
 </view>
 <view class="participate-view" bindtap="toParticipate">
-<text>参与人:</text>
+<text>凑钱人:</text>
 <scroll-view scroll-x="true" class="scroll-view">
 <view class="transverse-item" wx:for="{{allItems}}" wx:for-item="data" wx:for-index="index">
 <image class="icon-image" src="{{data.icon}}"></image>
