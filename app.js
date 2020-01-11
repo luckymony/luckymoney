@@ -2,7 +2,7 @@
 const testUrl = 'http://api-test.luckymony.com';
 const localUrl = 'http://tn7vbh.natappfree.cc';
 const formalUrl = '';
-const isDebug = 2;
+const isDebug = 1;
 
 //app.js
 App({

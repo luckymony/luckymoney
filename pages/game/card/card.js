@@ -531,6 +531,9 @@ Page({
       var time = this.data.cardTimes.count;
       clearTimeout(time);
     }
+    wx.reLaunch({
+      url: '../../home/main/home',
+    })
   },
 
   /**

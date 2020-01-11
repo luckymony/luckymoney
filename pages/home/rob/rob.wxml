@@ -24,6 +24,9 @@
 <text class="share-packet-text">邀请好友来玩</text>
 </view>
 </view>
+<view class="arrow-view">
+<i-icon type="unfold" size="25" color="#F89B4A"/>
+</view>
 </view>
 <view class="circular-view">
 <image src="../../../images/rob/guanjun.png"></image>

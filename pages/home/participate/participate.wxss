@@ -43,9 +43,13 @@
 }
 
 .vertical-line-view {
-   height: 140rpx;
+   height: 80%;
    width: 2rpx;
    background-color: #eee;
+}
+
+.money-text {
+  color: #efb336;
 }
 
 .head-view {
