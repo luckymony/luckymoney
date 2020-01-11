@@ -19,13 +19,6 @@ Page({
     playType:0
   },
 
-  showAllTap:function (e) {
-    this.setData({
-      currentItems: this.data.allItems,
-      showFoot:false
-    });
-  },
-
   toMyMoney:function (e) {
     console.log(e);
     wx.switchTab({

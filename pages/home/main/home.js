@@ -1,4 +1,5 @@
 var util = require('../../../utils/util.js')
+var request = require('../../../utils/request.js')
 Page({
   data: {
     // text:"这是一个页面"
@@ -54,6 +55,14 @@ Page({
   },
   
   onLoad: function (options) {
+    request.getSendList({
+      success:function(res){
+         console.log(res);
+      },
+      fail:function(res) {
+        console.log(res);
+      }
+    })
     wx.setNavigationBarTitle({ title: '斗利是' }); 
     for(var i=0;i<this.data.items.length;i++) {
       var itemTimeStr = 'items[' + i + '].start_time';

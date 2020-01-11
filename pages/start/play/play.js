@@ -1,10 +1,10 @@
 Page({
-  
+
   data: {
     items: [
-     { title: "开门大吉", longTime: 120, moneyCount: 5, chanceCount: 1, difficulty: 0 },
-     { title: "八方来财", longTime: 120, integralCount: 200, chanceCount: 1, difficulty: 0 }, 
-     { title: "好运连绵", longTime: 120, startTime: 200}],
+     {title:"开门大吉", longTime:120, moneyCount:5, chanceCount:1, difficulty:0},
+     {title:"八方来财", longTime:120, integralCount:200, chanceCount:1, difficulty:0}, 
+     {title:"好运连绵",longTime:120, startTime:200}],
     currentIndex: 0,
     isShow:false,
   },

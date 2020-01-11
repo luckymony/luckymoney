@@ -1,4 +1,5 @@
-var util = require('../../../utils/util.js')
+var util = require('../../../utils/util.js');
+var pay = require('../../../utils/pay.js');
 const {$Message} = require('../../../dist/base/index');
 const app = getApp() 
 Page({
@@ -13,6 +14,8 @@ Page({
     moneyCount: '0.00',
     redPacketCount:'0',
     serviceFee:'0.00',
+    playParameter:null,
+    payParameter:null
   },
 
   toTip:function(e) {
@@ -77,6 +80,13 @@ Page({
     var index = that.data.playTypes.indexOf(that.data.items[3].type);
     wx.navigateTo({
       url: '../play/play?value=' + JSON.stringify(index),
+    })
+  },
+
+  bindLucky:function(e) {
+    var that = this;
+    that.setData({
+      'items[0].title': e.detail.value.length > 0 ? e.detail.value : null
     })
   },
 
@@ -171,7 +181,6 @@ Page({
       })
       return;
     }
-
     that.setData({
       'items[2].number': e.detail.value,
       redPacketCount: e.detail.value
@@ -180,62 +189,57 @@ Page({
 
   payMoney:function() {
     var that = this;
-    /*
-    wx.request({
-      //请求地址
-      url: 'http://5c6qfk.natappfree.cc/api/redPackage/send',
-      data: {
-        "chanceNumber": 1,
-        "difficultyLevel": 0,
-        "duration": 120,
-        "fee": 100,
-        "greetings": "新车愉快,大吉大利",
-        "integral": 0,
-        "needClickNumber": 6,
-        "number": 2,
-        "payType": 1,
-        "type": 0
-      },//发送给后台的数据
-      header: {//请求头
-        "Content-Type": "application/json",
-        "accessToken": app.globalData.token
-      },
-      method: 'POST',
-      dataType: 'json',
-      success: function (res) {
-        console.log(res);
-      },
-      fail: function (res) {
-       console.log(res);
-      },//请求失败
-      complete: function (res) {//请求完成
-        console.log(res);
-        if (res.statusCode == 200 && res.data.code == 0) {
-         
-        } else {
-         
-        }
-      }//请求完成后执行的函数
+    if (that.data.items[2].number == null) {
+      $Message({
+        content: '请填写红包个数',
+        type: 'warning',
+        duration: 3
+      });
+      return;
+    } else if (that.data.items[0].title == null) {
+      $Message({
+        content: '请填写你的祝福语',
+        type: 'warning',
+        duration: 3
+      });
+      return;
+    }else if (that.data.items[1].number == null) {
+      $Message({
+        content: '请填写红包金额',
+        type: 'warning',
+        duration: 3
+      });
+      return;
+    }
+    var index = that.data.playTypes.indexOf(that.data.items[3].type);
+    var defaultPar = pay.defaultKmdjParameter();
+    var parameter = that.data.playParameter;
+    var chanceNumber = parameter ? parameter.chanceCount : defaultPar.chanceCount;
+    var number = that.data.items[2].number;
+    var money = parseFloat(that.data.moneyCount)*100;
+    var difficultyLevel = parameter ? parameter.difficulty: defaultPar.difficulty;
+    var duration = parameter ? parameter.longTime : defaultPar.longTime;
+    var needClickNumber = parameter ? parameter.moneyCount : defaultPar.moneyCount;
+    that.setData({
+      'payParameter.greetings':that.data.items[0].title,
+      'payParameter.payType': 1,
+      'payParameter.chanceNumber': chanceNumber,
+      'payParameter.number': parseInt(number),
+      'payParameter.fee': money,
+      'payParameter.difficultyLevel': difficultyLevel,
+      'payParameter.duration': duration,
+      'payParameter.needClickNumber': needClickNumber
     })
-   */
-    /*
-    wx.requestPayment({
-      timeStamp: '1577535093',
-      nonceStr: 'f6411a0b3e4d4d12818a084f4614dd5f',
-      package: 'prepay_id=wx2820113212643211b057a2d61063592500',
-      signType: 'MD5',
-      paySign: '004651528CD179AC6816BF785908015E',
-      success : function (res) {
+    // console.log(that.data.payParameter);
+    pay.sendKmdj({
+        parameter: that.data.payParameter, 
+        success:function(res){
           console.log(res);
-      },
-       fail : function (res) {
-         console.log(res);
-      },
-      complete : function (res) {
-        console.log(res);
-      }
-    })
-    */
+        },
+        fail:function(res) {
+          console.log(res);
+        }
+    });
   },
 
   onLoad: function (options) {
@@ -251,15 +255,19 @@ Page({
     // 页面显示
     var pages = getCurrentPages();
     var currPage = pages[pages.length - 1]; //当前页面
-    let json = currPage.data.playParameter;
-    if (json) {
+    let playParameter = currPage.data.playParameter;
+    try {
       var that = this;
+      var data = playParameter.parameter;
       that.setData({
-        'items[3].type': json.parameter.title,
-        'items[1].title': (json.type <= 1) ? "总金额数" : "我的红包",
-        'items[2].title': (json.type <= 1) ? "红包个数" : "凑钱人数"
+        'items[3].type': data ? data.title : that.data.items[3].type,
+        'items[1].title': (playParameter.type <= 1) ? "总金额数" : "我的红包",
+        'items[2].title': (playParameter.type <= 1) ? "红包个数" : "凑钱人数",
+        playParameter: playParameter
       });
-      console.log(that.data.playParameter);
+      // console.log(that.data.playParameter);
+    } catch (e) {
+
     }
   },
 

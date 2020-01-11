@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/auth/auth",
     "pages/home/main/home",
     "pages/home/rob/rob",
     "pages/start/main/start",
@@ -13,7 +14,6 @@
     "pages/game/card/card",
     "pages/game/rain/rain",
     "pages/home/relay/relay",
-    "pages/auth/auth",
     "pages/home/participate/participate"
   ],
   "window": {
@@ -50,5 +50,8 @@
       }
     ]
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "networkTimeout": {
+    "request": 20000
+  }
 }

@@ -2,7 +2,7 @@
 <view class="first-view">
 <view class="one-line">
 <view class="one-input">
-<input value="{{items[0].title}}" placeholder="恭喜发财 大吉大利"/>
+<input value="{{items[0].title}}" placeholder="填写祝福语" maxlength = '20' bindinput="bindLucky"/>
 <i-icon type="brush_fill" size="20" color="#80848f" bindtap="sentiment"/>
 </view>
 <view class="line-dotted"></view>

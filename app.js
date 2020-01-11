@@ -1,3 +1,9 @@
+
+const testUrl = 'http://api-test.luckymony.com';
+const localUrl = 'http://tn7vbh.natappfree.cc';
+const formalUrl = '';
+const isDebug = 2;
+
 //app.js
 App({
   onLaunch: function () {
@@ -5,6 +11,15 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+    var that = this;
+    if (isDebug == 1) {
+      that.globalData.baseUrl = testUrl;
+    }else if (isDebug == 2) {
+      that.globalData.baseUrl = localUrl;
+    }else if (isDebug == 3) {
+      that.globalData.baseUrl = formalUrl;
+    }
+    console.log(that.globalData.baseUrl)
   },
 
 //启动授权
@@ -64,7 +79,7 @@ App({
     var that = this;
     wx.request({
       //请求地址
-      url: 'http://5c6qfk.natappfree.cc/api/user/getAccessToken',
+      url: that.globalData.baseUrl + '/api/user/getAccessToken',
       data: {
         "code": code,
         "encryptedData": encryptedData,
@@ -102,7 +117,7 @@ App({
     that.globalData.token = token;
     wx.request({
       //请求地址
-      url: 'http://5c6qfk.natappfree.cc/api/user/getUserInfo',
+      url: that.globalData.baseUrl + '/api/user/getUserInfo',
       header: {//请求头
         "Content-Type": "application/json",
         "accessToken" : token
@@ -140,6 +155,7 @@ App({
     token:null,
     code:null,
     encryptedData:null,
-    iv:null
+    iv:null,
+    baseUrl:null
   }
 })
