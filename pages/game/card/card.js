@@ -554,6 +554,19 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    // let that = this;
+    // if (options.from === 'button') {
+    //   // 来自页面内转发按钮
+    //   shareObj = {
+    //     title: "斗利是",  //分享标题
+    //     path: "/pages/start/main/start",  //分享地址
+    //     desc: "我在观运算命，你也来试试吧",  //描述
+    //     imageUrl: '/images/me/share.jpg',  //图片路径
+    //     success: function (res) {     //成功回调
+    //        console.log(res)
+    //     }
+    //   }
+    //   return shareObj;
+    // }
   }
 })

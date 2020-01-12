@@ -1,0 +1,8 @@
+<!--pages/share/share.wxml-->
+<view class='main-view'>
+<view class='bg-view'>
+
+</view>
+<view class='share-view'>
+</view>
+</view>

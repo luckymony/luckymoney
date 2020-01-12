@@ -1,0 +1,27 @@
+/* pages/share/share.wxss */
+.main-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bg-view {
+  margin-left: 10vw;
+  margin-right: 10vw; 
+  width: 80vw;
+  height: 70vh;
+  border-radius: 10rpx;
+  background-color: #EB5646;
+  box-shadow: 5px 5px 5px gainsboro;
+  display: flex;
+  flex-direction:column;
+}
+
+.share-view {
+  width: 50%;
+  height: 80rpx;
+  background-color: #EB5646;
+  border-radius: 40rpx;
+  font-size: 35rpx;
+}

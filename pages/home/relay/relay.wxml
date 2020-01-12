@@ -19,7 +19,7 @@
 <view class="send-packet-button" bindtap='sendPacket'>
 <i-icon type="redpacket_fill" size="25" color="#EB5646"/>
 </view>
-<text class="send-packet-text">我也发起红包</text>
+<text class="send-packet-text">我也一起凑钱</text>
 </view>
 <view class="start-button" bindtap='openGame'>开始</view>
 <view class="share-packet">

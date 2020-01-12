@@ -18,9 +18,9 @@
 </view>
 <view class="start-button" bindtap='openGame'>开始</view>
 <view class="share-packet">
-<view class="share-packet-button">
+<button class="share-packet-button" bindtap='toShare'>
 <i-icon type="share_fill" size="25" color="#EB5646"/>
-</view>
+</button>
 <text class="share-packet-text">邀请好友来玩</text>
 </view>
 </view>

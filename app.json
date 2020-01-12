@@ -14,7 +14,8 @@
     "pages/game/rain/rain",
     "pages/home/relay/relay",
     "pages/auth/auth",
-    "pages/home/participate/participate"
+    "pages/home/participate/participate",
+    "pages/share/share"
   ],
   "window": {
     "backgroundColorTop": "#EB5646",

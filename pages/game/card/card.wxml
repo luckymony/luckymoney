@@ -1,5 +1,5 @@
 <!--pages/game/card/card.wxml-->
-<image class='bg-view' src="../../../images/card/bg.jpg"></image>
+<!-- <image class='bg-view' src="../../../images/card/bg.jpg"></image> -->
 <view class='main-view' wx:if="{{!isShowRedPacket}}">
       <view class="card-module">
         <view class="card {{ item.showClass ? 'change' : ''}}"
