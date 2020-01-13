@@ -19,13 +19,6 @@ Page({
     playType:0
   },
 
-  toMyMoney:function (e) {
-    console.log(e);
-    wx.switchTab({
-        url: "../../me/main/me"
-    });
-  },
-
   openGame:function(e) {
     if(this.data.playType == 0) {
       wx.redirectTo({

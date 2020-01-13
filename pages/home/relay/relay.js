@@ -17,20 +17,14 @@ Page({
     coinIcon: "../../../images/rob/fu.gif",
     showLoading: false,
     playType: 0,
-    money:88.88
+    money:88.88,
+    showPay:false
   },
 
   showAllTap: function (e) {
     this.setData({
       currentItems: this.data.allItems,
       showFoot: false
-    });
-  },
-
-  toMyMoney: function (e) {
-    console.log(e);
-    wx.switchTab({
-      url: "../../me/main/me"
     });
   },
 
@@ -47,9 +41,15 @@ Page({
   },
 
   sendPacket: function (e) {
-    wx.switchTab({
-      url: "../../start/main/start"
+    this.setData({
+      showPay: true
     });
+  },
+
+  hiddenTap: function (e) {
+    this.setData({
+      showPay: false
+    })
   },
 
   toParticipate:function(e) {

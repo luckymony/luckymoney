@@ -5,14 +5,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    luckyStr:'恭喜发财,大吉大利',
+     playId:'',
+     playName:'开门大吉'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.setNavigationBarTitle({ title: '斗利是' }); 
   },
 
   /**
@@ -60,7 +62,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+    console.log(res);
   }
 })

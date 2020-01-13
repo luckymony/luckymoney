@@ -81,7 +81,7 @@
 <text>{{data.name}}</text>
 </view>
 <view class="money-view">
-<text>{{data.money}}</text>
+<text>{{data.money + '元'}}</text>
 </view>
 </view> 
 <i-load-more tip="暂无数据" loading="{{ false }}"
@@ -92,4 +92,15 @@
 <image src="../../../images/home/loading.gif"></image>
 <text>{{'数据加载...'}}</text>
 </view>
+</view>
+<view wx:if="{{showPay}}" class="cloud-layer" bindtap="hiddenTap"></view>
+<view class="pay-view {{showPay ? 'show-playui' : 'hidden-playui' }}">
+<view class="one-line">
+<view class="one-input">
+<input value="{{items[0].title}}" placeholder="填写祝福语" maxlength = '20' bindinput="bindLucky"/>
+<i-icon type="brush_fill" size="20" color="#80848f" bindtap="sentiment"/>
+</view>
+<view class="line-dotted"></view>
+</view>
+
 </view>

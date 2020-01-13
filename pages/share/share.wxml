@@ -1,8 +1,18 @@
 <!--pages/share/share.wxml-->
 <view class='main-view'>
 <view class='bg-view'>
-
+<view class="first-view">
+<view class="circle-view"></view>
+<image class="icon-image"></image>
+<text class="name-text">{{playName}}</text>
+<text class="lucky-text">{{luckyStr}}</text>
 </view>
-<view class='share-view'>
+<view class="second-view">
+<image class="qrCode-image" mode='aspectFit' src="../../images/rob/qrCode.png">
+</image>
 </view>
+</view>
+<button class='share-view' open-type="share">
+<text>发送给好友</text>
+</button>
 </view>
