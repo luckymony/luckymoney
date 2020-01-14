@@ -18,7 +18,7 @@ function getSendList(value) {
         if (res.data.data == null) {
           if (value.fail) value.fail(null);
         } else {
-          if (value.success) value.success(res);
+          if (value.success) value.success(res.data.data);
         }
       }
     }

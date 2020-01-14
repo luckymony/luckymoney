@@ -14,7 +14,10 @@ const formatNumber = n => {
 }
 
 function getTimeStrFromTimeStamp(time) {
-  var n = time * 1000;
+  var n = time;
+  if(time.length < 13) {
+    n = time * 1000;
+  }
   var date = new Date(n);  
   // console.log(date);
   var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1)
@@ -118,6 +121,16 @@ function getServiceFee(value) {
   }
 }
 
+function getPlayName(value) {
+   if (value == 0) {
+      return '开门大吉';
+   }else if (value == 1) {
+      return '八方来财';
+   }else if (value == 2) {
+      return '好运连绵';
+   }
+}
+
 module.exports = {
   formatTime: formatTime,
   getTimeStrFromTimeStamp: getTimeStrFromTimeStamp,
@@ -128,5 +141,6 @@ module.exports = {
   getStartDate: getStartDate,
   getEndDate: getEndDate,
   getCurrentStartTime: getCurrentStartTime,
-  getStartTime: getStartTime
+  getStartTime: getStartTime,
+  getPlayName:getPlayName
 }

@@ -1,19 +1,19 @@
 {
   "pages": [
+    "pages/auth/auth",
     "pages/home/main/home",
     "pages/home/rob/rob",
     "pages/start/main/start",
     "pages/start/play/play",
     "pages/start/tip/tip",
     "pages/me/main/me",
-    "pages/me/money/money-detail",
+    "pages/me/money/moneyDetail",
     "pages/me/withdraw/withdraw",
     "pages/me/share/share",
     "pages/me/problem/problem",
     "pages/game/card/card",
     "pages/game/rain/rain",
     "pages/home/relay/relay",
-    "pages/auth/auth",
     "pages/home/participate/participate",
     "pages/share/share"
   ],

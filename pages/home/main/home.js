@@ -2,46 +2,8 @@ var util = require('../../../utils/util.js')
 var request = require('../../../utils/request.js')
 Page({
   data: {
-    // text:"这是一个页面"
-    items:[
-      {
-        icon:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555004603689&di=6161b038a8a7046bfe88e4d72e975729&imgtype=0&src=http%3A%2F%2Fwww.36588.com.cn%2FImageResourceMongo%2FUploadedFile%2Fdimension%2Fbig%2F7d10bc2b-db5b-4247-925c-0628d65b3f50.png",
-        name:"张三丰",
-        start_time:"1560000090",
-        long_time:"60",
-        count:"10",
-        lucky_str: "恭喜发财,财源广进",
-        play_name:"开门大吉",
-        play_type:"1",
-        play_id: 1,
-        is_me:0
-       },
-      {
-        icon: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555004603689&di=6161b038a8a7046bfe88e4d72e975729&imgtype=0&src=http%3A%2F%2Fwww.36588.com.cn%2FImageResourceMongo%2FUploadedFile%2Fdimension%2Fbig%2F7d10bc2b-db5b-4247-925c-0628d65b3f50.png",
-        name: "李世民",
-        start_time: "1560086490",
-        long_time: "60",
-        count: "10",
-        lucky_str: "七星高照,八方来财",
-        play_name: "八方来财",
-        play_type: "2",
-        play_id:2,
-        is_me:1
-      },
-      {
-        icon: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555004603689&di=6161b038a8a7046bfe88e4d72e975729&imgtype=0&src=http%3A%2F%2Fwww.36588.com.cn%2FImageResourceMongo%2FUploadedFile%2Fdimension%2Fbig%2F7d10bc2b-db5b-4247-925c-0628d65b3f50.png",
-        name: "李世民",
-        start_time: "1568086490",
-        long_time: "60",
-        count: "10",
-        lucky_str: "一帆风顺,四季平安",
-        play_name: "好运连绵",
-        play_type: "3",
-        play_id: 3,
-        is_me: 0
-      }
-      ],
-
+    items:[],
+    isRequest:false
   },
 
   grabLuckyMoney: function(e) {
@@ -55,45 +17,78 @@ Page({
   },
   
   onLoad: function (options) {
-    request.getSendList({
-      success:function(res){
-         console.log(res);
-      },
-      fail:function(res) {
-        console.log(res);
-      }
-    })
     wx.setNavigationBarTitle({ title: '斗利是' }); 
-    for(var i=0;i<this.data.items.length;i++) {
-      var itemTimeStr = 'items[' + i + '].start_time';
-      this.setData({
-        [itemTimeStr]: util.getTimeStrFromTimeStamp(this.data.items[i].start_time),
-      });
-    }
   },
+
   onReady: function () {
     // 页面渲染完成
   },
+
   onShow: function () {
     // 页面显示
+    this.requestList();
   },
+
   onHide: function () {
     // 页面隐藏
   },
+
   onUnload: function () {
     // 页面关闭
   },
-  onPullDownRefresh: function () {
-    // wx.startPullDownRefresh()
-    wx.showNavigationBarLoading() 
-    setTimeout(() => {
-      wx.hideNavigationBarLoading() //完成停止加载
-      wx.stopPullDownRefresh() //停止下拉刷新
-    }, 2000);
-  },
-  onReachBottom: function () {
-    setTimeout(() => {
 
-    }, 2000);
+  onPullDownRefresh: function () {
+     this.requestList();
+  },
+
+  onReachBottom: function () {
+  
+  },
+
+  requestList:function() {
+    var that = this;
+    if(that.data.isRequest)return;
+    that.setData({
+       isRequest:true
+    })
+    wx.showNavigationBarLoading() 
+    wx.startPullDownRefresh()
+    request.getSendList({
+      success:function(res){
+        //  console.log(res);
+         wx.hideNavigationBarLoading()
+         wx.stopPullDownRefresh()
+         for(var i = 0;i < res.length; i++) {
+             var value = res[i];
+             var item = {
+              icon: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555004603689&di=6161b038a8a7046bfe88e4d72e975729&imgtype=0&src=http%3A%2F%2Fwww.36588.com.cn%2FImageResourceMongo%2FUploadedFile%2Fdimension%2Fbig%2F7d10bc2b-db5b-4247-925c-0628d65b3f50.png",
+              name: "李世民",
+              startTime: util.getTimeStrFromTimeStamp(value.redPackageCreateTime),
+              luckyStr: value.redPackageGreetings,
+              playName: util.getPlayName(value.redPackageType),
+              playType: value.redPackageType,
+              playId: value.redPackageId,
+              isMe: 0
+             }
+             that.data.items.push(item);
+         }
+         that.setData({
+          isRequest:false
+         })
+      },
+      fail:function(res) {
+        console.log(res);
+        wx.hideNavigationBarLoading()
+        wx.stopPullDownRefresh()
+        that.setData({
+          isRequest:false
+        })
+        wx.showToast({
+          title: '红包列表请求失败',
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    })
   }
 })

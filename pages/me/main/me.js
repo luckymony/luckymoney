@@ -2,8 +2,8 @@
 const app = getApp()
 Page({
   data: {
-    nickName: null,
-    iconUrl: null
+    nickName: '斗利是',
+    iconUrl: '../../../images/home/login.png'
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '我的' }); 
@@ -27,7 +27,7 @@ Page({
 
   goto_money_detail_page:function(){
     wx.navigateTo({
-      url: '../money/money-detail',
+      url: '../money/moneyDetail',
     })
   },
   goto_withdraw_page:function(){

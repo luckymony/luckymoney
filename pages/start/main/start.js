@@ -211,6 +211,9 @@ Page({
       });
       return;
     }
+    wx.showLoading({
+      title: '微信支付',
+    })
     var index = that.data.playTypes.indexOf(that.data.items[3].type);
     var defaultPar = pay.defaultKmdjParameter();
     var parameter = that.data.playParameter;
@@ -233,18 +236,36 @@ Page({
     // console.log(that.data.payParameter);
     pay.sendKmdj({
         parameter: that.data.payParameter, 
-        success:function(res){
-          console.log(res);
+        orderSuccess:function(res) {
+            wx.hideLoading({
+              complete: (res) => {},
+            })
         },
-        fail:function(res) {
+        paySuccess:function(res){
           console.log(res);
+          wx.showToast({
+            title: '微信支付成功',
+            icon: 'none',
+            duration: 2000
+          })
+        },
+        payFail:function(res) {
+          console.log(res);
+          wx.hideLoading({
+            complete: (res) => {
+              wx.showToast({
+                title: '微信支付失败',
+                icon: 'none',
+                duration: 2000
+              })
+            },
+          })
         }
     });
   },
 
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '发红包' }); 
-    
   },
 
   onReady: function () {

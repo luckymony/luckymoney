@@ -20,14 +20,15 @@ function sendKmdj(parameter) {
     method: 'POST',
     dataType: 'json',
     success: function (res) {
+      if (parameter.orderSuccess) parameter.orderSuccess(res);
     },
     fail: function (res) {
-      if (parameter.fail) parameter.fail(res);
+      if (parameter.payFail) parameter.payFail(res);
     },//请求失败
     complete: function (res) {//请求完成
       if (res.statusCode == 200 && res.data.code == 0) {
         if (res.data.data == null) {
-          if (parameter.fail) parameter.fail(null);
+          if (parameter.payFail) parameter.payFail(null);
         }else {
           var nonceStr = res.data.data.nonceStr;
           var packageParam = res.data.data.packageParam;
@@ -41,14 +42,14 @@ function sendKmdj(parameter) {
             paySign: paySign,
             success: function (res) {
             }, fail: function (res) {
-              if (parameter.fail) parameter.fail(res);
+              if (parameter.payFail) parameter.payFail(res);
             }, complete: function (res) {
-              if (parameter.success) parameter.success(res);
+              if (parameter.paySuccess) parameter.paySuccess(res);
             }
           })
         }
       } else {
-        if (parameter.fail) parameter.fail(res);
+        if (parameter.payFail) parameter.payFail(res);
       }
     }
   })

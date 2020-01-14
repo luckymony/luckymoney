@@ -1,22 +1,22 @@
 <scroll-view class='page-body' scroll-y="true">
 <block wx:for="{{items}}" wx:for-index="index" wx:for-item="item">
-<view class='list-item' bindtap='grabLuckyMoney' data-index="{{item.play_type}}" data-title="{{item.play_name}}">
-<view class='time-view'>{{item.start_time}}</view>
+<view class='list-item' bindtap='grabLuckyMoney' data-index="{{item.playType}}" data-title="{{item.playName}}">
+<view class='time-view'>{{item.startTime}}</view>
 <view class='lucky-money-view'>
-<view class='item-left-view' wx:if="{{!item.is_me}}">
+<view class='item-left-view' wx:if="{{!item.isMe}}">
 <image class='icon-view' src='{{item.icon}}' ></image>
 <view class='left-arrow'></view>
 </view>
 <view class='item-right-view'>
 <view class='item-top-view'>
 <i-icon type="redpacket_fill" size='50' color="#EB5646"/>
-<text>{{item.lucky_str}}</text>
+<text>{{item.luckyStr}}</text>
 </view>
 <view class='item-bottom-view'>
-<text class='item-bottom-left'>{{item.play_name + '红包'}}</text>
+<text class='item-bottom-left'>{{item.playName + '红包'}}</text>
 </view>
 </view>
-<view class='me-item-right-view' wx:if="{{item.is_me}}">
+<view class='me-item-right-view' wx:if="{{item.isMe}}">
 <view class='right-arrow'></view>
 <image class='icon-view' src='{{item.icon}}' ></image>
 </view>

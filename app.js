@@ -20,6 +20,35 @@ App({
       that.globalData.baseUrl = formalUrl;
     }
     console.log(that.globalData.baseUrl)
+    that.globalData.userInfo = that.getStorage('userInfo');
+    that.globalData.token = that.getStorage('token');
+    that.globalData.code = that.getStorage('code');
+    that.globalData.encryptedData = that.getStorage('encryptedData');
+    that.globalData.iv = that.getStorage('iv');
+     if (that.globalData.token) {
+       wx.switchTab({
+        url: 'pages/home/main/home',
+      });
+       that.checksession();
+     }
+  },
+
+  checksession:function(){
+    var that = this;
+    wx.checkSession({
+     success:function(res){
+     },
+     fail:function(res){
+      that.getLogin(); //重新登陆
+       that.getLoginStateCallback = res => {
+         if (!res){
+           wx.redirectTo({
+             url: '../../../pages/auth/auth',
+           });
+         }
+       }
+     }
+    })
   },
 
 //启动授权
@@ -50,6 +79,8 @@ App({
         that.globalData.encryptedData = res.encryptedData;
         that.globalData.iv = res.iv;
         that.getToken(that.globalData.code, that.globalData.encryptedData, that.globalData.iv);
+        that.setStorage('encryptedData',res.encryptedData); //encryptedData数据本地化
+        that.setStorage('iv',res.iv); //iv数据本地化
       }, fail: function (res) {
         if (that.getLoginStateCallback) {
           that.getLoginStateCallback(false)
@@ -63,8 +94,9 @@ App({
     var that = this;
     wx.login({
         success: res => {
-          console.log(res);
+          // console.log(res);
           that.globalData.code = res.code;
+          that.setStorage('code',res.code); //code数据本地化
           that.geWxtUserInfo();
         }, fail: res => {
           if (that.getLoginStateCallback) {
@@ -94,14 +126,16 @@ App({
          console.log(res);
       },
       fail: function (res) {
+        // console.log(res);
         if (that.getLoginStateCallback) {
             that.getLoginStateCallback(false)
         }
       },//请求失败
       complete: function (res) {//请求完成
-        console.log(res);
+        // console.log(res);
         if (res.statusCode == 200 && res.data.code == 0) {
           that.getUserInfo(res.data['data']);
+          that.setStorage('token',res.data['data']); //token数据本地化
         }else {
           if (that.getLoginStateCallback) {
               that.getLoginStateCallback(false)
@@ -125,7 +159,7 @@ App({
       method: 'POST',
       dataType: 'json',
       success: function (res) {
-         console.log(res);
+        //  console.log(res);
       },
       fail: function (res) {
         if (that.getLoginStateCallback) {
@@ -137,7 +171,8 @@ App({
         // console.log(res);
         if (res.statusCode == 200 && res.data.code == 0) {
           that.globalData.userInfo = res.data.data;
-          console.log(res);
+          that.setStorage('userInfo',that.globalData.userInfo); //用户数据本地化
+          // console.log(res);
           if (that.getLoginStateCallback) {
             that.getLoginStateCallback(true)
           }
@@ -150,11 +185,27 @@ App({
     })
   },
 
+  setStorage:function(currentKey,currentValue) {
+    wx.setStorage({
+      key:currentKey,
+      data:currentValue
+    })
+  },
+
+  getStorage:function(currentKey) {
+    try {
+      var value = wx.getStorageSync(currentKey)
+      return value;
+    } catch (e) {
+      // Do something when catch error
+    }
+  },
+
   globalData: {
     userInfo: null,
-    token:null,
-    code:null,
-    encryptedData:null,
+    token: null,
+    code: null,
+    encryptedData: null,
     iv:null,
     baseUrl:null
   }
