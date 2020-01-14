@@ -215,6 +215,16 @@ Page({
       title: '微信支付',
     })
     var index = that.data.playTypes.indexOf(that.data.items[3].type);
+    if (index == 0) { //开门大吉
+      that.sendKmdj();
+    }else if (index == 1) { //八方来财
+       that.sendBflc();
+    }else if (index == 2) { //好运连绵
+
+    }
+  },
+
+  sendKmdj:function() {
     var defaultPar = pay.defaultKmdjParameter();
     var parameter = that.data.playParameter;
     var chanceNumber = parameter ? parameter.chanceCount : defaultPar.chanceCount;
@@ -233,8 +243,56 @@ Page({
       'payParameter.duration': duration,
       'payParameter.needClickNumber': needClickNumber
     })
-    // console.log(that.data.payParameter);
     pay.sendKmdj({
+        parameter: that.data.payParameter, 
+        orderSuccess:function(res) {
+            wx.hideLoading({
+              complete: (res) => {},
+            })
+        },
+        paySuccess:function(res){
+          console.log(res);
+          wx.showToast({
+            title: '微信支付成功',
+            icon: 'none',
+            duration: 2000
+          })
+        },
+        payFail:function(res) {
+          console.log(res);
+          wx.hideLoading({
+            complete: (res) => {
+              wx.showToast({
+                title: '微信支付失败',
+                icon: 'none',
+                duration: 2000
+              })
+            },
+          })
+        }
+    });
+  },
+
+  sendBflc:function() {
+    var defaultPar = pay.defaultBflcParameter();
+    var parameter = that.data.playParameter;
+    var chanceNumber = parameter ? parameter.chanceCount : defaultPar.chanceCount;
+    var number = that.data.items[2].number;
+    var money = parseFloat(that.data.moneyCount)*100;
+    var difficultyLevel = parameter ? parameter.difficulty: defaultPar.difficulty;
+    var duration = parameter ? parameter.longTime : defaultPar.longTime;
+    var needIntegral = parameter ? parameter.integralCount : defaultPar.integralCount;
+    that.setData({
+      'payParameter.greetings':that.data.items[0].title,
+      'payParameter.payType': 1,
+      'payParameter.chanceNumber': chanceNumber,
+      'payParameter.number': parseInt(number),
+      'payParameter.fee': money,
+      'payParameter.difficultyLevel': difficultyLevel,
+      'payParameter.duration': duration,
+      'payParameter.needIntegral': needIntegral
+    })
+    pay.sendBflc({
         parameter: that.data.payParameter, 
         orderSuccess:function(res) {
             wx.hideLoading({

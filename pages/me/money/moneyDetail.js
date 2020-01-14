@@ -9,24 +9,24 @@ Page({
     showLoading:false,
     searchLoadingComplete:false,
     tipText:"",
-    iconUrl: null,
+    iconUrl: '../../../images/home/login.png',
     money:{
-      money_total:666,
-      red_packet_num:68,
+      moneyTotal:666,
+      redPacketNum:68,
       detail:[
         { name:'经典玩法',
           time:'2019-05-01 16:36',
-          money:"+66.00"
+          money:"66.00"
         },
         {
           name: '财源滚滚',
           time: '2019-05-01 16:36',
-          money: "+66.00"
+          money: "66.00"
         },
         {
           name: '四季发财',
           time: '2019-05-01 16:36',
-          money: "+66.00"
+          money: "66.00"
         },
       ]
     }
