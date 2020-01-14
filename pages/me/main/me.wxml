@@ -6,14 +6,14 @@
   <view class="empty-view"></view>
   <view class='page-section'>
   <view class='userinfo-money'>
-       <view class='userinfo-money-item' bindtap='goto_money_detail_page'>
+       <view class='userinfo-money-item' bindtap='gotoDetail'>
         <i-icon type="redpacket_fill" size="30" color="#EB5646"/>
         <text>红包记录</text>
       </view>
       <view class='mid-view'>
       <view class='background-line'></view>
       </view>
-      <view class='userinfo-money-item' bindtap='goto_withdraw_page'>
+      <view class='userinfo-money-item' bindtap='gotoWithdraw'>
         <i-icon type="financial_fill" size="30" color="#EB5646"/>
         <text>钱包余额</text>
       </view>

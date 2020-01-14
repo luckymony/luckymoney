@@ -124,20 +124,6 @@ Page({
     wx.navigateTo({
       url: '../../share/share',
     })
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-   console.log('触发分享');
-    // return {
-    //   title: '斗利是',
-    //   path: "/pages/start/main/start",
-    //   // desc: "我在观运算命，你也来试试吧",  //描述
-    //   imageUrl: '/images/me/share.jpg'
-    // };
-  },
-
+  }
 })
 

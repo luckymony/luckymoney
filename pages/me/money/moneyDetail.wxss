@@ -13,9 +13,9 @@
 }
 
 .default{
+  flex: 1;
   line-height: 100rpx;
   text-align: center;
-  flex: 1;
   border-right: 1px solid gainsboro;
   color: #FFA500;
   font-weight: bold;
@@ -23,10 +23,9 @@
 }
 
 .orange{
+  flex: 1;
   line-height: 100rpx;
   text-align: center;
-  flex: 1;
-  border-right: 1px solid gainsboro;
   color:white;
   font-weight: bold;
   background-color: #FFA500
@@ -43,7 +42,7 @@
 	flex-direction: column;
 	align-items: center;
   width: 100%;
-  background-color: white;
+  background-color: #fff;
 }
 
 .userinfo-avatar {
@@ -68,13 +67,12 @@
 
 .page-section{
   width: 100%;
-  /* background-color: orange; */
 }
 
 .userinfo-money {
+  width: 100%;
   display: flex;
   flex-direction: row;
-  width: 100%;
   justify-content: center;
   text-align: center;
   background-color: white;
@@ -128,6 +126,7 @@
   flex: 1;
   font-size: 35rpx;
 }
+
 .list-items-play-time{
   flex: 1;
   margin-top: 10rpx;
@@ -138,7 +137,6 @@
 .list-items-money{
   height: 100%;
   font-size: 40rpx;
-  font-weight: bolder;
   /* background-color: orange; */
 }
 
@@ -163,6 +161,7 @@ color: transparent;
   height: 100rpx;
   background-color: white;
 }
+
 .load-more-top {
   flex: 1;
   display: flex;
@@ -170,8 +169,30 @@ color: transparent;
   align-items: center;
   justify-content: center;
 }
+
 .load-more image {
   margin-right: 10rpx;
   width: 40rpx;
   height: 40rpx;
+}
+
+.no-data-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position:fixed;
+  bottom:10vw;
+  /* background-color: red; */
+}
+
+.no-data-image {
+  width: 30vw;
+  height: 30vw;
+}
+
+.no-data-view text {
+  margin-top: 20rpx;
+  color: #ccc;
 }

@@ -4,101 +4,53 @@ const app = getApp()
 
 Page({
   data: {
-    send:false,
     receive:true,
-    showLoading:false,
-    searchLoadingComplete:false,
-    tipText:"",
     iconUrl: '../../../images/home/login.png',
-    money:{
-      moneyTotal:666,
-      redPacketNum:68,
-      detail:[
-        { name:'经典玩法',
-          time:'2019-05-01 16:36',
-          money:"66.00"
-        },
-        {
-          name: '财源滚滚',
-          time: '2019-05-01 16:36',
-          money: "66.00"
-        },
-        {
-          name: '四季发财',
-          time: '2019-05-01 16:36',
-          money: "66.00"
-        },
-      ]
-    }
+    noDataIcon: '../../../images/home/no-data.png',
+    items: [],
+    moneyTotal: 0,
+    redPacketNum: 0,
+    showLoading:false
   },
 
-  testR:function(){
+  /*
+  {
+      name: '开门大吉',
+      time: '2019-05-01 16:36',
+      money: "66.00"
+      },
+      {
+        name: '八方来财',
+        time: '2019-05-01 16:36',
+        money: "66.00"
+      },
+      {
+        name: '好运连绵',
+        time: '2019-05-01 16:36',
+        money: "66.00"
+      }
+  */
+
+  requestGet:function(){
     this.setData({
       iconUrl: app.globalData.userInfo.avatarUrl,
-      send: false,
-      receive: true,
-      money: {
-        money_total: +800,
-        red_packet_num: 123,
-        detail: [
-          {
-            name: '经典玩法',
-            time: '2019-05-01 16:36',
-            money: "+166.00"
-          },
-          {
-            name: '财源滚滚',
-            time: '2019-05-01 16:36',
-            money: "+9.00"
-          },
-          {
-            name: '四季发财',
-            time: '2019-05-01 16:36',
-            money: "+17.00"
-          },
-          {
-            name: '天女散花',
-            time: '2019-05-01 16:36',
-            money: "+23.00"
-          },
-          {
-            name: '转转盘',
-            time: '2019-05-01 16:36',
-            money: "+160.00"
-          }
-        ]
-      }
+      receive: true
     })
+    console.log(this.data.items)
   },
 
-  testS:function(){
+  requestSend:function(){
     this.setData({
-      send: true,
-      receive: false,
-      money: {
-        money_total: -100,
-        red_packet_num: 3,
-        detail: [
-          {
-            name: '天女散花',
-            time: '2019-05-01 16:36',
-            money: "-23.00"
-          },
-          {
-            name: '转转盘',
-            time: '2019-05-01 16:36',
-            money: "-160.00"
-          }
-        ]
-      }
+      receive: false
     })
   },
 
-  select:function(e){
-    if ('r' == e.currentTarget.dataset.r){
-      this.testR();
-    }else if ('s' == e.currentTarget.dataset.s){
-      this.testS();
+  selectType:function(e){
+    // console.log(e.currentTarget.dataset)
+    if (e.currentTarget.dataset.type == 1){
+      this.requestGet();
+    }else {
+      this.requestSend();
     }
   },
 
@@ -132,7 +84,7 @@ Page({
  * 生命周期函数--监听页面加载
  */
   onLoad: function (options) {
-      this.testR();
+      this.requestGet();
       wx.setNavigationBarTitle({ title: '红包记录' }); 
   },
 

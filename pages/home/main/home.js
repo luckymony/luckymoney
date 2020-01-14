@@ -3,7 +3,8 @@ var request = require('../../../utils/request.js')
 Page({
   data: {
     items:[],
-    isRequest:false
+    isRequest:false,
+    noDataIcon:'../../../images/home/no-data.png'
   },
 
   grabLuckyMoney: function(e) {

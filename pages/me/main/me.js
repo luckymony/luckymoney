@@ -25,12 +25,12 @@ Page({
     // 页面关闭
   },
 
-  goto_money_detail_page:function(){
+  gotoDetail:function(){
     wx.navigateTo({
       url: '../money/moneyDetail',
     })
   },
-  goto_withdraw_page:function(){
+  gotoWithdraw:function(){
     wx.navigateTo({
       url: '../withdraw/withdraw',
     })

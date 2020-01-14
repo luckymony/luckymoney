@@ -225,6 +225,7 @@ Page({
   },
 
   sendKmdj:function() {
+    var that = this;
     var defaultPar = pay.defaultKmdjParameter();
     var parameter = that.data.playParameter;
     var chanceNumber = parameter ? parameter.chanceCount : defaultPar.chanceCount;
@@ -257,6 +258,9 @@ Page({
             icon: 'none',
             duration: 2000
           })
+          wx.navigateTo({
+            url: '',
+          })
         },
         payFail:function(res) {
           console.log(res);
@@ -274,6 +278,7 @@ Page({
   },
 
   sendBflc:function() {
+    var that = this;
     var defaultPar = pay.defaultBflcParameter();
     var parameter = that.data.playParameter;
     var chanceNumber = parameter ? parameter.chanceCount : defaultPar.chanceCount;
@@ -300,15 +305,16 @@ Page({
             })
         },
         paySuccess:function(res){
-          console.log(res);
+          // console.log(res);
           wx.showToast({
             title: '微信支付成功',
             icon: 'none',
-            duration: 2000
+            duration: 2000,
           })
+          
         },
         payFail:function(res) {
-          console.log(res);
+          // console.log(res);
           wx.hideLoading({
             complete: (res) => {
               wx.showToast({

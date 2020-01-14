@@ -27,7 +27,7 @@ App({
     that.globalData.iv = that.getStorage('iv');
      if (that.globalData.token) {
        wx.switchTab({
-        url: 'pages/home/main/home',
+         url: '../../../pages/home/main/home',
       });
        that.checksession();
      }

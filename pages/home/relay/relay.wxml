@@ -93,14 +93,22 @@
 <text>{{'数据加载...'}}</text>
 </view>
 </view>
-<view wx:if="{{showPay}}" class="cloud-layer" bindtap="hiddenTap"></view>
+<!-- <view wx:if="{{showPay}}" class="cloud-layer" bindtap="hiddenTap"></view>
 <view class="pay-view {{showPay ? 'show-playui' : 'hidden-playui' }}">
 <view class="one-line">
 <view class="one-input">
-<input value="{{items[0].title}}" placeholder="填写祝福语" maxlength = '20' bindinput="bindLucky"/>
+<input value="{{恭喜发财，大吉大利}}" placeholder="填写祝福语" maxlength = '20' bindinput="bindLucky"/>
 <i-icon type="brush_fill" size="20" color="#80848f" bindtap="sentiment"/>
 </view>
 <view class="line-dotted"></view>
 </view>
 
+<view class="two-line">
+<view class="two-input">
+<text>{{items[1].title}}</text>
+<input value="{{items[1].number}}" placeholder="0.00" type="digit" bindinput= 'watchMoney' maxlength="8"/>
+<text>元</text>
 </view>
+<view class="line-dotted"></view>
+</view>
+</view> -->

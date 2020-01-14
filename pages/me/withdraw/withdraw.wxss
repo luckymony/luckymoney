@@ -10,27 +10,32 @@
   display: flex;
   flex-direction:column;
 }
+
 .head-view {
   height: 70%;
   /* background-color: orange; */
 }
+
 .foot-view {
   height: 30%;
   display: flex;
   flex-direction: column;
   /* background-color: olivedrab; */
 }
+
 .button-view {
-  /* background-color: orange; */
+  /* background-color: rebeccapurple; */
   flex: 2;
 }
-.tixian_tip{
+
+.tixian-tip{
   width: 100%;
-  /* background-color: red; */
   text-align: center;
   font-size: 25rpx;
   color: #ccc;
+  /* background-color: red; */
 }
+
 .yu-e{
   /* background-color: orange; */
   margin-top: 40rpx;
@@ -40,10 +45,12 @@
   flex-direction: row;
   align-items: center;
 }
+
 .yu-e-name{
   flex: 1;
   font-size: 35rpx;
 }
+
 .yu-e-money{
   font-size: 50rpx;
   font-weight: bolder;
@@ -65,11 +72,13 @@
   flex-direction: row;
   /* background-color: red; */
 }
+
 .jin-e-input-view text {
   height: 160rpx;
   font-size: 100rpx;
   font-weight: bolder;
 }
+
 .jin-e-input {
   margin-left: 40rpx;
   font-size: 100rpx;
@@ -78,6 +87,7 @@
   height: 150rpx;
   /* background-color: orange; */
 }
+
 .background-line{
   background-color: #eee;
   height: 1rpx;
@@ -93,10 +103,31 @@
   font-size: 25rpx;
   color: #ccc;
 }
+
 .all-ti-xian {
   margin-left: 20rpx;
   color: blue;
 }
+
+.service-fee-text {
+  margin-top: 20rpx;
+  text-align: center;
+  margin-left: 10vw;
+  color: rgba(16, 16, 16, 0.43);
+  font-size: 25rpx;
+}
+
+.withdrawal-button {
+  width: 80%;
+  font-size: 40rpx;
+  background:#EB5646;
+  color: white; 
+}
+
+.gray {
+  background-color: #eee;
+}
+
 .more-than-view {
   margin-top: 20rpx;
   margin-left: 10vw;

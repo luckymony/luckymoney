@@ -23,4 +23,9 @@
 </view>
 </view>
 </block>
+<view class="no-data-view" wx:if="{{items.length==0}}">
+<image mode='aspectFit' src="{{noDataIcon}}" class="no-data-image">
+</image>
+<text>暂无红包</text>
+</view>
 </scroll-view>

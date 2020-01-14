@@ -38,7 +38,6 @@
 <text class="money-text">{{moneyCount}}</text>
 </view>
 <button bindtap="payMoney" class="pay-button">塞钱进红包</button>
-<text class="bottom-text">{{'需支付￥'+ serviceFee + '服务费'}}</text>
 </view>
 </view>
 <view class="foot-view">

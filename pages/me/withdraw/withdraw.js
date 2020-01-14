@@ -1,4 +1,6 @@
 // pages/me/withdraw/withdraw.js
+
+var util = require('../../../utils/util.js');
 Page({
 
   /**
@@ -7,30 +9,35 @@ Page({
   data: {
     balanceMoney:"88.8",
     inputMoney:"",
-    isShowTiXian:true,
+    midValue:'0.00',
     isShowMoreThan:false,
+    serviceFee:'0.00',
+    maxlength:0,
   },
 
   inputWacth: function (e) {
-    console.log(e.detail.value);
-    console.log(this.data.balanceMoney);
+    var num = util.pointNumer(e.detail.value);
+    var that = this;
     if (parseFloat(e.detail.value) > parseFloat(this.data.balanceMoney)) {
-      this.setData({
-        isShowTiXian:false,
-        isShowMoreThan: true,
+      that.setData({
+        isShowMoreThan: true
       });
     }else {
-      this.setData({
-        isShowTiXian: true,
+      var num = util.pointNumer(e.detail.value);
+      that.setData({
         isShowMoreThan: false,
+        inputMoney: num,
+        serviceFee: num ? util.getServiceFee(num) : '0.00'
       });
     }
   },
 
   allMoney:function(e) {
-    this.setData({
-      inputMoney: this.data.balanceMoney
-    });
+
+  },
+
+  withdrawal:function() {
+
   },
 
   /**
@@ -38,6 +45,10 @@ Page({
    */
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '余额提现' }); 
+    var that = this;
+    that.setData({
+      maxlength: that.data.balanceMoney.length
+    })
   },
 
   /**
@@ -79,13 +90,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

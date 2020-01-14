@@ -1,47 +1,49 @@
 <scroll-view class="container" scroll-y="true"> 
-  <view class='nav'>
-    <view class="{{send?'orange':'default'}}" data-s='s' bindtap='select'>发出的红包</view>
-    <view class="{{receive?'orange':'default'}}" data-r='r' bindtap='select'>抢到的红包</view>
-  </view>
-  <view class="empty-view"></view>
-  <view class="userinfo">
-    <image class="userinfo-avatar" src="{{iconUrl}}" background-size="cover"></image>
-    <view class="{{send?'show':'hidden'}}">发出的红包</view>
-    <view class="{{receive?'show':'hidden'}}">抢到的红包</view>
-  </view>
-  <view class='page-section'>
-    <view class='userinfo-money'>
-      <view class='userinfo-money1-item'>
-        <text>金额 (元)</text>
-        <text class='money-text'>{{money.money_total}}</text>
-      </view>
-      <view class='userinfo-money1-item'>
-        <text>数量 (个)</text>
-        <text class='money-text'>{{money.red_packet_num}}</text>
-      </view>
+<view class='nav'>
+  <view class="{{receive?'orange':'default'}}" data-type= '1' bindtap='selectType'>发出的红包</view>
+  <view class="{{!receive?'orange':'default'}}" data-type= '2' bindtap='selectType'>抢到的红包</view>
+</view>
+<view class="empty-view"></view>
+<view class="userinfo">
+  <image class="userinfo-avatar" src="{{iconUrl}}" background-size="cover"></image>
+  <view class="{{receive?'show':'hidden'}}">发出的红包</view>
+  <view class="{{!receive?'show':'hidden'}}">抢到的红包</view>
+</view>
+<view class='page-section'>
+  <view class='userinfo-money'>
+    <view class='userinfo-money1-item'>
+      <text>金额 (元)</text>
+      <text class='money-text'>{{moneyTotal == 0 ? '--' : moneyTotal}}</text>
+    </view>
+    <view class='userinfo-money1-item'>
+      <text>数量 (个)</text>
+      <text class='money-text'>{{redPacketNum == 0 ? '--' : redPacketNum}}</text>
     </view>
   </view>
-  <view class="empty-view"></view>
-  <view class="list-result">
-    <block wx:for="{{money.detail}}" wx:for-index="index" wx:for-item="item">
-      <view class='list-item' bindtap="pushDeail" data-index="{{index}}">
-        <view class='list-items-top'>
-          <view class='list-items-play'>
-            <view class='list-items-play-name'>{{item.name}}</view>
-            <view class='list-items-play-time'>{{item.time}}</view>
-          </view>
-          <view class='list-items-money'>{{item.money}}</view>
-        </view>
-        <view class='list-item-line'></view>
+</view>
+<view class="empty-view"></view>
+<view class="list-result" wx:for="{{items}}" wx:for-index="index" wx:for-item="item">
+ <view class='list-item' bindtap="pushDeail" data-index="{{index}}">
+    <view class='list-items-top'>
+      <view class='list-items-play'>
+        <view class='list-items-play-name'>{{item.name}}</view>
+        <view class='list-items-play-time'>{{item.time}}</view>
       </view>
-    </block>
+      <view class='list-items-money'>{{item.money + '元'}}</view>
+    </view>
+    <view class='list-item-line'></view>
   </view>
+</view>
 <view class='load-more' wx:if="{{showLoading}}">
 <view class='load-more-top'>
 <image src="../../../images/home/loading.gif"></image>
 <text>{{'数据加载...'}}</text>
 </view>
-<view class='list-item-line'></view>
+</view>
+<view class="no-data-view" wx:if="{{items.length==0}}">
+<image mode='aspectFit' src="{{noDataIcon}}" class="no-data-image">
+</image>
+<text>暂无记录</text>
 </view>
 </scroll-view>
 

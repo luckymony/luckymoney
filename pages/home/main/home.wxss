@@ -110,3 +110,25 @@ color: transparent;
   text-align:right;
   margin-right: 20rpx;
 }
+
+.no-data-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top:25vh;
+  width: 100vw;
+  height: 50vh;
+  /* background-color: red; */
+}
+
+.no-data-image {
+  width: 50%;
+  height: 50%;
+}
+
+.no-data-view text {
+  margin-top: 20rpx;
+  color: #ccc;
+
+}
