@@ -72,8 +72,7 @@ Page({
          that.setData({
           items:array
          })
-      },
-      fail:function(res) {
+      },fail:function(res) {
        console.log(res);
         wx.hideNavigationBarLoading()
         wx.stopPullDownRefresh()

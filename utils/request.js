@@ -15,10 +15,8 @@ function getSendList(parameter) {
     dataType: 'json',
     success: function (res) {
     },fail: function (res) {
-      console.log(res);
       if (parameter.fail) parameter.fail(res);
     },complete: function (res) {
-      console.log(res);
       if (res.statusCode == 200 
           && res.data.code == 0) {
         if (res.data.data == null) {
@@ -26,6 +24,8 @@ function getSendList(parameter) {
         } else {
           if (parameter.success) parameter.success(res.data.data);
         }
+      }else {
+        if(parameter.fail)parameter.fail(res);
       }
     }
   })  
@@ -85,6 +85,8 @@ function bflcDetail(parameter) {
         } else {
           if (parameter.success) parameter.success(res.data.data);
         }
+      }else {
+        if(parameter.fail)parameter.fail(res);
       }
     }
   })  
@@ -113,6 +115,8 @@ function bflcWin(parameter) {
         } else {
           if (parameter.success) parameter.success(res.data.data);
         }
+      }else {
+        if(parameter.fail)parameter.fail(res);
       }
     }
   })  
@@ -144,6 +148,8 @@ function kmdjStart(parameter) {
         } else {
           if (parameter.success) parameter.success(res.data.data);
         }
+      }else {
+        if(parameter.fail)parameter.fail(res);
       }
     }
   })  
@@ -172,6 +178,8 @@ function kmdjDetail(parameter) {
         } else {
           if (parameter.success) parameter.success(res.data.data);
         }
+      }else {
+        if (parameter.fail) parameter.fail(res);
       }
     }
   })  
@@ -192,15 +200,17 @@ function kmdjWin(parameter) {
     dataType: 'json',
     success: function (res) {
     },fail: function (res) {
-      if (parameter.fail) parameter.fail(res);
+      if(parameter.fail)parameter.fail(res);
     },complete: function (res) {
       if (res.statusCode == 200 
           && res.data.code == 0) {
         if (res.data.data == null) {
-          if (parameter.fail) parameter.fail(null);
+          if (parameter.fail)parameter.fail(null);
         } else {
           if (parameter.success) parameter.success(res.data.data);
         }
+      }else {
+        if(parameter.fail)parameter.fail(res);
       }
     }
   })  

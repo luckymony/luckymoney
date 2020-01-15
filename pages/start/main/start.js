@@ -35,6 +35,9 @@ Page({
     });
   },
 
+  /**
+   * 祝福语快速选择
+   */
   handleClickItem({detail}) {
     const index = detail.index;
     var that = this;
@@ -72,12 +75,18 @@ Page({
     that.getCanPay();
   },
 
+  /**
+   * 跳动红包玩法介绍
+   */
   toTip:function() {
     wx.navigateTo({
       url: '../tip/tip',
     })
   },
   
+  /**
+   * 跳转到红包模式选择页面
+   */
   toPlay:function() {
     var that = this;
     var index = that.data.playTypes.indexOf(that.data.items[3].type);
@@ -86,6 +95,9 @@ Page({
     })
   },
 
+  /**
+   * 红包祝福语监听
+   */
   bindLucky:function(e) {
     var that = this;
     that.setData({
@@ -94,6 +106,9 @@ Page({
     
   },
 
+  /**
+   * 监听红包金额
+   */
   watchMoney:function(e) {
     // console.log(e.detail);
     var that = this;
@@ -154,6 +169,9 @@ Page({
     return // 必加，不然输入框可以输入多位小数
   },
 
+  /**
+   * 监听红包个数
+   */
   watchCount:function(e) {
     var that = this;
     var index = that.data.playTypes.indexOf(that.data.items[3].type);
@@ -202,6 +220,9 @@ Page({
     console.log(that.data.isCanPay);
   },
 
+  /**
+   * 是否可以支付
+   */
   getCanPay:function() {
       var that = this;
       var isCan = (that.data.items[0].title.length > 0 
@@ -212,6 +233,9 @@ Page({
       })
   },
 
+  /**
+   * 发起支付
+   */
   payMoney:function() {
     var that = this;
     if(!that.data.isCanPay)return;
