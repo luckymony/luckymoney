@@ -41,40 +41,35 @@ Page({
     if (index == 0) {
       that.setData({
         visible: false,
-        'items[0].title': "鼠兆丰年 盛世贺岁",
-        isCanPay : that.getCanPay
+        'items[0].title': "鼠兆丰年 盛世贺岁"
       });
     }else if(index == 1){
       that.setData({
         visible: false,
-        'items[0].title':"恭喜发财 大吉大利",
-        isCanPay: that.getCanPay
+        'items[0].title':"恭喜发财 大吉大利"
       });
     }else if(index == 2) {
       that.setData({
         visible: false,
-        'items[0].title':"合乐融融 财运滚滚",
-        isCanPay: that.getCanPay
+        'items[0].title':"合乐融融 财运滚滚"
       });
     }else if (index == 3) {
       that.setData({
         visible: false,
-        'items[0].title':"一帆风顺 二龙腾飞",
-        isCanPay: that.getCanPay
+        'items[0].title':"一帆风顺 二龙腾飞"
       });
     }else if (index == 4) {
       that.setData({
         visible: false,
-        'items[0].title':"七星高照 八方来财",
-        isCanPay: that.getCanPay
+        'items[0].title':"七星高照 八方来财"
       });
     }else if (index == 5) {
       that.setData({
         visible: false,
-        'items[0].title': "鼠你最美 鼠你最棒",
-        isCanPay: that.getCanPay
+        'items[0].title': "鼠你最美 鼠你最棒"
       });
     }
+    that.getCanPay();
   },
 
   toTip:function() {
@@ -96,6 +91,7 @@ Page({
     that.setData({
       'items[0].title': e.detail.value.length > 0 ? e.detail.value : null
     })
+    
   },
 
   watchMoney:function(e) {
@@ -110,6 +106,7 @@ Page({
         type: 'warning',
         duration:3
       });
+      that.getCanPay();
       return;
     } else if (e.detail.value > 0 && e.detail.value < 1.0) {
       $Message({
@@ -121,6 +118,7 @@ Page({
       that.setData({
         'items[1].number': parseFloat(that.data.moneyCount) > 0 ? parseFloat(that.data.moneyCount):null
       })
+      that.getCanPay();
       return;
     } else if (
       e.detail.value > 0
@@ -134,6 +132,7 @@ Page({
       that.setData({
         'items[1].number': parseFloat(that.data.moneyCount) > 0 ? parseFloat(that.data.moneyCount):null
       })
+      that.getCanPay();
       return;
     }else if (e.detail.value == 0) {
       that.setData({
@@ -141,6 +140,7 @@ Page({
         moneyCount: '0.00',
         serviceFee: '0.00'
       })
+      that.getCanPay();
       return
     }
   
@@ -150,24 +150,28 @@ Page({
       moneyCount: num ? util.moneyFormat(num.toString()) : '0.00',
       serviceFee: num ? util.getServiceFee(num) : '0.00'
     })
+    that.getCanPay();
     return // 必加，不然输入框可以输入多位小数
   },
 
   watchCount:function(e) {
     var that = this;
+    var index = that.data.playTypes.indexOf(that.data.items[3].type);
     if (e.detail.value && e.detail.value > 500) {
       that.setData({
         'items[2].number': parseInt(that.data.redPacketCount)
       })
+      var warningStr = index == 2 ? '最多500个人参与' : '一次最多发500个红包'
       $Message({
-        content: '一次最多发500个红包',
+        content: warningStr,
         type: 'warning',
         duration: 3
       });
       return;
     } else if (e.detail.value && e.detail.value < 1) {
+      var warningStr = index == 2 ? '请填写参与人数' : '请填写红包个数'
       $Message({
-        content: '请填写红包个数',
+        content: warningStr,
         type: 'warning',
         duration: 3
       });
@@ -178,7 +182,8 @@ Page({
     } else if (
        e.detail.value 
        && that.data.moneyCount > 0 
-       && (that.data.moneyCount / e.detail.value * 1.00) < 0.01) {
+       && (that.data.moneyCount / e.detail.value * 1.00) < 0.01
+       && index != 2) { //好运连绵模式不参与判断
       $Message({
         content: '单个最小红包金额不能小于0.01元',
         type: 'warning',
@@ -193,20 +198,28 @@ Page({
       'items[2].number': e.detail.value,
       redPacketCount: e.detail.value
     })
+    that.getCanPay();
+    console.log(that.data.isCanPay);
   },
 
   getCanPay:function() {
       var that = this;
-      return that.data.items[0].title.length > 0 
-      && that.data.items[1].number.length > 0 
-      && that.data.items[2].number.length > 0;
+      var isCan = (that.data.items[0].title.length > 0 
+      && that.data.items[1].number > 0 
+      && that.data.items[2].number > 0);
+      that.setData({
+        isCanPay : isCan
+      })
   },
 
   payMoney:function() {
     var that = this;
+    if(!that.data.isCanPay)return;
+    var index = that.data.playTypes.indexOf(that.data.items[3].type);
     if (that.data.items[2].number == null) {
+      var warningStr = index == 2 ? '请填写参与人数' : '请填写红包个数'
       $Message({
-        content: '请填写红包个数',
+        content: warningStr,
         type: 'warning',
         duration: 3
       });
@@ -229,7 +242,6 @@ Page({
     wx.showLoading({
       title: '微信支付',
     })
-    var index = that.data.playTypes.indexOf(that.data.items[3].type);
     if (index == 0) { //开门大吉
       that.sendKmdj();
     }else if (index == 1) { //八方来财

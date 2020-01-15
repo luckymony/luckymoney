@@ -27,7 +27,7 @@ Page({
 
   onShow: function () {
     // 页面显示
-    this.requestList();
+    wx.startPullDownRefresh();
   },
 
   onHide: function () {
@@ -48,17 +48,13 @@ Page({
 
   requestList:function() {
     var that = this;
-    if(that.data.isRequest)return;
-    that.setData({
-       isRequest:true
-    })
     wx.showNavigationBarLoading() 
-    wx.startPullDownRefresh()
     request.getSendList({
       success:function(res){
         //  console.log(res);
          wx.hideNavigationBarLoading()
          wx.stopPullDownRefresh()
+         var array = []
          for(var i = 0;i < res.length; i++) {
              var value = res[i];
              var item = {
@@ -71,19 +67,16 @@ Page({
               playId: value.redPackageId,
               isMe: 0
              }
-             that.data.items.push(item);
+             array.push(item);
          }
          that.setData({
-          isRequest:false
+          items:array
          })
       },
       fail:function(res) {
-        console.log(res);
+       console.log(res);
         wx.hideNavigationBarLoading()
         wx.stopPullDownRefresh()
-        that.setData({
-          isRequest:false
-        })
         wx.showToast({
           title: '红包列表请求失败',
           icon: 'none',

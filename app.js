@@ -42,9 +42,9 @@ App({
       that.getLogin(); //重新登陆
        that.getLoginStateCallback = res => {
          if (!res){
-           wx.redirectTo({
-             url: '../../../pages/auth/auth',
-           });
+           wx.navigateTo({
+             url: '/pages/auth/auth',
+           })
          }
        }
      }
@@ -165,7 +165,7 @@ App({
         if (that.getLoginStateCallback) {
           that.getLoginStateCallback(false)
         }
-        //console.log(res);
+        console.log(res);
       },//请求失败
       complete: function (res) {//请求完成
         // console.log(res);

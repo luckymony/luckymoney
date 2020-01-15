@@ -169,8 +169,8 @@
   color: white;
 }
 
-.dont-pay{
-  opacity: 0.5;
+.gray {
+  background-color: #eee;
 }
 
 .bottom-text {

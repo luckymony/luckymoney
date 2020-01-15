@@ -37,7 +37,7 @@
 <text class="symbol-text">{{"￥"}}</text>
 <text class="money-text">{{moneyCount}}</text>
 </view>
-<button bindtap="payMoney" class="pay-button">塞钱进红包</button>
+<button bindtap="payMoney" class="pay-button {{isCanPay ? '' : 'gray'}}">塞钱进红包</button>
 </view>
 </view>
 <view class="foot-view">

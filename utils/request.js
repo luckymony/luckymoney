@@ -15,8 +15,10 @@ function getSendList(parameter) {
     dataType: 'json',
     success: function (res) {
     },fail: function (res) {
+      console.log(res);
       if (parameter.fail) parameter.fail(res);
     },complete: function (res) {
+      console.log(res);
       if (res.statusCode == 200 
           && res.data.code == 0) {
         if (res.data.data == null) {
