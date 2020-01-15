@@ -1,4 +1,0 @@
-<!--pages/me/share.wxml-->
-<view class='main-view'>
-<image src="../../../images/me/share.png"></image>
-</view>

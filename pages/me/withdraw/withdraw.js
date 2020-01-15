@@ -33,7 +33,10 @@ Page({
   },
 
   allMoney:function(e) {
-
+    var that = this;
+    that.setData({
+      inputMoney: that.data.balanceMoney
+    });
   },
 
   withdrawal:function() {

@@ -30,6 +30,7 @@ Page({
       url: '../money/moneyDetail',
     })
   },
+  
   gotoWithdraw:function(){
     wx.navigateTo({
       url: '../withdraw/withdraw',

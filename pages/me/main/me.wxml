@@ -20,7 +20,7 @@
   </view>
   <view class="empty-view"></view>
   <view class='extend-space'>
-      <navigator url="../share/share" class='navigator' hover-class="none">
+      <navigator url="../../share/share" class='navigator' hover-class="none">
         <i-icon type='share_fill' size="25" color="#EB5646"/>
         <view class="navigator-text">推荐给好友</view>
         <i-icon type='enter' size="20" color="#80848f"/>

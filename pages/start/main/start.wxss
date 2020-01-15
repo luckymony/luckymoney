@@ -170,7 +170,8 @@
 }
 
 .gray {
-  background-color: #eee;
+  background-color: #ccc;
+  color: #eee
 }
 
 .bottom-text {
