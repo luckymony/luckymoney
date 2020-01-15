@@ -15,7 +15,8 @@ Page({
     redPacketCount:'0',
     serviceFee:'0.00',
     playParameter:null,
-    payParameter:null
+    payParameter:null,
+    isCanPay:false
   },
 
   toTip:function(e) {
@@ -36,35 +37,42 @@ Page({
 
   handleClickItem({detail}) {
     const index = detail.index;
+    var that = this;
     if (index == 0) {
-      this.setData({
+      that.setData({
         visible: false,
-        'items[0].title': "鼠兆丰年 盛世贺岁"
+        'items[0].title': "鼠兆丰年 盛世贺岁",
+        isCanPay : that.getCanPay
       });
     }else if(index == 1){
-      this.setData({
+      that.setData({
         visible: false,
-        'items[0].title':"恭喜发财 大吉大利"
+        'items[0].title':"恭喜发财 大吉大利",
+        isCanPay: that.getCanPay
       });
     }else if(index == 2) {
-      this.setData({
+      that.setData({
         visible: false,
-        'items[0].title':"合乐融融 财运滚滚"
+        'items[0].title':"合乐融融 财运滚滚",
+        isCanPay: that.getCanPay
       });
     }else if (index == 3) {
-      this.setData({
+      that.setData({
         visible: false,
-        'items[0].title':"一帆风顺 二龙腾飞"
+        'items[0].title':"一帆风顺 二龙腾飞",
+        isCanPay: that.getCanPay
       });
     }else if (index == 4) {
-      this.setData({
+      that.setData({
         visible: false,
-        'items[0].title':"七星高照 八方来财"
+        'items[0].title':"七星高照 八方来财",
+        isCanPay: that.getCanPay
       });
     }else if (index == 5) {
-      this.setData({
+      that.setData({
         visible: false,
-        'items[0].title': "鼠你最美 鼠你最棒"
+        'items[0].title': "鼠你最美 鼠你最棒",
+        isCanPay: that.getCanPay
       });
     }
   },
@@ -185,6 +193,13 @@ Page({
       'items[2].number': e.detail.value,
       redPacketCount: e.detail.value
     })
+  },
+
+  getCanPay:function() {
+      var that = this;
+      return that.data.items[0].title.length > 0 
+      && that.data.items[1].number.length > 0 
+      && that.data.items[2].number.length > 0;
   },
 
   payMoney:function() {
