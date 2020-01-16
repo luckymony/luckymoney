@@ -5,16 +5,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    luckyStr:'恭喜发财,大吉大利',
+     luckyStr:'恭喜发财,大吉大利',
      playId:'',
-     playName:'开门大吉'
+     playType:null,
+     playName:'斗利是',
+     userName:'',
+     iconUrl:'../../images/home/login.png'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.setNavigationBarTitle({ title: '斗利是' }); 
+    wx.setNavigationBarTitle({ title: '分享给好友' }); 
   },
 
   /**
@@ -64,11 +67,22 @@ Page({
    */
   onShareAppMessage: function (res) {
     var that = this;
-    　　var shareObj = {
-  　　　　title: "xxx"+"红包",
-         desc: "恭喜发财 大吉大利",
-         path: 'pages/start/main/start',
-  　　　　imageUrl: 'images/me/share.jpg',
+    var title = that.data.userName.length > 0 ? (that.data.userName + '的红包') : '进来抢红包';
+    var path1 = '/pages/home/rob/rob';
+    var path2 = '/pages/home/relay/relay';
+    var path = '/pages/start/main/start';
+    if (that.data.playType == 2) {
+        path = path2;
+    }else if (that.data.playType == 1 
+      || that.data.playType == 0){
+        path = path1;
+    }
+    var newPath = that.data.playId.length > 0 ? (path + '?' + 'that.data.playId') : path;
+    var shareObj = {
+  　　　　title: title,
+         desc: that.data.luckyStr,
+         path: newPath,
+  　　　　imageUrl: '../../images/me/share.jpg',
   　　　　success: function (res) {
 　　　　　　// 转发成功之后的回调
 　　　　　　if (res.errMsg == 'shareAppMessage:ok') {
@@ -78,9 +92,7 @@ Page({
                 duration: 2000
               })
 　　　　　　}
-  　　　　},
-  　　　　fail: function () {
-  　　　　　　// 转发失败之后的回调
+  　　　　},fail: function () {
   　　　　　　if (res.errMsg == 'shareAppMessage:fail cancel') {
                   wx.showToast({
                     title: '用户取消转发',
@@ -96,9 +108,6 @@ Page({
   　　　　　　}
   　　　　}      　　　　
       }
-    　　if (options.from == 'button') {
-    　　　　shareObj.path = ''
-    　　}
     　　return shareObj;
   }
 })

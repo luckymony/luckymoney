@@ -1,10 +1,10 @@
 <scroll-view class='page-body' scroll-y="true">
 <block wx:for="{{items}}" wx:for-index="index" wx:for-item="item">
-<view class='list-item' bindtap='grabLuckyMoney' data-index="{{item.playType}}" data-title="{{item.playName}}">
+<view class='list-item' bindtap='grabLuckyMoney' data-index="{{index}}">
 <view class='time-view'>{{item.startTime}}</view>
 <view class='lucky-money-view'>
 <view class='item-left-view' wx:if="{{!item.isMe}}">
-<image class='icon-view' src='{{item.icon}}' ></image>
+<image class='icon-view' src='{{item.iconUrl}}'></image>
 <view class='left-arrow'></view>
 </view>
 <view class='item-right-view'>

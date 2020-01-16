@@ -1,6 +1,6 @@
 // pages/rob/rob.js
+const app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -16,7 +16,13 @@ Page({
     currentItems: [],
     coinIcon:"../../../images/rob/fu.gif",
     showLoading: false,
-    playType:0
+    playType:0,
+    luckyStr:null,
+    palyId:null,
+    iconUrl:null,
+    userName:null,
+    myIconUrl:null,
+    myName:null
   },
 
   openGame:function(e) {
@@ -44,18 +50,24 @@ Page({
     console.log(options);
     var that = this;
     that.setData({
-      playType: parseInt(options["type"]) - 1
+      playType: parseInt(options["playType"]),
+      palyId: parseInt(options["palyId"]),
+      luckyStr: options["luckyStr"],
+      userName: options["userName"] + '的红包',
+      myIconUrl: app.globalData.userInfo.avatarUrl,
+      myName: app.globalData.userInfo.nickname
     });
-    let newItems = [];
-    if (that.data.allItems.length > 5) {
-      newItems = that.data.allItems.slice(0, 5)
-    }else {
-      newItems = that.data.allItems
-    }
-    that.setData({
-      currentItems: newItems,
-    });
-    wx.setNavigationBarTitle({ title: options['name']}); 
+    console.log(that.data.myIconUrl);
+   wx.setNavigationBarTitle({title: options['playName']});
+    // let newItems = [];
+    // if (that.data.allItems.length > 5) {
+    //   newItems = that.data.allItems.slice(0, 5)
+    // }else {
+    //   newItems = that.data.allItems
+    // }
+    // that.setData({
+    //   currentItems: newItems,
+    // });
   },
 
   /**

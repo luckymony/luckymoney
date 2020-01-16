@@ -9,16 +9,48 @@ Page({
 
   grabLuckyMoney: function(e) {
     console.log(e.currentTarget)
-    var type = e.currentTarget.dataset['index'];
-    var name = e.currentTarget.dataset['title'];
-    var urlStr = type == 3 ? '../relay/relay?' : '../rob/rob?';
+    var that = this;
+    var index = e.currentTarget.dataset['index'];
+    if(index >= that.data.items.length)return;
+    try {
+    var item = that.data.items[index];
+    if (!item)return;
+    var iconUrl  = item.iconUrl;
+    var userName = item.name;
+    var playType = item.playType;
+    var playName = item.playName;
+    var playId = item.playId;
+    var luckyStr = item.luckyStr;
+    var urlStr = playType == 2 ? '../relay/relay?' : '../rob/rob?';
     wx.navigateTo({
-      url: urlStr + 'type=' + type + '&name=' + name,
+      url: urlStr + 'playType=' + playType + '&playName='
+       + playName + '&userName=' + userName + '&playId=' + playId + '&luckyStr=' + luckyStr,
     })
+    } catch (res) {
+       console.log(res);
+    }
   },
   
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '斗利是' }); 
+    var that = this;
+    var array = []
+         for(var i = 0;i < 3; i++) {
+             var item = {
+              iconUrl: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555004603689&di=6161b038a8a7046bfe88e4d72e975729&imgtype=0&src=http%3A%2F%2Fwww.36588.com.cn%2FImageResourceMongo%2FUploadedFile%2Fdimension%2Fbig%2F7d10bc2b-db5b-4247-925c-0628d65b3f50.png",
+              name: "李世民",
+              startTime: "08-08 08:08",
+              luckyStr: "恭喜发财,大吉大利",
+              playName: util.getPlayName(2),
+              playType: i,
+              playId: 0,
+              isMe: 0
+             }
+             array.push(item);
+         }
+         that.setData({
+          items:array
+         })
   },
 
   onReady: function () {

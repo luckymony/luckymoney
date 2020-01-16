@@ -3,7 +3,7 @@
 <view class='bg-view'>
 <view class="first-view">
 <view class="circle-view"></view>
-<image class="icon-image"></image>
+<image class="icon-image" src = '{{iconUrl}}'></image>
 <text class="name-text">{{playName}}</text>
 <text class="lucky-text">{{luckyStr}}</text>
 </view>

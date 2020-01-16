@@ -1,5 +1,5 @@
+const app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -17,8 +17,11 @@ Page({
     coinIcon: "../../../images/rob/fu.gif",
     showLoading: false,
     playType: 0,
-    money:88.88,
-    showPay:false
+    money:'--',
+    showPay:false,
+    palyId:null,
+    myIconUrl:null,
+    myName:null
   },
 
   showAllTap: function (e) {
@@ -65,18 +68,21 @@ Page({
     console.log(options);
     var that = this;
     that.setData({
-      playType: parseInt(options["type"]) - 1
+      playType: parseInt(options["playType"]),
+      palyId: parseInt(options["palyId"]),
+      myIconUrl: app.globalData.userInfo.avatarUrl,
+      myName: app.globalData.userInfo.nickname
     });
-    let newItems = [];
-    if (that.data.allItems.length > 5) {
-      newItems = that.data.allItems.slice(0, 5)
-    } else {
-      newItems = that.data.allItems
-    }
-    that.setData({
-      currentItems: newItems,
-    });
-    wx.setNavigationBarTitle({ title: options['name'] });
+   wx.setNavigationBarTitle({ title: options['playName'] });
+  //  let newItems = [];
+  //   if (that.data.allItems.length > 5) {
+  //     newItems = that.data.allItems.slice(0, 5)
+  //   } else {
+  //     newItems = that.data.allItems
+  //   }
+  //   that.setData({
+  //     currentItems: newItems,
+  //   });
   },
 
   /**

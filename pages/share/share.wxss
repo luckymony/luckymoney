@@ -42,8 +42,8 @@
   width: 150rpx;
   height: 150rpx;
   border-radius: 50%;
-  border: 10rpx solid rgb(236, 173, 118);
-  background-color: olivedrab;
+  /* border: 10rpx solid rgb(236, 173, 118); */
+  /* background-color: olivedrab; */
 }
 
 .name-text {

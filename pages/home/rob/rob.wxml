@@ -2,9 +2,9 @@
 <view class="main-vew">
 <view class="top-view">
 <view class="icon-view">
-<image class="icon-image"></image>
-<text class="name-text">{{'张三丰的红包'}}</text>
-<text class="bless-text">{{'恭喜发财,大吉大利'}}</text>
+<image class="icon-image" src="{{iconUrl}}"></image>
+<text class="name-text">{{userName}}</text>
+<text class="bless-text">{{luckyStr}}</text>
 </view>
 <view class="icon-center-view">
 <image class="icon-center-image" mode='aspectFit' src="{{coinIcon}}"></image>
@@ -38,8 +38,8 @@
 <text class="my-rank-money">--</text>
 </view>
 <view class="my-center-view">
-<image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555004603689&di=6161b038a8a7046bfe88e4d72e975729&imgtype=0&src=http%3A%2F%2Fwww.36588.com.cn%2FImageResourceMongo%2FUploadedFile%2Fdimension%2Fbig%2F7d10bc2b-db5b-4247-925c-0628d65b3f50.png"></image>
-<text>我的名字</text>
+<image src="{{myIconUrl}}"></image>
+<text>{{myName}}</text>
 </view>
 <view class="my-right-view">
 <text>红包金额</text>
