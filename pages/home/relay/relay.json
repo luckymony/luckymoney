@@ -2,6 +2,7 @@
   "usingComponents": {
     "i-divider": "../../../dist/divider/index",
     "i-icon": "../../../dist/icon/index",
-    "i-load-more": "../../../dist/load-more/index"
+    "i-load-more": "../../../dist/load-more/index",
+    "paymoney": "../../../component/paymoney/paymoney"
   }
 }

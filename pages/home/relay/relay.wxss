@@ -502,3 +502,11 @@
   width: 100%;
   border-top: 1rpx solid #ccc;
 }
+
+.paymoney-view {
+  position:fixed;
+  background-color: white;
+  width: 100%;
+  border-top-right-radius: 10rpx;
+  border-top-left-radius: 10rpx;
+}
