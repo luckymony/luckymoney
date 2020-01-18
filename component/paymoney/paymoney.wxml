@@ -16,6 +16,6 @@
 <view class="line-dotted"></view>
 </view>
 <view class="second-view">
-<button bindtap="editedTap">塞钱进红包</button>
+<button bindtap="editedTap" class="pay-button {{isCanPay ? '' : 'gray'}}">塞钱进红包</button>
 </view>
 </view>

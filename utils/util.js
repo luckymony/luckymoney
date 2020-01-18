@@ -79,8 +79,8 @@ function getCurrentStartTime() {
     h = h + 1;
     m = m - 60;
   }
-  h = h > 10 ? h : '0' + h;
-  m = m > 10 ? m : '0' + m;
+  h = h >= 10 ? h : '0' + h;
+  m = m >= 10 ? m : '0' + m;
   return h + ':' + m;
 }
 

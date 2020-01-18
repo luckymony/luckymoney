@@ -3,7 +3,7 @@ const app = getApp()
 Page({
   data: {
     receive:true,
-    iconUrl: '../../../images/home/login.png',
+    iconUrl: '../../../images/home/icon.png',
     noDataIcon: '../../../images/home/no-data.png',
     items: [],
     moneyTotal: 0,
@@ -20,12 +20,12 @@ Page({
 
   requestGet:function(){
     this.setData({
+      iconUrl: app.globalData.userInfo.avatarUrl,
       receive: false
     })
   },
 
   selectType:function(e){
-    // console.log(e.currentTarget.dataset)
     if (e.currentTarget.dataset.type == 1){ //发出去
       this.requestSend();
     }else { //抢到的
@@ -66,6 +66,7 @@ Page({
  * 生命周期函数--监听页面加载
  */
   onLoad: function (options) {
+      this.requestGet();
       wx.setNavigationBarTitle({ title: '红包记录' }); 
   },
 

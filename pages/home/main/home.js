@@ -11,17 +11,19 @@ Page({
     console.log(e.currentTarget)
     var that = this;
     var index = e.currentTarget.dataset['index'];
-    if(index >= that.data.items.length)return;
     try {
     var item = that.data.items[index];
     if (!item)return;
     var playId = item.playId;
-    var urlStr = playType == 2 ? '../relay/relay?' : '../rob/rob?';
+    var urlStr = index == 2 ? '../relay/relay?' : '../rob/rob?';
     wx.navigateTo({
       url: urlStr + 'playId=' + playId,
     })
     } catch (res) {
        console.log(res);
+      wx.navigateTo({
+        url: urlStr + 'playId=' + 0,
+      })
     }
   },
   

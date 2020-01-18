@@ -3,7 +3,7 @@ const app = getApp()
 Page({
   data: {
     nickName: '斗利是',
-    iconUrl: '../../../images/home/login.png'
+    iconUrl: '../../../images/home/icon.png'
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '我的' }); 

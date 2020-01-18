@@ -13,8 +13,8 @@
     "pages/game/rain/rain",
     "pages/home/relay/relay",
     "pages/home/participate/participate",
-    "pages/auth/auth",
     "pages/share/share",
+    "pages/auth/auth",
     "pages/game/shake/shake"
   ],
   "window": {

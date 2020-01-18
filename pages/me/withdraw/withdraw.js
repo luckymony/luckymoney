@@ -10,8 +10,8 @@ Page({
     balanceMoney:"88.8",
     inputMoney:"",
     midValue:'0.00',
+    serviceFee: '0.00',
     isShowMoreThan:false,
-    serviceFee:'0.00',
     maxlength:0,
   },
 
@@ -34,8 +34,10 @@ Page({
 
   allMoney:function(e) {
     var that = this;
+    var money = that.data.balanceMoney;
     that.setData({
-      inputMoney: that.data.balanceMoney
+      inputMoney: money,
+      serviceFee: money > 0 ? util.getServiceFee(money) : '0.00'
     });
   },
 

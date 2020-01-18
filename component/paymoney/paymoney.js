@@ -9,9 +9,15 @@ Component({
       type: String,
       value: '恭喜发财 大吉大利'
     },
+    
     money: {
       type:String,
       value:null
+    },
+
+    isCanPay: {
+      type: Boolean,
+      value: false
     }
   },
 
@@ -28,10 +34,8 @@ Component({
   methods: {
 
     bindLucky:function(e){
-      var that = this;
-      that.setData({
-        luckyStr : e.detail.value.length > 0 ? e.detail.value : null
-      })
+      console.log(e.detail.value);
+      this.triggerEvent("bindLucky", e.detail.value);
     },
 
     watchMoney: function (e) {

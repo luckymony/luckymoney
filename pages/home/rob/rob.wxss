@@ -60,16 +60,22 @@
   width: 150rpx;
 	height: 150rpx;
 	border-radius: 50%;
-  background-color: #F89B4A;
   border: 10rpx solid #F44848;
+  /* background-color: #F89B4A; */
 }
+
 .name-text {
-  margin-top: 20rpx;
+  margin-top: 10rpx;
   padding: 15rpx;
   background-color: brown;
   color: white;
   font-size: 24rpx;
   border-radius: 30rpx;
+}
+
+.remain-fee-text {
+  font-size: 24rpx;
+  color: #ccc;
 }
 
 .icon-center-image {
@@ -78,16 +84,10 @@
 
 .bless-text {
   font-size: 60rpx;
-  margin-top: 20rpx;
   color: white;
   font-weight:bold;
 }
-.game-text {
-  font-size: 40rpx;
-  margin-top: 20rpx;
-  color:white;
-  font-weight:bold;
-}
+
 .start-button {
   color: rgb(202, 136, 78);
   width: 200rpx;
@@ -100,6 +100,7 @@
   background-color: rgb(248, 185, 130);
   border: 10rpx solid rgb(236, 173, 118);
 }
+
 .send-packet {
   margin-right: 40rpx;
   display: flex; 
@@ -108,6 +109,7 @@
   align-items:center;
   /* background-color: blue; */
 }
+
 .send-packet-button {
   display: flex; 
   flex-direction:column;
@@ -119,6 +121,7 @@
   background-color: rgb(248, 185, 130);
   border: 5rpx solid rgb(236, 173, 118);
 }
+
 .send-packet-text {
   margin-top: 10rpx;
   font-size: 24rpx;
@@ -331,11 +334,19 @@
 }
 
 .money-view {
-  width: 150rpx;
-  line-height: 120rpx;
+   width: 150rpx;
+  line-height: 60rpx;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   color:#efb336;
-  /* background-color: orange; */
+}
+
+.time-text {
+  font-size: 20rpx;
+  color: #ccc;
 }
 
 .item-icon {

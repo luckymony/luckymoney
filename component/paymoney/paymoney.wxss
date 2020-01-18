@@ -70,9 +70,15 @@
   align-items: center;
 }
 
-.second-view button {
+.pay-button {
+  margin-top: 20rpx;
   width: 50%;
   font-size: 40rpx;
+  background:#EB5646;
   color: white;
-  background-color: #EB5646;
+}
+
+.gray {
+  background-color: #ccc;
+  color: #eee
 }

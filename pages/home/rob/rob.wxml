@@ -4,6 +4,7 @@
 <view class="icon-view">
 <image class="icon-image" src="{{iconUrl}}"></image>
 <text class="name-text">{{userName}}</text>
+<text class="remain-fee-text" decode="nbsp">{{remainStr}}</text>
 <text class="bless-text">{{luckyStr}}</text>
 </view>
 <view class="icon-center-view">
@@ -66,6 +67,7 @@
 </view>
 <view class="money-view">
 <text>{{data.money + '元'}}</text>
+<text class="time-text">{{data.time}}</text>
 </view>
 </view> 
 <i-load-more tip="暂无数据" loading="{{ false }}"

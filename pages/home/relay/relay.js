@@ -21,14 +21,15 @@ Page({
       {name: "七星高照 八方来财"},{name: "鼠你最美 鼠你最棒"}], 
     currentItems: [],
     coinIcon: "../../../images/rob/fu.gif",
+    myIconUrl: '../../../images/home/icon.png',
     visible: false,
     showPay: false,
     showLoading: false,
+    isCanPay:false,
     oneMoney: null,
     playId: null,
-    myIconUrl: null,
     countdownTime: null,
-    luckyStr: '-- --',
+    luckyStr: null,
     allMoney: '--',
     myName: '--',
     myRank: '--',
@@ -38,23 +39,8 @@ Page({
     timeStamp: 0
   },
 
-  showAllTap: function (e) {
-    this.setData({
-      currentItems: this.data.allItems,
-      showFoot: false
-    });
-  },
-
   openGame: function (e) {
-    if (this.data.playType == 0) {
-      wx.redirectTo({
-        url: '../../game/card/card',
-      })
-    } else if (this.data.playType == 1) {
-      wx.redirectTo({
-        url: '../../game/rain/rain',
-      })
-    }
+   
   },
 
   sendPacket: function (e) {
@@ -87,6 +73,17 @@ Page({
       visible: false,
       luckyStr: that.data.actions[e.detail.index].name
     });
+    that.getCanPay();
+  },
+
+  bindLucky:function(e) {
+    var that = this;
+    console.log(e.detail);
+    that.setData({
+      visible: false,
+      luckyStr: e.detail
+    });
+    that.getCanPay();
   },
 
   sentiment:function(e){
@@ -117,7 +114,39 @@ Page({
     that.setData({
       oneMoney : util.pointNumer(value.detail)
     })
+    that.getCanPay();
     return // 必加，不然输入框可以输入多位小数
+  },
+
+  /**
+ * 是否可以支付
+ */
+  getCanPay: function () {
+    var that = this;
+    var isCan = (that.data.luckyStr != null && that.data.oneMoney != null);
+    that.setData({
+      isCanPay: isCan
+    })
+  },
+
+  edited:function(e) {
+    var that = this;
+    if(!that.data.isCanPay)return;
+    if (that.data.luckyStr == null) {
+      $Message({
+        content: '请填写你的祝福语',
+        type: 'warning',
+        duration: 3
+      });
+      return;
+    } else if (that.data.oneMoney == null) {
+      $Message({
+        content: '请填写红包金额',
+        type: 'warning',
+        duration: 3
+      });
+      return;
+    }
   },
 
   /**
@@ -125,6 +154,13 @@ Page({
    */
   startCuntdown:function() {
     var that = this;
+    var ns = util.getCountdown(that.data.timeStamp);
+    if (ns < 0) {
+      that.setData({
+        startTime: '游戏已结束'
+      }) 
+      return;
+    }
     that.data.countdownTime = setInterval(function () {
       var ns = util.getCountdown(that.data.timeStamp);
       var countdown = util.getCountdownTime(ns);
@@ -136,7 +172,7 @@ Page({
         that.setData({
           startTime : '游戏开始'
         })    
-    }
+      }
     },1000)
   },
 
