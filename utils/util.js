@@ -13,6 +13,30 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+function getCountdown(time) {
+  if(!time)return 0;
+  var timestamp1 = time;
+  if(time.length < 13) {
+    timestamp1 = time * 1000;
+  }
+  var date = new Date();
+  var timestamp2 = Date.parse(date);  
+  return (timestamp1 - timestamp2) > 0 ? (timestamp1 - timestamp2) : 0;
+}
+
+function getCountdownTime(ns) {
+   if(ns == 0)return '00:00:00';
+   var s = ns/1000;
+   var h = parseInt(s/3600);
+   var m = parseInt((s%3600)/60);
+   var ss = parseInt((s%3600)%60);
+   h = h >= 10 ? h : ('0' + h);
+   m = m >= 10 ? m : ('0' + m);
+   ss = ss >= 10 ? ss : ('0' + ss);
+   var time = h + ':' + m + ':' + ss;
+   return time;
+}
+
 function getTimeStrFromTimeStamp(time) {
   var n = time;
   if(time.length < 13) {
@@ -142,5 +166,7 @@ module.exports = {
   getEndDate: getEndDate,
   getCurrentStartTime: getCurrentStartTime,
   getStartTime: getStartTime,
-  getPlayName:getPlayName
+  getPlayName:getPlayName,
+  getCountdown:getCountdown,
+  getCountdownTime:getCountdownTime
 }

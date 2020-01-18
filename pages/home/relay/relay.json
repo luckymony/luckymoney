@@ -3,6 +3,8 @@
     "i-divider": "../../../dist/divider/index",
     "i-icon": "../../../dist/icon/index",
     "i-load-more": "../../../dist/load-more/index",
-    "paymoney": "../../../component/paymoney/paymoney"
+    "paymoney": "../../../component/paymoney/paymoney",
+    "i-action-sheet": "../../../dist/action-sheet/index",
+    "i-message": "../../../dist/message/index"
   }
 }

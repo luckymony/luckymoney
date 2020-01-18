@@ -1,11 +1,8 @@
 
 var windowWidth  = wx.getSystemInfoSync().windowWidth;
 var windowHeight = wx.getSystemInfoSync().windowHeight;
-
 const { $Message } = require('../../../dist/base/index');
-
 Page({
-
   data: {
     readyVisible : true,
     isShowBig: false,

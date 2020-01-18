@@ -13,44 +13,25 @@ Page({
     showLoading:false
   },
 
-  /*
-  {
-      name: '开门大吉',
-      time: '2019-05-01 16:36',
-      money: "66.00"
-      },
-      {
-        name: '八方来财',
-        time: '2019-05-01 16:36',
-        money: "66.00"
-      },
-      {
-        name: '好运连绵',
-        time: '2019-05-01 16:36',
-        money: "66.00"
-      }
-  */
-
-  requestGet:function(){
+  requestSend:function(){
     this.setData({
       iconUrl: app.globalData.userInfo.avatarUrl,
       receive: true
     })
-    console.log(this.data.items)
   },
 
-  requestSend:function(){
+  requestGet:function(){
     this.setData({
       receive: false
     })
   },
 
   selectType:function(e){
-    // console.log(e.currentTarget.dataset)
+    console.log(e.currentTarget.dataset)
     if (e.currentTarget.dataset.type == 1){
-      this.requestGet();
-    }else {
       this.requestSend();
+    }else {
+      this.requestGet();
     }
   },
 
@@ -84,7 +65,6 @@ Page({
  * 生命周期函数--监听页面加载
  */
   onLoad: function (options) {
-      this.requestGet();
       wx.setNavigationBarTitle({ title: '红包记录' }); 
   },
 

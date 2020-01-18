@@ -1,4 +1,7 @@
+var util = require('../../../utils/util.js');
+const {$Message} = require('../../../dist/base/index');
 const app = getApp();
+const pageCount = 10
 Page({
   /**
    * 页面的初始数据
@@ -13,15 +16,24 @@ Page({
       { icon: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555004603689&di=6161b038a8a7046bfe88e4d72e975729&imgtype=0&src=http%3A%2F%2Fwww.36588.com.cn%2FImageResourceMongo%2FUploadedFile%2Fdimension%2Fbig%2F7d10bc2b-db5b-4247-925c-0628d65b3f50.png", name: "张三丰", time: "08-08 10:00", money: "88.88", state: 0 },
       { icon: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555004603689&di=6161b038a8a7046bfe88e4d72e975729&imgtype=0&src=http%3A%2F%2Fwww.36588.com.cn%2FImageResourceMongo%2FUploadedFile%2Fdimension%2Fbig%2F7d10bc2b-db5b-4247-925c-0628d65b3f50.png", name: "张三丰", time: "08-08 10:00", money: "88.88", state: 0 }
       ],
+    actions: [{name: "鼠兆丰年 盛世贺岁"},{name: "恭喜发财 大吉大利"}, 
+      {name: "合乐融融 财运滚滚"},{name: "一帆风顺 二龙腾飞"}, 
+      {name: "七星高照 八方来财"},{name: "鼠你最美 鼠你最棒"}], 
     currentItems: [],
     coinIcon: "../../../images/rob/fu.gif",
+    luckyStr: null,
+    oneMoney: null,
+    visible: false,
+    showPay: false,
     showLoading: false,
+    palyId: null,
+    myIconUrl: null,
+    countdownTime: null,
+    allMoney: '--',
+    myName: '--',
+    startTime: '--:--:--',
     playType: 0,
-    money:'--',
-    showPay:false,
-    palyId:null,
-    myIconUrl:null,
-    myName:null
+    timeStamp: 0
   },
 
   showAllTap: function (e) {
@@ -61,28 +73,92 @@ Page({
     })
   },
 
+  handleCancel() {
+    this.setData({
+      visible: false
+    });
+  },
+
+  handleClickItem:function(e){
+    var that = this;
+    that.setData({
+      visible: false,
+      luckyStr: that.data.actions[e.detail.index].name
+    });
+  },
+
+  sentiment:function(e){
+    this.setData({
+      visible: true
+    });
+  },
+
+  watchMoney:function(value){
+    var that = this;
+    if (value.detail > 0 && value.detail > 20000) {
+      $Message({
+        content: '单次支付总金额不可超过20000元',
+        type: 'warning',
+        duration:3
+      });
+      return;
+    } else if (value.detail > 0 && value.detail < 1.0) {
+      $Message({
+        content: '单次支付总金额大于1.00元',
+        type: 'warning',
+        duration: 3
+      });
+      return;
+    } else if (value.detail == 0) {
+      return
+    }
+    that.setData({
+      oneMoney : util.pointNumer(value.detail)
+    })
+    return // 必加，不然输入框可以输入多位小数
+  },
+
+  startCuntdown:function() {
+    var that = this;
+    that.data.countdownTime = setInterval(function () {
+      var ns = util.getCountdown(that.data.timeStamp);
+      var countdown = util.getCountdownTime(ns);
+      that.setData({
+        startTime : countdown
+      })
+      if(ns == 0) {//开始进入游戏
+        clearInterval(that.data.countdownTime);
+        that.setData({
+          startTime : '游戏开始'
+        })    
+    }
+    },1000)
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     console.log(options);
     var that = this;
+    var time = 1579414957000;
     that.setData({
-      playType: parseInt(options["playType"]),
+      timeStamp: time,
       palyId: parseInt(options["palyId"]),
       myIconUrl: app.globalData.userInfo.avatarUrl,
       myName: app.globalData.userInfo.nickname
     });
    wx.setNavigationBarTitle({ title: options['playName'] });
-  //  let newItems = [];
-  //   if (that.data.allItems.length > 5) {
-  //     newItems = that.data.allItems.slice(0, 5)
-  //   } else {
-  //     newItems = that.data.allItems
-  //   }
-  //   that.setData({
-  //     currentItems: newItems,
-  //   });
+   that.startCuntdown();
+   let newItems = [];
+    if (that.data.allItems.length > pageCount) {
+      newItems = that.data.allItems.slice(0, pageCount)
+    } else {
+      newItems = that.data.allItems
+    }
+    that.setData({
+      currentItems: newItems,
+    });
   },
 
 
@@ -112,7 +188,8 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    var that = this;
+    clearInterval(that.data.countdownTime);
   },
 
   /**
@@ -120,7 +197,7 @@ Page({
    */
 
   onPullDownRefresh: function () {
-    console.log("下啦加载");
+    
   },
 
   /**
@@ -128,22 +205,19 @@ Page({
    */
 
   onReachBottom: function () {
-    console.log("上啦加载");
-    let currentLength = this.data.allItems.length - this.data.currentItems.length;
-    if (currentLength <= 0) {
-      console.log("加载完成");
-      return;
-    }
-    this.setData({
+    var that = this;
+    let currentLength = that.data.allItems.length - that.data.currentItems.length;
+    if (currentLength <= 0)return;
+    that.setData({
       showLoading: true,
     });
     setTimeout(() => {
-      let currentIndex = this.data.currentItems.length - 1;
-      currentLength = this.data.allItems.length - this.data.currentItems.length;
-      if (currentLength >= 5) currentLength = 5;
-      let newArray = this.data.allItems.slice(currentIndex, (currentIndex + currentLength));
-      this.setData({
-        currentItems: this.data.currentItems.concat(newArray),
+      let currentIndex = that.data.currentItems.length - 1;
+      currentLength = that.data.allItems.length - that.data.currentItems.length;
+      if (currentLength >= pageCount) currentLength = pageCount;
+      let newArray = that.data.allItems.slice(currentIndex, (currentIndex + currentLength));
+      that.setData({
+        currentItems: that.data.currentItems.concat(newArray),
         showLoading: false,
       });
     }, 2000);
