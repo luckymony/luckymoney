@@ -15,16 +15,10 @@ Page({
     try {
     var item = that.data.items[index];
     if (!item)return;
-    var iconUrl  = item.iconUrl;
-    var userName = item.name;
-    var playType = item.playType;
-    var playName = item.playName;
     var playId = item.playId;
-    var luckyStr = item.luckyStr;
     var urlStr = playType == 2 ? '../relay/relay?' : '../rob/rob?';
     wx.navigateTo({
-      url: urlStr + 'playType=' + playType + '&playName='
-       + playName + '&userName=' + userName + '&playId=' + playId + '&luckyStr=' + luckyStr,
+      url: urlStr + 'playId=' + playId,
     })
     } catch (res) {
        console.log(res);

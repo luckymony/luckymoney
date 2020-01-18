@@ -35,7 +35,7 @@
 <view class="my-view">
 <view class="my-left-view">
 <text>我的排名</text>
-<text class="my-rank-money">--</text>
+<text class="my-rank-money">{{myRank}}</text>
 </view>
 <view class="my-center-view">
 <image src="{{myIconUrl}}"></image>
@@ -43,7 +43,7 @@
 </view>
 <view class="my-right-view">
 <text>红包金额</text>
-<text class="my-rank-money">--</text>
+<text class="my-rank-money">{{myMoney}}</text>
 </view>
 </view>
 <view class="head-view">

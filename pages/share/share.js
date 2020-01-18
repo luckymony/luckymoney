@@ -5,12 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-     luckyStr:'恭喜发财,大吉大利',
-     playId:'',
-     playType:null,
-     playName:'斗利是',
-     userName:'',
-     iconUrl:'../../images/home/login.png'
+     luckyStr: '恭喜发财,大吉大利',
+     playId: '',
+     playType: null,
+     playName: '斗利是',
+     userName: '',
+     iconUrl: '../../images/home/login.png'
   },
 
   /**
@@ -18,6 +18,17 @@ Page({
    */
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '分享给好友' }); 
+    var that = this;
+    if (options) {
+      that.setData({
+        playId: parseInt(options["palyId"]),
+        playType: parseInt(options["playType"]),
+        playName: options["playName"],
+        userName: options["userName"],
+        iconUrl: options["iconUrl"],
+        luckyStr: options["luckyStr"],
+      });
+    }
   },
 
   /**
@@ -77,7 +88,7 @@ Page({
       || that.data.playType == 0){
         path = path1;
     }
-    var newPath = that.data.playId.length > 0 ? (path + '?' + 'that.data.playId') : path;
+    var newPath = that.data.playId.length > 0 ? (path + '?' + 'playId=' + that.data.playId) : path;
     var shareObj = {
   　　　　title: title,
          desc: that.data.luckyStr,

@@ -1,5 +1,6 @@
 // pages/rob/rob.js
 const app = getApp();
+const pageCount = 10
 Page({
   /**
    * 页面的初始数据
@@ -14,15 +15,17 @@ Page({
       { icon: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555004603689&di=6161b038a8a7046bfe88e4d72e975729&imgtype=0&src=http%3A%2F%2Fwww.36588.com.cn%2FImageResourceMongo%2FUploadedFile%2Fdimension%2Fbig%2F7d10bc2b-db5b-4247-925c-0628d65b3f50.png", name: "张三丰", time: "08-08 10:00", money: "88.88", state: 0}, 
       { icon: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555004603689&di=6161b038a8a7046bfe88e4d72e975729&imgtype=0&src=http%3A%2F%2Fwww.36588.com.cn%2FImageResourceMongo%2FUploadedFile%2Fdimension%2Fbig%2F7d10bc2b-db5b-4247-925c-0628d65b3f50.png", name: "张三丰", time: "08-08 10:00", money: "88.88", state: 0}],
     currentItems: [],
-    coinIcon:"../../../images/rob/fu.gif",
+    coinIcon: "../../../images/rob/fu.gif",
     showLoading: false,
-    playType:0,
-    luckyStr:null,
-    palyId:null,
-    iconUrl:null,
-    userName:null,
-    myIconUrl:null,
-    myName:null
+    luckyStr: '-- --',
+    userName: '--' + '的红包',
+    myRank: '--',
+    myName: '--',
+    myMoney: '--',
+    playId: null,
+    playType: null,
+    iconUrl: null,
+    myIconUrl: null
   },
 
   openGame:function(e) {
@@ -43,31 +46,52 @@ Page({
     });
   },
 
+  toShare:function() {
+    var that = this;
+    if (!that.data.playId)return;
+    var urlStr = '../../share/share?';
+    var playId = 'palyId=' + that.data.playId;
+    
+    wx.navigateTo({
+      url: '../../share/share?' + 'palyId=' + that.data.playId + 'playType=' + that.data.playType,
+    })
+
+    playId: parseInt(options["palyId"]),
+    playType: parseInt(options["playType"]),
+    playName: options["playName"],
+    userName: options["userName"],
+    iconUrl: options["iconUrl"],
+    luckyStr: options["luckyStr"],
+  }
+
+  /**
+   * 获取第一页面数据
+   */
+  getFirstPageData:function() {
+    var that = this;
+    let newItems = [];
+    if (that.data.allItems.length > pageCount) {
+      newItems = that.data.allItems.slice(0, pageCount)
+    } else {
+      newItems = that.data.allItems
+    }
+    that.setData({
+      currentItems: newItems,
+    });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
     var that = this;
     that.setData({
-      playType: parseInt(options["playType"]),
-      palyId: parseInt(options["palyId"]),
-      luckyStr: options["luckyStr"],
-      userName: options["userName"] + '的红包',
+      playId: parseInt(options["palyId"]),
       myIconUrl: app.globalData.userInfo.avatarUrl,
       myName: app.globalData.userInfo.nickname
     });
-    console.log(that.data.myIconUrl);
-   wx.setNavigationBarTitle({title: options['playName']});
-    // let newItems = [];
-    // if (that.data.allItems.length > 5) {
-    //   newItems = that.data.allItems.slice(0, 5)
-    // }else {
-    //   newItems = that.data.allItems
-    // }
-    // that.setData({
-    //   currentItems: newItems,
-    // });
+   wx.setNavigationBarTitle({title: '斗利是'});
+   that.getFirstPageData();
   },
 
   /**
@@ -103,7 +127,7 @@ Page({
    */
 
   onPullDownRefresh: function () {
-    console.log("下啦加载");
+  
   },
 
   /**
@@ -111,31 +135,22 @@ Page({
    */
 
   onReachBottom: function () {
-    console.log("上啦加载");
-    let currentLength = this.data.allItems.length - this.data.currentItems.length;
-    if (currentLength <= 0){
-      console.log("加载完成");
-      return;
-    }
-    this.setData({
+    var that = this;
+    let currentLength = that.data.allItems.length - that.data.currentItems.length;
+    if (currentLength <= 0)return;
+    that.setData({
       showLoading: true,
     });
     setTimeout(() => {
-      let currentIndex = this.data.currentItems.length - 1;
-      currentLength = this.data.allItems.length - this.data.currentItems.length;
-      if (currentLength >= 5) currentLength = 5;
-      let newArray = this.data.allItems.slice(currentIndex,(currentIndex + currentLength));
-      this.setData({
-        currentItems: this.data.currentItems.concat(newArray),
+      let currentIndex = that.data.currentItems.length - 1;
+      currentLength = that.data.allItems.length - that.data.currentItems.length;
+      if (currentLength >= pageCount) currentLength = pageCount;
+      let newArray = that.data.allItems.slice(currentIndex, (currentIndex + currentLength));
+      that.setData({
+        currentItems: that.data.currentItems.concat(newArray),
         showLoading: false,
       });
     }, 2000);
   },
-
-  toShare:function() {
-    wx.navigateTo({
-      url: '../../share/share',
-    })
-  }
 })
 

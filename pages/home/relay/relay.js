@@ -21,16 +21,18 @@ Page({
       {name: "七星高照 八方来财"},{name: "鼠你最美 鼠你最棒"}], 
     currentItems: [],
     coinIcon: "../../../images/rob/fu.gif",
-    luckyStr: null,
-    oneMoney: null,
     visible: false,
     showPay: false,
     showLoading: false,
-    palyId: null,
+    oneMoney: null,
+    playId: null,
     myIconUrl: null,
     countdownTime: null,
+    luckyStr: '-- --',
     allMoney: '--',
     myName: '--',
+    myRank: '--',
+    myMoney: '--',
     startTime: '--:--:--',
     playType: 0,
     timeStamp: 0
@@ -118,6 +120,9 @@ Page({
     return // 必加，不然输入框可以输入多位小数
   },
 
+  /**
+   * 开始倒计时
+   */
   startCuntdown:function() {
     var that = this;
     that.data.countdownTime = setInterval(function () {
@@ -136,21 +141,11 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面加载
+   * 获取第一页面数据
    */
-  onLoad: function (options) {
-    console.log(options);
+  getFirstPageData:function() {
     var that = this;
-    var time = 1579414957000;
-    that.setData({
-      timeStamp: time,
-      palyId: parseInt(options["palyId"]),
-      myIconUrl: app.globalData.userInfo.avatarUrl,
-      myName: app.globalData.userInfo.nickname
-    });
-   wx.setNavigationBarTitle({ title: options['playName'] });
-   that.startCuntdown();
-   let newItems = [];
+    let newItems = [];
     if (that.data.allItems.length > pageCount) {
       newItems = that.data.allItems.slice(0, pageCount)
     } else {
@@ -161,7 +156,22 @@ Page({
     });
   },
 
-
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var that = this;
+    var time = 1579414957000;
+    that.setData({
+      timeStamp: time,
+      playId: parseInt(options["playId"]),
+      myIconUrl: app.globalData.userInfo.avatarUrl,
+      myName: app.globalData.userInfo.nickname
+    });
+   wx.setNavigationBarTitle({ title: '斗利是' });
+   that.startCuntdown();
+   that.getFirstPageData();
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

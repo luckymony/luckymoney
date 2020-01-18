@@ -1,7 +1,5 @@
 // pages/me/money/money-detail.js
-
 const app = getApp()
-
 Page({
   data: {
     receive:true,
@@ -27,18 +25,21 @@ Page({
   },
 
   selectType:function(e){
-    console.log(e.currentTarget.dataset)
-    if (e.currentTarget.dataset.type == 1){
+    // console.log(e.currentTarget.dataset)
+    if (e.currentTarget.dataset.type == 1){ //发出去
       this.requestSend();
-    }else {
+    }else { //抢到的
       this.requestGet();
     }
   },
 
   pushDeail:function(e){
     var index = e.currentTarget.dataset['index'];
+    var redPackage = that.data.items[index];
+    var urlStr = '';
+    
     wx.navigateTo({
-      url: '../../home/rob/rob?type=' + index,
+      url: '../../home/rob/rob?playId=' + index,
     })
   },
 
