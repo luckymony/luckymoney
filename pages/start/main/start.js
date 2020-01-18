@@ -103,7 +103,6 @@ Page({
     that.setData({
       'items[0].title': e.detail.value.length > 0 ? e.detail.value : null
     })
-    
   },
 
   /**

@@ -93,4 +93,5 @@
 <text>{{'数据加载...'}}</text>
 </view>
 </view>
-<paymoney class="paymoney-view"></paymoney>
+<view wx:if="{{showPay}}" class="cloud_layer" bindtap="hiddenTap"></view>
+<paymoney class="paymoney-view {{showPay ? 'show' : 'hidden'}}" bind:sentiment="sentiment"></paymoney>

@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/auth/auth",
     "pages/home/main/home",
     "pages/home/rob/rob",
     "pages/start/main/start",
@@ -14,6 +13,7 @@
     "pages/game/rain/rain",
     "pages/home/relay/relay",
     "pages/home/participate/participate",
+    "pages/auth/auth",
     "pages/share/share"
   ],
   "window": {

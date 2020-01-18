@@ -27,5 +27,19 @@ Component({
    */
   methods: {
 
+    bindLucky:function(e){
+      var that = this;
+      that.setData({
+        luckyStr : e.detail.value.length > 0 ? e.detail.value : null
+      })
+    },
+
+    watchMoney: function (e) {
+
+    },
+
+    sentiment:function(){
+      this.triggerEvent("sentiment");
+    }
   }
 })
