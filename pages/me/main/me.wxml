@@ -32,11 +32,11 @@
         <i-icon type='enter' size="20" color="#80848f"/>
       </navigator>
       <view class='line-dotted'></view>
-      <navigator url="" class='navigator' hover-class="none">
+      <button class="none-btn">
       <i-icon type='customerservice_fill' size="25" color="#EB5646"/>
-      <view class="navigator-text">联系客服</view>
+      联系客服
       <i-icon type='enter' size="20" color="#80848f"/>
-      </navigator>
+      </button>
   </view>
   </view>
 </view>

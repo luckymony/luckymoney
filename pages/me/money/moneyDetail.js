@@ -1,5 +1,6 @@
 // pages/me/money/money-detail.js
 const app = getApp()
+
 Page({
   data: {
     receive:true,

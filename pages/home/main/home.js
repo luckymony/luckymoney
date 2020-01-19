@@ -27,6 +27,7 @@ Page({
   
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '斗利是' }); 
+    /*
     var that = this;
     var array = []
          for(var i = 0;i < 3; i++) {
@@ -45,6 +46,7 @@ Page({
          that.setData({
           items:array
          })
+         */
   },
 
   onReady: function () {
