@@ -1,5 +1,5 @@
 const app = getApp();
-
+var util = require('../utils/util.js');
 /**
  *  开门大吉红包发起接口
  */
@@ -128,9 +128,15 @@ function defaultBflcParameter() {
            chanceCount: 1, difficulty: 0 };
 }
 
+function defaultHylmParameeter() {
+  return {title:"好运连绵", longTime:120, 
+          startTime:(util.currentTimeStamp() + 600*1000), minMoney:1}
+}
+
 module.exports = {
   sendKmdj: sendKmdj,
   sendBflc:sendBflc,
-  defaultKmdjParameter:defaultKmdjParameter,
-  defaultBflcParameter:defaultBflcParameter
+  defaultKmdjParameter: defaultKmdjParameter,
+  defaultBflcParameter: defaultBflcParameter,
+  defaultHylmParameeter: defaultHylmParameeter
 }

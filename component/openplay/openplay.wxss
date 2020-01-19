@@ -22,13 +22,13 @@
   justify-content: space-between;
 }
 
-.top-view input {
+.input-view {
   text-align:right; 
   height: 80%;
   color: gray;
 }
 
-.top-view text {
+.left-title{
   color: black;
   /* background-color: greenyellow; */
 }
@@ -74,10 +74,6 @@
   margin-top: 10rpx;
 }
 
-.four-view button {
-  font-size: 30rpx;
-}
-
 .second-view {
   flex: 1;
   display: flex;
@@ -86,7 +82,7 @@
   align-items: center;
 }
 
-.second-view button {
+.edited-button {
   width: 50%;
   font-size: 40rpx;
   color: white;
@@ -94,11 +90,13 @@
 }
 
 .default {
+  font-size: 30rpx;
   background-color: white;
   color: black;
 }
 
 .selected {
+  font-size: 30rpx;
   background-color: #EB5646;
   color: white;
 }

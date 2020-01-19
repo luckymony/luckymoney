@@ -15,15 +15,13 @@ Page({
     var item = that.data.items[index];
     if (!item)return;
     var playId = item.playId;
+    var playType = item.playType;
     var urlStr = index == 2 ? '../relay/relay?' : '../rob/rob?';
     wx.navigateTo({
-      url: urlStr + 'playId=' + playId,
+      url: urlStr + 'playId=' + playId + 'playType=' + playType,
     })
     } catch (res) {
        console.log(res);
-      wx.navigateTo({
-        url: urlStr + 'playId=' + 0,
-      })
     }
   },
   

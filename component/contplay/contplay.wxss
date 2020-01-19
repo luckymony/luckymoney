@@ -22,15 +22,29 @@
   justify-content: space-between;
 }
 
-.top-view input {
+.left-title {
+  color: black;
+  max-width: 50%;
+  /* background-color: greenyellow; */
+}
+
+.right-view {
+  display: flex;
+  flex-direction:row;
+  /* background-color: red; */
+}
+
+.input-view {
   text-align:right; 
   height: 80%;
   color: gray;
+  /* background-color: orange; */
 }
 
-.top-view text {
+.right-text {
   color: black;
-  /* background-color: greenyellow; */
+  margin-left:10rpx;
+  /* background-color: orchid; */
 }
 
 .line-dotted{
@@ -52,8 +66,8 @@
   display: flex; 
   flex-direction:column;
   width: 100%;
-  /* background-color: blueviolet; */
   margin-top: 10rpx;
+  /* background-color: blueviolet; */
 }
 
 .three-view {
@@ -61,8 +75,8 @@
   display: flex; 
   flex-direction:column;
   width: 100%;
-  /* background-color: blueviolet; */
   margin-top: 10rpx;
+  /* background-color: blueviolet; */
 }
 
 .four-view {
@@ -70,8 +84,8 @@
   display: flex; 
   flex-direction:column;
   width: 100%;
-  /* background-color: blueviolet; */
   margin-top: 10rpx;
+  /* background-color: blueviolet; */
 }
 
 .second-view {
@@ -82,9 +96,14 @@
   align-items: center;
 }
 
-.second-view button {
+.edited-button {
   width: 50%;
   font-size: 40rpx;
   color: white;
   background-color: #EB5646;
+}
+
+.gray {
+  background-color: #ccc;
+  color: #eee
 }

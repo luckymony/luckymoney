@@ -1,5 +1,5 @@
 
-const testUrl = 'http://api-test.luckymony.com';
+const testUrl = 'https://api-test.luckymony.com';
 const localUrl = 'http://tn7vbh.natappfree.cc';
 const formalUrl = '';
 const isDebug = 1;

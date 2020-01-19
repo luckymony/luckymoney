@@ -12,11 +12,11 @@ Page({
               {name: "七星高照 八方来财"},{name: "鼠你最美 鼠你最棒"}], 
     visible: false,
     moneyCount: '0.00',
-    redPacketCount:'0',
-    serviceFee:'0.00',
-    playParameter:null,
-    payParameter:null,
-    isCanPay:false
+    redPacketCount: '0',
+    serviceFee: '0.00',
+    playParameter: null,
+    payParameter: null,
+    isCanPay: false
   },
 
   toTip:function(e) {
@@ -89,9 +89,9 @@ Page({
    */
   toPlay:function() {
     var that = this;
-    var index = that.data.playTypes.indexOf(that.data.items[3].type);
+    var type = that.data.playTypes.indexOf(that.data.items[3].type);
     wx.navigateTo({
-      url: '../play/play?value=' + JSON.stringify(index),
+      url: '../play/play?playType=' + type,
     })
   },
 
@@ -173,12 +173,12 @@ Page({
    */
   watchCount:function(e) {
     var that = this;
-    var index = that.data.playTypes.indexOf(that.data.items[3].type);
+    var type = that.data.playTypes.indexOf(that.data.items[3].type);
     if (e.detail.value && e.detail.value > 500) {
       that.setData({
         'items[2].number': parseInt(that.data.redPacketCount)
       })
-      var warningStr = index == 2 ? '最多500个人参与' : '一次最多发500个红包'
+      var warningStr = type == 2 ? '最多500个人参与' : '一次最多发500个红包'
       $Message({
         content: warningStr,
         type: 'warning',
@@ -186,7 +186,7 @@ Page({
       });
       return;
     } else if (e.detail.value && e.detail.value < 1) {
-      var warningStr = index == 2 ? '请填写参与人数' : '请填写红包个数'
+      var warningStr = type == 2 ? '请填写参与人数' : '请填写红包个数'
       $Message({
         content: warningStr,
         type: 'warning',
@@ -238,9 +238,9 @@ Page({
   payMoney:function() {
     var that = this;
     if(!that.data.isCanPay)return;
-    var index = that.data.playTypes.indexOf(that.data.items[3].type);
+    var type = that.data.playTypes.indexOf(that.data.items[3].type);
     if (that.data.items[2].number == null) {
-      var warningStr = index == 2 ? '请填写参与人数' : '请填写红包个数'
+      var warningStr = type == 2 ? '请填写参与人数' : '请填写红包个数'
       $Message({
         content: warningStr,
         type: 'warning',
@@ -393,14 +393,11 @@ Page({
     let playParameter = currPage.data.playParameter;
     try {
       var that = this;
-      var data = playParameter.parameter;
       that.setData({
-        'items[3].type': data ? data.title : that.data.items[3].type,
+        'items[3].type': util.getPlayName(playParameter.type),
         'items[1].title': (playParameter.type <= 1) ? "总金额数" : "我的红包",
         'items[2].title': (playParameter.type <= 1) ? "红包个数" : "凑钱人数",
-        playParameter: playParameter
       });
-      // console.log(that.data.playParameter);
     } catch (e) {
 
     }

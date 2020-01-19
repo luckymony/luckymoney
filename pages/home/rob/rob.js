@@ -10,7 +10,7 @@ Page({
   data: {
     allItems: [],
     currentItems: [],
-    redPacketParameter:{},
+    playParameter:{},
     coinIcon: "../../../images/rob/fu.gif",
     showLoading: false,
     luckyStr: '-- --',
@@ -30,13 +30,41 @@ Page({
   },
 
   openGame:function(e) {
-    if(this.data.playType == 0) {
-      wx.redirectTo({
-        url: '../../game/card/card',
+    var that = this;
+    wx.showLoading({})
+    if(that.data.playType == 0) {
+      request.kmdjStart({
+        playId:that.data.playId,
+        success: function (res) {
+          wx.hideLoading();
+          wx.redirectTo({
+            url: '../../game/card/card?' + 'playParameter=' + that.data.playParameter,
+          })
+        },fail:function(res) {
+          wx.hideLoading();
+          wx.showToast({
+            title: '获取红包详情失败',
+            icon: 'none',
+            duration: 2000
+          })
+        }
       })
-    }else if (this.data.playType == 1) {
-      wx.redirectTo({
-        url: '../../game/rain/rain',
+    }else if (that.data.playType == 1) {
+      request.bflcStart({
+        playId:that.data.playId,
+        success: function (res) {
+          wx.hideLoading();
+          wx.redirectTo({
+            url: '../../game/rain/rain?' + 'playParameter=' + that.data.playParameter,
+         })
+        },fail:function(res) {
+          wx.hideLoading();
+          wx.showToast({
+            title: '获取红包详情失败',
+            icon: 'none',
+            duration: 2000
+          })
+        }
       })
     }
   },
@@ -49,7 +77,12 @@ Page({
 
   toShare:function() {
     var that = this;
-    if (!that.data.playId)return;
+    if (!that.data.playId) {
+      wx.navigateTo({
+        url: '../../share/share',
+      })
+      return;
+    }
     var urlStr   = '../../share/share?';
     var playId   = 'palyId=' + that.data.playId;
     var playName = 'playName=' + that.data.playName;
@@ -77,7 +110,7 @@ Page({
       currentItems: newItems,
     });
   },
-/**
+/** 开门大吉
 avatarUrl (string, optional): 发送者头像地址 ,
 createTime (string, optional): 创建时间 ,
 difficultyLevel (integer, optional): 难度等级,0-简单,1-正常,2-困难 ,
@@ -94,20 +127,43 @@ rankList (Array[RankItemDto], optional): 排名数据 ,
 remainFee (integer, optional): 红包剩余金额,单位为分 ,
 remainNumber (integer, optional): 剩余红包个数
  */
+
+ /** 八方来财
+avatarUrl (string, optional): 发送者头像地址 ,
+createTime (string, optional): 创建时间,时间戳 ,
+difficultyLevel (integer, optional): 难度等级,0-简单,1-正常,2-困难 ,
+duration (integer, optional): 游戏时长,单位为秒 ,
+expireTime (string, optional): 过期时间,时间戳 ,
+fee (integer, optional): 红包总金额,单位为分 ,
+greetings (string, optional): 祝福语 ,
+myFee (integer, optional): 用户抢到的金额,单位为分 ,
+myRank (integer, optional): 用户排名 ,
+needIntegral (integer, optional): 分配红包所需积分 ,
+nickname (string, optional): 发送者昵称 ,
+number (integer, optional): 红包总个数 ,
+rankList (Array[RankItemDto], optional): 排名数据 ,
+remainFee (integer, optional): 红包剩余金额,单位为分 ,
+remainNumber (integer, optional): 剩余红包个数
+  */
   setRedPacketData:function(res) {
     if(!res)return;
     var that = this;
     that.setData({
       iconUrl: res.avatarUrl,
-      luckyStr:res.greetings,
-      myMoney:res.myFee,
-      myRank:res.myRank,
+      luckyStr: res.greetings,
+      myMoney: res.myFee,
+      myRank: res.myRank,
       userName: res.nickname + ' ' + '的红包',
-      allFee:res.fee,
+      allFee: res.fee,
       allNumber: res.number,
       remainFee: res.remainFee,
       remainNumber: res.remainNumber,
     })
+    var moneyStr = that.data.remainFee + '/' + that.data.allFee + '(元)';
+    var numberStr = that.data.remainNumber + '/' + that.data.allNumber + '(个)';
+    that.setData({
+      remainStr: moneyStr + '&ensp;&ensp;' + numberStr,
+    });
     that.setRankItems(res.rankList);
   },
 /**
@@ -134,12 +190,63 @@ remainNumber (integer, optional): 剩余红包个数
      });
     that.getFirstPageData();
   },
+
+  setPlayParameter:function(res) {
+      if(!res)return;
+      var that = this;
+      if(that.data.playType == 0) { // 开门大吉
+          that.setData({
+            'playParameter.playId' : that.data.playId,
+            'playParameter.createTime' : res.createTime,
+            'playParameter.expireTime' : res.expireTime,
+            'playParameter.difficultyLevel' : res.difficultyLevel,
+            'playParameter.duration' : res.duration,
+            'playParameter.needClickNumber' : res.needClickNumber
+          })
+      }else if (that.data.playType == 1) { // 八方来财
+        that.setData({
+          'playParameter.playId' : that.data.playId,
+          'playParameter.createTime' : res.createTime,
+          'playParameter.expireTime' : res.expireTime,
+          'playParameter.difficultyLevel' : res.difficultyLevel,
+          'playParameter.duration' : res.duration,
+          'playParameter.needIntegral' : res.needIntegral
+        })
+      }
+  },
   
   getRedPacketDetail:function() {
     var that = this;
     wx.showLoading({})
+    if (that.data.playType == 0) {
+          that.getKmdjDetail();
+    }else if (that.data.playType == 1) {
+          that.getBflcDetail();
+    }
+  },
+
+  getKmdjDetail:function() {
+    var that = this;
     request.kmdjDetail({
-      playId:that.data.palyId,
+      playId:that.data.playId,
+      success: function (res) {
+        wx.hideLoading();
+        that.setRedPacketData(res);
+      },fail:function(res) {
+        wx.hideLoading();
+        wx.showToast({
+          title: '获取红包详情失败',
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    })
+  },
+
+ getBflcDetail:function() {
+    var that = this;
+    request.bflcDetail({
+      playId:that.data.playId,
       success: function (res) {
         wx.hideLoading();
         that.setRedPacketData(res);
@@ -163,7 +270,8 @@ remainNumber (integer, optional): 剩余红包个数
     var numberStr = that.data.remainNumber + '/' + that.data.allNumber + '(个)';
     that.setData({
       remainStr: moneyStr + '&ensp;&ensp;' + numberStr,
-      playId: parseInt(options["palyId"]),
+      playId: parseInt(options["playId"]),
+      playType: parseInt(options["playType"]),
       myIconUrl: app.globalData.userInfo.avatarUrl,
       myName: app.globalData.userInfo.nickname
     });
