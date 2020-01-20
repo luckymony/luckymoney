@@ -1,6 +1,6 @@
 var util = require('/utils/util.js');
 
-const testUrl = 'https://api-test.luckymony.com';
+const testUrl = 'https://api-test-luckymoney.c5002.cn';
 const localUrl = 'http://tn7vbh.natappfree.cc';
 const formalUrl = '';
 const isDebug = 1;
@@ -41,7 +41,7 @@ App({
      success:function(res){
        var loginTime = that.getStorage('loginTime');
        var currentTime = util.currentTimeStamp();
-       if (currentTime - loginTime > 2*60*60) {
+       if ((currentTime - loginTime)/1000 > 2*60*60) {
          that.getLogin(); //重新登陆
        }
      },fail:function(res){
@@ -131,24 +131,24 @@ App({
       dataType: 'json',
       success: function (res) {
          console.log(res);
+        if (res.statusCode == 200 && res.data.code == 0) {
+          that.getUserInfo(res.data['data']);
+          that.setStorage('token', res.data['data']); //token数据本地化
+          that.setStorage('loginTime', util.currentTimeStamp());//登录时间戳
+        } else {
+          if (that.getLoginStateCallback) {
+            that.getLoginStateCallback(false)
+          }
+        }
       },
       fail: function (res) {
-        // console.log(res);
+        console.log(res);
         if (that.getLoginStateCallback) {
             that.getLoginStateCallback(false)
         }
       },//请求失败
       complete: function (res) {//请求完成
         // console.log(res);
-        if (res.statusCode == 200 && res.data.code == 0) {
-          that.getUserInfo(res.data['data']);
-          that.setStorage('token',res.data['data']); //token数据本地化
-          that.setStorage('loginTime', util.currentTimeStamp());//登录时间戳
-        }else {
-          if (that.getLoginStateCallback) {
-              that.getLoginStateCallback(false)
-          }
-        }
       }
     })
   },
@@ -167,28 +167,27 @@ App({
       method: 'POST',
       dataType: 'json',
       success: function (res) {
-        //  console.log(res);
-      },
-      fail: function (res) {
-        if (that.getLoginStateCallback) {
-          that.getLoginStateCallback(false)
-        }
-        console.log(res);
-      },//请求失败
-      complete: function (res) {//请求完成
         // console.log(res);
         if (res.statusCode == 200 && res.data.code == 0) {
           that.globalData.userInfo = res.data.data;
-          that.setStorage('userInfo',that.globalData.userInfo); //用户数据本地化
-          // console.log(res);
+          that.setStorage('userInfo', that.globalData.userInfo); //用户数据本地化
           if (that.getLoginStateCallback) {
             that.getLoginStateCallback(true)
           }
-        }else {
+        } else {
           if (that.getLoginStateCallback) {
             that.getLoginStateCallback(false)
           }
         }
+      },
+      fail: function (res) {
+        console.log(res);
+        if (that.getLoginStateCallback) {
+          that.getLoginStateCallback(false)
+        }
+      },//请求失败
+      complete: function (res) {//请求完成
+        // console.log(res);
       }
     })
   },

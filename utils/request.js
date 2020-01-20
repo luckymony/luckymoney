@@ -13,20 +13,22 @@ function getSendList(parameter) {
     method: 'POST',
     dataType: 'json',
     success: function (res) {
-
-    },fail: function (res) {
-      if (parameter.fail) parameter.fail(res);
-    },complete: function (res) {
-      if (res.statusCode == 200 
-          && res.data.code == 0) {
+      if (res.statusCode == 200
+        && res.data.code == 0) {
         if (res.data.data == null) {
           if (parameter.fail) parameter.fail(null);
         } else {
           if (parameter.success) parameter.success(res.data.data);
         }
-      }else {
-        if(parameter.fail)parameter.fail(res);
+      } else {
+        if (res.data.code == 100004) { //token 失效
+          app.checksession(); //重新登陆
+        }
+        if (parameter.fail) parameter.fail(res);
       }
+    },fail: function (res) {
+      if (parameter.fail) parameter.fail(res);
+    },complete: function (res) {
     }
   })  
 }
@@ -47,17 +49,22 @@ function bflcStart(parameter) {
     method: 'POST',
     dataType: 'json',
     success: function (res) {
-    },fail: function (res) {
-      if (parameter.fail) parameter.fail(res);
-    },complete: function (res) {
-      if (res.statusCode == 200 
-          && res.data.code == 0) {
+      if (res.statusCode == 200
+        && res.data.code == 0) {
         if (res.data.data == null) {
           if (parameter.fail) parameter.fail(null);
         } else {
           if (parameter.success) parameter.success(res.data.data);
         }
+      }else {
+        if (res.data.code == 100004) { //token 失效
+          app.checksession(); //重新登陆
+        }
+        if(parameter.fail) parameter.fail(res);
       }
+    },fail: function (res) {
+      if (parameter.fail) parameter.fail(res);
+    },complete: function (res) {
     }
   })  
 }
@@ -73,19 +80,22 @@ function bflcDetail(parameter) {
     method: 'POST',
     dataType: 'json',
     success: function (res) {
-    },fail: function (res) {
-      if (parameter.fail) parameter.fail(res);
-    },complete: function (res) {
-      if (res.statusCode == 200 
-          && res.data.code == 0) {
+      if (res.statusCode == 200
+        && res.data.code == 0) {
         if (res.data.data == null) {
           if (parameter.fail) parameter.fail(null);
         } else {
           if (parameter.success) parameter.success(res.data.data);
         }
-      }else {
-        if(parameter.fail)parameter.fail(res);
+      } else {
+        if (res.data.code == 100004) { //token 失效
+          app.checksession(); //重新登陆
+        }
+        if (parameter.fail) parameter.fail(res);
       }
+    },fail: function (res) {
+      if (parameter.fail) parameter.fail(res);
+    },complete: function (res) {
     }
   })  
 }
@@ -103,19 +113,22 @@ function bflcWin(parameter) {
     method: 'POST',
     dataType: 'json',
     success: function (res) {
-    },fail: function (res) {
-      if (parameter.fail) parameter.fail(res);
-    },complete: function (res) {
-      if (res.statusCode == 200 
-          && res.data.code == 0) {
+      if (res.statusCode == 200
+        && res.data.code == 0) {
         if (res.data.data == null) {
           if (parameter.fail) parameter.fail(null);
         } else {
           if (parameter.success) parameter.success(res.data.data);
         }
-      }else {
-        if(parameter.fail)parameter.fail(res);
+      } else {
+        if (res.data.code == 100004) { //token 失效
+          app.checksession(); //重新登陆
+        }
+        if (parameter.fail) parameter.fail(res);
       }
+    },fail: function (res) {
+      if (parameter.fail) parameter.fail(res);
+    },complete: function (res) {
     }
   })  
 }
@@ -136,19 +149,22 @@ function kmdjStart(parameter) {
     method: 'POST',
     dataType: 'json',
     success: function (res) {
-    },fail: function (res) {
-      if (parameter.fail) parameter.fail(res);
-    },complete: function (res) {
-      if (res.statusCode == 200 
-          && res.data.code == 0) {
+      if (res.statusCode == 200
+        && res.data.code == 0) {
         if (res.data.data == null) {
           if (parameter.fail) parameter.fail(null);
         } else {
           if (parameter.success) parameter.success(res.data.data);
         }
-      }else {
-        if(parameter.fail)parameter.fail(res);
+      } else {
+        if (res.data.code == 100004) { //token 失效
+          app.checksession(); //重新登陆
+        }
+        if (parameter.fail) parameter.fail(res);
       }
+    },fail: function (res) {
+      if (parameter.fail) parameter.fail(res);
+    },complete: function (res) {
     }
   })  
 }
@@ -164,19 +180,22 @@ function kmdjDetail(parameter) {
     method: 'POST',
     dataType: 'json',
     success: function (res) {
-    },fail: function (res) {
-      if (parameter.fail) parameter.fail(res);
-    },complete: function (res) {
-      if (res.statusCode == 200 
-          && res.data.code == 0) {
+      if (res.statusCode == 200
+        && res.data.code == 0) {
         if (res.data.data == null) {
           if (parameter.fail) parameter.fail(null);
         } else {
           if (parameter.success) parameter.success(res.data.data);
         }
-      }else {
+      } else {
+        if (res.data.code == 100004) { //token 失效
+          app.checksession(); //重新登陆
+        }
         if (parameter.fail) parameter.fail(res);
       }
+    },fail: function (res) {
+      if (parameter.fail) parameter.fail(res);
+    },complete: function (res) {
     }
   })  
 }
@@ -195,19 +214,22 @@ function kmdjWin(parameter) {
     method: 'POST',
     dataType: 'json',
     success: function (res) {
-    },fail: function (res) {
-      if(parameter.fail)parameter.fail(res);
-    },complete: function (res) {
-      if (res.statusCode == 200 
-          && res.data.code == 0) {
+      if (res.statusCode == 200
+        && res.data.code == 0) {
         if (res.data.data == null) {
-          if (parameter.fail)parameter.fail(null);
+          if (parameter.fail) parameter.fail(null);
         } else {
           if (parameter.success) parameter.success(res.data.data);
         }
-      }else {
-        if(parameter.fail)parameter.fail(res);
+      } else {
+        if (res.data.code == 100004) { //token 失效
+          app.checksession(); //重新登陆
+        }
+        if (parameter.fail) parameter.fail(res);
       }
+    },fail: function (res) {
+      if(parameter.fail)parameter.fail(res);
+    },complete: function (res) {
     }
   })  
 }
@@ -226,19 +248,22 @@ function kmdjWin(parameter) {
     method: 'POST',
     dataType: 'json',
     success: function (res) {
-    },fail: function (res) {
-      if(parameter.fail)parameter.fail(res);
-    },complete: function (res) {
-      if (res.statusCode == 200 
-          && res.data.code == 0) {
+      if (res.statusCode == 200
+        && res.data.code == 0) {
         if (res.data.data == null) {
-          if (parameter.fail)parameter.fail(null);
+          if (parameter.fail) parameter.fail(null);
         } else {
           if (parameter.success) parameter.success(res.data.data);
         }
-      }else {
-        if(parameter.fail)parameter.fail(res);
+      } else {
+        if (parameter.fail) parameter.fail(res);
       }
+    },fail: function (res) {
+      if (res.data.code == 100004) { //token 失效
+        app.checksession(); //重新登陆
+      }
+      if(parameter.fail)parameter.fail(res);
+    },complete: function (res) {
     }
   })
  }
@@ -257,19 +282,22 @@ function getMyWinHistroy(parameter) {
     method: 'POST',
     dataType: 'json',
     success: function (res) {
-    },fail: function (res) {
-      if(parameter.fail)parameter.fail(res);
-    },complete: function (res) {
-      if (res.statusCode == 200 
-          && res.data.code == 0) {
+      if (res.statusCode == 200
+        && res.data.code == 0) {
         if (res.data.data == null) {
-          if (parameter.fail)parameter.fail(null);
+          if (parameter.fail) parameter.fail(null);
         } else {
           if (parameter.success) parameter.success(res.data.data);
         }
-      }else {
-        if(parameter.fail)parameter.fail(res);
+      } else {
+        if (parameter.fail) parameter.fail(res);
       }
+    },fail: function (res) {
+      if (res.data.code == 100004) { //token 失效
+        app.checksession(); //重新登陆
+      }
+      if(parameter.fail)parameter.fail(res);
+    },complete: function (res) {
     }
   })
 }

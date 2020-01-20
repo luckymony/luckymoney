@@ -1,5 +1,6 @@
 var util = require('../../../utils/util.js')
 var request = require('../../../utils/request.js')
+const app = getApp();
 Page({
   data: {
     items:[],
@@ -25,6 +26,11 @@ Page({
   },
   
   onLoad: function (options) {
+    var that = this;
+    var array = app.getStorage('homeList');
+    that.setData({
+      items: array ? array : []
+    })
     wx.setNavigationBarTitle({ title: '斗利是' }); 
   },
 
@@ -75,6 +81,7 @@ Page({
              }
              array.push(item);
          }
+         app.setStorage('homeList',array);
          that.setData({
           items:array
          })

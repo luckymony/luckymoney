@@ -4,6 +4,7 @@ var util = require('../utils/util.js');
  *  开门大吉红包发起接口
  */
 function sendKmdj(parameter) {
+  var isFail = false;
   wx.request({
     //请求地址
     url: app.globalData.baseUrl + '/api/redPackage/sendKmdj',
@@ -27,9 +28,11 @@ function sendKmdj(parameter) {
       if (parameter.orderSuccess) parameter.orderSuccess(res);
     },
     fail: function (res) {
+      isFail = true;
       if (parameter.payFail) parameter.payFail(res);
     },//请求失败
     complete: function (res) {//请求完成
+      if(isFail)return;
       if (res.statusCode == 200 && res.data.code == 0) {
         if (res.data.data == null) {
           if (parameter.payFail) parameter.payFail(null);
@@ -53,6 +56,9 @@ function sendKmdj(parameter) {
           })
         }
       } else {
+        if (res.data.code == 100004) { //token 失效
+          app.checksession(); //重新登陆
+        }
         if (parameter.payFail) parameter.payFail(res);
       }
     }
@@ -63,7 +69,7 @@ function sendKmdj(parameter) {
  *  八方来财红包发起接口
  */
 function sendBflc(parameter) {
-  // console.log (parameter);
+  var isFail = false;
   wx.request({
     //请求地址
     url: app.globalData.baseUrl + '/api/redPackage/sendBflc',
@@ -87,9 +93,11 @@ function sendBflc(parameter) {
       if (parameter.orderSuccess) parameter.orderSuccess(res);
     },
     fail: function (res) {
+      isFail = true;
       if (parameter.payFail) parameter.payFail(res);
     },//请求失败
     complete: function (res) {//请求完成
+      if(isFail)return;
       if (res.statusCode == 200 && res.data.code == 0) {
         if (res.data.data == null) {
           console.log(res);
@@ -114,6 +122,9 @@ function sendBflc(parameter) {
           })
         }
       } else {
+        if (res.data.code == 100004) { //token 失效
+          app.checksession(); //重新登陆
+        }
         if (parameter.payFail) parameter.payFail(res);
       }
     }
@@ -124,7 +135,7 @@ function sendBflc(parameter) {
  * 好运连绵红包发起接口
  */
 function sendHylm(parameter){
-  // console.log(parameter);
+  var isFail = false;
   wx.request({
     //请求地址
     url: app.globalData.baseUrl + '/api/redPackage/sendHylm',
@@ -147,9 +158,11 @@ function sendHylm(parameter){
       if (parameter.orderSuccess) parameter.orderSuccess(res);
     },
     fail: function (res) {
+      isFail = true;
       if (parameter.payFail) parameter.payFail(res);
     },//请求失败
     complete: function (res) {//请求完成
+      if (isFail)return;
       if (res.statusCode == 200 && res.data.code == 0) {
         if (res.data.data == null) {
           console.log(res);
@@ -175,6 +188,9 @@ function sendHylm(parameter){
           })
         }
       } else {
+        if (res.data.code == 100004) { //token 失效
+          app.checksession(); //重新登陆
+        }
         if (parameter.payFail) parameter.payFail(res);
       }
     }

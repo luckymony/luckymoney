@@ -71,11 +71,11 @@
 }
 
 .navigator {
-  background-color: red;
   padding: 30rpx 30rpx;
   position: relative;
   display: flex;
   align-items: center;
+/* background-color: red; */
 }
 
 .none-btn {

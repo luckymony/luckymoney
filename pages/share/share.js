@@ -90,7 +90,11 @@ Page({
         path = path1;
     }
     var playId = that.data.playId;
-    var newPath = playId.length > 0 ? (path + '?' + 'playId=' + playId) : path;
+    var playType = that.data.playType;
+    var newPath = path;
+    if (playId.length > 0) {
+      newPath = path + '?' + 'playId=' + playId + '&playType=' + playType;
+    }
     var shareObj = {
       title: title,
          desc: that.data.luckyStr,
@@ -104,6 +108,9 @@ Page({
                 icon: 'none',
                 duration: 2000
               })
+              wx.switchTab({
+                url: "../home/main/home"
+              });
 　　　　　　}
   　　　　},fail: function () {
   　　　　　　if (res.errMsg == 'shareAppMessage:fail cancel') {
