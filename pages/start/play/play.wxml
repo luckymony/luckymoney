@@ -2,18 +2,19 @@
   <block wx:for="{{items}}" wx:key="{{index}}">
     <swiper-item class="item-swiper" current="{{currentIndex}}">
       <view class="item-view {{currentIndex == index ? 'active': ''}}" bindtap="touchAction">
-      <text class="first-view">{{item['title']}}</text>
+      <text class="item-text">{{item}}</text>
       </view>
     </swiper-item>
   </block>
 </swiper>
 <view wx:if="{{isShow}}" class="cloud_layer" bindtap="hiddenTap"></view>
-<openplay class="playui {{isShow ? 'show_playui1' : 'hidden_playui'}}"
+<openplay class="playui {{isShow ? 'show_playui' : 'hidden_playui'}}"
 bind:edited="edited" wx:if="{{currentIndex == 0}}">
 </openplay>
-<gainplay class="playui {{isShow ? 'show_playui1' : 'hidden_playui'}}"
+<gainplay class="playui {{isShow ? 'show_playui' : 'hidden_playui'}}"
 bind:edited="edited" wx:if="{{currentIndex == 1}}">
 </gainplay>
-<contplay class="playui {{isShow ? 'show_playui1' : 'hidden_playui'}}"
-bind:edited="edited" wx:if="{{currentIndex == 2}}">
+<contplay class="playui {{isShow ? 'show_playui' : 'hidden_playui'}}"
+bind:edited="edited" bind:dataError="dataError" wx:if="{{currentIndex == 2}}">
 </contplay>
+<i-message id="message"/>

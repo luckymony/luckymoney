@@ -41,8 +41,9 @@ Page({
     });
   },
 
-  withdrawal:function() {
-
+  withdrawal:function() { //  提现接口
+    if (inputMoney.length == 0 || isShowMoreThan)return;
+    
   },
 
   /**

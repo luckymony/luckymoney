@@ -64,10 +64,8 @@ function bflcStart(parameter) {
 
 function bflcDetail(parameter) {
   wx.request({
-    url: app.globalData.baseUrl + '/api/redPackage/bflcDetail',
-    data: {
-      "redPackageId" : parameter.playId
-    },//发送给后台的数据
+    url: app.globalData.baseUrl + '/api/redPackage/bflcDetail/' + parameter.playId,
+    data: {},
     header: {//请求头
       "Content-Type": "application/json",
       "accessToken": app.globalData.token
@@ -157,10 +155,8 @@ function kmdjStart(parameter) {
 
 function kmdjDetail(parameter) {
   wx.request({
-    url: app.globalData.baseUrl + '/api/redPackage/kmdjDetail',
-    data: {
-      "redPackageId" : parameter.playId
-    },//发送给后台的数据
+    url: app.globalData.baseUrl + '/api/redPackage/kmdjDetail/' + parameter.playId,
+    data: {},//发送给后台的数据
     header: {//请求头
       "Content-Type": "application/json",
       "accessToken": app.globalData.token

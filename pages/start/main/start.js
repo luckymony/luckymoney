@@ -12,11 +12,11 @@ Page({
               {name: "七星高照 八方来财"},{name: "鼠你最美 鼠你最棒"}], 
     visible: false,
     moneyCount: '0.00',
-    redPacketCount:'0',
-    serviceFee:'0.00',
-    playParameter:null,
-    payParameter:null,
-    isCanPay:false
+    redPacketCount: '0',
+    serviceFee: '0.00',
+    playParameter: null,
+    payParameter: null,
+    isCanPay: false
   },
 
   toTip:function(e) {
@@ -89,9 +89,9 @@ Page({
    */
   toPlay:function() {
     var that = this;
-    var index = that.data.playTypes.indexOf(that.data.items[3].type);
+    var type = that.data.playTypes.indexOf(that.data.items[3].type);
     wx.navigateTo({
-      url: '../play/play?value=' + JSON.stringify(index),
+      url: '../play/play?playType=' + type,
     })
   },
 
@@ -111,6 +111,7 @@ Page({
   watchMoney:function(e) {
     // console.log(e.detail);
     var that = this;
+    /*
     if (e.detail.value > 0 && e.detail.value > 20000) {
       that.setData({
         'items[1].number': parseFloat(that.data.moneyCount) > 0 ? parseFloat(that.data.moneyCount):null
@@ -157,7 +158,7 @@ Page({
       that.getCanPay();
       return
     }
-  
+  */
     var num = util.pointNumer(e.detail.value);
     that.setData({
       'items[1].number': num,
@@ -173,12 +174,12 @@ Page({
    */
   watchCount:function(e) {
     var that = this;
-    var index = that.data.playTypes.indexOf(that.data.items[3].type);
+    var type = that.data.playTypes.indexOf(that.data.items[3].type);
     if (e.detail.value && e.detail.value > 500) {
       that.setData({
         'items[2].number': parseInt(that.data.redPacketCount)
       })
-      var warningStr = index == 2 ? '最多500个人参与' : '一次最多发500个红包'
+      var warningStr = type == 2 ? '最多500个人参与' : '一次最多发500个红包'
       $Message({
         content: warningStr,
         type: 'warning',
@@ -186,7 +187,7 @@ Page({
       });
       return;
     } else if (e.detail.value && e.detail.value < 1) {
-      var warningStr = index == 2 ? '请填写参与人数' : '请填写红包个数'
+      var warningStr = type == 2 ? '请填写参与人数' : '请填写红包个数'
       $Message({
         content: warningStr,
         type: 'warning',
@@ -238,9 +239,9 @@ Page({
   payMoney:function() {
     var that = this;
     if(!that.data.isCanPay)return;
-    var index = that.data.playTypes.indexOf(that.data.items[3].type);
+    var type = that.data.playTypes.indexOf(that.data.items[3].type);
     if (that.data.items[2].number == null) {
-      var warningStr = index == 2 ? '请填写参与人数' : '请填写红包个数'
+      var warningStr = type == 2 ? '请填写参与人数' : '请填写红包个数'
       $Message({
         content: warningStr,
         type: 'warning',
@@ -265,19 +266,24 @@ Page({
     wx.showLoading({
       title: '微信支付',
     })
-    if (index == 0) { //开门大吉
-      that.sendKmdj();
-    }else if (index == 1) { //八方来财
-       that.sendBflc();
-    }else if (index == 2) { //好运连绵
 
+    that.setData({
+      payParameter:{}
+    });
+    if (type == 0) { //开门大吉
+      that.sendKmdj();
+    } else if (type == 1) { //八方来财
+       that.sendBflc();
+    } else if (type == 2) { //好运连绵
+       that.sendHylm();
     }
   },
 
   sendKmdj:function() {
     var that = this;
     var defaultPar = pay.defaultKmdjParameter();
-    var parameter = that.data.playParameter;
+    var parameter = that.data.playParameter ? that.data.playParameter.parameter : null;
+
     var chanceNumber = parameter ? parameter.chanceCount : defaultPar.chanceCount;
     var number = that.data.items[2].number;
     var money = parseFloat(that.data.moneyCount)*100;
@@ -293,27 +299,27 @@ Page({
       'payParameter.difficultyLevel': difficultyLevel,
       'payParameter.duration': duration,
       'payParameter.needClickNumber': needClickNumber
-    })
+    });
+    var isFail = false;
     pay.sendKmdj({
         parameter: that.data.payParameter, 
         orderSuccess:function(res) {
-            wx.hideLoading({
-              complete: (res) => {},
-            })
+            wx.hideLoading({})
         },
         paySuccess:function(res){
-          console.log(res);
-          wx.showToast({
-            title: '微信支付成功',
-            icon: 'none',
-            duration: 2000
-          })
-          wx.navigateTo({
-            url: '',
-          })
+          if(!isFail) {
+            wx.showToast({
+              title: '微信支付成功',
+              icon: 'none',
+              duration: 2000
+            })
+            wx.switchTab({
+              url: "../../home/main/home"
+            });
+          }
         },
         payFail:function(res) {
-          console.log(res);
+          isFail = true;
           wx.hideLoading({
             complete: (res) => {
               wx.showToast({
@@ -330,7 +336,8 @@ Page({
   sendBflc:function() {
     var that = this;
     var defaultPar = pay.defaultBflcParameter();
-    var parameter = that.data.playParameter;
+    var parameter = that.data.playParameter ? that.data.playParameter.parameter : null;
+
     var chanceNumber = parameter ? parameter.chanceCount : defaultPar.chanceCount;
     var number = that.data.items[2].number;
     var money = parseFloat(that.data.moneyCount)*100;
@@ -346,25 +353,26 @@ Page({
       'payParameter.difficultyLevel': difficultyLevel,
       'payParameter.duration': duration,
       'payParameter.needIntegral': needIntegral
-    })
+    });
+    var isFail = false;
     pay.sendBflc({
         parameter: that.data.payParameter, 
         orderSuccess:function(res) {
-            wx.hideLoading({
-              complete: (res) => {},
-            })
+            wx.hideLoading({})
         },
         paySuccess:function(res){
-          // console.log(res);
-          wx.showToast({
-            title: '微信支付成功',
-            icon: 'none',
-            duration: 2000,
-          })
-          
-        },
-        payFail:function(res) {
-          // console.log(res);
+          if(!isFail) {
+            wx.showToast({
+              title: '微信支付成功',
+              icon: 'none',
+              duration: 2000,
+            })
+            wx.switchTab({
+              url: "../../home/main/home"
+            });
+          }
+        },payFail:function(res) {
+          isFail = true;
           wx.hideLoading({
             complete: (res) => {
               wx.showToast({
@@ -375,6 +383,57 @@ Page({
             },
           })
         }
+    });
+  },
+
+  sendHylm:function(){
+    var that = this;
+    var defaultPar = pay.defaultHylmParameeter();
+    var parameter = that.data.playParameter ? that.data.playParameter.parameter : null;
+
+    var minMoney = parameter ? parameter.minMoney : defaultPar.minMoney;
+    var number = that.data.items[2].number;
+    var money = parseFloat(that.data.moneyCount) * 100;
+    var startTime = parameter ? parameter.startTime : defaultPar.startTime;
+    var duration = parameter ? parameter.longTime : defaultPar.longTime;
+    that.setData({
+      'payParameter.greetings': that.data.items[0].title,
+      'payParameter.payType': 1,
+      'payParameter.minMoney': minMoney,
+      'payParameter.number': parseInt(number),
+      'payParameter.fee': money,
+      'payParameter.startTime': startTime,
+      'payParameter.duration': duration
+    });
+    var isFail = false;
+    pay.sendHylm({
+      parameter: that.data.payParameter,
+      orderSuccess: function (res) {
+        wx.hideLoading({})
+      },
+      paySuccess: function (res) {
+        if (!isFail) {
+          wx.showToast({
+            title: '微信支付成功',
+            icon: 'none',
+            duration: 2000,
+          })
+          wx.switchTab({
+            url: "../../home/main/home"
+          });
+        }
+      }, payFail: function (res) {
+        isFail = true;
+        wx.hideLoading({
+          complete: (res) => {
+            wx.showToast({
+              title: '微信支付失败',
+              icon: 'none',
+              duration: 2000
+            })
+          },
+        })
+      }
     });
   },
 
@@ -393,17 +452,15 @@ Page({
     let playParameter = currPage.data.playParameter;
     try {
       var that = this;
-      var data = playParameter.parameter;
       that.setData({
-        'items[3].type': data ? data.title : that.data.items[3].type,
+        'items[3].type': util.getPlayName(playParameter.type),
         'items[1].title': (playParameter.type <= 1) ? "总金额数" : "我的红包",
         'items[2].title': (playParameter.type <= 1) ? "红包个数" : "凑钱人数",
-        playParameter: playParameter
       });
-      // console.log(that.data.playParameter);
     } catch (e) {
 
     }
+    // console.log(that.data.playParameter);
   },
 
   onHide: function () {

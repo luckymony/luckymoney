@@ -2,7 +2,8 @@
   "usingComponents": {
     "openplay": "../../../component/openplay/openplay",
     "gainplay":"../../../component/gainplay/gainplay",
-    "contplay":"../../../component/contplay/contplay"
+    "contplay":"../../../component/contplay/contplay",
+    "i-message": "../../../dist/message/index"
   },
   "disableScroll": true
 }

@@ -1,5 +1,5 @@
 const app = getApp();
-
+var util = require('../utils/util.js');
 /**
  *  开门大吉红包发起接口
  */
@@ -45,10 +45,10 @@ function sendKmdj(parameter) {
             signType: 'MD5',
             paySign: paySign,
             success: function (res) {
+              if (parameter.paySuccess) parameter.paySuccess(res);
             }, fail: function (res) {
               if (parameter.payFail) parameter.payFail(res);
             }, complete: function (res) {
-              if (parameter.paySuccess) parameter.paySuccess(res);
             }
           })
         }
@@ -63,6 +63,7 @@ function sendKmdj(parameter) {
  *  八方来财红包发起接口
  */
 function sendBflc(parameter) {
+  // console.log (parameter);
   wx.request({
     //请求地址
     url: app.globalData.baseUrl + '/api/redPackage/sendBflc',
@@ -91,6 +92,7 @@ function sendBflc(parameter) {
     complete: function (res) {//请求完成
       if (res.statusCode == 200 && res.data.code == 0) {
         if (res.data.data == null) {
+          console.log(res);
           if (parameter.payFail) parameter.payFail(null);
         }else {
           var nonceStr = res.data.data.nonceStr;
@@ -104,10 +106,10 @@ function sendBflc(parameter) {
             signType: 'MD5',
             paySign: paySign,
             success: function (res) {
+              if (parameter.paySuccess) parameter.paySuccess(res);
             }, fail: function (res) {
               if (parameter.payFail) parameter.payFail(res);
             }, complete: function (res) {
-              if (parameter.paySuccess) parameter.paySuccess(res);
             }
           })
         }
@@ -117,6 +119,68 @@ function sendBflc(parameter) {
     }
   })
 }
+
+/**
+ * 好运连绵红包发起接口
+ */
+function sendHylm(parameter){
+  // console.log(parameter);
+  wx.request({
+    //请求地址
+    url: app.globalData.baseUrl + '/api/redPackage/sendHylm',
+    data: {
+      "minMoney": parameter.parameter.minMoney,
+      "duration": parameter.parameter.duration,
+      "fee": parameter.parameter.fee,
+      "greetings": parameter.parameter.greetings,
+      "startTime": parameter.parameter.startTime,
+      "number": parameter.parameter.number,
+      "payType": parameter.parameter.payType
+    },//发送给后台的数据
+    header: {//请求头
+      "Content-Type": "application/json",
+      "accessToken": app.globalData.token
+    },
+    method: 'POST',
+    dataType: 'json',
+    success: function (res) {
+      if (parameter.orderSuccess) parameter.orderSuccess(res);
+    },
+    fail: function (res) {
+      if (parameter.payFail) parameter.payFail(res);
+    },//请求失败
+    complete: function (res) {//请求完成
+      if (res.statusCode == 200 && res.data.code == 0) {
+        if (res.data.data == null) {
+          console.log(res);
+          if (parameter.payFail) parameter.payFail(null);
+        } else {
+          var nonceStr = res.data.data.nonceStr;
+          var packageParam = res.data.data.packageParam;
+          var paySign = res.data.data.paySign;
+          var timeStamp = res.data.data.timeStamp;
+          wx.requestPayment({ //微信支付
+            timeStamp: timeStamp,
+            nonceStr: nonceStr,
+            package: packageParam,
+            signType: 'MD5',
+            paySign: paySign,
+            success: function (res) {
+              if (parameter.paySuccess) parameter.paySuccess(res);
+            }, fail: function (res) {
+              console.log(res);
+              if (parameter.payFail) parameter.payFail(res);
+            }, complete: function (res) {
+            }
+          })
+        }
+      } else {
+        if (parameter.payFail) parameter.payFail(res);
+      }
+    }
+  })
+}
+
 
 function defaultKmdjParameter() {
   return { title: "开门大吉", longTime: 120, moneyCount: 5, 
@@ -128,9 +192,16 @@ function defaultBflcParameter() {
            chanceCount: 1, difficulty: 0 };
 }
 
+function defaultHylmParameeter() {
+  return {title:"好运连绵", longTime:120, 
+          startTime:(util.currentTimeStamp() + 600*1000), minMoney:1}
+}
+
 module.exports = {
   sendKmdj: sendKmdj,
-  sendBflc:sendBflc,
-  defaultKmdjParameter:defaultKmdjParameter,
-  defaultBflcParameter:defaultBflcParameter
+  sendBflc: sendBflc,
+  sendHylm: sendHylm,
+  defaultKmdjParameter: defaultKmdjParameter,
+  defaultBflcParameter: defaultBflcParameter,
+  defaultHylmParameeter: defaultHylmParameeter
 }

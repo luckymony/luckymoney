@@ -3,44 +3,52 @@
 <view class="first-view">
 <view class="one-view">
 <view class="top-view">
-<text>游戏限时</text>
+<text class="left-title">游戏限时</text>
+<view class="right-view">
 <picker mode="selector" value="{{index}}" range="{{timeArray}}" bindchange="bindPickerChange">
-<input value="{{activityTime}}" placeholder="游戏时长" disabled="true"/>
+<input class="input-view" value="{{activityTime}}" placeholder="游戏时长" disabled="true"/>
 </picker>
-<text>秒</text>
+<text class="right-text">秒</text>
+</view>
 </view>
 <view class="line-dotted"></view>
 </view>
 <view class="two-view">
 <view class="top-view">
-<text>最小红包</text>
-<input value="{{minMoneyCount}}" placeholder="0.00" type="digit" bindinput= 'watchMoney'/>
-<text>元</text>
+<text class="left-title">凑钱最小金额</text>
+<view class="right-view">
+<input class="input-view" value="{{minMoneyCount}}" placeholder="0.00" type="digit" bindinput= 'watchMoney'/>
+<text class="right-text">元</text>
+</view>
 </view>
 <view class="line-dotted"></view>
 </view>
 <view class="three-view">
 <view class="top-view">
-<text>开始日期</text>
+<text class="left-title">开始日期</text>
+<view class="right-view">
 <picker mode="date" value="{{startDate}}" start="{{pickerStartDate}}" end="{{pickerEndDate}}" bindchange="bindDateChange">
-<input value="{{startDate}}" placeholder="游戏开始日期" disabled="true"/>
+<input class="input-view" value="{{startDate}}" placeholder="游戏开始日期" disabled="true"/>
 </picker>
-<i-icon type="activity_fill" size='20' color="#80848f"/>
+<i-icon class="right-text" type="activity_fill" size='20' color="#80848f"/>
+</view>
 </view>
 <view class="line-dotted"></view>
 </view>
 <view class="four-view">
 <view class="top-view">
-<text>开始时间</text>
+<text class="left-title">开始时间</text>
+<view class="right-view">
 <picker mode="time" value="{{startTime}}" start="{{pickerStartTime}}" end="{{pickerEndTime}}" bindchange="bindTimeChange">
-<input value="{{startTime}}" placeholder="游戏开始时间" disabled="true"/>
+<input class="input-view" value="{{startTime}}" placeholder="游戏开始时间" disabled="true"/>
 </picker>
-<i-icon type="clock_fill" size='20' color="#80848f"/>
+<i-icon class="right-text" type="clock_fill" size='20' color="#80848f"/>
+</view>
 </view>
 <view class="line-dotted"></view>
 </view>
 </view>
 <view class="second-view">
-<button bindtap="editedTap">完成编辑</button>
+<button class="edited-button {{isCanPay ? '' : 'gray'}}" bindtap="editedTap">完成编辑</button>
 </view>
 </view>

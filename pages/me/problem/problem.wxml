@@ -4,7 +4,8 @@
 <view class="item-view {{!item.selected ? 'item-hidden-detail' : ''}}" bindtap='touchOneItem' id="{{index}}">
 <view class="top-view {{!item.selected ? 'top-hidden-detail' : ''}}">
 <text class="title-view {{item.selected ? 'title-hidden-detail' : ''}}">{{item.title}}</text>
-<i-icon class='icon-view' type="other" size="30" color="{{item.selected ?'#ccc' :'#80848f'}}"/>
+<i-icon class='icon-view' type="other" size="30" 
+color="{{item.selected ?'#ccc' :'#80848f'}}"/>
 </view>
 <view class='foot-view' wx:if="{{item.selected}}">
 <view class='line-view'></view>
@@ -12,4 +13,5 @@
 </view>
 </view>
 </block>
+<button open-type="contact" class="contact-button">联系客服</button>
 </view> 

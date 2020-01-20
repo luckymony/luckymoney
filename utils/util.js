@@ -98,6 +98,15 @@ function getStartTime(value) {
   return '00:00'
 }
 
+function timeToTimeStamp(value) {
+  var timeStr = value.date + ' ' + value.time;
+  return new Date(timeStr.replace(/-/g,"/")).getTime();
+}
+
+function currentTimeStamp() {
+  return new Date().getTime();
+}
+
 function moneyFormat(value) {
   if (value.indexOf(".") < 0) {
      return value + '.' + '00';
@@ -168,5 +177,7 @@ module.exports = {
   getStartTime: getStartTime,
   getPlayName:getPlayName,
   getCountdown:getCountdown,
-  getCountdownTime:getCountdownTime
+  getCountdownTime:getCountdownTime,
+  timeToTimeStamp:timeToTimeStamp,
+  currentTimeStamp:currentTimeStamp
 }

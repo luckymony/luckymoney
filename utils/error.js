@@ -50,7 +50,10 @@ function errorStrFromCode(code) {
       break;
     case 200015:
       return '已经抽取过红包';
-      break;       
+      break;
+    case 200016:
+       return '红包金额不能小于最小金额';
+      break;  
     default:
       return '请求失败';
       break;

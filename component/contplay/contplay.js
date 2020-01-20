@@ -13,7 +13,7 @@ Component({
     //最小红包
     minMoneyCount: {
       type: String,
-      value: '8'
+      value: null
     },
     //开始日前
     startDate: {
@@ -28,7 +28,7 @@ Component({
     //开始时间戳
     startStamp: {
       type: String,
-      value: null
+      value: '0'
     },
     //日前选择器开始日前
     pickerStartDate: {
@@ -57,9 +57,9 @@ Component({
    */
   data: {
     currentMoney:'0.00',
-    inputTimerout:null,
     timeArray:['60','120','180','240','300'],
-    index:1
+    index:1,
+    isCanPay:false
   },
   /**
    * 组件的方法列表
@@ -70,21 +70,30 @@ Component({
       var that = this;
       if (e.detail.value > 0 && e.detail.value > 20000) {
         that.setData({
-          minMoneyCount: parseFloat(that.data.currentMoney) > 0 ? parseFloat(that.data.currentMoney) : null
+          minMoneyCount: parseFloat(that.data.currentMoney) > 0 ? parseFloat(that.data.currentMoney) : null,
+          isCanPay: false
         })
         that.triggerEvent("dataError", '单次支付总金额不可超过20000元');
         return;
       } else if (e.detail.value > 0 && e.detail.value < 1.0) {
         that.setData({
-          minMoneyCount: parseFloat(that.data.currentMoney) > 0 ? parseFloat(that.data.currentMoney) : null
+          minMoneyCount: parseFloat(that.data.currentMoney) > 0 ? parseFloat(that.data.currentMoney) : null,
+          isCanPay: false
         })
         that.triggerEvent("dataError", '单次支付总金额大于1.00元');
         return;
-      } 
+      } else if (e.detail.value == 0) {
+        that.setData({
+          minMoneyCount: null,
+          isCanPay: false
+        })
+        return
+      }
       var num = util.pointNumer(e.detail.value);
       that.setData({
         minMoneyCount: num,
-        currentMoney: num ? util.moneyFormat(num.toString()) : '0.00'
+        currentMoney: num ? util.moneyFormat(num.toString()) : '0.00',
+        isCanPay: (num > 0)
       })
       return // 必加，不然输入框可以输入多位小数
     },
@@ -113,7 +122,18 @@ Component({
     },
 
     editedTap: function (e) {
-      this.triggerEvent("edited", this.properties);
+      var that = this;
+      if(!that.data.isCanPay)return;
+      that.setData({
+        startStamp:util.timeToTimeStamp({
+          date: that.properties.startDate,
+          time: that.properties.startTime
+        })
+      })
+      var dic = {longTime:that.properties.activityTime,
+        minMoney:that.properties.minMoneyCount,
+        startTime:that.properties.startStamp}
+        that.triggerEvent("edited",dic);
     }
   }
 })

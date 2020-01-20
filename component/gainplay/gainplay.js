@@ -91,7 +91,12 @@ Component({
     },
 
     editedTap: function (e) {
-      this.triggerEvent("edited", this.properties);
+      var that = this;
+      var dic = {longTime:that.properties.activityTime,
+        integralCount:that.properties.integralCount,
+        chanceCount:that.properties.chanceCount,
+        difficulty:that.properties.selectIndex}
+        that.triggerEvent("edited", dic);
     },
   }
 })

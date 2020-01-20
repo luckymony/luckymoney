@@ -33,7 +33,7 @@
   transition:all .2s ease-in 0s;
 }
 
-.first-view {
+.item-text {
   font-size: 120rpx;
   text-align: center;
   font-family: SimSun;
@@ -56,7 +56,7 @@
   border-top-left-radius: 10rpx;
 }
 
-.show_playui1 {
+.show_playui {
   transform: translateY(40vh);transition: all 0.3s ease;
 }
 

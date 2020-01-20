@@ -1,3 +1,4 @@
+var util = require('../../utils/util.js');
 // pages/share/share.js
 Page({
 
@@ -10,7 +11,7 @@ Page({
      playType: null,
      playName: '斗利是',
      userName: '',
-     iconUrl: '../../images/home/login.png'
+     iconUrl: '../../images/home/icon.png'
   },
 
   /**
@@ -19,9 +20,9 @@ Page({
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '分享给好友' }); 
     var that = this;
-    if (options) {
+    if (Object.keys(options).length > 0) {
       that.setData({
-        playId: parseInt(options["palyId"]),
+        playId: parseInt(options["playId"]),
         playType: parseInt(options["playType"]),
         playName: options["playName"],
         userName: options["userName"],
@@ -78,7 +79,7 @@ Page({
    */
   onShareAppMessage: function (res) {
     var that = this;
-    var title = that.data.userName.length > 0 ? (that.data.userName + '的红包') : '进来抢红包';
+    var title = that.data.userName.length > 0 ? (that.data.userName) : '进来抢红包';
     var path1 = '/pages/home/rob/rob';
     var path2 = '/pages/home/relay/relay';
     var path = '/pages/start/main/start';
@@ -88,9 +89,10 @@ Page({
       || that.data.playType == 0){
         path = path1;
     }
-    var newPath = that.data.playId.length > 0 ? (path + '?' + 'playId=' + that.data.playId) : path;
+    var playId = that.data.playId;
+    var newPath = playId.length > 0 ? (path + '?' + 'playId=' + playId) : path;
     var shareObj = {
-  　　　　title: title,
+      title: title,
          desc: that.data.luckyStr,
          path: newPath,
   　　　　imageUrl: '../../images/me/share.jpg',

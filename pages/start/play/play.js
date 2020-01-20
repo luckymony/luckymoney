@@ -1,19 +1,16 @@
+const {$Message} = require('../../../dist/base/index');
+var util = require('../../../utils/util.js');
 Page({
-
   data: {
-    items: [
-     {title:"开门大吉", longTime:120, moneyCount:5, chanceCount:1, difficulty:0},
-     {title:"八方来财", longTime:120, integralCount:200, chanceCount:1, difficulty:0}, 
-     {title:"好运连绵",longTime:120, startTime:200}],
+    items: ["开门大吉","八方来财","好运连绵"],
     currentIndex: 0,
     isShow:false,
   },
 
   onLoad: function (options) {
-    var obj = JSON.parse(options.value);
-     console.log(obj);
+    var playType = parseInt(options["playType"]);
     this.setData({
-      currentIndex: obj
+      currentIndex: playType
     });
     wx.setNavigationBarTitle({ title: '红包玩法' });
   },
@@ -37,24 +34,30 @@ Page({
     })
   },
 
+  dataError:function(e) {
+    console.log(e.detail);
+    $Message({
+      content: e.detail,
+      type: 'warning',
+      duration:3
+    });
+  },
+
   edited:function(e) {
-    console.log(e);
     var that = this;
     that.setData({
       isShow: false
     })
     let timeout = setTimeout(() => {
       clearTimeout(timeout)
-      wx.navigateBack({
-
-      })
+      wx.navigateBack({})
     }, 250)
     var pages = getCurrentPages();
     var prevPage = pages[pages.length - 2];
     prevPage.setData({
       playParameter: {
         type: that.data.currentIndex,
-        parameter: that.data.items[that.data.currentIndex]
+        parameter: e.detail
       }
     })
   },

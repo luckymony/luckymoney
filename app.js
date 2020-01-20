@@ -1,3 +1,4 @@
+var util = require('/utils/util.js');
 
 const testUrl = 'http://api-test.luckymony.com';
 const localUrl = 'http://tn7vbh.natappfree.cc';
@@ -25,6 +26,7 @@ App({
     that.globalData.code = that.getStorage('code');
     that.globalData.encryptedData = that.getStorage('encryptedData');
     that.globalData.iv = that.getStorage('iv');
+    console.log(that.globalData.token)
      if (that.globalData.token) {
        wx.switchTab({
          url: '/pages/home/main/home',
@@ -37,9 +39,14 @@ App({
     var that = this;
     wx.checkSession({
      success:function(res){
-     },
-     fail:function(res){
-      that.getLogin(); //重新登陆
+       var loginTime = that.getStorage('loginTime');
+       var currentTime = util.currentTimeStamp();
+       if (currentTime - loginTime > 2*60*60) {
+         that.getLogin(); //重新登陆
+       }
+     },fail:function(res){
+       console.log(res);
+       that.getLogin(); //重新登陆
        that.getLoginStateCallback = res => {
          if (!res){
            wx.navigateTo({
@@ -136,6 +143,7 @@ App({
         if (res.statusCode == 200 && res.data.code == 0) {
           that.getUserInfo(res.data['data']);
           that.setStorage('token',res.data['data']); //token数据本地化
+          that.setStorage('loginTime', util.currentTimeStamp());//登录时间戳
         }else {
           if (that.getLoginStateCallback) {
               that.getLoginStateCallback(false)

@@ -3,9 +3,9 @@
 <view class="first-view">
 <view class="one-view">
 <view class="top-view">
-<text>游戏限时</text>
+<text class="left-title">游戏限时</text>
 <picker mode="selector" value="{{index1}}" range="{{timeArray}}" bindchange="bindPickerChange1">
-<input value="{{activityTime}}" placeholder="游戏时长" disabled="true"/>
+<input class="input-view" value="{{activityTime}}" placeholder="游戏时长" disabled="true"/>
 </picker>
 <text>秒</text>
 </view>
@@ -13,9 +13,9 @@
 </view>
 <view class="two-view">
 <view class="top-view">
-<text>红包积分</text>
+<text class="left-title">红包积分</text>
 <picker mode="selector" value="{{index2}}" range="{{integralArray}}" bindchange="bindPickerChange2">
-<input value="{{integralCount}}" placeholder="游戏积分" disabled="true"/>
+<input class="input-view" value="{{integralCount}}" placeholder="游戏积分" disabled="true"/>
 </picker>
 <text>分</text>
 </view>
@@ -23,9 +23,9 @@
 </view>
 <view class="three-view">
 <view class="top-view">
-<text>拥有机会</text>
+<text class="left-title">拥有机会</text>
 <picker mode="selector" value="{{index3}}" range="{{chanceArray}}" bindchange="bindPickerChange3">
-<input value="{{chanceCount}}" placeholder="游戏机会次数" disabled="true"/>
+<input class="input-view" value="{{chanceCount}}" placeholder="游戏机会次数" disabled="true"/>
 </picker>
 <text>次</text>
 </view>
@@ -33,7 +33,7 @@
 </view>
 <view class="four-view">
 <view class="top-view">
-<text>设置难度</text>
+<text class="left-title">设置难度</text>
 <block wx:for="{{difficulty}}" wx:key="{{index}}">
 <button class="{{selectIndex == index ? 'selected' : 'default'}}" data-index="{{index}}"bindtap="difficultyTap">{{difficulty[index].name}}</button>
 </block>
@@ -42,6 +42,6 @@
 </view>
 </view>
 <view class="second-view">
-<button bindtap="editedTap">完成编辑</button>
+<button class="edited-button" bindtap="editedTap">完成编辑</button>
 </view>
 </view>
