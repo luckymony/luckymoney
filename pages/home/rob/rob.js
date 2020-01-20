@@ -126,10 +126,11 @@ Page({
       remainFee: (res.remainFee/100).toFixed(2),
       remainNumber: res.remainNumber,
     })
+
     var moneyStr = that.data.remainFee + '/' + that.data.allFee + '元';
     var numberStr =  + that.data.remainNumber + '/' + that.data.allNumber + '个';
     that.setData({
-      remainStr: '领取' + numberStr,
+      remainStr: '领取' + numberStr
     });
     that.setRankItems(res.rankList);
   },
@@ -233,7 +234,7 @@ Page({
     var playId = parseInt(options["playId"]);
     var playType = parseInt(options["playType"]);
     that.setData({
-      remainStr: moneyStr + '&ensp;&ensp;' + numberStr,
+      remainStr: '领取' + numberStr,
       playName: util.getPlayName(playType),
       playId: playId,
       playType: playType,

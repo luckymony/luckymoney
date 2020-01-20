@@ -36,27 +36,27 @@
   align-items: center;
   justify-content: center;
   align-content: space-around;  
-  /* background-color: red; */
   padding-top: 20rpx;
   padding-bottom: 20rpx;
+/* background-color: red; */
 }
 
 .userinfo-money-item {
   flex: 1;
-  /* background-color: red; */
   align-items: center;
   display: flex;
   font-size: 30rpx;
   flex-direction: column;
+/* background-color: red; */
 }
 
 .mid-view {
   width: 10rpx;
   height: 80rpx;
-  /* background-color: red; */
   align-items: center;
   justify-content: center;
   display: flex;
+/* background-color: red; */
 }
 
 .background-line{
@@ -71,11 +71,26 @@
 }
 
 .navigator {
-  /* background-color: red; */
+  background-color: red;
   padding: 30rpx 30rpx;
   position: relative;
   display: flex;
   align-items: center;
+}
+
+.none-btn {
+  height: 50rpx;
+  line-height: 50rpx;
+  border: none;
+  background: none;
+  outline: none;
+  border-style: none;
+  font-size: 30rpx;
+  color: black;
+}
+
+button::after {
+  border: none;
 }
 
 .navigator-text {
